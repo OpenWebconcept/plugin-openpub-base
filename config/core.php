@@ -9,7 +9,6 @@ return [
         /**
          * Global providers.
          */
-        OWC\OpenPub\Base\Settings\SettingsServiceProvider::class,
         OWC\OpenPub\Base\PostType\PostTypeServiceProvider::class,
         OWC\OpenPub\Base\Taxonomy\TaxonomyServiceProvider::class,
         OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
