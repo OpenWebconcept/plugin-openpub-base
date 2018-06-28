@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OWC OpenPub\n"
+"POT-Creation-Date: 2018-06-28 11:22+0200\n"
+"PO-Revision-Date: 2018-06-28 11:22+0200\n"
+"Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
+"Language-Team: Yard Digital <inf@yard.nl>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+
+#: config/metaboxes.php:6
+msgid "Data"
+msgstr "Gegevens"
+
+#: config/metaboxes.php:14
+msgid "Synonyms"
+msgstr "Synoniemen"
+
+#: config/metaboxes.php:15
+msgid ""
+"Use this option to add an comma separated list of synonyms or related terms"
+msgstr ""
+"Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
+"gerelateerde termen mee te geven"
+
+#: config/metaboxes.php:21
+msgid "Select end date"
+msgstr "Selecteer een einddatum"
+
+#: config/metaboxes.php:28
+msgid "Links"
+msgstr "Links"
+
+#: config/metaboxes.php:35
+msgid "Add new link"
+msgstr "Voeg nieuwe link toe"
+
+#: config/metaboxes.php:39
+msgid "Link title"
+msgstr "Link titel"
+
+#: config/metaboxes.php:40 config/metaboxes.php:67
+msgid "Use the title to replace the URL"
+msgstr "Wordt gebruikt om de link te tonen ipv de URL"
+
+#: config/metaboxes.php:45
+msgid "Link URL"
+msgstr "Link URL"
+
+#: config/metaboxes.php:46 config/metaboxes.php:73 config/settings.php:14
+msgid "URL including http(s)://"
+msgstr "URL inclusief http(s)://"
+
+#: config/metaboxes.php:55
+msgid "Downloads"
+msgstr "Downloads"
+
+#: config/metaboxes.php:62
+msgid "Add new download"
+msgstr "Voeg nieuwe download toe"
+
+#: config/metaboxes.php:66
+msgid "Download title"
+msgstr "Download titel"
+
+#: config/metaboxes.php:72
+msgid "Download URL"
+msgstr "Download URL"
+
+#: config/metaboxes.php:82
+msgid "Other"
+msgstr "Overig"
+
+#: config/metaboxes.php:85
+msgid "Notes"
+msgstr "Vrij notitieveld"
+
+#: config/metaboxes.php:86
+msgid "(the law, authority, local regulations, etc.)"
+msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
+
+#: config/p2p_connections.php:8
+msgctxt "P2P titel"
+msgid "OpenPub item"
+msgstr "OpenPub item"
+
+#: config/p2p_connections.php:13
+msgctxt "P2P titel"
+msgid "OpenPub owner"
+msgstr "OpenPub eigenaar"
+
+#: config/posttypes.php:24
+msgctxt "Admin Filter definition"
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: config/posttypes.php:28
+msgctxt "Admin Filter definition"
+msgid "Type"
+msgstr "Type"
+
+#: config/posttypes.php:32
+msgctxt "Admin Filter definition"
+msgid "Audience"
+msgstr "Doelgroep"
+
+#: config/posttypes.php:36
+msgctxt "Admin Filter definition"
+msgid "Usage"
+msgstr "Toepassing"
+
+#: config/posttypes.php:40
+msgctxt "Admin Filter definition"
+msgid "Aspect"
+msgstr "Kenmerk"
+
+#: config/posttypes.php:45
+msgctxt "post type singular name"
+msgid "OpenPub item"
+msgstr "OpenPub item"
+
+#: config/posttypes.php:46
+msgctxt "admin menu"
+msgid "OpenPub items"
+msgstr "OpenPub items"
+
+#: config/posttypes.php:47
+msgctxt "add new on admin bar"
+msgid "OpenPub item"
+msgstr "OpenPub item"
+
+#: config/posttypes.php:48
+msgctxt ""
+msgid "Add new OpenPub"
+msgstr "Add new OpenPub"
+
+#: config/posttypes.php:49
+msgid "Add new OpenPub"
+msgstr "Nieuw OpenPub item"
+
+#: config/posttypes.php:50
+msgid "New OpenPub"
+msgstr "Nieuw OpenPub item"
+
+#: config/posttypes.php:51
+msgid "Edit OpenPub"
+msgstr "Bewerk OpenPub item"
+
+#: config/posttypes.php:52
+msgid "View OpenPub"
+msgstr "Bekijk OpenPub item"
+
+#: config/posttypes.php:53
+msgid "All OpenPub items"
+msgstr "Alle OpenPub items"
+
+#: config/posttypes.php:54
+msgid "Search OpenPub items"
+msgstr "Zoek OpenPub items"
+
+#: config/posttypes.php:55
+msgid "Parent OpenPub items:"
+msgstr "Hoofd OpenPub items:"
+
+#: config/posttypes.php:56
+msgid "No OpenPub items found."
+msgstr "Geen OpenPub items gevonden."
+
+#: config/posttypes.php:57
+msgid "No OpenPub items found in trash."
+msgstr "Geen OpenPub items gevonden in prullenbak."
+
+#: config/posttypes.php:63
+msgctxt "Posttype definition"
+msgid "OpenPub item"
+msgstr "OpenPub item"
+
+#: config/posttypes.php:64
+msgctxt "Posttype definition"
+msgid "OpenPub items"
+msgstr "OpenPub items"
+
+#: config/posttypes.php:65
+msgctxt "post type general name"
+msgid "OpenPub items"
+msgstr "OpenPub items"
+
+#: config/settings.php:7
+msgctxt "OpenPub instellingen subpagina"
+msgid "Portal"
+msgstr "Portal"
+
+#: config/settings.php:13
+msgid "Portal URL"
+msgstr "Portal URL"
+
+#: config/settings.php:19
+msgid "Portal OpenPub item slug"
+msgstr "Portal OpenPub item slug"
+
+#: config/settings.php:20
+msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
+msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
+
+#: config/settings_pages.php:9
+msgid "OpenPub settings"
+msgstr "OpenPub instellingen"
+
+#: config/settings_pages.php:11
+msgctxt "OpenPub settings subpage"
+msgid "Base"
+msgstr "Basis"
+
+#: config/settings_pages.php:14
+msgctxt "OpenPub settings subpage"
+msgid "Submit"
+msgstr "Opslaan"
+
+#: config/settings_pages.php:16
+msgctxt "OpenPub settings tab"
+msgid "General"
+msgstr "Algemeen"
+
+#: config/taxonomies.php:22
+msgctxt "Taxonomy definition"
+msgid "Audience"
+msgstr "Doelgroep"
+
+#: config/taxonomies.php:23
+msgctxt "Taxonomy definition"
+msgid "Audiences"
+msgstr "Doelgroepen"
+
+#: config/taxonomies.php:42
+msgctxt "Taxonomy definition"
+msgid "Type"
+msgstr "Type"
+
+#: config/taxonomies.php:43
+msgctxt "Taxonomy definition"
+msgid "Types"
+msgstr "Typen"
+
+#: config/taxonomies.php:62
+msgctxt "Taxonomy definition"
+msgid "Aspect"
+msgstr "Kenmerk"
+
+#: config/taxonomies.php:63
+msgctxt "Taxonomy definition"
+msgid "Aspects"
+msgstr "Kenmerken"
+
+#: config/taxonomies.php:81
+msgctxt "Taxonomy definition"
+msgid "Usage"
+msgstr "Toepassing"
+
+#: config/taxonomies.php:82
+msgctxt "Taxonomy definition"
+msgid "Usages"
+msgstr "Toepassingen"
+
+#: config/taxonomies.php:100
+msgctxt "Taxonomy definition"
+msgid "Owner"
+msgstr "Eigenaar"
+
+#: config/taxonomies.php:101
+msgctxt "Taxonomy definition"
+msgid "Owners"
+msgstr "Eigenaren"
+
+#: src/Base/Admin/InterfaceServiceProvider.php:34
+msgid "View OpenPub item in portal"
+msgstr "Bekijken OpenPub item in portal"
+
+#: src/Base/Admin/InterfaceServiceProvider.php:53
+msgctxt "preview button text"
+msgid "View in Portal"
+msgstr "Bekijken in portal"
+
+#: src/Base/Admin/InterfaceServiceProvider.php:79
+#, php-format
+msgid "View &#8220;%s&#8221;"
+msgstr "Bekijk &#8220;%s&#8221;"
+
+#: src/Base/Admin/InterfaceServiceProvider.php:80
+msgctxt "Preview text in OpenPub list"
+msgid "View in Portal"
+msgstr "Bekijken in portal"
+
+#: src/Base/Foundation/DependencyChecker.php:61
+msgid "The following plugins are required to use the OpenPub:"
+msgstr "De volgende plugins zijn vereist om gebruik te maken van de OpenPub:"
+
+#: src/Base/Foundation/DependencyChecker.php:96
+msgid "Class does not exist"
+msgstr "Class bestaat niet"
+
+#: src/Base/Foundation/DependencyChecker.php:110
+msgid "Inactive"
+msgstr "Inactief"
+
+#: src/Base/Foundation/DependencyChecker.php:118
+msgid "Minimal version:"
+msgstr "Minimale versie:"
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
+#, php-format
+msgid "Connection type \"%s\" does not exist"
+msgstr "Verbindingstype \"%s\" bestaat niet"
+
+#~ msgid "This link does not work, go to our website: <a href=\"%s\">%s</a>"
+#~ msgstr "Deze link werkt niet, bekijk onze website: <a href=\"%s\">%s</a>"

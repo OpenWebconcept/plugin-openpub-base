@@ -1,0 +1,17 @@
+image: oktupol/bitbucket-pipelines-php71
+
+pipelines:
+  branches:
+    master:
+    - step:
+        name: unit test
+        caches:
+          - composer
+          - vendor-directory
+        script:
+          - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
+          - ./vendor/bin/phpunit --testsuite "OWC OpenPub Base Plugin Test Suite"
+
+definitions:
+  caches:
+    vendor-directory: vendor

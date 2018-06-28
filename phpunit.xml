@@ -1,0 +1,31 @@
+<phpunit
+	bootstrap="tests/Unit/bootstrap.php"
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	processIsolation="false"
+	stopOnError="false"
+	stopOnFailure="false"
+	syntaxCheck="true"
+	verbose="true"
+>
+	<testsuites>
+		<testsuite name="OWC OpenPub Base Plugin Test Suite">
+			<directory suffix="Test.php">./tests/Unit</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="false">
+			<directory suffix=".php">./src</directory>
+			<exclude>
+				<directory suffix=".php">./src/vendor</directory>
+			</exclude>
+		</whitelist>
+	</filter>
+	<php>
+		<ini name="display_errors" value="true"/>
+	</php>
+</phpunit>
