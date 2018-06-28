@@ -23,7 +23,6 @@ Via the plugin object the following config settings can be adjusted
 - metaboxes
 - p2p_connections
 - posttypes
-- rest_api_fields
 - settings
 - settings_pages
 - taxonomies
