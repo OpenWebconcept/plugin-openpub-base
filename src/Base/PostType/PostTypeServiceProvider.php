@@ -8,7 +8,7 @@ class PostTypeServiceProvider extends ServiceProvider
 {
 
     /**
-     * the array of posttype definitions from the config
+     * The array of posttype definitions from the config
      *
      * @var array
      */
@@ -16,7 +16,6 @@ class PostTypeServiceProvider extends ServiceProvider
 
     public function register()
     {
-
         $this->plugin->loader->addAction('init', $this, 'registerPostTypes');
     }
 

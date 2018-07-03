@@ -77,7 +77,7 @@ class ItemController extends BaseController
             ->find($id);
 
         if ( ! $item ) {
-            return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found', $id), [
+            return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found (anymore)', $id), [
                 'status' => 404
             ]);
         }

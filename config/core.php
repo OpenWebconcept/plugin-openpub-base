@@ -14,12 +14,12 @@ return [
         OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
-        OWC\OpenPub\Base\Template\TemplateServiceProvider::class,
+        OWC\OpenPub\Base\Redirect\RedirectServiceProvider::class,
         /**
          * Providers specific to the admin.
          */
         'admin' => [
-//            OWC\OpenPub\Base\Admin\InterfaceServiceProvider::class
+            // OWC\OpenPub\Base\Admin\InterfaceServiceProvider::class
         ]
     ],
 

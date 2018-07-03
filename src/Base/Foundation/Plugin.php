@@ -62,6 +62,7 @@ class Plugin
      * @hook plugins_loaded
      *
      * @return bool
+     * @throws \Exception
      */
     public function boot(): bool
     {

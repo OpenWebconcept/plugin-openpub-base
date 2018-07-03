@@ -21,23 +21,23 @@ return [
             'admin_cols'    => [],
             # Add a dropdown filter to the admin screen:
             'admin_filters' => [
-                'owner'    => [
+                'owner'      => [
                     'title'    => _x('Owner', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-owner',
                 ],
-                'type'     => [
+                'type'       => [
                     'title'    => _x('Type', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-type',
                 ],
-                'audience' => [
+                'audience'   => [
                     'title'    => _x('Audience', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-audience',
                 ],
-                'usage'    => [
+                'usage'      => [
                     'title'    => _x('Usage', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-usage',
                 ],
-                'aspect'   => [
+                'aspect'     => [
                     'title'    => _x('Aspect', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-aspect',
                 ],
