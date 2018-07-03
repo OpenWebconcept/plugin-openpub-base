@@ -13,15 +13,15 @@
 	verbose="true"
 >
 	<testsuites>
-		<testsuite name="OWC OpenPub Base Plugin Test Suite">
+		<testsuite name="Unit Test">
 			<directory suffix="Test.php">./tests/Unit</directory>
 		</testsuite>
 	</testsuites>
 	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="false">
-			<directory suffix=".php">./src</directory>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">./src/Base</directory>
 			<exclude>
-				<directory suffix=".php">./src/vendor</directory>
+				<directory suffix=".php">./vendor</directory>
 			</exclude>
 		</whitelist>
 	</filter>

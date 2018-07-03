@@ -1,11 +1,11 @@
 {
   "name": "plugin/openpub-base",
   "description": "OpenPub base plugin",
+  "homepage": "https://www.yardinternet.nl",
   "authors": [
     {
-      "name": "Edwin Siebel",
-      "email": "edwin@yard.nl",
-      "homepage": "https://www.yarddigital.nl"
+      "name": "Yard Internet",
+      "email": "info@yard.nl"
     }
   ],
   "type": "wordpress-plugin",
@@ -13,16 +13,24 @@
     "php": ">=7.0"
   },
   "require-dev": {
-    "mockery/mockery": "1.0.*",
+    "mockery/mockery": "~1.0",
     "phpunit/phpunit": "~6.0",
     "10up/wp_mock": "dev-master",
     "phpmd/phpmd": "@stable"
   },
-  "autoload": {
+  "autoload-dev": {
     "psr-4": {
       "OWC\\OpenPub\\Base\\": "./src/Base",
       "OWC\\OpenPub\\Base\\Tests\\": "./tests"
     }
+  },
+  "scripts": {
+    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always",
+    "unit-cover": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always --coverage-html ./tests/coverage",
+    "integration": "clear && ./vendor/bin/phpunit  --testsuite 'Integration Test' --colors=always",
+    "test": [
+      "@unit",
+      "@integration"
+    ]
   }
 }
-
