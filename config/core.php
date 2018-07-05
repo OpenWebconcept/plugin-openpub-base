@@ -19,7 +19,13 @@ return [
          * Providers specific to the admin.
          */
         'admin' => [
+            OWC\OpenPub\Base\Admin\Settings\SettingsServiceProvider::class,
+            OWC\OpenPub\Base\Elasticsearch\ElasticPressServiceProvider::class,
             // OWC\OpenPub\Base\Admin\InterfaceServiceProvider::class
+        ],
+
+        'cli' => [
+            OWC\OpenPub\Base\Elasticsearch\ElasticPressServiceProvider::class,
         ]
     ],
 
