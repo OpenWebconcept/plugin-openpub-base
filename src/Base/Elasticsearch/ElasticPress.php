@@ -2,6 +2,8 @@
 
 namespace OWC\OpenPub\Base\Elasticsearch;
 
+use OWC\OpenPub\Base\Models\Item;
+
 class ElasticPress
 {
     /**
@@ -88,7 +90,7 @@ class ElasticPress
      */
     public function setPostSyncArgs()
     {
-        add_filter('ep_post_sync_args', function($postArgs, $postID) {
+        add_filter('ep_post_sync_args_post_prepare_meta', function($postArgs, $postID) {
             $postArgs = $this->transform($postArgs, $postID);
 
             return $postArgs;
@@ -102,40 +104,20 @@ class ElasticPress
      * @param $postID
      *
      * @return array
+     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
+     * @throws \ReflectionException
      */
     protected function transform($postArgs, $postID): array
     {
+
+        $item = ( new Item )
+            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
+            ->find($postID);
+
         $postArgs['post_author'] = isset($postArgs['post_author']) ? $postArgs['post_author'] : '';
         if ( apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID) ) {
             $postArgs['post_author']['raw'] = $postArgs['post_author']['display_name'] = $postArgs['post_author']['login'] = '';
         }
-
-        $postArgs['post_meta'] = isset($postArgs['post_meta']) ? $postArgs['post_meta'] : [];
-        $postArgs['post_meta'] = apply_filters('owc/openpub/base/elasticpress/postargs/meta', $postArgs['post_meta'], $postID);
-
-        $postArgs['terms'] = isset($postArgs['terms']) ? $postArgs['terms'] : [];
-        $postArgs['terms'] = apply_filters('owc/openpub/base/elasticpress/postargs/terms', $postArgs['terms'], $postID);
-
-        //adding openpub-item taxonomies as 'post_meta.terms' field, filled with concatenated term names.
-        $taxonomies_data = [
-            ['taxonomy_id' => 'openpub-type'],
-            ['taxonomy_id' => 'openpub-doelgroep']
-        ];
-        $collected_terms = [];
-        foreach ( $taxonomies_data as $taxonomy_data ) {
-
-            $terms = wp_get_post_terms($postID, $taxonomy_data['taxonomy_id']);
-
-            if ( ! is_wp_error($terms) ) {
-
-                foreach ( $terms as $term ) {
-                    $collected_terms[] = $term->name;
-                }
-            }
-        }
-        $postArgs['post_meta']['terms'] = implode(',', $collected_terms);
-
-        $postArgs = apply_filters('owc/openpub/base/elasticpress/postargs/all', $postArgs, $postID);
 
         return $postArgs;
     }
@@ -145,7 +127,6 @@ class ElasticPress
      */
     public function setSettings()
     {
-
         $settings = $this->getSettings();
 
         if ( isset($settings['_owc_setting_elasticsearch_url']) && ( ! defined('EP_HOST') ) ) {

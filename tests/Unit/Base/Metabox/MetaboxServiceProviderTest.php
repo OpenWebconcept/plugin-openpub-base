@@ -3,7 +3,7 @@
 namespace OWC\OpenPub\Base\Metabox;
 
 use Mockery as m;
-use OWC\OpenPub\Base\Config;
+use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Plugin;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
@@ -83,7 +83,7 @@ class MetaboxServiceProviderTest extends TestCase
 		$config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
 
 		//test for filter being called
-		\WP_Mock::expectFilter('owc/openpub-base/before-register-metaboxes', $expectedMetaboxes );
+		\WP_Mock::expectFilter('owc/openpub/base/before-register-metaboxes', $expectedMetaboxes );
 
 		$this->assertEquals($expectedMetaboxes, $service->registerMetaboxes([]));
 

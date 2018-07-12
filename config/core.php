@@ -11,7 +11,6 @@ return [
          */
         OWC\OpenPub\Base\PostType\PostTypeServiceProvider::class,
         OWC\OpenPub\Base\Taxonomy\TaxonomyServiceProvider::class,
-        OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\OpenPub\Base\Redirect\RedirectServiceProvider::class,
@@ -21,7 +20,6 @@ return [
         'admin' => [
             OWC\OpenPub\Base\Admin\Settings\SettingsServiceProvider::class,
             OWC\OpenPub\Base\Elasticsearch\ElasticPressServiceProvider::class,
-            // OWC\OpenPub\Base\Admin\InterfaceServiceProvider::class
         ],
 
         'cli' => [

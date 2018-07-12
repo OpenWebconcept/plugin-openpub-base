@@ -32,7 +32,7 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
     }
 
     /**
-     * register metaboxes for settings page
+     * Register metaboxes for settings page
      *
      * @param $rwmbMetaboxes
      *

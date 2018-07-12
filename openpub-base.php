@@ -4,8 +4,8 @@
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           2.0.0
- * Author:            Edwin Siebel, Ruud Laan, Melvin Koopmans
+ * Version:           1.0.0
+ * Author:            Melvin Koopmans, Edwin Siebel
  * Author URI:        https://www.yarddigital.nl/
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt

@@ -11,7 +11,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     }
 
     /**
-     * register metaboxes.
+     * Register metaboxes.
      *
      * @param $rwmbMetaboxes
      *

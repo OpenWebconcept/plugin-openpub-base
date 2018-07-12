@@ -2,20 +2,20 @@
 
 namespace OWC\OpenPub\Base\Foundation;
 
-use Mockery as m;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use WP_Mock;
 
 class DependencyCheckerTest extends TestCase
 {
 
     public function setUp()
     {
-        \WP_Mock::setUp();
+        WP_Mock::setUp();
     }
 
     public function tearDown()
     {
-        \WP_Mock::tearDown();
+        WP_Mock::tearDown();
     }
 
     /** @test */
@@ -31,8 +31,8 @@ class DependencyCheckerTest extends TestCase
 
         $checker = new DependencyChecker($dependencies);
 
-        \WP_Mock::userFunction('is_plugin_active')
-            ->withArgs([ 'test-plugin/test-plugin.php' ])
+        WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['test-plugin/test-plugin.php'])
             ->once()
             ->andReturn(false);
 
@@ -44,7 +44,7 @@ class DependencyCheckerTest extends TestCase
     {
         $checker = new DependencyChecker([]);
 
-        \WP_Mock::userFunction('is_plugin_active')
+        WP_Mock::userFunction('is_plugin_active')
             ->never();
 
         $this->assertFalse($checker->failed());
@@ -67,8 +67,8 @@ class DependencyCheckerTest extends TestCase
 
         $checker = new DependencyChecker($dependencies);
 
-        \WP_Mock::userFunction('is_plugin_active')
-            ->withArgs([ 'pluginstub.php' ])
+        WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['pluginstub.php'])
             ->once()
             ->andReturn(true);
 
@@ -92,8 +92,8 @@ class DependencyCheckerTest extends TestCase
 
         $checker = new DependencyChecker($dependencies);
 
-        \WP_Mock::userFunction('is_plugin_active')
-            ->withArgs([ 'pluginstub.php' ])
+        WP_Mock::userFunction('is_plugin_active')
+            ->withArgs(['pluginstub.php'])
             ->once()
             ->andReturn(true);
 
@@ -109,18 +109,18 @@ class DependencyCheckerTest extends TestCase
     public function wrongVersions()
     {
         return [
-            [ '1.1.8' ],
-            [ '2.0' ],
-            [ '3' ]
+            ['1.1.8'],
+            ['2.0'],
+            ['3']
         ];
     }
 
     public function correctVersions()
     {
         return [
-            [ '1.1.2' ],
-            [ '1.0' ],
-            [ '1' ]
+            ['1.1.2'],
+            ['1.0'],
+            ['1']
         ];
     }
 }

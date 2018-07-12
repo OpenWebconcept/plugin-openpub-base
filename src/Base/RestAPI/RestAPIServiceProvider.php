@@ -4,6 +4,7 @@ namespace OWC\OpenPub\Base\RestAPI;
 
 use OWC\OpenPub\Base\Foundation\ServiceProvider;
 use OWC\OpenPub\Base\RestAPI\Controllers\ItemController;
+use OWC\OpenPub\Base\RestAPI\Controllers\SearchController;
 
 class RestAPIServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,12 @@ class RestAPIServiceProvider extends ServiceProvider
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => 'GET',
             'callback' => [new ItemController($this->plugin), 'getItem'],
+        ]);
+
+        register_rest_route($this->namespace, 'search', [
+            'methods'  => 'GET',
+            'callback' => [new SearchController($this->plugin), 'search'],
+            'args'     => []
         ]);
     }
 

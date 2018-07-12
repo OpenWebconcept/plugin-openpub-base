@@ -9,6 +9,16 @@
     }
   ],
   "type": "wordpress-plugin",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:yardinternet/phpcs.git"
+    }
+  ],
   "require": {
     "php": ">=7.0",
     "wpackagist-plugin/elasticpress": "2.5.*"
@@ -17,6 +27,7 @@
     "mockery/mockery": "~1.0",
     "phpunit/phpunit": "~6.0",
     "10up/wp_mock": "dev-master",
+    "yard/phpcs":"dev-master",
     "phpmd/phpmd": "@stable"
   },
   "autoload-dev": {
@@ -26,6 +37,7 @@
     }
   },
   "scripts": {
+    "lint": "clear && ./vendor/bin/phpcs .",
     "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always",
     "unit-cover": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always --coverage-html ./tests/coverage",
     "integration": "clear && ./vendor/bin/phpunit  --testsuite 'Integration Test' --colors=always",

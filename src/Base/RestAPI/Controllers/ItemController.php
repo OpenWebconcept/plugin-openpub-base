@@ -21,22 +21,7 @@ class ItemController extends BaseController
     public function getItems(WP_REST_Request $request)
     {
         $items = ( new Item() )
-            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
-            ->query([
-                'meta_query' => [
-                    'relation' => 'OR',
-                    [
-                        'key'     => '_owc_openpub_expirationdate',
-                        'value'   => date("Y-m-d h:i:s"),
-                        'compare' => '>=',
-                        'type'    => 'DATETIME'
-                    ],
-                    [
-                        'key'     => '_owc_openpub_expirationdate',
-                        'compare' => 'NOT EXISTS'
-                    ]
-                ]
-            ]);
+            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -59,21 +44,6 @@ class ItemController extends BaseController
 
         $item = ( new Item )
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
-            ->query([
-                'meta_query' => [
-                    'relation' => 'OR',
-                    [
-                        'key'     => '_owc_openpub_expirationdate',
-                        'value'   => date("Y-m-d h:i:s"),
-                        'compare' => '>=',
-                        'type'    => 'DATETIME'
-                    ],
-                    [
-                        'key'     => '_owc_openpub_expirationdate',
-                        'compare' => 'NOT EXISTS'
-                    ]
-                ]
-            ])
             ->find($id);
 
         if ( ! $item ) {
