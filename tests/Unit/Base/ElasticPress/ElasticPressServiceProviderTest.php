@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Elasticsearch;
+namespace OWC\OpenPub\Base\ElasticPress;
 
 use Exception;
 use Mockery as m;

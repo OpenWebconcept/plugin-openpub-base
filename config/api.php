@@ -12,6 +12,7 @@ return [
          */
         'item'   => [
             'fields' => [
+                'connected'  => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
                 'taxonomies' => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
                 'image'      => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'downloads'  => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
@@ -22,6 +23,7 @@ return [
         ],
         'search' => [
             'fields' => [
+                'connected'  => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
                 'taxonomies' => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
                 'image'      => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'downloads'  => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,

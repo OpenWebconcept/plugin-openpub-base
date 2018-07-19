@@ -5,7 +5,7 @@ return [
     /**
      * Examples of registering post types: https://johnbillion.com/extended-cpts/
      */
-    'openpub-item' => [
+    'openpub-item'    => [
         'args'  => [
             # Add the post type to the site's main RSS feed:
             'show_in_feed'  => false,
@@ -21,23 +21,23 @@ return [
             'admin_cols'    => [],
             # Add a dropdown filter to the admin screen:
             'admin_filters' => [
-                'owner'      => [
+                'owner'    => [
                     'title'    => _x('Owner', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-owner',
                 ],
-                'type'       => [
+                'type'     => [
                     'title'    => _x('Type', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-type',
                 ],
-                'audience'   => [
+                'audience' => [
                     'title'    => _x('Audience', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-audience',
                 ],
-                'usage'      => [
+                'usage'    => [
                     'title'    => _x('Usage', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-usage',
                 ],
-                'aspect'     => [
+                'aspect'   => [
                     'title'    => _x('Aspect', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-aspect',
                 ],
@@ -61,9 +61,77 @@ return [
         # Override the base names used for labels:
         'names' => [
             'slug'     => 'openpub-item',
-            'singular' => _x('OpenPub item', 'Posttype definition', 'openpub-base'),
-            'plural'   => _x('OpenPub items', 'Posttype definition', 'openpub-base'),
-            'name'     => _x('OpenPub items', 'post type general name', 'openpub-base')
+            'singular' => _x('Item', 'Posttype definition', 'openpub-base'),
+            'plural'   => _x('Items', 'Posttype definition', 'openpub-base'),
+            'name'     => _x('Items', 'post type general name', 'openpub-base')
+        ]
+    ],
+    'openpub-theme'    => [
+        'args'  => [
+
+            # Add the post type to the site's main RSS feed:
+            'show_in_feed' => false,
+
+            # Show all posts on the post type archive:
+            'archive'      => [
+                'nopaging' => true
+            ],
+            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail'],
+            'show_in_rest' => true,
+            'rest_base'    => 'openpub-thema',
+        ],
+        'names' => [
+
+            # Override the base names used for labels:
+            'singular' => _x('Theme', 'Posttype definition', 'openpub-base'),
+            'plural'   => _x('Themes', 'Posttype definition', 'openpub-base'),
+            'slug'     => 'openpub-thema'
+        ]
+    ],
+    'openpub-subtheme' => [
+        'args'  => [
+            # Add the post type to the site's main RSS feed:
+            'show_in_feed' => false,
+
+            # Show all posts on the post type archive:
+            'archive'      => [
+                'nopaging' => true
+            ],
+            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail', 'page-attributes'],
+            'show_in_rest' => true,
+            'hierarchical' => true,
+            'rest_base'    => 'openpub-subthema',
+        ],
+        'names' => [
+
+            # Override the base names used for labels:
+            'singular' => _x('Subtheme', 'Posttype definition', 'openpub-base'),
+            'plural'   => _x('Subthemes', 'Posttype definition', 'openpub-base'),
+            'slug'     => 'openpub-subthema'
+
+        ]
+    ],
+    'openpub-location' => [
+        'args'  => [
+            # Add the post type to the site's main RSS feed:
+            'show_in_feed' => false,
+
+            # Show all posts on the post type archive:
+            'archive'      => [
+                'nopaging' => true
+            ],
+            'supports'     => ['title', 'editor', 'excerpt', 'revisions', 'thumbnail', 'page-attributes'],
+            'show_in_rest' => true,
+            'hierarchical' => true,
+            'rest_base'    => 'openpub-location',
+        ],
+        'names' => [
+
+            # Override the base names used for labels:
+            'singular' => _x('Location', 'Posttype definition', 'openpub-base'),
+            'plural'   => _x('Locations', 'Posttype definition', 'openpub-base'),
+            'slug'     => 'openpub-location'
+
         ]
     ]
 ];
