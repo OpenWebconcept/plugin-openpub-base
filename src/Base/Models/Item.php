@@ -36,7 +36,7 @@ class Item extends Model
                 'relation' => 'OR',
                 [
                     'key'     => '_owc_openpub_expirationdate',
-                    'value'   => date("Y-m-d h:i:s"),
+                    'value'   => date("Y-m-d H:I"),
                     'compare' => '>=',
                     'type'    => 'DATETIME'
                 ],

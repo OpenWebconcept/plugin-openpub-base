@@ -21,8 +21,9 @@ class SearchController extends ItemController
     {
 
         $search = ( new Search($request) )
+            ->query(['post_type' => 'any'])
             ->query(apply_filters('owc/openpub/rest-api/search/query', $this->getPaginatorParams($request)));
-        
+
         $data  = $search->all();
         $query = $search->getQuery();
 

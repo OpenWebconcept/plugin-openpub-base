@@ -4,6 +4,7 @@ namespace OWC\OpenPub\Base\ElasticPress;
 
 use Exception;
 use OWC\OpenPub\Base\Foundation\ServiceProvider;
+use OWC\OpenPub\Base\Models\Item;
 
 class ElasticPressServiceProvider extends ServiceProvider
 {
@@ -18,7 +19,7 @@ class ElasticPressServiceProvider extends ServiceProvider
             throw new Exception('Plugin ElasticPress should be installed and active to run this plugin');
         }
 
-        $elasticPress = new ElasticPress($this->plugin->config);
+        $elasticPress = new ElasticPress($this->plugin->config, new Item);
         $this->plugin->loader->addAction('init', $elasticPress, 'setSettings', 10, 1);
         $this->plugin->loader->addAction('init', $elasticPress, 'init', 10, 1);
     }

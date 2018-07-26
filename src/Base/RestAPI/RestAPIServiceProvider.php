@@ -31,12 +31,12 @@ class RestAPIServiceProvider extends ServiceProvider
     {
         register_rest_route($this->namespace, 'items', [
             'methods'  => 'GET',
-            'callback' => [new ItemController($this->plugin), 'getItems'],
+            'callback' => [new ItemController($this->plugin), 'getItems']
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => 'GET',
-            'callback' => [new ItemController($this->plugin), 'getItem'],
+            'callback' => [new ItemController($this->plugin), 'getItem']
         ]);
 
         register_rest_route($this->namespace, 'search', [
@@ -81,5 +81,4 @@ class RestAPIServiceProvider extends ServiceProvider
             }
         }
     }
-
 }

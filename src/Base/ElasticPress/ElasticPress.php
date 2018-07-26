@@ -12,13 +12,19 @@ class ElasticPress
     private $config;
 
     /**
+     * @var Item $item
+     */    
+    protected $item;
+
+    /**
      * ElasticPress constructor.
      *
      * @param \OWC\OpenPub\Base\Foundation\Config $config
      */
-    public function __construct($config)
+    public function __construct($config, Item $item)
     {
         $this->config = $config;
+        $this->item = $item;
     }
 
     /**
@@ -26,100 +32,172 @@ class ElasticPress
      */
     public function init()
     {
-        $this->setIndexables();
-        $this->setStatuses();
-        $this->setIndexPostsArgs();
-        $this->setLanguage();
-        $this->setPostSyncArgs();
+        $this->setFilters();
+    }
+
+    public function setFilters()
+    {
+        /**
+         * Default settings
+         */
+        add_filter('ep_index_name', [$this, 'setIndexNameByEnvironment'], 10, 2);
+        add_filter('ep_pre_request_host', [$this, 'setRequestHost'], 10, 4);
+        add_filter('ep_pre_request_url', [$this, 'setRequestUrl'], 10, 5);
+
+        /**
+         * Search settings
+         */
+        add_filter('ep_search_fields', [$this, 'setSearchFields'], 10, 2);
+        add_filter('ep_search_args', [$this, 'setSearchArgs'], 10, 3);
+        add_filter('formattedArgs', [$this, 'setFormattedArgs'], 11, 2);
+        add_filter('epwr_decay', [$this, 'setDecay'], 10, 3);
+        add_filter('epwr_offset', [$this, 'setOffset'], 10, 3);
+        add_filter('ep_indexable_post_types', [$this, 'setIndexables'], 11, 1);
+        add_filter('ep_indexable_post_status', [$this, 'setStatuses']);
+        add_filter('ep_analyzer_language', [$this, 'setLanguage'], 10, 2);
+        add_filter('ep_post_sync_args_post_prepare_meta', [$this, 'setPostSyncArgs'], 10, 2);
+        add_filter('ep_index_posts_args', [$this, 'setIndexPostsArgs'], 10, 1);
+    }
+
+    /**
+     * Set decay of post.
+     *
+     * @param int $decay
+     * @param array $formatted_args
+     * @param array $args
+     * 
+     * @return int
+     */
+    public function setDecay($decay, $formatted_args, $args)
+    {
+        return $this->config->get('elasticpress.expire.decay');
+    }
+
+    /**
+     * Set offset of the decay of post.
+     *
+     * @param string $decay
+     * @param array $formatted_args
+     * @param array $args
+     * 
+     * @return string
+     */
+    public function setOffset($decay, $formatted_args, $args)
+    {
+        return $this->config->get('elasticpress.expire.offset');
+    }
+
+    /**
+     * Weight more recent content in searches.
+     *
+     * @param  array $formattedArgs
+     * @param  array $args
+     *
+     * @return array
+     */
+    public function setFormattedArgs($formattedArgs, $args)
+    {
+
+        // Move the existing query.
+        $existing_query = $formattedArgs['query'];
+        unset($formattedArgs['query']);
+        $formattedArgs['query']['function_score']['query'] = $existing_query;
+
+        /**
+         * Add filter matches that will weight the results.
+         *
+         * Use any combination of filters here, any matched filter will adjust the weighted results
+         * according to the scoring settings set below. This example pseudo code below matches a custom term with the current or a parent item.
+         */
+        $formattedArgs['query']['function_score']['functions'] = [
+
+            // The current item gets a weight of 3.
+            [
+                "filter" => [
+                    "match" => [
+                        "post_title" => get_query_var('s'),
+                    ],
+                ],
+                "weight" => $this->config->get('elasticpress.search.weight')
+            ]
+        ];
+
+        // Specify how the computed scores are combined.
+        $formattedArgs['query']['function_score']["score_mode"] = "sum";
+        $formattedArgs['query']['function_score']["boost_mode"] = "multiply";
+
+        return $formattedArgs;
     }
 
     /**
      * Sets the filter to modify the posttypes which gets indexed in the ElasticSearch instance
      */
-    public function setIndexables()
+    public function setIndexables($postTypes)
     {
-        $indexablesFromConfig = $this->config->get('elasticpress.indexables');
-        add_filter('ep_indexable_post_types', function($post_types) use ($indexablesFromConfig) {
-            return $indexablesFromConfig;
-        }, 11, 1);
+        return $this->config->get('elasticpress.indexables');
     }
 
     /**
      * Sets additional meta_query information to further determine which posts gets indexed in the ElasticSearch instance
      */
-    public function setIndexPostsArgs()
+    public function setIndexPostsArgs($args)
     {
-
-        add_filter('ep_index_posts_args', function($args) {
-
-            //            $args['meta_query'] = [
-            //                [
-            //                    'key'     => '_owc_openpub_active',
-            //                    'value'   => 1,
-            //                    'compare' => '=',
-            //                ]
-            //            ];
-
-            return $args;
-        }, 10, 1);
+        return $args;
     }
 
     /**
      * Filters the post statuses for indexation by elasticPress
      */
-    public function setStatuses()
+    public function setStatuses($statuses)
     {
-        add_filter('ep_indexable_post_status', function($statuses) {
-            return ['publish'];
-        }, 11, 1);
+        return $this->config->get('elasticpress.postStatus');
     }
 
     /**
      * Set the language for the ES instance.
+     * 
+     * @var string $language
+     * 
+     * @return string
      */
-    public function setLanguage()
+    public function setLanguage($language, $analyzer)
     {
-        $languageFromConfig = $this->config->get('elasticpress.language');
-        add_filter('ep_analyzer_language', function($language, $analyzer) use ($languageFromConfig) {
-            return $languageFromConfig;
-        }, 10, 2);
+        return $this->config->get('elasticpress.language');
     }
 
     /**
      * Set the args of the post which is synced to the instance.
      */
-    public function setPostSyncArgs()
+    public function setPostSyncArgs($item, $postID)
     {
-        add_filter('ep_post_sync_args_post_prepare_meta', function($postArgs, $postID) {
-            $postArgs = $this->transform($postArgs, $postID);
-
-            return $postArgs;
-        }, 10, 2);
+        return $this->transform($item, $postID);
     }
 
     /**
      * Transforms the postArgs to a filterable object.
      *
-     * @param $postArgs
+     * @param $item
      * @param $postID
      *
      * @return array
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
      */
-    protected function transform($postArgs, $postID): array
+    protected function transform($item, $postID): array
     {
-
-        $item = ( new Item )
+        $item = $this->item
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
             ->find($postID);
 
-        $postArgs['post_author'] = isset($postArgs['post_author']) ? $postArgs['post_author'] : '';
+        $item['connected'] = $item['connected'];
+        
+        $item['post_author'] = isset($item['post_author']) ? $item['post_author'] : [];
+
         if ( apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID) ) {
-            $postArgs['post_author']['raw'] = $postArgs['post_author']['display_name'] = $postArgs['post_author']['login'] = '';
+            $item['post_author']['raw'] = $item['post_author']['display_name'] = $item['post_author']['login'] = '';
         }
 
-        return $postArgs;
+        return $item;
     }
 
     /**
@@ -152,8 +230,6 @@ class ElasticPress
         if ( isset($settings['_owc_setting_elasticsearch_prefix']) && ( ! defined('EP_INDEX_PREFIX') ) ) {
             define('EP_INDEX_PREFIX', $settings['_owc_setting_elasticsearch_prefix']);
         }
-
-        add_filter('ep_index_name', [$this, 'setIndexNameByEnvironment'], 10, 2);
     }
 
     /**
@@ -197,5 +273,52 @@ class ElasticPress
     public function getSettings()
     {
         return get_option('_owc_openpub_base_settings', []);
+    }
+
+    public function setSearchArgs($args, $scope, $query_args)
+    {
+        return $args;
+    }
+
+    /**
+     * @param $searchFields
+     * @param $args
+     *
+     * @return array
+     */
+    public function setSearchFields($searchFields, $args)
+    {
+
+        $searchFields[] = 'meta';
+        $searchFields[] = 'connected';
+
+        return $searchFields;
+    }
+
+    /**
+     * @param $host
+     * @param $failures
+     * @param $path
+     * @param $args
+     *
+     * @return mixed
+     */
+    public function setRequestHost($host, $failures, $path, $args)
+    {
+        return $host;
+    }
+
+    /**
+     * @param $url
+     * @param $failures
+     * @param $host
+     * @param $path
+     * @param $args
+     *
+     * @return mixed
+     */
+    public function setRequestUrl($url, $failures, $host, $path, $args)
+    {
+        return $url;
     }
 }
