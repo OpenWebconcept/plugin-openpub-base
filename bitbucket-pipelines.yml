@@ -9,9 +9,28 @@ pipelines:
           - composer
           - vendor-directory
         script:
+          - apt-get update && apt-get install -y git openssh-server
           - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
           - ./vendor/bin/phpunit --testsuite "OWC OpenPub Base Plugin Test Suite"
+    - step:
+        name: integration test
+        caches:
+          - composer
+          - vendor-directory
+        script:
+          #- service mysql start
+          - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
+          #- chmod +x bin/install-wp-tests.sh
+          #- bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 latest
+          #- ./vendor/bin/phpunit --testsuite "Integration Test"
 
 definitions:
   caches:
     vendor-directory: vendor
+
+  services:
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_DATABASE: 'wordpress_test'
+        MYSQL_ROOT_PASSWORD: 'root'
