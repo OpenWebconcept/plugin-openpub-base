@@ -19,7 +19,7 @@ return [
                 'links'      => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
                 'synonyms'   => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'notes'      => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
-            ]
+            ],
         ],
         'search' => [
             'fields' => [
@@ -30,7 +30,7 @@ return [
                 'links'      => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
                 'synonyms'   => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'notes'      => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 ];

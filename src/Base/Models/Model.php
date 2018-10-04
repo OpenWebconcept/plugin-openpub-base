@@ -62,7 +62,7 @@ abstract class Model
          * the abstract Model class.
          */
         $reflect = new \ReflectionClass(static::class);
-        if ( $reflect->getProperty('globalFields')->class == __CLASS__ ) {
+        if ($reflect->getProperty('globalFields')->class == __CLASS__) {
             throw new PropertyNotExistsException(sprintf('Property $globalFields must be present on derived class %s.',
                 static::class));
         }
@@ -76,7 +76,7 @@ abstract class Model
     public function all(): array
     {
         $args = array_merge($this->queryArgs, [
-            'post_type' => [$this->posttype]
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
@@ -96,12 +96,12 @@ abstract class Model
 
         $args = array_merge($this->queryArgs, [
             'p'         => $id,
-            'post_type' => [$this->posttype]
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
 
-        if ( empty($this->getQuery()->posts) ) {
+        if (empty($this->getQuery()->posts)) {
             return null;
         }
 
@@ -133,6 +133,16 @@ abstract class Model
     }
 
     /**
+     * Returns the query args.
+     *
+     * @return array
+     */
+    public function getQueryArgs()
+    {
+        return $this->queryArgs;
+    }
+
+    /**
      * Hide a particular key from the request.
      *
      * @param array $keys
@@ -156,7 +166,7 @@ abstract class Model
      */
     public function addField(string $key, CreatesFields $creator)
     {
-        $this->fields[ $key ] = $creator;
+        $this->fields[$key] = $creator;
 
         return $this;
     }
@@ -175,7 +185,7 @@ abstract class Model
         static::$globalFields[] = [
             'key'         => $key,
             'creator'     => $creator,
-            'conditional' => $conditional
+            'conditional' => $conditional,
         ];
     }
 
@@ -186,8 +196,8 @@ abstract class Model
      */
     public static function getGlobalFields(): array
     {
-        uasort(static::$globalFields, function($a, $b) {
-            return ( $a['key'] < $b['key'] ) ? - 1 : 1;
+        uasort(static::$globalFields, function ($a, $b) {
+            return ($a['key'] < $b['key']) ? -1 : 1;
         });
 
         return static::$globalFields;
@@ -207,7 +217,7 @@ abstract class Model
             'title'   => $post->post_title,
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date
+            'date'    => $post->post_date,
         ];
 
         $data = $this->assignFields($data, $post);
@@ -226,25 +236,25 @@ abstract class Model
     protected function assignFields(array $data, WP_Post $post)
     {
         // Assign global fields.
-        foreach ( static::getGlobalFields() as $field ) {
-            if ( in_array($field['key'], $this->hidden) ) {
+        foreach (static::getGlobalFields() as $field) {
+            if (in_array($field['key'], $this->hidden)) {
                 continue;
             }
 
-            if ( is_null($field['conditional']) ) {
+            if (is_null($field['conditional'])) {
                 // If the field has no conditional set we will add it
-                $data[ $field['key'] ] = $field['creator']->create($post);
+                $data[$field['key']] = $field['creator']->create($post);
             } else {
                 // Check if the conditional matches.
-                if ( $field['conditional']($post) ) {
-                    $data[ $field['key'] ] = $field['creator']->create($post);
+                if ($field['conditional']($post)) {
+                    $data[$field['key']] = $field['creator']->create($post);
                 }
             }
         }
 
         // Assign dynamic fields.
-        foreach ( $this->fields as $key => $creator ) {
-            $data[ $key ] = $creator->create($post);
+        foreach ($this->fields as $key => $creator) {
+            $data[$key] = $creator->create($post);
         }
 
         return $data;
