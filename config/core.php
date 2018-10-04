@@ -15,12 +15,12 @@ return [
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\OpenPub\Base\Redirect\RedirectServiceProvider::class,
+        OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
         /**
          * Providers specific to the admin.
          */
         'admin' => [
             OWC\OpenPub\Base\Admin\Settings\SettingsServiceProvider::class,
-            OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
         ],
 
         'cli' => [

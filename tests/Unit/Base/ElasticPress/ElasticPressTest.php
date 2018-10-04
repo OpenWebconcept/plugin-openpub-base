@@ -6,6 +6,7 @@ use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
+use OWC\OpenPub\Base\Models\Item;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
 use WP_Mock;
 
@@ -37,7 +38,9 @@ class ElasticPressTest extends TestCase
         $this->plugin->config = $this->config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->service = new ElasticPress($this->config);
+        $this->item = m::mock(Item::class);        
+
+        $this->service = new ElasticPress($this->config, $this->item);
     }
 
     public function tearDown()
@@ -48,14 +51,13 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_language_from_the_config()
     {
+        WP_Mock::expectFilterAdded('ep_analyzer_language', [$this->service, 'setLanguage'], 10, 2);
+
         $this->plugin->config->shouldReceive('get')->with('elasticpress.language')->andReturn('dutch');
+        
+        $this->service->setLanguage('dutch', '');
 
-        WP_Mock::expectFilterAdded('ep_analyzer_language', function($language, $analyzer) {
-
-            return $language;
-        }, 10, 2);
-
-        $this->service->setLanguage();
+        $this->service->setFilters();
 
         $this->assertTrue(true);
     }
@@ -63,14 +65,13 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_indexables_from_the_config()
     {
+        WP_Mock::expectFilterAdded('ep_indexable_post_types', [$this->service, 'setIndexables' ], 11, 1);
+
         $this->plugin->config->shouldReceive('get')->with('elasticpress.indexables')->andReturn(['test']);
 
-        WP_Mock::expectFilterAdded('ep_indexable_post_types', function($post_types) {
+        $this->service->setIndexables(['test']);
 
-            return $post_types;
-        }, 11, 1);
-
-        $this->service->setIndexables();
+        $this->service->setFilters();
 
         $this->assertTrue(true);
     }
@@ -78,14 +79,37 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_correct_post_args_for_syncing()
     {
-        WP_Mock::expectFilterAdded('ep_post_sync_args_post_prepare_meta', function($postArgs, $postID) {
 
-            return $postArgs;
-        }, 10, 2);
+        WP_Mock::expectFilterAdded('ep_post_sync_args_post_prepare_meta', [$this->service, 'setPostSyncArgs'], 10, 2);
 
-        $this->service->setPostSyncArgs();
+        $this->service->setFilters();
 
-        $this->assertTrue(true);
+        $this->item->shouldReceive('query')
+        ->once()
+        ->with([])
+        ->andReturn($this->item);
+
+        $this->item->shouldReceive('find')
+            ->once()
+            ->with(1)
+            ->andReturn(
+                [
+                    'id' => 1,
+                    'title' => 'Test title',
+                    'content' => 'Test content',
+                    'excerpt' => 'Test excerpt',
+                    'date' => date('now'),
+                    'connected' => []
+                ]
+            );
+
+        WP_Mock::onFilter('owc/openpub/base/elasticpress/postargs/remote-author')
+            ->with(true)
+            ->reply(false);
+
+        $test = $this->service->setPostSyncArgs([], 1);
+
+        $this->assertArrayHasKey('connected', $test);
     }
 
     /** @test */
@@ -127,14 +151,34 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_transforms_the_post_args_to_required_format()
     {
+        $this->item->shouldReceive('query')
+            ->once()
+            ->with([])
+            ->andReturn($this->item);
 
-        $this->markTestSkipped('Not yet');
+        $this->item->shouldReceive('find')
+            ->once()
+            ->with(1)
+            ->andReturn(
+                [
+                    'id' => 1,
+                    'title' => 'Test title',
+                    'content' => 'Test content',
+                    'excerpt' => 'Test excerpt',
+                    'date' => '1234567890',
+                    'connected' => []
+                ]
+            );
+
+        WP_Mock::onFilter('owc/openpub/base/elasticpress/postargs/remote-author')
+            ->with(true)
+            ->reply(false);
 
         $postIDStub   = 1;
         $postArgsStub = [
             'post_id'           => $postIDStub,
             'ID'                => $postIDStub,
-            'post_author'       => '',
+            'post_author'       => [],
             'post_date'         => '',
             'post_date_gmt'     => '',
             'post_title'        => '',
@@ -157,33 +201,20 @@ class ElasticPressTest extends TestCase
         ]);
 
         $expected = [
-            'post_id'           => $postIDStub,
-            'ID'                => $postIDStub,
-            'post_date'         => '',
-            'post_date_gmt'     => '',
-            'post_title'        => '',
-            'post_excerpt'      => '',
-            'post_content'      => '',
-            'post_status'       => '',
-            'post_name'         => '',
-            'post_modified'     => '',
-            'post_modified_gmt' => '',
-            'post_parent'       => '',
-            'post_type'         => '',
-            'post_mime_type'    => '',
-            'permalink'         => '',
-            'guid'              => '',
-            'meta'              => [],
-            'terms'             => [],
+            'id'                => $postIDStub,
+            'title'             => 'Test title',
+            'content'           => 'Test content',
+            'excerpt'           => 'Test excerpt',
+            'date'         => '1234567890',
+            'connected'         => [],
+                'post_author' => [
+                'login' => '',
+                    'display_name' => '',
+                    'raw' => ''
+                ]
         ];
 
         $this->assertEquals($expected, $actual);
-    }
-
-    /** @test */
-    public function test_init_is_called()
-    {
-        $this->doesNotPerformAssertions();
     }
 
     /** @test */

@@ -5,8 +5,8 @@
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
  * Version:           1.0.0
- * Author:            Melvin Koopmans, Edwin Siebel
- * Author URI:        https://www.yarddigital.nl/
+ * Author:            Yard Internet
+ * Author URI:        https://www.yardinternet.nl/
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       openpub-base
@@ -20,14 +20,14 @@ use OWC\OpenPub\Base\Foundation\Plugin;
 /**
  * If this file is called directly, abort.
  */
-if ( ! defined('WPINC')) {
+if (!defined('WPINC')) {
     die;
 }
 
 /**
  * manual loaded file: the autoloader.
  */
-require_once __DIR__.'/autoloader.php';
+require_once __DIR__ . '/autoloader.php';
 $autoloader = new Autoloader();
 
 /**

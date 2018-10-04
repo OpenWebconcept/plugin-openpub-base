@@ -1,0 +1,18 @@
+{
+  "parser": "espree",
+  "ecmaFeatures": {},
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "es6": true,
+    "amd": true
+  },
+  "rules": {
+    "no-undef": 0,
+    "no-unused-vars": 0
+  }
+}

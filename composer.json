@@ -1,11 +1,11 @@
 {
   "name": "plugin/openpub-base",
   "description": "OpenPub base plugin",
-  "homepage": "https://www.yardinternet.nl",
   "authors": [
     {
       "name": "Yard Internet",
-      "email": "info@yard.nl"
+      "email": "info@yard.nl",
+      "homepage": "https://www.yardinternet.nl"
     }
   ],
   "type": "wordpress-plugin",
@@ -13,36 +13,37 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:yardinternet/phpcs.git"
     }
   ],
   "require": {
     "php": ">=7.0",
-    "wpackagist-plugin/elasticpress": "2.5.*"
+    "wpackagist-plugin/elasticpress": "2.*"
   },
   "require-dev": {
-    "mockery/mockery": "~1.0",
-    "phpunit/phpunit": "~6.0",
+    "mockery/mockery": "1.0.*",
+    "phpunit/phpunit": "~7.0",
     "10up/wp_mock": "dev-master",
-    "phpmd/phpmd": "@stable"
+    "phpdocumentor/phpdocumentor": "2.*",
+    "squizlabs/php_codesniffer": "^3.0.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "OWC\\OpenPub\\Base\\": "./src/Base"
+    }
   },
   "autoload-dev": {
     "psr-4": {
-      "OWC\\OpenPub\\Base\\": "./src/Base",
       "OWC\\OpenPub\\Base\\Tests\\": "./tests"
     }
   },
   "scripts": {
-    "lint": "clear && ./vendor/bin/phpcs .",
-    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always",
-    "unit-cover": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test' --colors=always --coverage-html ./tests/coverage",
-    "integration": "clear && ./vendor/bin/phpunit  --testsuite 'Integration Test' --colors=always",
+    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage",
+    "integration": "clear && ./vendor/bin/phpunit  --testsuite 'Integration Test Suite' --colors=always",
     "test": [
       "@unit",
       "@integration"
-    ]
+    ],
+    "docs": "./vendor/bin/phpdoc -d ./src/Base -t ./docs"
   }
 }

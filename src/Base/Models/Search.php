@@ -16,7 +16,10 @@ class Search extends Item
      */
     protected $request;
 
-    protected $whitelist = [];
+    /**
+     * @var array
+     */
+    protected $whitelist = ['s', 'posts_per_page'];
 
     /**
      * Search constructor.
@@ -30,8 +33,7 @@ class Search extends Item
     {
         parent::__construct();
 
-        $this->whitelist = ['s', 'posts_per_page'];
-        $this->request   = $request;
+        $this->request = $request;
     }
 
     /**
@@ -55,6 +57,7 @@ class Search extends Item
     private function addSearchParameters()
     {
         return [
+            'post_type'      => 'any',
             'ep_integrate'   => true,
             'posts_per_page' => $this->perPage(),
             's'              => $this->sanitizeSearch()
