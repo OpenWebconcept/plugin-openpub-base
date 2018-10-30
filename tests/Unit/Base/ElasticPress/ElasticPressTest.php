@@ -38,7 +38,7 @@ class ElasticPressTest extends TestCase
         $this->plugin->config = $this->config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->item = m::mock(Item::class);        
+        $this->item = m::mock(Item::class);
 
         $this->service = new ElasticPress($this->config, $this->item);
     }
@@ -54,7 +54,7 @@ class ElasticPressTest extends TestCase
         WP_Mock::expectFilterAdded('ep_analyzer_language', [$this->service, 'setLanguage'], 10, 2);
 
         $this->plugin->config->shouldReceive('get')->with('elasticpress.language')->andReturn('dutch');
-        
+
         $this->service->setLanguage('dutch', '');
 
         $this->service->setFilters();
@@ -65,7 +65,7 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_indexables_from_the_config()
     {
-        WP_Mock::expectFilterAdded('ep_indexable_post_types', [$this->service, 'setIndexables' ], 11, 1);
+        WP_Mock::expectFilterAdded('ep_indexable_post_types', [$this->service, 'setIndexables'], 11, 1);
 
         $this->plugin->config->shouldReceive('get')->with('elasticpress.indexables')->andReturn(['test']);
 
@@ -85,21 +85,21 @@ class ElasticPressTest extends TestCase
         $this->service->setFilters();
 
         $this->item->shouldReceive('query')
-        ->once()
-        ->with([])
-        ->andReturn($this->item);
+            ->once()
+            ->with([])
+            ->andReturn($this->item);
 
         $this->item->shouldReceive('find')
             ->once()
             ->with(1)
             ->andReturn(
                 [
-                    'id' => 1,
-                    'title' => 'Test title',
-                    'content' => 'Test content',
-                    'excerpt' => 'Test excerpt',
-                    'date' => date('now'),
-                    'connected' => []
+                    'id'        => 1,
+                    'title'     => 'Test title',
+                    'content'   => 'Test content',
+                    'excerpt'   => 'Test excerpt',
+                    'date'      => date('now'),
+                    'connected' => [],
                 ]
             );
 
@@ -115,7 +115,13 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_correct_index_name()
     {
-        $indexName = 'test';
+
+        \WP_Mock::userFunction('get_site_url', [
+            'times'  => 4,
+            'return' => 'owc-openpub',
+        ]);
+
+        $indexName = '';
         $siteID    = 1;
 
         putenv('environment=development');
@@ -139,7 +145,7 @@ class ElasticPressTest extends TestCase
 
         $this->assertEquals($expected, $actual);
 
-        define('EP_INDEX_PREFIX', 'prefix--');
+        define('EP_INDEX_PREFIX', 'prefix');
         putenv('environment=test');
 
         $expected = 'prefix--owc-openpub--1--test';
@@ -161,12 +167,12 @@ class ElasticPressTest extends TestCase
             ->with(1)
             ->andReturn(
                 [
-                    'id' => 1,
-                    'title' => 'Test title',
-                    'content' => 'Test content',
-                    'excerpt' => 'Test excerpt',
-                    'date' => '1234567890',
-                    'connected' => []
+                    'id'        => 1,
+                    'title'     => 'Test title',
+                    'content'   => 'Test content',
+                    'excerpt'   => 'Test excerpt',
+                    'date'      => '1234567890',
+                    'connected' => [],
                 ]
             );
 
@@ -192,26 +198,30 @@ class ElasticPressTest extends TestCase
             'post_type'         => '',
             'post_mime_type'    => '',
             'permalink'         => '',
-            'guid'              => ''
+            'guid'              => '',
         ];
 
         $actual = $this->invokeMethod($this->service, 'transform', [
             $postArgsStub,
-            $postIDStub
+            $postIDStub,
         ]);
 
         $expected = [
-            'id'                => $postIDStub,
-            'title'             => 'Test title',
-            'content'           => 'Test content',
-            'excerpt'           => 'Test excerpt',
+            'id'           => $postIDStub,
+            'title'        => 'Test title',
+            'content'      => 'Test content',
+            'excerpt'      => 'Test excerpt',
             'date'         => '1234567890',
-            'connected'         => [],
-                'post_author' => [
-                'login' => '',
-                    'display_name' => '',
-                    'raw' => ''
-                ]
+            'connected'    => [],
+            'post_author'  => [
+                'login'        => '',
+                'display_name' => '',
+                'raw'          => '',
+            ],
+            'post_content' => 'Test content',
+            'post_excerpt' => 'Test excerpt',
+            'post_status'  => 'publish',
+            'post_type'    => 'openpub-item',
         ];
 
         $this->assertEquals($expected, $actual);
@@ -222,7 +232,7 @@ class ElasticPressTest extends TestCase
     {
         \WP_Mock::passthruFunction('get_option', [
             'times'  => 1,
-            'return' => ''
+            'return' => '',
         ]);
 
         $expected = '_owc_openpub_base_settings';

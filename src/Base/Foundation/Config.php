@@ -58,7 +58,7 @@ class Config
      */
     public function get($setting)
     {
-        if ( ! $setting) {
+        if (! $setting) {
             return $this->all();
         }
 
@@ -88,19 +88,17 @@ class Config
         $tempItems = &$this->items;
 
         foreach ($keys as $key => $value) {
-
             if (in_array($key, $this->protectedNodes)) {
                 continue;
             }
 
             $parts = explode('.', $key);
             while (count($parts) > 1) {
-
                 $part = array_shift($parts);
                 // If the key doesn't exist at this depth, we will just create an empty array
                 // to hold the next value, allowing us to create the arrays to hold final
                 // values at the correct depth. Then we'll keep digging into the array.
-                if ( ! isset($tempItems[$part]) || ! is_array($tempItems[$part])) {
+                if (! isset($tempItems[$part]) || ! is_array($tempItems[$part])) {
                     $tempItems[$part] = [];
                 }
                 $tempItems = &$tempItems[$part];
@@ -156,7 +154,6 @@ class Config
         $files = glob($path.'/*', GLOB_NOSORT);
 
         foreach ($files as $file) {
-
             $fileType = filetype($file);
 
             if ($fileType == "dir") {

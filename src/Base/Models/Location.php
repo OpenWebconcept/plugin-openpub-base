@@ -8,5 +8,4 @@ class Location extends Model
     protected $posttype = 'openpub-location';
 
     protected static $globalFields = [];
-
 }

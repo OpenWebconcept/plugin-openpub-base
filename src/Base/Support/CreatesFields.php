@@ -31,5 +31,4 @@ abstract class CreatesFields
      * @return mixed
      */
     abstract public function create(WP_Post $post);
-
 }

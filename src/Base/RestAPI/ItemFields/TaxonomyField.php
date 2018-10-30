@@ -50,5 +50,4 @@ class TaxonomyField extends CreatesFields
             ];
         }, $terms);
     }
-
 }

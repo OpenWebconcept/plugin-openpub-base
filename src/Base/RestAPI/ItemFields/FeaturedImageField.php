@@ -17,7 +17,7 @@ class FeaturedImageField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        if ( ! has_post_thumbnail($post->ID)) {
+        if (! has_post_thumbnail($post->ID)) {
             return [];
         }
 
@@ -66,5 +66,4 @@ class FeaturedImageField extends CreatesFields
 
         return $meta;
     }
-
 }

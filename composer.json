@@ -44,6 +44,8 @@
       "@unit",
       "@integration"
     ],
+    "cs": "./vendor/bin/phpcs",
+    "csfix": "./vendor/bin/phpcbf",
     "docs": "./vendor/bin/phpdoc -d ./src/Base -t ./docs"
   }
 }

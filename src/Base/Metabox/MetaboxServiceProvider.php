@@ -22,7 +22,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes = $this->plugin->config->get('metaboxes');
         $metaboxes       = [];
 
-        foreach ( $configMetaboxes as $metabox ) {
+        foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);
         }
 

@@ -61,5 +61,4 @@ abstract class BaseController
             'paged'          => $request->get_param('page') ?: 0
         ];
     }
-
 }

@@ -8,5 +8,4 @@ class Theme extends Model
     protected $posttype = 'openpub-theme';
 
     protected static $globalFields = [];
-
 }

@@ -87,7 +87,7 @@ class Search extends Item
          * @param int $max Maximum posts per page.
          */
         $max = (int)10;
-        if ( $amount > (int)$max ) {
+        if ($amount > (int)$max) {
             $amount = $max;
         }
 

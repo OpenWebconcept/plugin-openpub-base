@@ -38,5 +38,4 @@ class DownloadsField extends CreatesFields
             return ! empty($download['openpub_downloads_url']) && ! empty($download['openpub_downloads_title']);
         });
     }
-
 }

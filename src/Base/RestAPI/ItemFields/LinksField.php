@@ -38,5 +38,4 @@ class LinksField extends CreatesFields
             return ! empty($link['openpub_links_url']) && ! empty($link['openpub_links_title']);
         });
     }
-
 }

@@ -8,5 +8,4 @@ class Subtheme extends Model
     protected $posttype = 'openpub-subtheme';
 
     protected static $globalFields = [];
-
 }

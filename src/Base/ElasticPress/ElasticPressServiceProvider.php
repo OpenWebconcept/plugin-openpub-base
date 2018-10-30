@@ -15,7 +15,7 @@ class ElasticPressServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ( ! is_plugin_active('elasticpress/elasticpress.php') ) {
+        if (! is_plugin_active('elasticpress/elasticpress.php')) {
             throw new Exception('Plugin ElasticPress should be installed and active to run this plugin');
         }
 
@@ -30,6 +30,5 @@ class ElasticPressServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 }

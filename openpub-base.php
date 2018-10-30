@@ -4,7 +4,7 @@
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Yard Internet
  * Author URI:        https://www.yardinternet.nl/
  * License:           GPL-3.0
@@ -33,30 +33,30 @@ $autoloader = new Autoloader();
 /**
  * This hook registers a plugin function to be run when the plugin is activated.
  */
-register_activation_hook(__FILE__, [ Hooks::class, 'pluginActivation' ]);
+register_activation_hook(__FILE__, [Hooks::class, 'pluginActivation']);
 
 /**
  * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
  * If a plugin is silently activated (such as during an update), this hook does not fire.
  */
-add_action('activated_plugin', [ Hooks::class, 'pluginActivated' ], 10, 2);
+add_action('activated_plugin', [Hooks::class, 'pluginActivated'], 10, 2);
 
 /**
  * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other
  * plugins.
  */
-add_action('deactivated_plugin', [ Hooks::class, 'pluginDeactivated' ], 10, 2);
+add_action('deactivated_plugin', [Hooks::class, 'pluginDeactivated'], 10, 2);
 
 /**
  * This hook registers a plugin function to be run when the plugin is deactivated.
  */
-register_deactivation_hook(__FILE__, [ Hooks::class, 'pluginDeactivation' ]);
+register_deactivation_hook(__FILE__, [Hooks::class, 'pluginDeactivation']);
 
 /**
  * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the
  * plugin to uninstall itself. The link won’t be active unless the plugin hooks into the action.
  */
-register_uninstall_hook(__FILE__, [ Hooks::class, 'uninstallPlugin' ]);
+register_uninstall_hook(__FILE__, [Hooks::class, 'uninstallPlugin']);
 
 /**
  * Begin execution of the plugin

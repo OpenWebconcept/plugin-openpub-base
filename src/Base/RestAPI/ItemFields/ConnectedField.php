@@ -17,13 +17,13 @@ class ConnectedField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function($connection) {
+        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
             return in_array('openpub-item', $connection, true);
         });
         
         $result = [];
 
-        foreach ( $connections as $connection ) {
+        foreach ($connections as $connection) {
             $type            = $connection['from'] . '_to_' . $connection['to'];
             $result[ $type ] = $this->getConnectedItems($post->ID, $type);
         }
@@ -43,13 +43,13 @@ class ConnectedField extends CreatesFields
     {
         $connection = p2p_type($type);
 
-        if ( ! $connection ) {
+        if (! $connection) {
             return [
                 'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type)
             ];
         }
 
-        return array_map(function(WP_Post $post) {
+        return array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,
                 'title'   => $post->post_title,
@@ -59,5 +59,4 @@ class ConnectedField extends CreatesFields
             ];
         }, $connection->get_connected($postID)->posts);
     }
-
 }

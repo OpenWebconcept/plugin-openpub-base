@@ -58,8 +58,10 @@ class DependencyChecker
     public function notify()
     {
         add_action('admin_notices', function () {
-            $list = '<p>'.__('The following plugins are required to use the OpenPub:',
-                    'openpub-base').'</p><ol>';
+            $list = '<p>'.__(
+                'The following plugins are required to use the OpenPub:',
+                'openpub-base'
+            ).'</p><ol>';
 
             foreach ($this->failed as $dependency) {
                 $info = isset($dependency['message']) ? ' ('.$dependency['message'].')' : '';
@@ -92,7 +94,7 @@ class DependencyChecker
      */
     private function checkClass(array $dependency)
     {
-        if ( ! class_exists($dependency['name'])) {
+        if (! class_exists($dependency['name'])) {
             $this->markFailed($dependency, __('Class does not exist', 'openpub-base'));
 
             return;
@@ -106,7 +108,7 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-        if ( ! is_plugin_active($dependency['file'])) {
+        if (! is_plugin_active($dependency['file'])) {
             $this->markFailed($dependency, __('Inactive', 'openpub-base'));
 
             return;
@@ -114,7 +116,7 @@ class DependencyChecker
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if ( ! $this->checkVersion($dependency)) {
+            if (! $this->checkVersion($dependency)) {
                 $this->markFailed($dependency, __('Minimal version:', 'openpub-base').' <b>'.$dependency['version'].'</b>');
             }
         }
@@ -136,5 +138,4 @@ class DependencyChecker
 
         return version_compare($version, $dependency['version'], '>=');
     }
-
 }

@@ -13,7 +13,7 @@ class ElasticPress
 
     /**
      * @var Item $item
-     */    
+     */
     protected $item;
 
     /**
@@ -24,7 +24,7 @@ class ElasticPress
     public function __construct($config, Item $item)
     {
         $this->config = $config;
-        $this->item = $item;
+        $this->item   = $item;
     }
 
     /**
@@ -65,7 +65,7 @@ class ElasticPress
      * @param int $decay
      * @param array $formatted_args
      * @param array $args
-     * 
+     *
      * @return int
      */
     public function setDecay($decay, $formatted_args, $args)
@@ -79,7 +79,7 @@ class ElasticPress
      * @param string $decay
      * @param array $formatted_args
      * @param array $args
-     * 
+     *
      * @return string
      */
     public function setOffset($decay, $formatted_args, $args)
@@ -118,8 +118,8 @@ class ElasticPress
                         "post_title" => get_query_var('s'),
                     ],
                 ],
-                "weight" => $this->config->get('elasticpress.search.weight')
-            ]
+                "weight" => $this->config->get('elasticpress.search.weight'),
+            ],
         ];
 
         // Specify how the computed scores are combined.
@@ -139,14 +139,25 @@ class ElasticPress
 
     /**
      * Sets additional meta_query information to further determine which posts gets indexed in the ElasticSearch instance
+     *
+     * @param array $args
+     * @return array
      */
     public function setIndexPostsArgs($args)
     {
+        $items = (new Item())
+            ->query(apply_filters('owc/openpub/rest-api/items/query', []));
+
+        $args = array_merge($args, $items->getQueryArgs());
+
         return $args;
     }
 
     /**
-     * Filters the post statuses for indexation by elasticPress
+     * Filters the post statuses for indexation by elasticPress.
+     *
+     * @param array $statuses
+     * @return array
      */
     public function setStatuses($statuses)
     {
@@ -155,9 +166,8 @@ class ElasticPress
 
     /**
      * Set the language for the ES instance.
-     * 
+     *
      * @var string $language
-     * 
      * @return string
      */
     public function setLanguage($language, $analyzer)
@@ -167,6 +177,10 @@ class ElasticPress
 
     /**
      * Set the args of the post which is synced to the instance.
+     *
+     * @param array $item
+     * @param int $postID
+     * @return array
      */
     public function setPostSyncArgs($item, $postID)
     {
@@ -190,12 +204,16 @@ class ElasticPress
             ->find($postID);
 
         $item['connected'] = $item['connected'];
-        
+
         $item['post_author'] = isset($item['post_author']) ? $item['post_author'] : [];
 
-        if ( apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID) ) {
+        if (apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID)) {
             $item['post_author']['raw'] = $item['post_author']['display_name'] = $item['post_author']['login'] = '';
         }
+        $item['post_content'] = $item['content'] ?? '';
+        $item['post_excerpt'] = $item['excerpt'] ?? '';
+        $item['post_status']  = 'publish';
+        $item['post_type']    = 'openpub-item';
 
         return $item;
     }
@@ -207,27 +225,25 @@ class ElasticPress
     {
         $settings = $this->getSettings();
 
-        if ( isset($settings['_owc_setting_elasticsearch_url']) && ( ! defined('EP_HOST') ) ) {
+        if (isset($settings['_owc_setting_elasticsearch_url']) && (!defined('EP_HOST'))) {
 
-            if ( isset($settings['_owc_setting_elasticsearch_shield']) && ( ! defined('ES_SHIELD') ) ) {
+            if (isset($settings['_owc_setting_elasticsearch_shield']) && (!defined('ES_SHIELD'))) {
                 define('ES_SHIELD', trim($settings['_owc_setting_elasticsearch_shield']));
             }
 
             $url     = parse_url($settings['_owc_setting_elasticsearch_url']);
-            $build   = [];
-            $build[] = $url['scheme'];
-            $build[] = '://';
-            $build[] = ! empty(ES_SHIELD) ? sprintf('%s@', ES_SHIELD) : '';
+            $build[] = $url['scheme'] . '://';
+            $build[] = defined('ES_SHIELD') ? sprintf('%s@', ES_SHIELD) : '';
             $build[] = $url['host'];
-            $build[] = ! empty($url['port']) ? sprintf(':%s', $url['port']) : '';
-            $build[] = ! empty($url['path']) ? sprintf('/%s', ltrim($url['path'], '/')) : '/';
+            $build[] = !empty($url['port']) ? sprintf(':%s', $url['port']) : '';
+            $build[] = !empty($url['path']) ? sprintf('/%s', ltrim($url['path'], '/')) : '/';
 
-            define('EP_HOST', implode('', ( array_filter($build) )));
+            define('EP_HOST', implode('', (array_filter($build))));
 
             update_option('ep_host', EP_HOST);
         }
 
-        if ( isset($settings['_owc_setting_elasticsearch_prefix']) && ( ! defined('EP_INDEX_PREFIX') ) ) {
+        if (isset($settings['_owc_setting_elasticsearch_prefix']) && (!defined('EP_INDEX_PREFIX'))) {
             define('EP_INDEX_PREFIX', $settings['_owc_setting_elasticsearch_prefix']);
         }
     }
@@ -242,17 +258,20 @@ class ElasticPress
      */
     public function setIndexNameByEnvironment($indexName, $siteID)
     {
-        $prefix = 'owc-openpub';
+        $siteUrl      = pathinfo(get_site_url());
+        $siteBasename = $siteUrl['basename'];
 
-        if ( defined('EP_INDEX_PREFIX') && EP_INDEX_PREFIX ) {
-            $prefix = trim(EP_INDEX_PREFIX) . $prefix;
+        if (defined('EP_INDEX_PREFIX') && EP_INDEX_PREFIX) {
+            $siteBasename = EP_INDEX_PREFIX . '--' . $siteBasename;
         }
 
-        $buildIndexName = array_filter([
-            $prefix,
-            $siteID,
-            $this->getEnvironmentVariable()
-        ]);
+        $buildIndexName = array_filter(
+            [
+                $siteBasename,
+                $siteID,
+                $this->getEnvironmentVariable(),
+            ]
+        );
 
         $indexName = implode('--', $buildIndexName);
 

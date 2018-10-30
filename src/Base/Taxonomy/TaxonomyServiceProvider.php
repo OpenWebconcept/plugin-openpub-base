@@ -24,11 +24,9 @@ class TaxonomyServiceProvider extends ServiceProvider
      */
     public function registerTaxonomies()
     {
-        if ( function_exists('register_extended_taxonomy') ) {
-
+        if (function_exists('register_extended_taxonomy')) {
             $this->configTaxonomies = $this->plugin->config->get('taxonomies');
-            foreach ( $this->configTaxonomies as $taxonomyName => $taxonomy ) {
-
+            foreach ($this->configTaxonomies as $taxonomyName => $taxonomy) {
                 // Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
                 register_extended_taxonomy($taxonomyName, $taxonomy['object_types'], $taxonomy['args'], $taxonomy['names']);
             }
