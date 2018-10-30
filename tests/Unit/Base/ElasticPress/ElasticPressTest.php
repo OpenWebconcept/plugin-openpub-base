@@ -94,12 +94,13 @@ class ElasticPressTest extends TestCase
             ->with(1)
             ->andReturn(
                 [
-                    'id'        => 1,
-                    'title'     => 'Test title',
-                    'content'   => 'Test content',
-                    'excerpt'   => 'Test excerpt',
-                    'date'      => date('now'),
-                    'connected' => [],
+                    'id'          => 1,
+                    'title'       => 'Test title',
+                    'content'     => 'Test content',
+                    'excerpt'     => 'Test excerpt',
+                    'date'        => date('now'),
+                    'connected'   => [],
+                    'post_author' => [],
                 ]
             );
 
@@ -182,7 +183,6 @@ class ElasticPressTest extends TestCase
 
         $postIDStub   = 1;
         $postArgsStub = [
-            'post_id'           => $postIDStub,
             'ID'                => $postIDStub,
             'post_author'       => [],
             'post_date'         => '',
@@ -208,6 +208,7 @@ class ElasticPressTest extends TestCase
 
         $expected = [
             'id'           => $postIDStub,
+            'post_id'      => $postIDStub,
             'title'        => 'Test title',
             'content'      => 'Test content',
             'excerpt'      => 'Test excerpt',

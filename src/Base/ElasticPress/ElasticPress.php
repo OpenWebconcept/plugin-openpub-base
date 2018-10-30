@@ -199,13 +199,13 @@ class ElasticPress
      */
     protected function transform($item, $postID): array
     {
-        $item = $this->item
+        $author = $item['post_author'] ?? [];
+        $item   = $this->item
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
             ->find($postID);
 
-        $item['connected']         = $item['connected'];
-        $item['post_author']       = $item['post_author'] ?? [];
-        $item['post_author']['id'] = (int) get_post($item['id'])->post_author ?? null;
+        $item['connected']   = $item['connected'];
+        $item['post_author'] = $author;
         if (apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID)) {
             $item['post_author']['raw'] = $item['post_author']['display_name'] = $item['post_author']['login'] = '';
         }
@@ -215,8 +215,6 @@ class ElasticPress
         $item['post_id']      = $item['id'] ?? '';
         $item['post_status']  = 'publish';
         $item['post_type']    = 'openpub-item';
-
-        var_dump($item);exit;
 
         return $item;
     }
