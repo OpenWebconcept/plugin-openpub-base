@@ -30,3 +30,4 @@ class SearchController extends ItemController
         return $this->addPaginator($data, $query);
     }
 }
+

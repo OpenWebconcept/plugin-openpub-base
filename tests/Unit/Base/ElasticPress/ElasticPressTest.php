@@ -207,22 +207,24 @@ class ElasticPressTest extends TestCase
         ]);
 
         $expected = [
-            'id'           => $postIDStub,
-            'post_id'      => $postIDStub,
-            'title'        => 'Test title',
-            'content'      => 'Test content',
-            'excerpt'      => 'Test excerpt',
-            'date'         => '1234567890',
-            'connected'    => [],
-            'post_author'  => [
+            'id'            => $postIDStub,
+            'post_id'       => $postIDStub,
+            'title'         => 'Test title',
+            'content'       => 'Test content',
+            'excerpt'       => 'Test excerpt',
+            'date'          => '1234567890',
+            'connected'     => [],
+            'post_author'   => [
                 'login'        => '',
                 'display_name' => '',
                 'raw'          => '',
             ],
-            'post_content' => 'Test content',
-            'post_excerpt' => 'Test excerpt',
-            'post_status'  => 'publish',
-            'post_type'    => 'openpub-item',
+            'post_content'  => 'Test content',
+            'post_excerpt'  => 'Test excerpt',
+            'post_status'   => 'publish',
+            'post_type'     => 'openpub-item',
+            'post_title'    => 'Test title',
+            'post_date_gmt' => '1234567890',
         ];
 
         $this->assertEquals($expected, $actual);

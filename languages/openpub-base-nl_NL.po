@@ -1,22 +1,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OWC OpenPub\n"
-"POT-Creation-Date: 2018-06-28 11:22+0200\n"
-"PO-Revision-Date: 2018-06-28 11:22+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-01 14:37+0100\n"
+"PO-Revision-Date: 2018-11-01 14:37+0100\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Digital <inf@yard.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
 "_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-0: config\n"
+"X-Poedit-SearchPath-1: src\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
 #: config/metaboxes.php:6
@@ -90,111 +92,264 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
-#: config/p2p_connections.php:8
-msgctxt "P2P titel"
-msgid "OpenPub item"
-msgstr "OpenPub item"
+#: config/p2p_connections.php:9
+msgid "Connected item(s)"
+msgstr "Gekoppelde item(s)"
 
-#: config/p2p_connections.php:13
-msgctxt "P2P titel"
-msgid "OpenPub owner"
-msgstr "OpenPub eigenaar"
+#: config/p2p_connections.php:14 config/posttypes.php:108
+#: config/posttypes.php:109
+msgid "Theme"
+msgstr "Thema"
 
-#: config/posttypes.php:24
-msgctxt "Admin Filter definition"
-msgid "Owner"
-msgstr "Eigenaar"
+#: config/p2p_connections.php:19 config/posttypes.php:147
+#: config/posttypes.php:148 config/posttypes.php:164 config/posttypes.php:165
+msgid "Subtheme"
+msgstr "Subthema"
 
-#: config/posttypes.php:28
+#: config/p2p_connections.php:24
+msgid "Locations"
+msgstr "Locaties"
+
+#: config/posttypes.php:25 config/posttypes.php:65
 msgctxt "Admin Filter definition"
 msgid "Type"
 msgstr "Type"
 
-#: config/posttypes.php:32
+#: config/posttypes.php:29 config/posttypes.php:69
 msgctxt "Admin Filter definition"
 msgid "Audience"
 msgstr "Doelgroep"
 
-#: config/posttypes.php:36
+#: config/posttypes.php:33 config/posttypes.php:73
 msgctxt "Admin Filter definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/posttypes.php:40
+#: config/posttypes.php:37 config/posttypes.php:45
+msgid "Expired"
+msgstr "Verlopen"
+
+#: config/posttypes.php:49
+msgid "No expire date"
+msgstr "Geen verloopdatum"
+
+#: config/posttypes.php:51
+msgid "Will expire on"
+msgstr "Verloopt op"
+
+#: config/posttypes.php:57
+msgid "Published"
+msgstr "Gepubliceerd"
+
+#: config/posttypes.php:77
 msgctxt "Admin Filter definition"
 msgid "Aspect"
 msgstr "Kenmerk"
 
-#: config/posttypes.php:45
-msgctxt "post type singular name"
+#: config/posttypes.php:82 config/posttypes.php:84
 msgid "OpenPub item"
 msgstr "OpenPub item"
 
-#: config/posttypes.php:46
-msgctxt "admin menu"
+#: config/posttypes.php:83
 msgid "OpenPub items"
 msgstr "OpenPub items"
 
-#: config/posttypes.php:47
-msgctxt "add new on admin bar"
-msgid "OpenPub item"
-msgstr "OpenPub item"
-
-#: config/posttypes.php:48
-msgctxt ""
-msgid "Add new OpenPub"
-msgstr "Add new OpenPub"
-
-#: config/posttypes.php:49
+#: config/posttypes.php:85 config/posttypes.php:86
 msgid "Add new OpenPub"
 msgstr "Nieuw OpenPub item"
 
-#: config/posttypes.php:50
+#: config/posttypes.php:87
 msgid "New OpenPub"
 msgstr "Nieuw OpenPub item"
 
-#: config/posttypes.php:51
+#: config/posttypes.php:88
 msgid "Edit OpenPub"
 msgstr "Bewerk OpenPub item"
 
-#: config/posttypes.php:52
+#: config/posttypes.php:89
 msgid "View OpenPub"
 msgstr "Bekijk OpenPub item"
 
-#: config/posttypes.php:53
+#: config/posttypes.php:90
 msgid "All OpenPub items"
 msgstr "Alle OpenPub items"
 
-#: config/posttypes.php:54
+#: config/posttypes.php:91
 msgid "Search OpenPub items"
 msgstr "Zoek OpenPub items"
 
-#: config/posttypes.php:55
+#: config/posttypes.php:92
 msgid "Parent OpenPub items:"
 msgstr "Hoofd OpenPub items:"
 
-#: config/posttypes.php:56
+#: config/posttypes.php:93
 msgid "No OpenPub items found."
 msgstr "Geen OpenPub items gevonden."
 
-#: config/posttypes.php:57
+#: config/posttypes.php:94
 msgid "No OpenPub items found in trash."
 msgstr "Geen OpenPub items gevonden in prullenbak."
 
-#: config/posttypes.php:63
+#: config/posttypes.php:100
 msgctxt "Posttype definition"
-msgid "OpenPub item"
-msgstr "OpenPub item"
+msgid "Item"
+msgstr "Item"
 
-#: config/posttypes.php:64
+#: config/posttypes.php:101
 msgctxt "Posttype definition"
-msgid "OpenPub items"
-msgstr "OpenPub items"
+msgid "Items"
+msgstr "Items"
 
-#: config/posttypes.php:65
+#: config/posttypes.php:102
 msgctxt "post type general name"
-msgid "OpenPub items"
-msgstr "OpenPub items"
+msgid "Items"
+msgstr "Items"
+
+#: config/posttypes.php:110 config/posttypes.php:111
+msgid "Add new theme"
+msgstr "Voeg nieuwe thema toe"
+
+#: config/posttypes.php:112
+msgid "Edit theme"
+msgstr "Bewerk thema"
+
+#: config/posttypes.php:113
+msgid "New theme"
+msgstr "Voeg nieuwe thema toe"
+
+#: config/posttypes.php:114
+msgid "View theme"
+msgstr "Bekijk thema"
+
+#: config/posttypes.php:115
+msgid "View themes"
+msgstr "Bekijk thema's"
+
+#: config/posttypes.php:116
+msgid "Search themes"
+msgstr "Zoek thema's"
+
+#: config/posttypes.php:117
+msgid "No themes found."
+msgstr "Geen thema's gevonden."
+
+#: config/posttypes.php:118
+msgid "No themes found in Trash."
+msgstr "Geen thema's gevonden in prullenbak."
+
+#: config/posttypes.php:119
+msgid "All themes"
+msgstr "Alle thema's"
+
+#: config/posttypes.php:120
+msgid "Themes archives"
+msgstr "Thema's archieven"
+
+#: config/posttypes.php:121
+msgid "Theme attributes"
+msgstr "Thema attributen"
+
+#: config/posttypes.php:122
+msgid "Insert into theme"
+msgstr "Voeg in thema"
+
+#: config/posttypes.php:123 config/posttypes.php:162
+msgid "Featured image"
+msgstr "Aanbevolen afbeelding"
+
+#: config/posttypes.php:124 config/posttypes.php:163
+msgid "Set featured image"
+msgstr "Stel aanbevolen afbeelding in"
+
+#: config/posttypes.php:125 config/posttypes.php:126
+msgid "Themes"
+msgstr "Thema's"
+
+#: config/posttypes.php:127
+msgid "Parent themes:"
+msgstr "Hoofd thema's:"
+
+#: config/posttypes.php:139
+msgctxt "Posttype definition"
+msgid "Theme"
+msgstr "Thema"
+
+#: config/posttypes.php:140
+msgctxt "Posttype definition"
+msgid "Themes"
+msgstr "Thema's"
+
+#: config/posttypes.php:149 config/posttypes.php:150
+msgid "Add new subtheme"
+msgstr "Voeg nieuwe subthema toe"
+
+#: config/posttypes.php:151
+msgid "Edit subtheme"
+msgstr "Bewerk subthema"
+
+#: config/posttypes.php:152
+msgid "New subtheme"
+msgstr "Voeg nieuwe subthema toe"
+
+#: config/posttypes.php:153
+msgid "View subtheme"
+msgstr "Bekijk subthema"
+
+#: config/posttypes.php:154
+msgid "View subthemes"
+msgstr "Bekijk subthema's"
+
+#: config/posttypes.php:155
+msgid "Search subthemes"
+msgstr "Zoek subthema's"
+
+#: config/posttypes.php:156
+msgid "No subthemes found."
+msgstr "Geen subthema's gevonden."
+
+#: config/posttypes.php:157
+msgid "No subthemes found in Trash."
+msgstr "Geen subthema's gevonden in prullenbak."
+
+#: config/posttypes.php:158
+msgid "All subthemes"
+msgstr "Alle subthema's"
+
+#: config/posttypes.php:159
+msgid "Subthemes archives"
+msgstr "Subthema's archieven"
+
+#: config/posttypes.php:160
+msgid "Subtheme attributes"
+msgstr "Subthema attributen"
+
+#: config/posttypes.php:161
+msgid "Insert into subtheme"
+msgstr "Voeg in subthema"
+
+#: config/posttypes.php:166
+msgid "Parent subthemes:"
+msgstr "Hoofd subthema's:"
+
+#: config/posttypes.php:182
+msgctxt "Posttype definition"
+msgid "Subtheme"
+msgstr "Subthema"
+
+#: config/posttypes.php:183
+msgctxt "Posttype definition"
+msgid "Subthemes"
+msgstr "Subthema's"
+
+#: config/posttypes.php:205
+msgctxt "Posttype definition"
+msgid "Location"
+msgstr "Locatie"
+
+#: config/posttypes.php:206
+msgctxt "Posttype definition"
+msgid "Locations"
+msgstr "Locaties"
 
 #: config/settings.php:7
 msgctxt "OpenPub instellingen subpagina"
@@ -213,24 +368,50 @@ msgstr "Portal OpenPub item slug"
 msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
 msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
 
-#: config/settings_pages.php:9
+#: config/settings.php:29
+msgid "Elasticsearch"
+msgstr "Elasticsearch"
+
+#: config/settings.php:36
+msgid "Instance url"
+msgstr "Instance url"
+
+#: config/settings.php:37 config/settings.php:43
+msgid "URL inclusief http(s)://"
+msgstr "URL inclusief http(s)://"
+
+#: config/settings.php:42
+msgid "Instance shield"
+msgstr "Instance user/wachtwoord"
+
+#: config/settings.php:48
+msgid "Instance prefix"
+msgstr "Instance prefix"
+
+#: config/settings.php:49
+msgid "Use this prefix to group multiple instances"
+msgstr ""
+"Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te "
+"groeperen"
+
+#: config/settings_pages.php:7
 msgid "OpenPub settings"
 msgstr "OpenPub instellingen"
 
-#: config/settings_pages.php:11
+#: config/settings_pages.php:9
 msgctxt "OpenPub settings subpage"
 msgid "Base"
 msgstr "Basis"
 
-#: config/settings_pages.php:14
+#: config/settings_pages.php:12
 msgctxt "OpenPub settings subpage"
 msgid "Submit"
 msgstr "Opslaan"
 
-#: config/settings_pages.php:16
+#: config/settings_pages.php:14
 msgctxt "OpenPub settings tab"
-msgid "General"
-msgstr "Algemeen"
+msgid "Elasticsearch"
+msgstr "Elasticsearch"
 
 #: config/taxonomies.php:22
 msgctxt "Taxonomy definition"
@@ -252,68 +433,29 @@ msgctxt "Taxonomy definition"
 msgid "Types"
 msgstr "Typen"
 
-#: config/taxonomies.php:62
-msgctxt "Taxonomy definition"
-msgid "Aspect"
-msgstr "Kenmerk"
-
-#: config/taxonomies.php:63
-msgctxt "Taxonomy definition"
-msgid "Aspects"
-msgstr "Kenmerken"
-
-#: config/taxonomies.php:81
+#: config/taxonomies.php:61
 msgctxt "Taxonomy definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/taxonomies.php:82
+#: config/taxonomies.php:62
 msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr "Toepassingen"
 
-#: config/taxonomies.php:100
-msgctxt "Taxonomy definition"
-msgid "Owner"
-msgstr "Eigenaar"
-
-#: config/taxonomies.php:101
-msgctxt "Taxonomy definition"
-msgid "Owners"
-msgstr "Eigenaren"
-
-#: src/Base/Admin/InterfaceServiceProvider.php:34
-msgid "View OpenPub item in portal"
-msgstr "Bekijken OpenPub item in portal"
-
-#: src/Base/Admin/InterfaceServiceProvider.php:53
-msgctxt "preview button text"
-msgid "View in Portal"
-msgstr "Bekijken in portal"
-
-#: src/Base/Admin/InterfaceServiceProvider.php:79
-#, php-format
-msgid "View &#8220;%s&#8221;"
-msgstr "Bekijk &#8220;%s&#8221;"
-
-#: src/Base/Admin/InterfaceServiceProvider.php:80
-msgctxt "Preview text in OpenPub list"
-msgid "View in Portal"
-msgstr "Bekijken in portal"
-
-#: src/Base/Foundation/DependencyChecker.php:61
+#: src/Base/Foundation/DependencyChecker.php:62
 msgid "The following plugins are required to use the OpenPub:"
 msgstr "De volgende plugins zijn vereist om gebruik te maken van de OpenPub:"
 
-#: src/Base/Foundation/DependencyChecker.php:96
+#: src/Base/Foundation/DependencyChecker.php:98
 msgid "Class does not exist"
 msgstr "Class bestaat niet"
 
-#: src/Base/Foundation/DependencyChecker.php:110
+#: src/Base/Foundation/DependencyChecker.php:112
 msgid "Inactive"
 msgstr "Inactief"
 
-#: src/Base/Foundation/DependencyChecker.php:118
+#: src/Base/Foundation/DependencyChecker.php:120
 msgid "Minimal version:"
 msgstr "Minimale versie:"
 
@@ -321,6 +463,123 @@ msgstr "Minimale versie:"
 #, php-format
 msgid "Connection type \"%s\" does not exist"
 msgstr "Verbindingstype \"%s\" bestaat niet"
+
+#~ msgctxt "P2P titel"
+#~ msgid "Theme"
+#~ msgstr "Thema"
+
+#~ msgctxt "P2P titel"
+#~ msgid "Subtheme"
+#~ msgstr "subthema"
+
+#~ msgid "PDC subtheme"
+#~ msgstr "Subthema"
+
+#, fuzzy
+#~| msgid "Search OpenPub items"
+#~ msgid "Search pdc subthemes"
+#~ msgstr "Zoek OpenPub items"
+
+#, fuzzy
+#~| msgid "No OpenPub items found."
+#~ msgid "No pdc subthemes found."
+#~ msgstr "Geen OpenPub items gevonden."
+
+#, fuzzy
+#~| msgid "No OpenPub items found in trash."
+#~ msgid "No pdc subthemes found in Trash."
+#~ msgstr "Geen OpenPub items gevonden in prullenbak."
+
+#, fuzzy
+#~| msgid "All OpenPub items"
+#~ msgid "All pdc subthemes"
+#~ msgstr "Alle OpenPub items"
+
+#, fuzzy
+#~| msgid "Parent OpenPub items:"
+#~ msgid "Parent pdc subthemes:"
+#~ msgstr "Hoofd OpenPub items:"
+
+#~ msgctxt "add new on admin bar"
+#~ msgid "OpenPub item"
+#~ msgstr "OpenPub item"
+
+#~ msgctxt ""
+#~ msgid "Add new OpenPub"
+#~ msgstr "Add new OpenPub"
+
+#~ msgctxt "OpenPub settings tab"
+#~ msgid "General"
+#~ msgstr "Algemeen"
+
+#, fuzzy
+#~| msgid "OpenPub settings"
+#~ msgid "Settings"
+#~ msgstr "OpenPub instellingen"
+
+#, fuzzy
+#~| msgid "Link URL"
+#~ msgid "Endpoint URL"
+#~ msgstr "Link URL"
+
+#, fuzzy
+#~| msgid "OpenPub settings"
+#~ msgid "settings"
+#~ msgstr "OpenPub instellingen"
+
+#~ msgctxt "P2P titel"
+#~ msgid "OpenPub item"
+#~ msgstr "OpenPub item"
+
+#~ msgctxt "P2P titel"
+#~ msgid "OpenPub owner"
+#~ msgstr "OpenPub eigenaar"
+
+#~ msgctxt "Admin Filter definition"
+#~ msgid "Owner"
+#~ msgstr "Eigenaar"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "OpenPub item"
+#~ msgstr "OpenPub item"
+
+#~ msgctxt "Posttype definition"
+#~ msgid "OpenPub items"
+#~ msgstr "OpenPub items"
+
+#~ msgctxt "post type general name"
+#~ msgid "OpenPub items"
+#~ msgstr "OpenPub items"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Aspect"
+#~ msgstr "Kenmerk"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Aspects"
+#~ msgstr "Kenmerken"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Owner"
+#~ msgstr "Eigenaar"
+
+#~ msgctxt "Taxonomy definition"
+#~ msgid "Owners"
+#~ msgstr "Eigenaren"
+
+#~ msgid "View OpenPub item in portal"
+#~ msgstr "Bekijken OpenPub item in portal"
+
+#~ msgctxt "preview button text"
+#~ msgid "View in Portal"
+#~ msgstr "Bekijken in portal"
+
+#~ msgid "View &#8220;%s&#8221;"
+#~ msgstr "Bekijk &#8220;%s&#8221;"
+
+#~ msgctxt "Preview text in OpenPub list"
+#~ msgid "View in Portal"
+#~ msgstr "Bekijken in portal"
 
 #~ msgid "This link does not work, go to our website: <a href=\"%s\">%s</a>"
 #~ msgstr "Deze link werkt niet, bekijk onze website: <a href=\"%s\">%s</a>"

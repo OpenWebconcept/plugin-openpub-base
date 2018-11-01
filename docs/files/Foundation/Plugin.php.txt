@@ -18,7 +18,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '2.0.0';
+    const VERSION = '1.0.2';
 
     /**
      * Path to the root of the plugin.
@@ -68,7 +68,7 @@ class Plugin
     {
         $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
-        if ( $dependencyChecker->failed() ) {
+        if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
             deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
@@ -78,12 +78,12 @@ class Plugin
         // Set up service providers
         $this->callServiceProviders('register');
 
-        if ( is_admin() ) {
+        if (is_admin()) {
             $this->callServiceProviders('register', 'admin');
             $this->callServiceProviders('boot', 'admin');
         }
 
-        if ( 'cli' === php_sapi_name() ) {
+        if ('cli' === php_sapi_name()) {
             $this->callServiceProviders('register', 'cli');
             $this->callServiceProviders('boot', 'cli');
         }
@@ -115,18 +115,18 @@ class Plugin
         $offset   = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
 
-        foreach ( $services as $service ) {
-            if ( is_array($service) ) {
+        foreach ($services as $service) {
+            if (is_array($service)) {
                 continue;
             }
 
             $service = new $service($this);
 
-            if ( ! $service instanceof ServiceProvider ) {
+            if (!$service instanceof ServiceProvider) {
                 throw new \Exception('Provider must be an instance of ServiceProvider.');
             }
 
-            if ( method_exists($service, $method) ) {
+            if (method_exists($service, $method)) {
                 $service->$method();
             }
         }
@@ -200,5 +200,5 @@ class Plugin
          */
         register_uninstall_hook(__FILE__, [Hooks::class, 'uninstallPlugin']);
     }
-
 }
+

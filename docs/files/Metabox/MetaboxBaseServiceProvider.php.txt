@@ -7,39 +7,38 @@ use OWC\OpenPub\Base\Foundation\ServiceProvider;
 abstract class MetaboxBaseServiceProvider extends ServiceProvider
 {
 
-	const PREFIX = '_owc_';
+    const PREFIX = '_owc_';
 
-	protected function processMetabox(array $metabox)
-	{
-		$fields = [];
-		foreach ( $metabox['fields'] as $fieldGroup ) {
+    protected function processMetabox(array $metabox)
+    {
+        $fields = [];
+        foreach ($metabox['fields'] as $fieldGroup) {
+            $fields = array_merge($fields, $this->processFieldGroup($fieldGroup));
+        }
+        $metabox['fields'] = $fields;
 
-			$fields = array_merge($fields, $this->processFieldGroup($fieldGroup));
-		}
-		$metabox['fields'] = $fields;
+        return $metabox;
+    }
 
-		return $metabox;
-	}
+    private function processFieldGroup($fieldGroup)
+    {
 
-	private function processFieldGroup($fieldGroup)
-	{
+        $fields = [];
+        foreach ($fieldGroup as $field) {
+            $fields[] = $this->addPrefix($field);
+        }
 
-		$fields = [];
-		foreach ( $fieldGroup as $field ) {
+        return $fields;
+    }
 
-			$fields[] = $this->addPrefix($field);
-		}
+    private function addPrefix($field)
+    {
 
-		return $fields;
-	}
+        if (isset($field['id'])) {
+            $field['id'] = self::PREFIX . $field['id'];
+        }
 
-	private function addPrefix($field)
-	{
-
-		if ( isset($field['id']) ) {
-			$field['id'] = self::PREFIX . $field['id'];
-		}
-
-		return $field;
-	}
+        return $field;
+    }
 }
+

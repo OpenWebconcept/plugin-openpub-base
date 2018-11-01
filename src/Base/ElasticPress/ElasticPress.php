@@ -204,18 +204,31 @@ class ElasticPress
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
             ->find($postID);
 
-        $item['connected']   = $item['connected'];
         $item['post_author'] = $author;
         if (apply_filters('owc/openpub/base/elasticpress/postargs/remote-author', true, $postID)) {
             $item['post_author']['raw'] = $item['post_author']['display_name'] = $item['post_author']['login'] = '';
         }
-        $item['post_id']      = $item['id'] ?? '';
-        $item['post_content'] = $item['content'] ?? '';
-        $item['post_excerpt'] = $item['excerpt'] ?? '';
-        $item['post_id']      = $item['id'] ?? '';
-        $item['post_status']  = 'publish';
-        $item['post_type']    = 'openpub-item';
 
+        $item = $this->formatOutputForElasticsearch($item);
+
+        return $item;
+    }
+
+    /**
+     * Format output for Elasticsearch format
+     *
+     * @param array $item
+     * @return array
+     */
+    protected function formatOutputForElasticsearch(array $item): array
+    {
+        $item['post_id']       = $item['id'] ?? '';
+        $item['post_title']    = $item['title'] ?? '';
+        $item['post_content']  = $item['content'] ?? '';
+        $item['post_excerpt']  = $item['excerpt'] ?? '';
+        $item['post_date_gmt'] = $item['date'] ?? '';
+        $item['post_status']   = 'publish';
+        $item['post_type']     = 'openpub-item';
         return $item;
     }
 

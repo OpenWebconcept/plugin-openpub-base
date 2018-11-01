@@ -31,3 +31,4 @@ class NotesField extends CreatesFields
         return get_post_meta($post->ID, '_owc_openpub_notes', true) ?: '';
     }
 }
+

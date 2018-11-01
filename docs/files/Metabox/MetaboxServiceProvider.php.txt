@@ -22,10 +22,11 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         $configMetaboxes = $this->plugin->config->get('metaboxes');
         $metaboxes       = [];
 
-        foreach ( $configMetaboxes as $metabox ) {
+        foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);
         }
 
         return array_merge($rwmbMetaboxes, apply_filters("owc/openpub/base/before-register-metaboxes", $metaboxes));
     }
 }
+

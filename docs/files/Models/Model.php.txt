@@ -63,8 +63,10 @@ abstract class Model
          */
         $reflect = new \ReflectionClass(static::class);
         if ($reflect->getProperty('globalFields')->class == __CLASS__) {
-            throw new PropertyNotExistsException(sprintf('Property $globalFields must be present on derived class %s.',
-                static::class));
+            throw new PropertyNotExistsException(sprintf(
+                'Property $globalFields must be present on derived class %s.',
+                static::class
+            ));
         }
     }
 
@@ -259,6 +261,5 @@ abstract class Model
 
         return $data;
     }
-
 }
 

@@ -13,16 +13,16 @@ return [
                     'name' => __('Portal URL', 'openpub-base'),
                     'desc' => __('URL including http(s)://', 'openpub-base'),
                     'id'   => 'setting_portal_url',
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'openpub_item_slug' => [
                     'name' => __('Portal OpenPub item slug', 'openpub-base'),
                     'desc' => __('URL for OpenPub items in the portal, eg "onderwerp"', 'openpub-base'),
                     'id'   => 'setting_portal_openpub_item_slug',
-                    'type' => 'text'
-                ]
-            ]
-        ]
+                    'type' => 'text',
+                ],
+            ],
+        ],
     ],
     'elasticsearch' => [
         'id'             => 'elasticsearch',
@@ -35,21 +35,21 @@ return [
                     'id'   => 'setting_elasticsearch_url',
                     'name' => __('Instance url', 'openpub-base'),
                     'desc' => __('URL inclusief http(s)://', 'openpub-base'),
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'shield' => [
                     'id'   => 'setting_elasticsearch_shield',
                     'name' => __('Instance shield', 'openpub-base'),
                     'desc' => __('URL inclusief http(s)://', 'openpub-base'),
-                    'type' => 'text'
+                    'type' => 'text',
                 ],
                 'prefix' => [
                     'id'   => 'setting_elasticsearch_prefix',
                     'name' => __('Instance prefix', 'openpub-base'),
-                    'desc' => __('', 'openpub-base'),
-                    'type' => 'text'
-                ]
-            ]
-        ]
-    ]
+                    'desc' => __('Use this prefix to group multiple instances', 'openpub-base'),
+                    'type' => 'text',
+                ],
+            ],
+        ],
+    ],
 ];

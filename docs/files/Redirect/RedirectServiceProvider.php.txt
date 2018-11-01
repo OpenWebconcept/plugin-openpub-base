@@ -17,12 +17,13 @@ class RedirectServiceProvider extends ServiceProvider
      */
     public function redirectToMarketingSite()
     {
-        if ( is_admin() || wp_doing_ajax() || is_feed() || WP_DEBUG ) {
+        if (is_admin() || wp_doing_ajax() || is_feed() || WP_DEBUG) {
             return;
         }
 
-        if ( wp_redirect('https://www.openwebconcept.nl/') ) {
+        if (wp_redirect('https://www.openwebconcept.nl/')) {
             exit();
         }
     }
 }
+
