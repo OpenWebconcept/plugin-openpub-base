@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OWC OpenPub\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-01 14:37+0100\n"
-"PO-Revision-Date: 2018-11-01 14:37+0100\n"
+"POT-Creation-Date: 2018-11-15 14:55+0100\n"
+"PO-Revision-Date: 2018-11-15 14:56+0100\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Digital <inf@yard.nl>\n"
 "Language: nl_NL\n"
@@ -26,69 +26,80 @@ msgid "Data"
 msgstr "Gegevens"
 
 #: config/metaboxes.php:14
+msgid "Highlighted item"
+msgstr "Uitgelichte item"
+
+#: config/metaboxes.php:15
+msgid ""
+"Use this option to select current item to be a highlighted (featured) item"
+msgstr ""
+"Gebruik deze optie om het huidige item te selecteren als een uitgelicht "
+"(gekenmerkt) item"
+
+#: config/metaboxes.php:20
 msgid "Synonyms"
 msgstr "Synoniemen"
 
-#: config/metaboxes.php:15
+#: config/metaboxes.php:21
 msgid ""
 "Use this option to add an comma separated list of synonyms or related terms"
 msgstr ""
 "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
 "gerelateerde termen mee te geven"
 
-#: config/metaboxes.php:21
+#: config/metaboxes.php:27
 msgid "Select end date"
 msgstr "Selecteer een einddatum"
 
-#: config/metaboxes.php:28
+#: config/metaboxes.php:34
 msgid "Links"
 msgstr "Links"
 
-#: config/metaboxes.php:35
+#: config/metaboxes.php:41
 msgid "Add new link"
 msgstr "Voeg nieuwe link toe"
 
-#: config/metaboxes.php:39
+#: config/metaboxes.php:45
 msgid "Link title"
 msgstr "Link titel"
 
-#: config/metaboxes.php:40 config/metaboxes.php:67
+#: config/metaboxes.php:46 config/metaboxes.php:73
 msgid "Use the title to replace the URL"
 msgstr "Wordt gebruikt om de link te tonen ipv de URL"
 
-#: config/metaboxes.php:45
+#: config/metaboxes.php:51
 msgid "Link URL"
 msgstr "Link URL"
 
-#: config/metaboxes.php:46 config/metaboxes.php:73 config/settings.php:14
+#: config/metaboxes.php:52 config/metaboxes.php:79 config/settings.php:14
 msgid "URL including http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/metaboxes.php:55
+#: config/metaboxes.php:61
 msgid "Downloads"
 msgstr "Downloads"
 
-#: config/metaboxes.php:62
+#: config/metaboxes.php:68
 msgid "Add new download"
 msgstr "Voeg nieuwe download toe"
 
-#: config/metaboxes.php:66
+#: config/metaboxes.php:72
 msgid "Download title"
 msgstr "Download titel"
 
-#: config/metaboxes.php:72
+#: config/metaboxes.php:78
 msgid "Download URL"
 msgstr "Download URL"
 
-#: config/metaboxes.php:82
+#: config/metaboxes.php:88
 msgid "Other"
 msgstr "Overig"
 
-#: config/metaboxes.php:85
+#: config/metaboxes.php:91
 msgid "Notes"
 msgstr "Vrij notitieveld"
 
-#: config/metaboxes.php:86
+#: config/metaboxes.php:92
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 1.0.3
+### Features:
+* Update: languages
+* Add: add highlighted item to api.
+
 ## Version 1.0.2
 ### Features:
 * Update: languages
