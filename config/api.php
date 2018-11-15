@@ -12,13 +12,14 @@ return [
          */
         'item'   => [
             'fields' => [
-                'connected'  => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
-                'taxonomies' => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
-                'image'      => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'downloads'  => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
-                'links'      => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
-                'synonyms'   => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
-                'notes'      => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
+                'connected'   => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
+                'highlighted' => OWC\OpenPub\Base\RestAPI\ItemFields\HighlightedItemField::class,
+                'taxonomies'  => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
+                'image'       => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
+                'downloads'   => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
+                'links'       => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
+                'synonyms'    => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
+                'notes'       => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
             ],
         ],
         'search' => [

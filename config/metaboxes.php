@@ -10,17 +10,23 @@ return [
         'autosave'   => true,
         'fields'     => [
             'general'   => [
-                'synonyms'   => [
+                'highlighted' => [
+                    'name' => __('Highlighted item', 'openpub-base'),
+                    'desc' => __('Use this option to select current item to be a highlighted (featured) item', 'openpub-base'),
+                    'id'   => 'openpub_highlighted_item',
+                    'type' => 'checkbox',
+                ],
+                'synonyms'    => [
                     'name' => __('Synonyms', 'openpub-base'),
                     'desc' => __('Use this option to add an comma separated list of synonyms or related terms', 'openpub-base'),
                     'id'   => 'openpub_tags',
                     'type' => 'textarea',
                 ],
-                'expiration' => [
+                'expiration'  => [
                     'id'   => 'openpub_expirationdate',
                     'name' => __('Select end date', 'openpub-base'),
                     'type' => 'datetime',
-                ]
+                ],
             ],
             'links'     => [
                 'heading' => [
@@ -38,16 +44,16 @@ return [
                             'id'   => 'openpub_links_title',
                             'name' => __('Link title', 'openpub-base'),
                             'desc' => __('Use the title to replace the URL', 'openpub-base'),
-                            'type' => 'text'
+                            'type' => 'text',
                         ],
                         [
                             'id'   => 'openpub_links_url',
                             'name' => __('Link URL', 'openpub-base'),
                             'desc' => __('URL including http(s)://', 'openpub-base'),
-                            'type' => 'text'
-                        ]
-                    ]
-                ]
+                            'type' => 'text',
+                        ],
+                    ],
+                ],
             ],
             'downloads' => [
                 'heading'   => [
@@ -72,9 +78,9 @@ return [
                             'name' => __('Download URL', 'openpub-base'),
                             'desc' => __('URL including http(s)://', 'openpub-base'),
                             'type' => 'text',
-                        ]
-                    ]
-                ]
+                        ],
+                    ],
+                ],
             ],
             'other'     => [
                 'heading' => [
@@ -88,8 +94,8 @@ return [
                     'type' => 'textarea',
                     'cols' => 20,
                     'rows' => 5,
-                ]
-            ]
-        ]
-    ]
+                ],
+            ],
+        ],
+    ],
 ];
