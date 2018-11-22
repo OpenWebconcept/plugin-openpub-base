@@ -23,7 +23,8 @@ class ItemController extends BaseController
     public function getItems(WP_REST_Request $request)
     {
         $items = (new Item())
-            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
+            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query($request->get_params());
 
         $data  = $items->all();
         $query = $items->getQuery();

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.0.4
+### Features:
+* Add: filter options to rest api.
+
 ## Version 1.0.3
 ### Features:
 * Update: languages

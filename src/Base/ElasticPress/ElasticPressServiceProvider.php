@@ -16,7 +16,7 @@ class ElasticPressServiceProvider extends ServiceProvider
     public function register()
     {
         if (! is_plugin_active('elasticpress/elasticpress.php')) {
-        	return new Exception('Plugin ElasticPress should be installed and active to run this plugin');
+            throw new Exception('Plugin ElasticPress should be installed and active to run this plugin');
         }
 
         $elasticPress = new ElasticPress($this->plugin->config, new Item);

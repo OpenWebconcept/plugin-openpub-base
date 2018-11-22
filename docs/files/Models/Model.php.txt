@@ -10,7 +10,6 @@ use WP_Query;
 
 abstract class Model
 {
-
     protected $posttype;
 
     /**
@@ -95,7 +94,6 @@ abstract class Model
      */
     public function find(int $id)
     {
-
         $args = array_merge($this->queryArgs, [
             'p'         => $id,
             'post_type' => [$this->posttype],
