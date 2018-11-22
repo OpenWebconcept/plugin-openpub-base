@@ -22,6 +22,11 @@ return [
                 'notes'       => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
             ],
         ],
+        'theme'  => [
+            'fields' => [
+                'connected' => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedThemeItemField::class,
+            ],
+        ],
         'search' => [
             'fields' => [
                 'connected'  => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
