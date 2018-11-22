@@ -5,10 +5,10 @@ namespace OWC\OpenPub\Base\RestAPI;
 use OWC\OpenPub\Base\Foundation\ServiceProvider;
 use OWC\OpenPub\Base\RestAPI\Controllers\ItemController;
 use OWC\OpenPub\Base\RestAPI\Controllers\SearchController;
+use OWC\OpenPub\Base\RestAPI\Controllers\ThemeController;
 
 class RestAPIServiceProvider extends ServiceProvider
 {
-
     private $namespace = 'owc/openpub/v1';
 
     /**
@@ -37,6 +37,11 @@ class RestAPIServiceProvider extends ServiceProvider
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => 'GET',
             'callback' => [new ItemController($this->plugin), 'getItem'],
+        ]);
+
+        register_rest_route($this->namespace, 'themes', [
+            'methods'  => 'GET',
+            'callback' => [new ThemeController($this->plugin), 'getThemes'],
         ]);
 
         register_rest_route($this->namespace, 'search', [

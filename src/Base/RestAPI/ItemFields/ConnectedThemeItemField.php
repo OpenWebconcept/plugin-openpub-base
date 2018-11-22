@@ -1,0 +1,65 @@
+<?php
+
+namespace OWC\OpenPub\Base\RestAPI\ItemFields;
+
+use OWC\OpenPub\Base\Support\CreatesFields;
+use WP_Post;
+
+class ConnectedThemeItemField extends CreatesFields
+{
+
+    /**
+     * Creates an array of connected posts.
+     *
+     * @param WP_Post $post
+     *
+     * @return array
+     */
+    public function create(WP_Post $post): array
+    {
+        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
+            return in_array('openpub-theme', $connection, true);
+        });
+
+        $result = [];
+
+        foreach ($connections as $connection) {
+            $type          = $connection['from'] . '_to_' . $connection['to'];
+            $result[$type] = $this->getConnectedItems($post, $type);
+            exit;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get connected items of a post, for a specific connection type.
+     *
+     * @param WP_Post    $post
+     * @param string $type
+     *
+     * @return array
+     */
+    protected function getConnectedItems(WP_Post $post, string $type): array
+    {
+        $connection = p2p_type($type)->get_related($post, ['direction' => 'to']);
+        var_dump($connection);
+        exit;
+
+        if (!$connection) {
+            return [
+                'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type),
+            ];
+        }
+
+        return array_map(function (WP_Post $post) {
+            return [
+                'id'      => $post->ID,
+                'title'   => $post->post_title,
+                'slug'    => $post->post_name,
+                'excerpt' => $post->post_excerpt,
+                'date'    => $post->post_date,
+            ];
+        }, $connection->get_connected($postID)->posts);
+    }
+}
