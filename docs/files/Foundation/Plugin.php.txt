@@ -4,7 +4,6 @@ namespace OWC\OpenPub\Base\Foundation;
 
 class Plugin
 {
-
     /**
      * Name of the plugin.
      *
@@ -18,7 +17,7 @@ class Plugin
      *
      * @var string
      */
-    const VERSION = '1.0.4';
+    const VERSION = '1.0.5';
 
     /**
      * Path to the root of the plugin.
@@ -112,7 +111,7 @@ class Plugin
      */
     public function callServiceProviders($method, $key = '')
     {
-        $offset   = $key ? "core.providers.{$key}" : 'core.providers';
+        $offset = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
 
         foreach ($services as $service) {

@@ -15,7 +15,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
         'reciprocal'            => true,
         'sortable'              => 'any',
         'cardinality'           => 'many-to-many',
-        'duplicate_connections' => false
+        'duplicate_connections' => false,
     ];
 
     public function register()
@@ -39,17 +39,17 @@ class PostsToPostsServiceProvider extends ServiceProvider
                 $args = array_merge($defaultConnectionArgs, $connectionArgs);
 
                 $connectionType = [
-                    'id'              => $posttypesInfo[ $connectionArgs['from'] ]['id'] . '_to_' . $posttypesInfo[ $connectionArgs['to'] ]['id'],
+                    'id'              => $posttypesInfo[$connectionArgs['from']]['id'] . '_to_' . $posttypesInfo[$connectionArgs['to']]['id'],
                     'from'            => $connectionArgs['from'],
                     'to'              => $connectionArgs['to'],
                     'sortable'        => $args['sortable'],
                     'admin_column'    => 'any',
                     'from_labels'     => [
-                        'column_title' => $posttypesInfo[ $connectionArgs['to'] ]['title']
+                        'column_title' => $posttypesInfo[$connectionArgs['to']]['title'],
                     ],
                     'title'           => [
-                        'from' => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['to'] ]['title'],
-                        'to'   => 'Koppel met een ' . $posttypesInfo[ $connectionArgs['from'] ]['title']
+                        'from' => 'Koppel met een ' . $posttypesInfo[$connectionArgs['to']]['title'],
+                        'to'   => 'Koppel met een ' . $posttypesInfo[$connectionArgs['from']]['title'],
                     ],
                     'can_create_post' => $args['can_create_post'],
                     'reciprocal'      => $args['reciprocal'],
@@ -60,7 +60,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
                     $connectionType['admin_box']   = 'from';
                 }
 
-                $connectionType = apply_filters("owc/openpub/base/before-register-p2p-connection/{$posttypesInfo[ $connectionArgs['from'] ]['id']}/{$posttypesInfo[ $connectionArgs['to'] ]['id']}", $connectionType);
+                $connectionType = apply_filters("owc/openpub/base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
 
                 p2p_register_connection_type($connectionType);
             }

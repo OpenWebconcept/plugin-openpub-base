@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.0.5
+### Features:
+* Add: default order of published date.
+
 ## Version 1.0.4
 ### Features:
 * Add: filter options to rest api.

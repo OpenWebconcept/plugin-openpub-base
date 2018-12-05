@@ -59,9 +59,9 @@ class FeaturedImageField extends CreatesFields
 
         foreach (array_keys($meta['sizes']) as $size) {
             $src = wp_get_attachment_image_src($id, $size);
-			$meta['sizes'][$size]['url'] = $src[0];
-			$meta['sizes'][$size]['rendered'] = wp_get_attachment_image($id, $size);
-		}
+            $meta['sizes'][$size]['url'] = $src[0];
+            $meta['sizes'][$size]['rendered'] = wp_get_attachment_image($id, $size);
+        }
 
         unset($meta['image_meta']);
 
