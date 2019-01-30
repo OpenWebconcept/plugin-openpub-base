@@ -25,6 +25,24 @@ class RestAPIServiceProvider extends ServiceProvider
     /**
      * Register routes on the rest API.
      *
+     * Main endpoint.
+     * @link https://url/wp-json/owc/openpub/v1
+     *
+     * Endpoint of the openpub-items.
+     * @link https://url/wp-json/owc/openpub/v1/items
+     *
+     * Endpoint of the openpub-item detail page.
+     * @link https://url/wp-json/owc/openpub/v1/items/{id}
+     *
+     * Endpoint of the theme-items.
+     * @link https://url/wp-json/owc/openpub/v1/themes
+     *
+     * Endpoint of the theme detail page.
+     * @link https://url/wp-json/owc/openpub/v1/themes/{id}
+     *
+     * Endpoint of searching.
+     * @link https://url/wp-json/owc/openpub/v1/search
+     *
      * @return void
      */
     public function registerRoutes()
