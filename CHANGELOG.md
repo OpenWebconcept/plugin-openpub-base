@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.0.6
+### Features:
+* Add: openpub endpoint description for documentation.
+
 ## Version 1.0.5
 ### Features:
 * Add: default order of published date.
