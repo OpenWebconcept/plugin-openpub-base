@@ -108,7 +108,10 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-        if (! is_plugin_active($dependency['file'])) {
+        if ( ! function_exists('is_plugin_active')) {
+            require_once(ABSPATH.'wp-admin/includes/plugin.php');
+        }
+        if ( ! is_plugin_active($dependency['file'])) {
             $this->markFailed($dependency, __('Inactive', 'openpub-base'));
 
             return;
