@@ -15,6 +15,9 @@ class ElasticPressServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ( ! function_exists('is_plugin_active')) {
+            require_once(ABSPATH.'wp-admin/includes/plugin.php');
+        }
         if (! is_plugin_active('elasticpress/elasticpress.php')) {
             throw new Exception('Plugin ElasticPress should be installed and active to run this plugin');
         }
