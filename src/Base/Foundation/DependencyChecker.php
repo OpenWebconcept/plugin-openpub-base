@@ -58,13 +58,13 @@ class DependencyChecker
     public function notify()
     {
         add_action('admin_notices', function () {
-            $list = '<p>'.__(
+            $list = '<p>' . __(
                 'The following plugins are required to use the OpenPub:',
                 'openpub-base'
-            ).'</p><ol>';
+            ) . '</p><ol>';
 
             foreach ($this->failed as $dependency) {
-                $info = isset($dependency['message']) ? ' ('.$dependency['message'].')' : '';
+                $info = isset($dependency['message']) ? ' (' . $dependency['message'] . ')' : '';
                 $list .= sprintf('<li>%s%s</li>', $dependency['label'], $info);
             }
 
@@ -83,7 +83,7 @@ class DependencyChecker
     private function markFailed(array $dependency, string $defaultMessage)
     {
         $this->failed[] = array_merge([
-            'message' => $dependency['message'] ?? $defaultMessage
+            'message' => $dependency['message'] ?? $defaultMessage,
         ], $dependency);
     }
 
@@ -94,7 +94,7 @@ class DependencyChecker
      */
     private function checkClass(array $dependency)
     {
-        if (! class_exists($dependency['name'])) {
+        if (!class_exists($dependency['name'])) {
             $this->markFailed($dependency, __('Class does not exist', 'openpub-base'));
 
             return;
@@ -108,10 +108,11 @@ class DependencyChecker
      */
     private function checkPlugin(array $dependency)
     {
-        if ( ! function_exists('is_plugin_active')) {
-            require_once(ABSPATH.'wp-admin/includes/plugin.php');
+        if (!function_exists('is_plugin_active')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
-        if ( ! is_plugin_active($dependency['file'])) {
+
+        if (!is_plugin_active($dependency['file'])) {
             $this->markFailed($dependency, __('Inactive', 'openpub-base'));
 
             return;
@@ -119,8 +120,8 @@ class DependencyChecker
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if (! $this->checkVersion($dependency)) {
-                $this->markFailed($dependency, __('Minimal version:', 'openpub-base').' <b>'.$dependency['version'].'</b>');
+            if (!$this->checkVersion($dependency)) {
+                $this->markFailed($dependency, __('Minimal version:', 'openpub-base') . ' <b>' . $dependency['version'] . '</b>');
             }
         }
     }
@@ -134,7 +135,7 @@ class DependencyChecker
      */
     private function checkVersion(array $dependency): bool
     {
-        $file = file_get_contents(WP_PLUGIN_DIR.'/'.$dependency['file']);
+        $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
 
         preg_match('/^(?: ?\* ?Version: ?)(.*)$/m', $file, $matches);
         $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';

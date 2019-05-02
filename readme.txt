@@ -3,13 +3,17 @@ Contributors: Yard Internet
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 
 Plugin to add the OpenPub(lications) concept to your project.
 
 It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
+
+= Version 1.0.7 =
+- Fix: check if required file for ```is_plugin_active``` is already loaded, otherwise load it. Props @Jasper Heidebrink
+
 = Version 1.0.6 =
 - Add: openpub endpoint description for documentation.
 

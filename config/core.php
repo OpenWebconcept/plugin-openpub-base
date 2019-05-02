@@ -23,9 +23,9 @@ return [
             OWC\OpenPub\Base\Admin\Settings\SettingsServiceProvider::class,
         ],
 
-        'cli' => [
+        'cli'   => [
             OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
-        ]
+        ],
     ],
 
     /**
@@ -46,19 +46,25 @@ return [
             'type'    => 'plugin',
             'label'   => 'RWMB Metabox',
             'version' => '4.14.0',
-            'file'    => 'meta-box/meta-box.php'
+            'file'    => 'meta-box/meta-box.php',
         ],
         [
             'type'    => 'plugin',
             'label'   => 'Meta Box Group',
             'version' => '1.2.14',
-            'file'    => 'metabox-group/meta-box-group.php'
+            'file'    => 'metabox-group/meta-box-group.php',
         ],
         [
             'type'  => 'class',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name'  => 'Extended_CPT'
-        ]
-    ]
+            'name'  => 'Extended_CPT',
+        ],
+        [
+            'type'    => 'plugin',
+            'label'   => 'ElasticPress',
+            'version' => '2.7.0',
+            'file'    => 'elasticpress/elasticpress.php',
+        ],
+    ],
 
 ];
