@@ -38,7 +38,7 @@ return [
                         global $post;
 
                         $item = (new Item)
-                            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
+                            ->query(apply_filters('owc/openpub/rest-api/items/query/single', array_merge([], (new Item)->addExpirationParameters())))
                             ->find($post->ID);
                         if (!$item) {
                             echo sprintf('<span style="color: red">%s</span>', __('Expired', 'openpub-base'));
