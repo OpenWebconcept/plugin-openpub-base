@@ -1,28 +1,34 @@
 <?php
+/**
+ * Config object to store, save and retrieve configurations.
+ */
 
 namespace OWC\OpenPub\Base\Foundation;
 
+/**
+ * Config object to store, save and retrieve configurations.
+ */
 class Config
 {
 
     /**
      * Directory where config files are located.
      *
-     * @var string
+     * @var string $path
      */
     protected $path;
 
     /**
      * Array with names of protected nodes in the config-items.
      *
-     * @var array
+     * @var array $protectNodes
      */
     protected $protectedNodes = [];
 
     /**
      * Array with all the config values.
      *
-     * @var array
+     * @var array $items
      */
     protected $items = [];
 
@@ -34,6 +40,8 @@ class Config
      *
      * @param string $path Path to the configuration files.
      * @param array  $items
+     *
+     * @return void
      */
     public function __construct($path, array $items = [])
     {
@@ -43,6 +51,8 @@ class Config
 
     /**
      * Boot up the configuration repository.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -139,6 +149,8 @@ class Config
     }
 
     /**
+     * Some nodes must not be changed by outside interference.
+     *
      * @param array $nodes
      */
     public function setProtectedNodes($nodes = [])
@@ -147,6 +159,8 @@ class Config
     }
 
     /**
+     * Scan a given directory for certain files.
+     *
      * @param $path
      */
     private function scanDirectory($path)

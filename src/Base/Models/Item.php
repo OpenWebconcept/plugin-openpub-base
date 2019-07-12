@@ -18,32 +18,7 @@ class Item extends Model
     public function query(array $args)
     {
         $this->queryArgs = array_merge($this->queryArgs, $args);
-        $this->queryArgs = array_merge($this->queryArgs, $this->addExpirationParameters());
 
         return $this;
-    }
-
-    /**
-     * Add parameters to meta_query to remove items with expired date.
-     *
-     * @return array
-     */
-    protected function addExpirationParameters()
-    {
-        return [
-            'meta_query' => [
-                'relation' => 'OR',
-                [
-                    'key'     => '_owc_openpub_expirationdate',
-                    'value'   => date("Y-m-d H:I"),
-                    'compare' => '>=',
-                    'type'    => 'DATETIME',
-                ],
-                [
-                    'key'     => '_owc_openpub_expirationdate',
-                    'compare' => 'NOT EXISTS',
-                ],
-            ],
-        ];
     }
 }

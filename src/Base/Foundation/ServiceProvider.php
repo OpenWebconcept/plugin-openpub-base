@@ -1,7 +1,13 @@
 <?php
+/**
+ * Provider which handles the registration of the plugin.
+ */
 
 namespace OWC\OpenPub\Base\Foundation;
 
+/**
+ * Provider which handles the registration of the plugin.
+ */
 abstract class ServiceProvider
 {
 
@@ -12,6 +18,13 @@ abstract class ServiceProvider
      */
     protected $plugin;
 
+    /**
+     * Construction of the service provider.
+     *
+     * @param Plugin $plugin
+     *
+     * @return void
+     */
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;
