@@ -1,14 +1,20 @@
 <?php
+/**
+ * Checks if dependencies are valid.
+ */
 
 namespace OWC\OpenPub\Base\Foundation;
 
+/**
+ * Checks if dependencies are valid.
+ */
 class DependencyChecker
 {
 
     /**
      * Plugins that need to be checked for.
      *
-     * @var array
+     * @var array $dependencies
      */
     private $dependencies;
 
@@ -16,7 +22,7 @@ class DependencyChecker
      * Build up array of failed plugins, either because
      * they have the wrong version or are inactive.
      *
-     * @var array
+     * @var array $failed
      */
     private $failed = [];
 
@@ -24,6 +30,8 @@ class DependencyChecker
      * Determine which plugins need to be present.
      *
      * @param array $dependencies
+     *
+     * @return void
      */
     public function __construct(array $dependencies)
     {
@@ -54,6 +62,8 @@ class DependencyChecker
     /**
      * Notifies the administrator which plugins need to be enabled,
      * or which plugins have the wrong version.
+     *
+     * @return void
      */
     public function notify()
     {
@@ -79,6 +89,8 @@ class DependencyChecker
      *
      * @param array  $dependency
      * @param string $defaultMessage
+     *
+     * @return void
      */
     private function markFailed(array $dependency, string $defaultMessage)
     {
@@ -88,9 +100,11 @@ class DependencyChecker
     }
 
     /**
-     *
+     * Checks if required class exists.
      *
      * @param array $dependency
+     *
+     * @return void
      */
     private function checkClass(array $dependency)
     {
@@ -105,11 +119,14 @@ class DependencyChecker
      * Check if a plugin is enabled and has the correct version.
      *
      * @param array $dependency
+     *
+     * @return void
      */
     private function checkPlugin(array $dependency)
     {
+
         if (!function_exists('is_plugin_active')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            include_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
 
         if (!is_plugin_active($dependency['file'])) {

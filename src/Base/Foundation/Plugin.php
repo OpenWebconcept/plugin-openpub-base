@@ -1,9 +1,16 @@
 <?php
+/**
+ * BasePlugin which sets all the serviceproviders.
+ */
 
 namespace OWC\OpenPub\Base\Foundation;
 
+/**
+ * BasePlugin which sets all the serviceproviders.
+ */
 class Plugin
 {
+
     /**
      * Name of the plugin.
      *
@@ -15,14 +22,14 @@ class Plugin
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
      *
-     * @var string
+     * @var string VERSION
      */
     const VERSION = '1.0.7';
 
     /**
      * Path to the root of the plugin.
      *
-     * @var string
+     * @var string $rootPath
      */
     protected $rootPath;
 
@@ -40,6 +47,13 @@ class Plugin
      */
     public $loader;
 
+    /**
+     * Constructor of the BasePlugin
+     *
+     * @param string $rootPath
+     *
+     * @return void
+     */
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
@@ -50,9 +64,6 @@ class Plugin
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
         $this->config->boot();
-
-        $this->addStartUpHooks();
-        $this->addTearDownHooks();
     }
 
     /**
@@ -61,7 +72,6 @@ class Plugin
      * @hook plugins_loaded
      *
      * @return bool
-     * @throws \Exception
      */
     public function boot(): bool
     {
@@ -96,6 +106,11 @@ class Plugin
         return true;
     }
 
+    /**
+     * Allows for hooking into the plugin name.
+     *
+     * @return void
+     */
     public function filterPlugin()
     {
         do_action('owc/' . self::NAME . '/plugin', $this);
@@ -106,6 +121,8 @@ class Plugin
      *
      * @param string $method
      * @param string $key
+     *
+     * @return void
      *
      * @throws \Exception
      */
@@ -159,44 +176,5 @@ class Plugin
     public function getRootPath(): string
     {
         return $this->rootPath;
-    }
-
-    /**
-     * Startup hooks to initialize the plugin.
-     */
-    protected function addStartUpHooks()
-    {
-        /**
-         * This hook registers a plugin function to be run when the plugin is activated.
-         */
-        register_activation_hook(__FILE__, [Hooks::class, 'pluginActivation']);
-
-        /**
-         * This hook is run immediately after any plugin is activated, and may be used to detect the activation of plugins.
-         * If a plugin is silently activated (such as during an update), this hook does not fire.
-         */
-        add_action('activated_plugin', [Hooks::class, 'pluginActivated'], 10, 2);
-    }
-
-    /**
-     * Teardown hooks to cleanup or uninstall the plugin.
-     */
-    protected function addTearDownHooks()
-    {
-        /**
-         * This hook is run immediately after any plugin is deactivated, and may be used to detect the deactivation of other plugins.
-         */
-        add_action('deactivated_plugin', [Hooks::class, 'pluginDeactivated'], 10, 2);
-
-        /**
-         * This hook registers a plugin function to be run when the plugin is deactivated.
-         */
-        register_deactivation_hook(__FILE__, [Hooks::class, 'pluginDeactivation']);
-
-        /**
-         * Registers the uninstall hook that will be called when the user clicks on the uninstall link that calls for the plugin to uninstall itself.
-         * The link won’t be active unless the plugin hooks into the action.
-         */
-        register_uninstall_hook(__FILE__, [Hooks::class, 'uninstallPlugin']);
     }
 }
