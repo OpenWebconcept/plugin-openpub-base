@@ -41,7 +41,8 @@ class ExpiredField extends CreatesFields
             ];
         }
         $date = \DateTime::createFromFormat('Y-m-d H:i', $status, new \DateTimeZone(get_option('timezone_string')));
-        if ($date < date('now')) {
+        $dateNow = new \DateTime(null, new \DateTimeZone(get_option('timezone_string')));
+        if ($date > $dateNow) {
             return [
                 'message' => false,
                 'status' => false
