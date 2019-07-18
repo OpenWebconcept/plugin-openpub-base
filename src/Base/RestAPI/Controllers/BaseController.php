@@ -2,9 +2,9 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
+use OWC\OpenPub\Base\Foundation\Plugin;
 use WP_Query;
 use WP_REST_Request;
-use OWC\OpenPub\Base\Foundation\Plugin;
 
 abstract class BaseController
 {

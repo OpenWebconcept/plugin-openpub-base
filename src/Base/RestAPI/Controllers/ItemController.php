@@ -11,8 +11,9 @@ use WP_REST_Request;
 class ItemController extends BaseController
 {
 
+
     /**
-     * Get a list of all items.
+     * Get a list of all items, active and inactive.
      *
      * @param WP_REST_Request $request
      *
@@ -24,6 +25,27 @@ class ItemController extends BaseController
     {
         $items = ( new Item() )
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
+
+        $data  = $items->all();
+        $query = $items->getQuery();
+
+        return $this->addPaginator($data, $query);
+    }
+
+    /**
+     * Get a list of all active items.
+     *
+     * @param WP_REST_Request $request
+     *
+     * @return array
+     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
+     * @throws \ReflectionException
+     */
+    public function getActiveItems(WP_REST_Request $request)
+    {
+        $items = ( new Item() )
+            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
+            ->query(Item::addExpirationParameters());
 
         $data  = $items->all();
         $query = $items->getQuery();
