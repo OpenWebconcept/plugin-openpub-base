@@ -320,7 +320,6 @@ class ElasticPress
      */
     public function setSearchFields($searchFields, $args)
     {
-
         $searchFields[] = 'meta';
         $searchFields[] = 'connected';
 

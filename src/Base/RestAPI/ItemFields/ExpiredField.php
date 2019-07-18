@@ -19,7 +19,7 @@ class ExpiredField extends CreatesFields
     {
         $expiredStatus = $this->getExpiredStatus($post);
         return [
-            'message' => $expiredStatus['message'],
+            'message'  => $expiredStatus['message'],
             'status'   => $expiredStatus['status']
         ];
     }
@@ -36,22 +36,22 @@ class ExpiredField extends CreatesFields
         $status = get_post_meta($post->ID, '_owc_openpub_expirationdate', true);
         if (empty($status)) {
             return [
-                    'message' => false,
-                    'status' => false
+                    'message' => '',
+                    'status'  => false
             ];
         }
-        $date = \DateTime::createFromFormat('Y-m-d H:i', $status, new \DateTimeZone(get_option('timezone_string')));
+        $date    = \DateTime::createFromFormat('Y-m-d H:i', $status, new \DateTimeZone(get_option('timezone_string')));
         $dateNow = new \DateTime(null, new \DateTimeZone(get_option('timezone_string')));
         if ($date > $dateNow) {
             return [
-                'message' => false,
-                'status' => false
+                'message' => '',
+                'status'  => false
             ];
         }
 
         return [
             'message' => 'Item is expired',
-            'status' => true
+            'status'  => true
         ];
     }
 }
