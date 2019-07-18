@@ -27,7 +27,7 @@ class Item extends Model
      *
      * @return array
      */
-    public function addExpirationParameters()
+    public static function addExpirationParameters()
     {
         return [
             'meta_query' => [
