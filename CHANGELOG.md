@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## Version 1.0.8
+### Features:
+* Add: Query args for rest api.
+* Update: PHPunit 8.
+
 ## Version 1.0.7
 ### Fix:
 * (fix): check if required file for ```is_plugin_active``` is already loaded, otherwise load it. Props @Jasper Heidebrink
