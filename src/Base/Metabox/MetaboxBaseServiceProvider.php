@@ -6,7 +6,6 @@ use OWC\OpenPub\Base\Foundation\ServiceProvider;
 
 abstract class MetaboxBaseServiceProvider extends ServiceProvider
 {
-
     const PREFIX = '_owc_';
 
     protected function processMetabox(array $metabox)
@@ -22,7 +21,6 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
 
     private function processFieldGroup($fieldGroup)
     {
-
         $fields = [];
         foreach ($fieldGroup as $field) {
             $fields[] = $this->addPrefix($field);
@@ -33,7 +31,6 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
 
     private function addPrefix($field)
     {
-
         if (isset($field['id'])) {
             $field['id'] = self::PREFIX . $field['id'];
         }

@@ -28,7 +28,7 @@ class ElasticPressTest extends TestCase
      */
     protected $plugin;
 
-    public function setUp()
+    protected function setUp(): void
     {
         WP_Mock::setUp();
 
@@ -43,7 +43,7 @@ class ElasticPressTest extends TestCase
         $this->service = new ElasticPress($this->config, $this->item);
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         WP_Mock::tearDown();
     }
@@ -79,7 +79,6 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_correct_post_args_for_syncing()
     {
-
         WP_Mock::expectFilterAdded('ep_post_sync_args_post_prepare_meta', [$this->service, 'setPostSyncArgs'], 10, 2);
 
         $this->service->setFilters();
@@ -116,7 +115,6 @@ class ElasticPressTest extends TestCase
     /** @test */
     public function it_sets_the_correct_index_name()
     {
-
         \WP_Mock::userFunction('get_site_url', [
             'times'  => 4,
             'return' => 'owc-openpub',

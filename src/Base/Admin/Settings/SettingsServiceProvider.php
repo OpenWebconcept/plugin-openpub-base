@@ -6,7 +6,6 @@ use OWC\OpenPub\Base\Metabox\MetaboxBaseServiceProvider;
 
 class SettingsServiceProvider extends MetaboxBaseServiceProvider
 {
-
     const PREFIX = '_owc_';
 
     /**
@@ -25,7 +24,6 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerSettingsPage($rwmbSettingsPages)
     {
-
         $settingsPages = $this->plugin->config->get('settings_pages');
 
         return array_merge($rwmbSettingsPages, $settingsPages);

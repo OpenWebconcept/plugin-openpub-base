@@ -6,7 +6,6 @@ use OWC\OpenPub\Base\Foundation\ServiceProvider;
 
 class RedirectServiceProvider extends ServiceProvider
 {
-
     public function register()
     {
         $this->plugin->loader->addAction('template_redirect', $this, 'redirectToMarketingSite', 10);

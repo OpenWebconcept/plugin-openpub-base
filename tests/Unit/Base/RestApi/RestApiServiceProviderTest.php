@@ -11,15 +11,14 @@ use WP_Mock;
 
 class RestAPIServiceProviderTest extends TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
-        \WP_Mock::setUp();
+        WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
-        \WP_Mock::tearDown();
+        WP_Mock::tearDown();
     }
 
     /** @test */
@@ -78,7 +77,9 @@ class RestAPIServiceProviderTest extends TestCase
             ]
         ];
 
-        WP_Mock::userFunction('post_type_exists', [
+        WP_Mock::userFunction(
+            'post_type_exists',
+            [
                 'args'   => [WP_Mock\Functions::anyOf('posttype1', 'posttype2')],
                 'times'  => '0+',
                 'return' => true

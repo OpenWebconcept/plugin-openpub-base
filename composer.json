@@ -21,7 +21,7 @@
   },
   "require-dev": {
     "mockery/mockery": "1.0.*",
-    "phpunit/phpunit": "~7.0",
+    "phpunit/phpunit": "~8.0",
     "10up/wp_mock": "dev-master",
     "phpdocumentor/phpdocumentor": "2.*",
     "squizlabs/php_codesniffer": "^3.0.2"

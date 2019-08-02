@@ -20,7 +20,6 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
     public function register()
     {
-
         $this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
         $this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
     }

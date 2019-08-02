@@ -2,8 +2,8 @@
 
 namespace OWC\OpenPub\Base\Support;
 
-use WP_Post;
 use OWC\OpenPub\Base\Foundation\Plugin;
+use WP_Post;
 
 abstract class CreatesFields
 {

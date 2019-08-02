@@ -48,7 +48,7 @@ class DependencyChecker
             }
         }
 
-        return count($this->failed) > 0;
+        return 0 < count($this->failed);
     }
 
     /**

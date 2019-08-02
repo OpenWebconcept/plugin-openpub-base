@@ -4,7 +4,6 @@ namespace OWC\OpenPub\Base\Metabox;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
-
     public function register()
     {
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);

@@ -11,12 +11,12 @@ use OWC\OpenPub\Base\Tests\Unit\TestCase;
 class SettingsServiceProviderTest extends TestCase
 {
 
-    public function setUp()
+    protected function setUp(): void
     {
         \WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
         \WP_Mock::tearDown();
     }

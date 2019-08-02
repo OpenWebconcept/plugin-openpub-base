@@ -19,7 +19,6 @@ class SearchController extends ItemController
      */
     public function search(WP_REST_Request $request)
     {
-
         $search = ( new Search($request) )
             ->query(['post_type' => 'any'])
             ->query(apply_filters('owc/openpub/rest-api/search/query', $this->getPaginatorParams($request)));

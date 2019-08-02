@@ -7,18 +7,18 @@ use OWC\OpenPub\Base\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use WP_Mock;
 
 class RedirectServiceProviderTest extends TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
-        \WP_Mock::setUp();
+        WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
-        \WP_Mock::tearDown();
+        WP_Mock::tearDown();
     }
 
     /** @test */
@@ -55,28 +55,36 @@ class RedirectServiceProviderTest extends TestCase
 
         $service = new RedirectServiceProvider($plugin);
 
-        \WP_Mock::userFunction('is_admin', [
+        \WP_Mock::userFunction(
+            'is_admin',
+            [
                 'args'   => null,
                 'times'  => '1',
                 'return' => false
             ]
         );
 
-        \WP_Mock::userFunction('wp_doing_ajax', [
+        \WP_Mock::userFunction(
+            'wp_doing_ajax',
+            [
                 'args'   => null,
                 'times'  => '1',
                 'return' => false
             ]
         );
 
-        \WP_Mock::userFunction('is_feed', [
+        \WP_Mock::userFunction(
+            'is_feed',
+            [
                 'args'   => null,
                 'times'  => '1',
                 'return' => false
             ]
         );
 
-        \WP_Mock::userFunction('wp_redirect', [
+        \WP_Mock::userFunction(
+            'wp_redirect',
+            [
                 'args'   => 'https://www.openwebconcept.nl/',
                 'times'  => '1',
                 'return' => false
@@ -87,5 +95,4 @@ class RedirectServiceProviderTest extends TestCase
 
         $this->assertTrue(true);
     }
-
 }

@@ -2,8 +2,8 @@
 
 namespace OWC\OpenPub\Base\RestAPI\ItemFields;
 
-use WP_Post;
 use OWC\OpenPub\Base\Support\CreatesFields;
+use WP_Post;
 
 class DownloadsField extends CreatesFields
 {

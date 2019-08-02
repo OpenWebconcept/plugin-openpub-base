@@ -1,27 +1,35 @@
-image: oktupol/bitbucket-pipelines-php71
+image: yardinternet/php7.2-composer
 
 pipelines:
+  custom:
+    manually:
+      - step:
+          name: unit test
+          caches:
+            - composer
+            - vendor-directory
+          script:
+            - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
+            - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
   branches:
-    master:
-    - step:
-        name: unit test
-        caches:
-          - composer
-          - vendor-directory
-        script:
-          - apt-get update && apt-get install -y git openssh-server
-          - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
-          - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
-    - step:
-        name: Deploy docs to production
-        caches:
-          - composer
-          - vendor-directory
-        deployment: production
-        script:
-          - apt-get update && apt-get install -y git openssh-server rsync
-          - composer docs
-          - ssh webdev@web11.yard.nl mkdir -p /data/www/docs.openwebconcept.nl/htdocs/plugins/openpub && rsync -avH ./docs/* -e "ssh" webdev@web11.yard.nl:/data/www/docs.openwebconcept.nl/htdocs/plugins/openpub
+    "{master,develop}":
+      - step:
+          name: unit test
+          caches:
+            - composer
+            - vendor-directory
+          script:
+            - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
+            - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
+      - step:
+          name: Deploy docs to production
+          caches:
+            - composer
+            - vendor-directory
+          deployment: production
+          script:
+            - apt-get update && apt-get install -y rsync
+            - ssh webdev@web11.yard.nl mkdir -p /data/www/docs.openwebconcept.nl/htdocs/plugins/openpub && rsync -avH ./docs/* -e "ssh" webdev@web11.yard.nl:/data/www/docs.openwebconcept.nl/htdocs/plugins/openpub
 
 definitions:
   caches:

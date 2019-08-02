@@ -8,9 +8,9 @@ return [
         'publish'
     ],
     'language'   => 'dutch',
-    'expire'    => [
+    'expire'     => [
         'offset' => '14d',
-        'decay' => 0.5,
+        'decay'  => 0.5,
     ],
     'search' => [
         'weight' => 2

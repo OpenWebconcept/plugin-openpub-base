@@ -6,7 +6,6 @@ use WP_REST_Request;
 
 class Search extends Item
 {
-
     protected $posttype = 'openpub-item';
 
     protected static $globalFields = [];
@@ -87,7 +86,7 @@ class Search extends Item
          * @param int $max Maximum posts per page.
          */
         $max = (int)10;
-        if ($amount > (int)$max) {
+        if ((int)$max < $amount) {
             $amount = $max;
         }
 

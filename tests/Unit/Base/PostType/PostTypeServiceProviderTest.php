@@ -7,17 +7,18 @@ use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use WP_Mock;
 
 class PostTypeServiceProviderTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
-        \WP_Mock::setUp();
+        WP_Mock::setUp();
     }
 
-    public function tearDown()
+    protected function tearDown(): void
     {
-        \WP_Mock::tearDown();
+        WP_Mock::tearDown();
     }
 
     /** @test */
