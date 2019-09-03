@@ -17,7 +17,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "wpackagist-plugin/elasticpress": "2.*"
+    "wpackagist-plugin/elasticpress": ">2.0"
   },
   "require-dev": {
     "mockery/mockery": "1.0.*",

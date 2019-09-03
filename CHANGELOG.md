@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.0.9
+### Features:
+* Chore: remove Hooks class.
+
 ## Version 1.0.8
 ### Features:
 * Add: Query args for rest api.
