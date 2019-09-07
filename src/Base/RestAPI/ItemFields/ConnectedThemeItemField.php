@@ -25,8 +25,7 @@ class ConnectedThemeItemField extends CreatesFields
 
         foreach ($connections as $connection) {
             $type          = $connection['from'] . '_to_' . $connection['to'];
-            $result[$type] = $this->getConnectedItems($post, $type);
-            exit;
+            $result[$type] = $this->getConnectedItems($post->ID, $type);
         }
 
         return $result;
@@ -35,20 +34,18 @@ class ConnectedThemeItemField extends CreatesFields
     /**
      * Get connected items of a post, for a specific connection type.
      *
-     * @param WP_Post    $post
+     * @param int    $postID
      * @param string $type
      *
      * @return array
      */
-    protected function getConnectedItems(WP_Post $post, string $type): array
+    protected function getConnectedItems(int $postID, string $type): array
     {
-        $connection = p2p_type($type)->get_related($post, ['direction' => 'to']);
-        var_dump($connection);
-        exit;
+        $connection = p2p_type($type);
 
         if (!$connection) {
             return [
-                'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type),
+                'error' => sprintf(__('Connection type "%s" does not exist', 'openpub-base'), $type),
             ];
         }
 

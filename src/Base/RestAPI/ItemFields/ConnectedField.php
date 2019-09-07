@@ -20,7 +20,7 @@ class ConnectedField extends CreatesFields
         $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
             return in_array('openpub-item', $connection, true);
         });
-        
+
         $result = [];
 
         foreach ($connections as $connection) {
@@ -45,7 +45,7 @@ class ConnectedField extends CreatesFields
 
         if (! $connection) {
             return [
-                'error' => sprintf(__('Connection type "%s" does not exist', 'pdc-base'), $type)
+                'error' => sprintf(__('Connection type "%s" does not exist', 'openpub-base'), $type)
             ];
         }
 

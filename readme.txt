@@ -11,6 +11,10 @@ It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
 
+= Version 1.1.0 =
+- Fix: remove unwanted exit.
+- Fix: related items of theme rest api.
+
 = Version 1.0.9 =
 - Chore: remove Hooks class.
 
