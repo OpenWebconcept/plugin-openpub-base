@@ -17,11 +17,7 @@ class ExpiredField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        $expiredStatus = $this->getExpiredStatus($post);
-        return [
-            'message'  => $expiredStatus['message'],
-            'status'   => $expiredStatus['status']
-        ];
+        return $this->getExpiredStatus($post);
     }
 
     /**
@@ -37,21 +33,17 @@ class ExpiredField extends CreatesFields
         if (empty($status)) {
             return [
                     'message' => '',
-                    'status'  => false
+                    'status'  => false,
+                    'on'         => false
             ];
         }
         $date    = \DateTime::createFromFormat('Y-m-d H:i', $status, new \DateTimeZone(get_option('timezone_string')));
         $dateNow = new \DateTime(null, new \DateTimeZone(get_option('timezone_string')));
-        if ($date > $dateNow) {
-            return [
-                'message' => '',
-                'status'  => false
-            ];
-        }
-
+        $message = ($date < $dateNow) ? 'Item is expired' : '';
         return [
-            'message' => 'Item is expired',
-            'status'  => true
+            'message' => $message,
+            'status'  => ($date < $dateNow),
+            'on'         => $date
         ];
     }
 }
