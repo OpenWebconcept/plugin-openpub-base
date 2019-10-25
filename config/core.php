@@ -14,7 +14,6 @@ return [
         OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
-        OWC\OpenPub\Base\Redirect\RedirectServiceProvider::class,
         OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
         /**
          * Providers specific to the admin.

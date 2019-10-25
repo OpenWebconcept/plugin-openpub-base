@@ -11,6 +11,9 @@ It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
 
+= Version 1.1.1 =
+- Fix: remove unwanted redirect.
+
 = Version 1.1.0 =
 - Fix: remove unwanted exit.
 - Fix: related items of theme rest api.

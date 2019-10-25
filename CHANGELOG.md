@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.1.1
+### Features:
+* Fix: remove unwanted redirect.
+
 ## Version 1.1.0
 ### Features:
 * Fix: remove unwanted exit.
