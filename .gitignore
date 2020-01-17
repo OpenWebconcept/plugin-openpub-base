@@ -97,12 +97,12 @@ vendor
 
 tests/coverage
 <<<<<<< HEAD
+<<<<<<< HEAD
 wp-content/
 
 .DS_Store
 
 # php cs
 .php_cs.cache
-=======
+
 wp-content
->>>>>>> (chore): show expired items
