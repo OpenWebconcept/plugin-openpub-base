@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.1.2
+### Features:
+* Chore: add endpoint for active items only: ```wp-json/owc/openpub/v1/items/active```.
+
 ## Version 1.1.1
 ### Features:
 * Fix: remove unwanted redirect.
