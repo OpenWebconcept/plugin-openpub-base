@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## Version 1.1.3
+### Features:
+* Add: make taxonomy "openpub-type" available in rest api
+
 ## Version 1.1.2
 ### Features:
 * Chore: add endpoint for active items only: ```wp-json/owc/openpub/v1/items/active```.
