@@ -18,7 +18,7 @@ return [
             'show_ui'      => true,
             'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions'],
             'menu_icon'    => 'dashicons-format-aside',
-            'show_in_rest' => false,
+            'show_in_rest' => true,
             'admin_cols'   => [
                 'type' => [
                     'title'    => _x('Type', 'Admin Filter definition', 'openpub-base'),
@@ -57,8 +57,7 @@ return [
                     'post_field'  => 'post_date',
                     'date_format' => get_option('date_format') . ', ' . get_option('time_format'),
                 ],
-                'orderby' => [
-                ],
+                'orderby' => [],
             ],
             // Add a dropdown filter to the admin screen:
             'admin_filters' => [

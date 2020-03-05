@@ -8,7 +8,7 @@ return [
     'openpub-audience' => [
         'object_types' => ['openpub-item'],
         'args'         => [
-            'show_in_rest'      => false,
+            'show_in_rest'      => true,
             'show_admin_column' => true,
             'capabilities'      => [
                 //                'manage_terms' => 'manage_openpub_categories',
@@ -47,7 +47,7 @@ return [
     'openpub-usage'  => [
         'object_types' => ['openpub-item'],
         'args'         => [
-            'show_in_rest'      => false,
+            'show_in_rest'      => true,
             'show_admin_column' => true,
             'capabilities'      => [
                 //                'manage_terms' => 'manage_openpub_categories',

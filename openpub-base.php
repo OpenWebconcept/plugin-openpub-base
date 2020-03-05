@@ -1,10 +1,11 @@
 <?php
+
 /**
  * Plugin Name:       OpenPub Base
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions
  * to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           1.1.3
+ * Version:           1.1.4
  * Author:            Yard Internet
  * Author URI:        https://www.yardinternet.nl/
  * License:           GPL-3.0
