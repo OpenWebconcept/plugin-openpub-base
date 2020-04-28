@@ -3,9 +3,9 @@
   "description": "OpenPub base plugin",
   "authors": [
     {
-      "name": "Yard Internet",
+      "name": "Yard Digital Agency",
       "email": "info@yard.nl",
-      "homepage": "https://www.yardinternet.nl"
+      "homepage": "https://www.yard.nl"
     }
   ],
   "type": "wordpress-plugin",
@@ -24,6 +24,7 @@
     "phpunit/phpunit": "~8.0",
     "10up/wp_mock": "dev-master",
     "friendsofphp/php-cs-fixer": "^2.0",
+    "phpstan/phpstan": "^0.12",
     "szepeviktor/phpstan-wordpress": "^0.6.0"
   },
   "autoload": {
@@ -37,14 +38,13 @@
     }
   },
   "scripts": {
-    "unit": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Unit Test Suite' --prepend tests/xdebug-filter.php --colors=always --coverage-html ./tests/coverage",
-    "integration": "clear && ./vendor/bin/phpunit --stderr --testsuite 'Integration Test Suite' --colors=always",
-    "test": [
-      "@unit",
-      "@integration"
-    ],
     "cs": "./vendor/bin/php-cs-fixer fix",
-    "phpstan": "./vendor/bin/phpstan analyse --no-progress"
+    "docs": "./vendor/bin/phpdoc -d ./src/Base -t ./docs",
+    "stan": "./vendor/bin/phpstan analyse src tests",
+    "test": [
+        "@unit"
+    ],
+    "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
+    "unit-coverage": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage"
   }
 }

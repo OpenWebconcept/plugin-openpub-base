@@ -1906,6 +1906,10 @@
                     "email": "bschussek@2bepublished.at"
                 },
                 {
+                    "name": "Kore Nordmann",
+                    "email": "mail@kore-nordmann.de"
+                },
+                {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
                 }

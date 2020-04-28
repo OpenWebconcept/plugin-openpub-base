@@ -21,15 +21,15 @@ pipelines:
           script:
             - composer install --no-interaction --no-progress --prefer-dist --ignore-platform-reqs
             - ./vendor/bin/phpunit --testsuite "Unit Test Suite"
-      - step:
-          name: Deploy docs to production
-          caches:
-            - composer
-            - vendor-directory
-          deployment: production
-          script:
-            - apt-get update && apt-get install -y rsync
-            - ssh webdev@web11.yard.nl mkdir -p /data/www/docs.openwebconcept.nl/htdocs/plugins/openpub && rsync -avH ./docs/* -e "ssh" webdev@web11.yard.nl:/data/www/docs.openwebconcept.nl/htdocs/plugins/openpub
+      # - step:
+      #     name: Deploy docs to production
+      #     caches:
+      #       - composer
+      #       - vendor-directory
+      #     deployment: production
+      #     script:
+      #       - apt-get update && apt-get install -y rsync
+      #       - ssh webdev@web11.yard.nl mkdir -p /data/www/docs.openwebconcept.nl/htdocs/plugins/openpub && rsync -avH ./docs/* -e "ssh" webdev@web11.yard.nl:/data/www/docs.openwebconcept.nl/htdocs/plugins/openpub
 
 definitions:
   caches:

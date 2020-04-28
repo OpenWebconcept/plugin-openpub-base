@@ -12,15 +12,17 @@ return [
          */
         'item'   => [
             'fields' => [
+                'comments'    => OWC\OpenPub\Base\RestAPI\ItemFields\CommentField::class,
                 'connected'   => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
+                'downloads'   => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
                 'expired'     => OWC\OpenPub\Base\RestAPI\ItemFields\ExpiredField::class,
                 'highlighted' => OWC\OpenPub\Base\RestAPI\ItemFields\HighlightedItemField::class,
-                'taxonomies'  => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
                 'image'       => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
-                'downloads'   => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
                 'links'       => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
-                'synonyms'    => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'notes'       => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
+                'synonyms'    => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
+                'taxonomies'  => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
+
             ],
         ],
         'theme'  => [
@@ -31,13 +33,13 @@ return [
         'search' => [
             'fields' => [
                 'connected'  => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
-                'expired'    => OWC\OpenPub\Base\RestAPI\ItemFields\ExpiredField::class,
-                'taxonomies' => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
-                'image'      => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'downloads'  => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
+                'expired'    => OWC\OpenPub\Base\RestAPI\ItemFields\ExpiredField::class,
+                'image'      => OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField::class,
                 'links'      => OWC\OpenPub\Base\RestAPI\ItemFields\LinksField::class,
-                'synonyms'   => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'notes'      => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
+                'synonyms'   => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
+                'taxonomies' => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
             ],
         ],
     ],

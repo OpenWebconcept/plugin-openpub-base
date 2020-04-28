@@ -30,6 +30,13 @@ $GLOBALS['openpub-base'] = [
     'active_plugins' => ['openpub-base/openpub-base.php'],
 ];
 
+class WP_CLI
+{
+    public static function add_command()
+    {
+    }
+}
+
 if (! function_exists('get_echo')) {
 
     /**
