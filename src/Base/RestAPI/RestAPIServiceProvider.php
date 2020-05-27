@@ -10,12 +10,17 @@ use WP_REST_Server;
 
 class RestAPIServiceProvider extends ServiceProvider
 {
+    /**
+     * @var string
+     */
     private $namespace = 'owc/openpub/v1';
 
     /**
      * Register the service provider.
+     *
+     * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
         $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
@@ -81,11 +86,10 @@ class RestAPIServiceProvider extends ServiceProvider
     /**
      * Whitelist endpoints within Config Expander.
      *
-     * @param $whitelist
-     *
+     * @param array $whitelist
      * @return array
      */
-    public function whitelist($whitelist): array
+    public function whitelist(array $whitelist): array
     {
         // Remove default root endpoint
         unset($whitelist['wp/v2']);
@@ -100,8 +104,10 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register fields for all configured posttypes.
+     *
+     * @return void
      */
-    private function registerModelFields()
+    private function registerModelFields(): void
     {
         // Add global fields for all Models.
         foreach ($this->plugin->config->get('api.models') as $posttype => $data) {

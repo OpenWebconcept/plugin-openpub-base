@@ -10,6 +10,8 @@ abstract class CreatesFields
 
     /**
      * Instance of the Plugin.
+     *
+     * @var Plugin
      */
     protected $plugin;
 

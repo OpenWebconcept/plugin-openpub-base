@@ -9,6 +9,14 @@
  */
 require __DIR__ . '/../../vendor/autoload.php';
 
+/**
+ * Load all stubs.
+ */
+$files = glob(__DIR__ .'/../Stubs/WordPress/*.php');
+array_map(function ($file) {
+    require_once $file;
+}, $files);
+
 define('WP_PLUGIN_DIR', __DIR__);
 define('WP_DEBUG', false);
 
@@ -22,24 +30,17 @@ $GLOBALS['openpub-base'] = [
     'active_plugins' => ['openpub-base/openpub-base.php'],
 ];
 
-class WP_CLI
-{
-    public static function add_command()
-    {
-    }
-}
-
-if ( ! function_exists('get_echo') ) {
+if (! function_exists('get_echo')) {
 
     /**
      * Capture the echo of a callable function.
      *
-     * @param       $callable
+     * @param Callable $callable
      * @param array $args
      *
      * @return string
      */
-    function get_echo($callable, $args = [])
+    function get_echo(Callable $callable, $args = []): string
     {
         ob_start();
         call_user_func_array($callable, $args);

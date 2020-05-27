@@ -10,7 +10,6 @@ use OWC\OpenPub\Base\Tests\Unit\TestCase;
 
 class SettingsServiceProviderTest extends TestCase
 {
-
     protected function setUp(): void
     {
         \WP_Mock::setUp();

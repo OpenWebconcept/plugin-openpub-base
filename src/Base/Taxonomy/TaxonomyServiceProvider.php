@@ -14,15 +14,20 @@ class TaxonomyServiceProvider extends ServiceProvider
      */
     protected $configTaxonomies = [];
 
-    public function register()
+    /**
+     * @return void
+     */
+    public function register(): void
     {
         $this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
     }
 
     /**
      * Register custom taxonomies via extended_cpts
+     *
+     * @return void
      */
-    public function registerTaxonomies()
+    public function registerTaxonomies(): void
     {
         if (function_exists('register_extended_taxonomy')) {
             $this->configTaxonomies = $this->plugin->config->get('taxonomies');

@@ -23,9 +23,10 @@ return [
                     'type' => 'textarea',
                 ],
                 'expiration'  => [
-                    'id'   => 'openpub_expirationdate',
-                    'name' => __('Select end date', 'openpub-base'),
-                    'type' => 'datetime',
+                    'id'          => 'openpub_expirationdate',
+                    'name'        => __('Select end date', 'openpub-base'),
+                    'type'        => 'datetime',
+                    'save_format' => 'Y-m-d H:i',
                 ],
             ],
             'links'     => [

@@ -27,23 +27,28 @@ class ExpiredField extends CreatesFields
      *
      * @return array
      */
-    private function getExpiredStatus(WP_Post $post)
+    private function getExpiredStatus(WP_Post $post): array
     {
-        $status = get_post_meta($post->ID, '_owc_openpub_expirationdate', true);
+        $status = \get_post_meta($post->ID, '_owc_openpub_expirationdate', true);
         if (empty($status)) {
             return [
                     'message' => '',
                     'status'  => false,
-                    'on'         => false
+                    'on'      => false
             ];
         }
-        $date    = \DateTime::createFromFormat('Y-m-d H:i', $status, new \DateTimeZone(get_option('timezone_string')));
-        $dateNow = new \DateTime(null, new \DateTimeZone(get_option('timezone_string')));
-        $message = ($date < $dateNow) ? 'Item is expired' : '';
+        $status = explode(' ', $status);
+        // If no time is defined, add this for compatibility.
+        if (1 >= count($status)) {
+            $status[] = ' 00:00';
+        }
+        $timezone = \get_option('timezone_string');
+        $date     = \DateTime::createFromFormat('Y-m-d H:i', implode('', $status), new \DateTimeZone($timezone));
+        $dateNow  = new \DateTime(null, new \DateTimeZone($timezone));
         return [
-            'message' => $message,
+            'message' => ($date < $dateNow) ? 'Item is expired' : '',
             'status'  => ($date < $dateNow),
-            'on'         => $date
+            'on'      => $date
         ];
     }
 }

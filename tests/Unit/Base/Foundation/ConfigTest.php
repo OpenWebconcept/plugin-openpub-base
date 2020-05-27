@@ -1,16 +1,16 @@
 <?php
 
-namespace OWC\OpenPub\Base\Tests\Config;
+namespace OWC\OpenPub\Base\Tests\Foundation;
 
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
 
-class RepositoryTest extends TestCase
+class ConfigTest extends TestCase
 {
-
     protected function setUp(): void
     {
         \WP_Mock::setUp();
+        $this->configDirectory = __DIR__ . '/../../../Stubs/config';
     }
 
     protected function tearDown(): void
@@ -18,11 +18,10 @@ class RepositoryTest extends TestCase
         \WP_Mock::tearDown();
     }
 
-
     /** @test */
     public function gets_value_correctly()
     {
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $config = [
@@ -51,7 +50,7 @@ class RepositoryTest extends TestCase
     /** @test */
     public function check_setting_of_path()
     {
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
 
         $path = '/test/path/config/';
         $repository->setPath($path);
@@ -63,7 +62,7 @@ class RepositoryTest extends TestCase
     /** @test */
     public function check_setting_of_protected_nodes()
     {
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $expectedConfig = [
@@ -95,7 +94,7 @@ class RepositoryTest extends TestCase
             'directory' => 'test'
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set('directory', 'test');
@@ -130,7 +129,7 @@ class RepositoryTest extends TestCase
                 'single_file' => true
             ],
             'directory' => [
-                'testfile' => 'test',
+                'testfile'  => 'test',
                 'multi'     => [
                     'deep' => [
                         'multi_level' => 'works'
@@ -139,7 +138,7 @@ class RepositoryTest extends TestCase
             ]
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set('directory.testfile', 'test');
@@ -195,7 +194,7 @@ class RepositoryTest extends TestCase
             ]
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set('directory.multi', 'test');
@@ -215,7 +214,7 @@ class RepositoryTest extends TestCase
             ]
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set('directory.multi.deep', 'test');
@@ -262,7 +261,7 @@ class RepositoryTest extends TestCase
             ]
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set('doesnotexist.directory.multi.deep');
@@ -285,7 +284,7 @@ class RepositoryTest extends TestCase
             ''          => null
         ];
 
-        $repository = new Config(__DIR__ . '/config');
+        $repository = new Config($this->configDirectory);
         $repository->boot();
 
         $repository->set([null => null]);

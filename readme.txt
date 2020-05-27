@@ -11,6 +11,18 @@ It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
 
+= Version 1.1.5 =
+- Fix: standardize expired date for better compatibility.
+
+= Version 1.1.4 =
+- Feat: make posttypes and taxonomies available in rest api.
+
+= Version 1.1.3 =
+- Feat: make openpub-type taxonomy available in rest api.
+
+= Version 1.1.2 =
+- Feat: show expired items.
+
 = Version 1.1.1 =
 - Fix: remove unwanted redirect.
 

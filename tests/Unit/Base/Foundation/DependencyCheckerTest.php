@@ -1,7 +1,8 @@
 <?php
 
-namespace OWC\OpenPub\Base\Foundation;
+namespace OWC\OpenPub\Base\Tests\Foundation;
 
+use OWC\OpenPub\Base\Foundation\DependencyChecker;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
 use WP_Mock;
 

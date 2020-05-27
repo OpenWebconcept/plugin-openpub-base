@@ -1,16 +1,22 @@
 # CHANGELOG
 
+## Version 1.1.5
+
+### Features:
+
+-   Fix: Standardize expired date for better compatibility.
+
 ## Version 1.1.4
 
 ### Features:
 
--   Add: make posttypes and taxonomies available in rest api
+-   Add: make posttypes and taxonomies available in rest api.
 
 ## Version 1.1.3
 
 ### Features:
 
--   Add: make taxonomy "openpub-type" available in rest api
+-   Add: make taxonomy "openpub-type" available in rest api.
 
 ## Version 1.1.2
 
