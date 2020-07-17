@@ -11,6 +11,9 @@ It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
 
+= Version 1.1.6 =
+- Add: add thumnbail url to related postsy.
+
 = Version 1.1.5 =
 - Fix: standardize expired date for better compatibility.
 

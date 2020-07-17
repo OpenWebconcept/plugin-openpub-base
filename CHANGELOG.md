@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 1.1.6
+
+### Features:
+
+-   Add: add thumnbail url to related posts
+
 ## Version 1.1.5
 
 ### Features:
