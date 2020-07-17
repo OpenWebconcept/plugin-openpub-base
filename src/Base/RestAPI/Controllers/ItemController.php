@@ -23,7 +23,7 @@ class ItemController extends BaseController
      */
     public function getItems(WP_REST_Request $request)
     {
-        $items = ( new Item() )
+        $items = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
 
         $data  = $items->all();
@@ -43,7 +43,7 @@ class ItemController extends BaseController
      */
     public function getActiveItems(WP_REST_Request $request)
     {
-        $items = ( new Item() )
+        $items = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query(Item::addExpirationParameters());
 
@@ -111,11 +111,12 @@ class ItemController extends BaseController
     public function transform(WP_Post $post)
     {
         $data = [
-            'id'      => $post->ID,
-            'title'   => $post->post_title,
-            'content' => apply_filters('the_content', $post->post_content),
-            'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date,
+            'id'              => $post->ID,
+            'title'           => $post->post_title,
+            'content'         => apply_filters('the_content', $post->post_content),
+            'excerpt'         => $post->post_excerpt,
+            'date'            => $post->post_date,
+            'thumbnail_url'   => get_the_post_thumbnail_url($post->ID),
         ];
 
         return $data;
