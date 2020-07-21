@@ -82,6 +82,32 @@ class ItemController extends BaseController
     }
 
     /**
+     * Get an individual post item by slug.
+     *
+     * @param $request $request
+     *
+     * @return array|WP_Error
+     */
+    public function getItemBySlug(WP_REST_Request $request)
+    {
+        $slug = $request->get_param('slug');
+
+        $item = (new Item)
+            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
+            ->findBySlug($slug);
+
+        if (!$item) {
+            return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
+                'status' => 404,
+            ]);
+        }
+
+        $item['related'] = $this->addRelated($item);
+
+        return $item;
+    }
+
+    /**
      * Get related items.
      *
      * @param array $item

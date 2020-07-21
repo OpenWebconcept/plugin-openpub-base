@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 1.1.7
+
+### Features:
+
+-   Add: openpub rest route route on slug
+
 ## Version 1.1.6
 
 ### Features:

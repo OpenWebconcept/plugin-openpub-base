@@ -61,7 +61,7 @@ class DependencyCheckerTest extends TestCase
                 'type'    => 'plugin',
                 'label'   => 'Dependency #1',
                 'file'    => 'pluginstub.php', // tests/Unit/pluginstub.php
-                'version' => $version // Version in pluginstub.php is 1.1.6
+                'version' => $version // Version in pluginstub.php is 1.1.7
             ]
         ];
 
@@ -86,7 +86,7 @@ class DependencyCheckerTest extends TestCase
                 'type'    => 'plugin',
                 'label'   => 'Dependency #1',
                 'file'    => 'pluginstub.php', // tests/Unit/pluginstub.php
-                'version' => $version // Version in pluginstub.php is 1.1.6
+                'version' => $version // Version in pluginstub.php is 1.1.7
             ]
         ];
 
@@ -102,7 +102,7 @@ class DependencyCheckerTest extends TestCase
 
     /**
      * Provides old version numbers.
-     * Version in pluginstub.php is 1.1.6
+     * Version in pluginstub.php is 1.1.7
      *
      * @return array
      */

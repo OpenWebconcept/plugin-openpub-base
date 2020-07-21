@@ -109,6 +109,29 @@ abstract class Model
     }
 
     /**
+     * Find a particular pdc item by slug.
+     *
+     * @param string $slug
+     *
+     * @return array|null
+     */
+    public function findBySlug(string $slug)
+    {
+        $args = array_merge($this->queryArgs, [
+            'name'        => $slug,
+            'post_type'   => [$this->posttype],
+        ]);
+
+        $this->query = new WP_Query($args);
+
+        if (empty($this->getQuery()->posts)) {
+            return null;
+        }
+
+        return $this->transform(reset($this->getQuery()->posts));
+    }
+
+    /**
      * Get the WP_Query object.
      *
      * @return null|WP_Query

@@ -3,13 +3,16 @@ Contributors: Yard Internet
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 1.0.9
+Stable tag: 1.1.7
 
 Plugin to add the OpenPub(lications) concept to your project.
 
 It enables the input of publications (news itesms), and adds rest api endpoints.
 
 == Changelog ==
+
+= Version 1.1.7 =
+- Add: openpub rest route route on slug
 
 = Version 1.1.6 =
 - Add: add thumnbail url to related postsy.
