@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## Version 1.1.8
+
+### Fix:
+
+-   Add: correct mappings for Elasticsearch
+
 ## Version 1.1.7
 
 ### Features:

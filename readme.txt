@@ -3,7 +3,7 @@ Contributors: Yard Internet
 Requires at least: 4.8
 Tested up to: 5.1
 Requires PHP: 7.0
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 
 Plugin to add the OpenPub(lications) concept to your project.
 

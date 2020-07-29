@@ -233,6 +233,34 @@ class ElasticPress
     }
 
     /**
+     * Alter the mappings.
+     *
+     * @param array $mapping
+     *
+     * @return array
+     */
+    public function addMappings(array $mapping): array
+    {
+        $mapping['mappings']['properties'] = [
+            'expired' => [
+                'type' => 'object',
+                'properties' => [
+                    'on' => [
+                        'type' => 'object',
+                        'enabled' => 'false'
+                    ]
+                ]
+            ],
+            'post_date_gmt'         => [
+                'type'   => 'date',
+                'format' => 'yyyy-MM-dd HH:mm:ss',
+            ],
+        ];
+
+        return $mapping;
+    }
+
+    /**
      * Define all the necessary settings.
      */
     public function setSettings()
