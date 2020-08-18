@@ -14,15 +14,9 @@ parameters:
     paths:
         - %currentWorkingDirectory%/src/
     excludes_analyse:
-         - %currentWorkingDirectory%/tests/Stubs/*
-         - %currentWorkingDirectory%/tests/coverage/*
-         - %currentWorkingDirectory%/tests/Unit/bootstrap.php
-         - %currentWorkingDirectory%/tests/Unit/TestCase.php
-    autoload_files:
-#        - %currentWorkingDirectory%/tests/phpstan/bootstrap.php
-#        - %currentWorkingDirectory%/tests/phpstan/PLUGIN-stubs.php
-#        - %currentWorkingDirectory%/myplugin-functions.php
-    autoload_directories:
+         - %currentWorkingDirectory%/tests
+    scanFiles:
+    scanDirectories:
         - %currentWorkingDirectory%/src/
     ignoreErrors:
         - '#Call to method get\(\) on an unknown class OWC\\OpenPub\\Base\\Config\.#'

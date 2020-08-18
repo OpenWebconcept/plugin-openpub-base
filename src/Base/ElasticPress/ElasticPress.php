@@ -243,10 +243,10 @@ class ElasticPress
     {
         $mapping['mappings']['properties'] = [
             'expired' => [
-                'type' => 'object',
+                'type'       => 'object',
                 'properties' => [
                     'on' => [
-                        'type' => 'object',
+                        'type'    => 'object',
                         'enabled' => 'false'
                     ]
                 ]

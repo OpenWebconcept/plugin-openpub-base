@@ -195,7 +195,7 @@ abstract class Model
     }
 
     /**
-     * Adds a new field to the
+     * Adds a new field to the output.
      *
      * @param string        $key
      * @param CreatesFields $creator
@@ -203,7 +203,7 @@ abstract class Model
      *
      * @return void
      */
-    public static function addGlobalField(string $key, CreatesFields $creator, Closure $conditional = null)
+    public static function addGlobalField(string $key, CreatesFields $creator, Closure $conditional = null): void
     {
         static::$globalFields[] = [
             'key'         => $key,
@@ -241,6 +241,7 @@ abstract class Model
             'content' => apply_filters('the_content', $post->post_content),
             'excerpt' => $post->post_excerpt,
             'date'    => $post->post_date,
+            'slug'    => $post->post_name
         ];
 
         $data = $this->assignFields($data, $post);

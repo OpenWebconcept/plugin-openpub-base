@@ -30,13 +30,6 @@ $GLOBALS['openpub-base'] = [
     'active_plugins' => ['openpub-base/openpub-base.php'],
 ];
 
-class WP_CLI
-{
-    public static function add_command()
-    {
-    }
-}
-
 if (! function_exists('get_echo')) {
 
     /**
@@ -47,7 +40,7 @@ if (! function_exists('get_echo')) {
      *
      * @return string
      */
-    function get_echo(Callable $callable, $args = []): string
+    function get_echo(callable $callable, $args = []): string
     {
         ob_start();
         call_user_func_array($callable, $args);

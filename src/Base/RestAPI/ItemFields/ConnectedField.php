@@ -7,7 +7,6 @@ use WP_Post;
 
 class ConnectedField extends CreatesFields
 {
-
     /**
      * Creates an array of connected posts.
      *
@@ -17,6 +16,10 @@ class ConnectedField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
+        if (! \function_exists('p2p_type')) {
+            return [];
+        }
+
         $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
             return in_array('openpub-item', $connection, true);
         });
@@ -41,7 +44,7 @@ class ConnectedField extends CreatesFields
      */
     protected function getConnectedItems(int $postID, string $type): array
     {
-        $connection = p2p_type($type);
+        $connection = \p2p_type($type);
 
         if (! $connection) {
             return [

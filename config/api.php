@@ -22,7 +22,6 @@ return [
                 'notes'       => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
                 'synonyms'    => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'taxonomies'  => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
-
             ],
         ],
         'theme'  => [
