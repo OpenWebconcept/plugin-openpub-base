@@ -43,6 +43,9 @@ class RestAPIServiceProvider extends ServiceProvider
      * Endpoint of the openpub-item detail page.
      * @link https://url/wp-json/owc/openpub/v1/items/{id}
      *
+     * Endpoint of the openpub-item detail page.
+     * @link https://url/wp-json/owc/openpub/v1/items/{slug}
+     *
      * Endpoint of the theme-items.
      * @link https://url/wp-json/owc/openpub/v1/themes
      *

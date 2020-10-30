@@ -1,22 +1,28 @@
 # CHANGELOG
 
+## Version 1.1.9
+
+### Features
+
+- Add: highlighted parameter on rest endpoint
+
 ## Version 1.1.8
 
-### Fix:
+### Fix
 
--   Add: correct mappings for Elasticsearch
+- Add: correct mappings for Elasticsearch
 
 ## Version 1.1.7
 
-### Features:
+### Features
 
--   Add: openpub rest route route on slug
+- Add: openpub rest route route on slug
 
 ## Version 1.1.6
 
-### Features:
+### Features
 
--   Add: add thumnbail url to related posts
+- Add: add thumnbail url to related posts
 
 ## Version 1.1.5
 
