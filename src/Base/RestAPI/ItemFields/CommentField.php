@@ -89,12 +89,12 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
     /**
      * Format the comment.
      *
-     * @param WP_Comment $comment
+     * @param \WP_Comment $comment
      * @param array $replies
      *
      * @return array
      */
-    protected function format(WP_Comment $comment, $replies = []): array
+    protected function format(\WP_Comment $comment, $replies = []): array
     {
         return [
             'id'            => (int) $comment->comment_ID,

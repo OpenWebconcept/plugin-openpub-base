@@ -10,8 +10,6 @@ use WP_REST_Request;
 
 class ItemController extends BaseController
 {
-
-
     /**
      * Get a list of all items, active and inactive.
      *
@@ -25,6 +23,10 @@ class ItemController extends BaseController
     {
         $items = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
+
+        if ($this->hasHighlightedParam($request)) {
+            $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
+        }
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -146,5 +148,34 @@ class ItemController extends BaseController
         ];
 
         return $data;
+    }
+    
+    protected function getHighlightedParam(WP_REST_Request $request): bool
+    {
+        return filter_var($request->get_param('highlighted'), FILTER_VALIDATE_BOOLEAN);
+    }
+
+    protected function hasHighlightedParam(WP_REST_Request $request): bool
+    {
+        if (empty($request->get_param('highlighted'))) {
+            return false;
+        }
+
+        if (! $this->validateBoolean($request->get_param('highlighted'))) {
+            return false;
+        };
+
+        return true;
+    }
+
+    protected function validateBoolean(string $value): bool
+    {
+        $value = filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+
+        if (null === $value) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -45,4 +45,20 @@ class Item extends Model
             ],
         ];
     }
+
+    /**
+     * Add parameters to meta_query to remove items that are expired or not expired
+     */
+    public static function addHighlightedParameters(bool $highlighted): array
+    {
+        return[
+            'meta_query' => [
+                [
+                    'key'  => '_owc_openpub_highlighted_item',
+                    'value'   => $highlighted ? 1 : 0,
+                    'compare' => '=',
+                ],
+            ],
+        ];
+    }
 }
