@@ -17,7 +17,8 @@
   ],
   "require": {
     "php": ">=7.0",
-    "wpackagist-plugin/elasticpress": ">2.0"
+    "wpackagist-plugin/elasticpress": ">2.0",
+    "zircote/swagger-php": "^3.1"
   },
   "require-dev": {
     "mockery/mockery": "^1.0.0",
@@ -38,6 +39,8 @@
     }
   },
   "scripts": {
+    "create-api-docs": "clear && php ./docs/api/openapi-create.php > ./docs/api/specs/openapi.yaml",
+    "build-api-docs": "npm run doc-build",
     "format": "./vendor/bin/php-cs-fixer fix",
     "phpstan": "./vendor/bin/phpstan analyse",
     "test": [

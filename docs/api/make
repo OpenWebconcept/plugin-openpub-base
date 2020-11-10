@@ -1,0 +1,9 @@
+lando php ./docs/openapi-create.php > ./docs/specs/openapi.yaml
+
+cd ./docs && npm i
+lando npm run doc-build --prefix docs
+
+git clone git@bitbucket.org:openwebconcept/openwebconcept.bitbucket.org.git
+cd openwebconcept.bitbucket.org
+cp ../docs/index.html ./openpub/index.html
+git add . && git commit -m"(chore): update documentation" && git push

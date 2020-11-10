@@ -1,0 +1,14 @@
+{
+  "name": "openpub-docs",
+  "version": "1.0.0",
+  "description": "OWC OpenPub docs",
+  "dependencies": {
+    "redoc-cli": "^0.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "doc-build": "redoc-cli bundle ./specs/openapi.yaml --output ./index.html -t templates/template.hbs"
+  },
+  "author": "OpenWebConcept",
+  "license": "ISC"
+}

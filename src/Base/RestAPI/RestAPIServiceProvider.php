@@ -8,6 +8,38 @@ use OWC\OpenPub\Base\RestAPI\Controllers\SearchController;
 use OWC\OpenPub\Base\RestAPI\Controllers\ThemeController;
 use WP_REST_Server;
 
+/**
+ *  @OA\Server(
+ *    url="https://{site}/wp-json/owc/openpub/v1",
+ *    description=""
+ *  ).
+ *  @OA\Info(
+ *    title="Yard | Digital Agency, OpenPUB API",
+ *    version="3.0.3",
+ *    termsOfService="https://www.yard.nl/",
+ *    @OA\Contact(
+ *      name="Yard | Digital Agency",
+ *      url="https://www.yard.nl/",
+ *      email="info@yard.nl"
+ *    ),
+ *    x={
+ *      "logo": {
+ *         "url": "https://www.yard.nl/wp-content/themes/theme-fusion/assets/img/logo-yard-da.svg"
+ *      },
+ *      "description": {
+ *         "$ref"="../chapters/description.md"
+ *      },
+ *      "externalDocs": {
+ *         "description": "Find out how to create Github repo for your OpenAPI spec.",
+ *         "url": "https://openwebconcept.bitbucket.io/openpub/"
+ *       }
+ *    },
+ *    @OA\License(
+ *      name="OpenWebConcept",
+ *      url="https://www.openwebconcept.nl/"
+ *    )
+ * )
+ */
 class RestAPIServiceProvider extends ServiceProvider
 {
     /**
@@ -30,50 +62,89 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register routes on the rest API.
-     *
-     * Main endpoint.
-     * @link https://url/wp-json/owc/openpub/v1
-     *
-     * Endpoint of the openpub-items, active and inactive.
-     * @link https://url/wp-json/owc/openpub/v1/items
-     *
-     * Endpoint of the openpub-items, active only.
-     * @link https://url/wp-json/owc/openpub/v1/items/active
-     *
-     * Endpoint of the openpub-item detail page.
-     * @link https://url/wp-json/owc/openpub/v1/items/{id}
-     *
-     * Endpoint of the openpub-item detail page.
-     * @link https://url/wp-json/owc/openpub/v1/items/{slug}
-     *
-     * Endpoint of the theme-items.
-     * @link https://url/wp-json/owc/openpub/v1/themes
-     *
-     * Endpoint of the theme detail page.
-     * @link https://url/wp-json/owc/openpub/v1/themes/{id}
-     *
-     * Endpoint of searching.
-     * @link https://url/wp-json/owc/openpub/v1/search
-     *
      * @return void
      */
-    public function registerRoutes()
+    public function registerRoutes(): void
     {
+        /**
+         *  @OA\Get(
+         *    path="/items/active",
+         *    tags={
+         *      "API"
+         *    },
+         *    operationId="getActiveItems",
+         *    summary="Get all active items",
+         *    @OA\Response(
+         *     response="200",
+         *     description="Returns all active items"
+         *    )
+         * )
+         */
         register_rest_route($this->namespace, 'items/active', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getActiveItems'],
         ]);
 
+        /**
+         *  @OA\Get(
+         *    path="/items",
+         *    tags={
+         *      "API"
+         *    },
+         *    operationId="getItems",
+         *    summary="Get all active and inactive items",
+         *    @OA\Response(
+         *     response="200",
+         *     description="Returns all active and inactive items"
+         *    )
+         * )
+         */
         register_rest_route($this->namespace, 'items', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getItems'],
         ]);
 
+        /**
+         *  @OA\Get(
+         *    path="/items/{id}",
+         *    tags={
+         *      "API"
+         *    },
+         *    operationId="getItems",
+         *    summary="Get an openpub item by ID",
+         *    @OA\Response(
+         *     response="200",
+         *     description="Get an openpub item by ID"
+         *    ),
+         *     @OA\Response(
+         *     response="404",
+         *     description="An OpenPub item with the specified ID was not found."
+         *    )
+         * )
+         */
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getItem'],
         ]);
 
+        /**
+         *  @OA\Get(
+         *    path="/items/{slug}",
+         *    tags={
+         *      "API"
+         *    },
+         *    operationId="getItemBySlug",
+         *    summary="Get an openpub item by slug",
+         *    @OA\Response(
+         *     response="200",
+         *     description="Get an openpub item by slug"
+         *    ),
+        *     @OA\Response(
+         *     response="404",
+         *     description="An OpenPub item with the specified slug was not found"
+         *    )
+         * )
+         */
         register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],

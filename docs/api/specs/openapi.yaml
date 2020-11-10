@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: 'Yard | Digital Agency, OpenPUB API'
+  termsOfService: 'https://www.yard.nl/'
+  contact:
+    name: 'Yard | Digital Agency'
+    url: 'https://www.yard.nl/'
+    email: info@yard.nl
+  license:
+    name: OpenWebConcept
+    url: 'https://www.openwebconcept.nl/'
+  version: 3.0.3
+  x-logo:
+    url: 'https://www.yard.nl/wp-content/themes/theme-fusion/assets/img/logo-yard-da.svg'
+  description:
+    $ref: ../chapters/description.md
+  x-externalDocs:
+    description: 'Find out how to create Github repo for your OpenAPI spec.'
+    url: 'https://openwebconcept.bitbucket.io/openpub/'
+servers:
+  -
+    url: 'https://{site}/wp-json/owc/openpub/v1'
+    description: ''
+paths:
+  /items/active:
+    get:
+      tags:
+        - API
+      summary: 'Get all active items'
+      operationId: getActiveItems
+      responses:
+        '200':
+          description: 'Returns all active items'
+  /items:
+    get:
+      tags:
+        - API
+      summary: 'Get all active and inactive items'
+      operationId: getItems
+      responses:
+        '200':
+          description: 'Returns all active and inactive items'
+  '/items/{id}':
+    get:
+      tags:
+        - API
+      summary: 'Get an openpub item by ID'
+      operationId: getItems
+      responses:
+        '200':
+          description: 'Get an openpub item by ID'
+        '404':
+          description: 'An OpenPub item with the specified ID was not found.'
+  '/items/{slug}':
+    get:
+      tags:
+        - API
+      summary: 'Get an openpub item by slug'
+      operationId: getItemBySlug
+      responses:
+        '200':
+          description: 'Get an openpub item by slug'
+        '404':
+          description: 'An OpenPub item with the specified slug was not found'
