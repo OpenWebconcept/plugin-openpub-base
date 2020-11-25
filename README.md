@@ -1,24 +1,60 @@
-# README #
+# README
 
 This README documents whatever steps are necessary to get this plugin up and running.
 
-## How do I get set up ##
+## Requirements
+
+- WordPress 5.0
+- Plugins (with minimal version)
+  - [Metabox v4.14.0](https://metabox.io/)
+  - [Meta Box Group v1.2.14](https://metabox.io/plugins/meta-box-group/)
+- Libraries
+  - [Extended CPT v4.0](https://github.com/johnbillion/extended-cpts)
+
+## Suggestions
+
+- Plugins (with minimal version)
+  - [ElasticPress v2.7.0](https://github.com/10up/ElasticPress)
+
+## How do I get set up
+
+### Via [Composer](https://getcomposer.org/) (recommended)
+
+Add the repository:
+
+```ruby
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@bitbucket.org:openwebconcept/plugin-openpub-base.git"
+        }
+    ]
+```
+
+and add the require statement:
+
+```ruby
+    "plugin/openpub-base": "dev-master",
+```
+
+### Manually
 
 * Unzip and/or move all files to the /wp-content/plugins/openpub-base directory
-* Log into WordPress admin and activate the ‘OpenPub Base’ plugin through the ‘Plugins’ menu
-* Go to the 'OpenPub instellingen pagina' in the left-hand menu to enter some of the required settings
+* run `composer install` in the 'openpub-base' directory to get all dependencies.
+* Log into WordPress admin and activate the ‘OpenPub Base’ plugin through the ‘Plugins’ menu.
+* Go to the 'OpenPub instellingen pagina' in the left-hand menu to enter some of the required settings.
 
-## Hooks ##
+## Hooks
 
 See [Hooks](/docs/hooks.md)
 
-## Rest api ##
+## REST API
 
-See [Rest Api](/docs/restapi.md)
+See [REST API](/docs/restapi.md)
 
-## Translations ##
+## Translations
 
-If you want to use your own set of labels/names/descriptions and so on you can do so. 
+If you want to use your own set of labels/names/descriptions and so on you can do so.
 All text output in this plugin is controlled via the gettext methods.
 
 Please use your preferred way to make your own translations from the /wp-content/plugins/openpub-base/languages/openpub-base.pot file
@@ -32,7 +68,7 @@ This plugin provides an easy interface for custom translations and a way to stor
 For instructions how to use the 'Loco Translate' plugin, we advice you to read the Beginners's guide page on their website: https://localise.biz/wordpress/plugin/beginners
 or start at the homepage: https://localise.biz/wordpress/plugin
 
-## Running tests ##
+## Running tests
 
 To run the Unit tests go to a command-line.
 
@@ -48,15 +84,15 @@ For code coverage report, generate report with command line command and view res
 phpunit --coverage-html ./tests/coverage
 ```
 
-## Contribution guidelines ##
+## Contribution guidelines
 
-### Writing tests ###
+### Writing tests
 
-Have a look at the code coverage reports to see where more coverage can be obtained. 
+Have a look at the code coverage reports to see where more coverage can be obtained.
 Write tests
 Create a Pull request to the OWC repository
 
-### Who do I talk to ###
+### Who do I talk to
 
 IF you have questions about or suggestions for this plugin, please contact
-[Holgers Peters](mailto:hpeters@Buren.nl) from Gemeente Buren.
+[Holgers Peters](mailto:hpeters@buren.nl) from Gemeente Buren.

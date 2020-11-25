@@ -7,7 +7,6 @@ use WP_Post;
 
 class ConnectedThemeItemField extends CreatesFields
 {
-
     /**
      * Creates an array of connected posts.
      *
@@ -17,13 +16,13 @@ class ConnectedThemeItemField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
+        $connections = array_filter($this->plugin->make('config')->get('p2p_connections.connections'), function ($connection) {
             return in_array('openpub-theme', $connection, true);
         });
 
         $result = [];
 
-        foreach ($connections as $connection) {
+        foreach ($connections ?? [] as $connection) {
             $type          = $connection['from'] . '_to_' . $connection['to'];
             $result[$type] = $this->getConnectedItems($post->ID, $type);
         }
@@ -33,15 +32,10 @@ class ConnectedThemeItemField extends CreatesFields
 
     /**
      * Get connected items of a post, for a specific connection type.
-     *
-     * @param int    $postID
-     * @param string $type
-     *
-     * @return array
      */
     protected function getConnectedItems(int $postID, string $type): array
     {
-        $connection = p2p_type($type);
+        $connection = \p2p_type($type);
 
         if (!$connection) {
             return [

@@ -20,7 +20,7 @@ class ConnectedField extends CreatesFields
             return [];
         }
 
-        $connections = array_filter($this->plugin->config->get('p2p_connections.connections'), function ($connection) {
+        $connections = array_filter($this->plugin->make('config')->get('p2p_connections.connections'), function ($connection) {
             return in_array('openpub-item', $connection, true);
         });
 

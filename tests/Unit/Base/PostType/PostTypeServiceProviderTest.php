@@ -25,20 +25,21 @@ class PostTypeServiceProviderTest extends TestCase
     public function check_registration_of_posttypes()
     {
         $config = m::mock(Config::class);
+        $loader = m::mock(Loader::class);
         $plugin = m::mock(Plugin::class);
 
-        $plugin->config = $config;
-        $plugin->loader = m::mock(Loader::class);
+        $plugin->shouldReceive('make')->with('loader')->andReturn($loader);
+        $plugin->shouldReceive('make')->with('config')->andReturn($config);
 
         $service = new PostTypeServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addAction')->withArgs([
+        $plugin->make('loader')->shouldReceive('addAction')->withArgs([
             'init',
             $service,
             'registerPostTypes',
         ])->once();
 
-        $plugin->loader->shouldReceive('addAction')->withArgs([
+        $plugin->make('loader')->shouldReceive('addAction')->withArgs([
             'pre_get_posts',
             $service,
             'orderByPublishedDate',

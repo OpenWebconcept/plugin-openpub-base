@@ -41,10 +41,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 
     /**
      * Get comment items of a post.
-     *
-     * @param int    $postID
-     *
-     * @return array
      */
     protected function getComments(int $postID): array
     {

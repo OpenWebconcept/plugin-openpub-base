@@ -1,17 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * BasePlugin which sets all the serviceproviders.
  */
 
 namespace OWC\OpenPub\Base\Foundation;
 
+use Illuminate\Container\Container;
+use OWC\OpenPub\Base\Foundation\Bootstrap\LoadConfiguration;
+use OWC\OpenPub\Base\Foundation\FeatureFlags\FeatureFlagProvider;
+use OWC\OpenPub\Base\Foundation\FeatureFlags\FeatureFlagService;
+
 /**
  * BasePlugin which sets all the serviceproviders.
  */
-class Plugin
+class Plugin extends Container
 {
-
     /**
      * Name of the plugin.
      *
@@ -21,18 +27,17 @@ class Plugin
 
     /**
      * Version of the plugin.
-     * Used for setting versions of enqueue scripts and styles.
      *
-     * @var string VERSION
+     * @var string
      */
-    const VERSION = '1.2.0';
+    const VERSION = OWC_OP_VERSION;
 
     /**
      * Path to the root of the plugin.
      *
-     * @var string $rootPath
+     * @var string $basePath
      */
-    protected $rootPath;
+    protected $basePath;
 
     /**
      * Instance of the configuration repository.
@@ -48,23 +53,78 @@ class Plugin
      */
     public $loader;
 
+    /** @var Container */
+    protected $container;
+
+    /** @var Plugin */
+    protected static $instance;
+
     /**
      * Constructor of the BasePlugin
      *
-     * @param string $rootPath
+     * @param string $basePath
+     */
+    private function __construct(string $basePath = null)
+    {
+        if (!$basePath) {
+            $basePath = __DIR__ .'/../../../';
+        }
+        $this->setBasePath($basePath);
+        \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+        $this->registerBaseBindings();
+    }
+
+    /**
+     * Set the base path for the application.
+     *
+     * @param  string  $basePath
+     * @return $this
+     */
+    public function setBasePath($basePath)
+    {
+        $this->basePath = rtrim($basePath, '\/');
+
+        return $this;
+    }
+
+    /**
+     * Return the Plugin instance
+     *
+     * @param string $basePath
+     *
+     * @return self
+     */
+    public static function getInstance($basePath = null) : self
+    {
+        if (null === static::$instance) {
+            static::$instance = new static($basePath);
+        }
+
+        return static::$instance;
+    }
+
+    /**
+     * Register the basic bindings into the container.
      *
      * @return void
      */
-    public function __construct(string $rootPath)
+    protected function registerBaseBindings()
     {
-        $this->rootPath = $rootPath;
-        load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
-
-        $this->loader = new Loader;
-
-        $this->config = new Config($this->rootPath . '/config');
-        $this->config->setProtectedNodes(['core']);
-        $this->config->boot();
+        static::setInstance($this);
+        $this->instance('app', $this);
+        $this->instance(Container::class, $this);
+        $this->singleton('loader', Loader::class);
+        $this->singleton('featureflag', function ($app) {
+            return new FeatureFlagService(new FeatureFlagProvider($app->make('config')));
+        });
+        $this->make(LoadConfiguration::class)->bootstrap($this);
+        $this->singleton('dependencychecker', function ($app) {
+            return new DependencyChecker(
+                $app->make('config')->get('dependencies.required'),
+                $app->make('config')->get('dependencies.suggested'),
+                new DismissableAdminNotice
+            );
+        });
     }
 
     /**
@@ -76,19 +136,23 @@ class Plugin
      */
     public function boot(): bool
     {
-        $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
-
-        if ($dependencyChecker->failed()) {
-            $dependencyChecker->notify();
-            deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+        /** @var DependencyChecker $dependencyChecker */
+        $dependencyChecker = $this->make('dependencychecker');
+        if ($dependencyChecker->hasFailures()) {
+            $dependencyChecker->notifyFailed();
+            \deactivate_plugins(\plugin_basename(OWC_OP_PLUGIN_FILE));
 
             return false;
+        }
+
+        if ($dependencyChecker->hasSuggestions()) {
+            $dependencyChecker->notifySuggestions();
         }
 
         // Set up service providers
         $this->callServiceProviders('register');
 
-        if (is_admin()) {
+        if (\is_admin()) {
             $this->callServiceProviders('register', 'admin');
             $this->callServiceProviders('boot', 'admin');
         }
@@ -101,10 +165,21 @@ class Plugin
         $this->callServiceProviders('boot');
 
         // Register the Hook loader.
-        $this->loader->addAction('init', $this, 'filterPlugin', 4);
-        $this->loader->register();
+        $this->make('loader')->addAction('init', $this, 'filterPlugin', 4);
+        $this->make('loader')->register();
 
         return true;
+    }
+
+    /**
+     * Get the path to the application configuration files.
+     *
+     * @param  string  $path Optionally, a path to append to the config path
+     * @return string
+     */
+    public function configPath($path = '')
+    {
+        return $this->getBasePath().DIRECTORY_SEPARATOR.'config'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 
     /**
@@ -112,7 +187,7 @@ class Plugin
      *
      * @return void
      */
-    public function filterPlugin()
+    public function filterPlugin(): void
     {
         do_action('owc/' . self::NAME . '/plugin', $this);
     }
@@ -127,10 +202,10 @@ class Plugin
      *
      * @throws \Exception
      */
-    public function callServiceProviders($method, $key = '')
+    public function callServiceProviders($method, $key = ''): void
     {
         $offset   = $key ? "core.providers.{$key}" : 'core.providers';
-        $services = $this->config->get($offset);
+        $services = $this->make('config')->get($offset);
 
         foreach ($services as $service) {
             if (is_array($service)) {
@@ -154,7 +229,7 @@ class Plugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -164,7 +239,7 @@ class Plugin
      *
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return static::VERSION;
     }
@@ -174,8 +249,8 @@ class Plugin
      *
      * @return string
      */
-    public function getRootPath(): string
+    public function getBasePath(): string
     {
-        return $this->rootPath;
+        return $this->basePath;
     }
 }

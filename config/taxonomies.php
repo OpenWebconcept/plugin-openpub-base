@@ -1,21 +1,15 @@
 <?php
 
-return [
+use OWC\OpenPub\Base\Foundation\Plugin;
 
-    /**
-     * Examples of registering taxonomies: http://johnbillion.com/extended-cpts/
-     */
-    'openpub-audience' => [
+$taxonomies = [];
+if (Plugin::getInstance()->make('featureflag')->isActive('taxonomies.openpub-audience')) {
+    $taxonomies['openpub-audience'] = [
         'object_types' => ['openpub-item'],
         'args'         => [
             'show_in_rest'      => true,
             'show_admin_column' => true,
-            'capabilities'      => [
-                //                'manage_terms' => 'manage_openpub_categories',
-                //                'edit_terms'   => 'manage_openpub_categories',
-                //                'delete_terms' => 'manage_openpub_categories',
-                //                'assign_terms' => 'edit_openpub_posts'
-            ]
+            'capabilities'      => []
         ],
         'names'        => [
             # Override the base names used for labels:
@@ -23,19 +17,16 @@ return [
             'plural'   => _x('Audiences', 'Taxonomy definition', 'openpub-base'),
             'slug'     => 'openpub-doelgroep'
         ]
-    ],
+    ];
+}
 
-    'openpub-type' => [
+if (Plugin::getInstance()->make('featureflag')->isActive('taxonomies.openpub-type')) {
+    $taxonomies['openpub-type'] = [
         'object_types' => ['openpub-item'],
         'args'         => [
             'show_in_rest'      => true,
             'show_admin_column' => true,
-            'capabilities'      => [
-                //                'manage_terms' => 'manage_openpub_categories',
-                //                'edit_terms'   => 'manage_openpub_categories',
-                //                'delete_terms' => 'manage_openpub_categories',
-                //                'assign_terms' => 'edit_openpub_posts'
-            ]
+            'capabilities'      => []
         ],
         'names'        => [
             # Override the base names used for labels:
@@ -43,18 +34,16 @@ return [
             'plural'   => _x('Types', 'Taxonomy definition', 'openpub-base'),
             'slug'     => 'openpub-type'
         ]
-    ],
-    'openpub-usage'  => [
+    ];
+}
+
+if (Plugin::getInstance()->make('featureflag')->isActive('taxonomies.openpub-usage')) {
+    $taxonomies['openpub-usage']  = [
         'object_types' => ['openpub-item'],
         'args'         => [
             'show_in_rest'      => true,
             'show_admin_column' => true,
-            'capabilities'      => [
-                //                'manage_terms' => 'manage_openpub_categories',
-                //                'edit_terms'   => 'manage_openpub_categories',
-                //                'delete_terms' => 'manage_openpub_categories',
-                //                'assign_terms' => 'edit_openpub_posts'
-            ]
+            'capabilities'      => []
         ],
         'names'        => [
             # Override the base names used for labels:
@@ -62,5 +51,7 @@ return [
             'plural'   => _x('Usages', 'Taxonomy definition', 'openpub-base'),
             'slug'     => 'openpub-toepassing'
         ]
-    ]
-];
+    ];
+}
+
+return $taxonomies;

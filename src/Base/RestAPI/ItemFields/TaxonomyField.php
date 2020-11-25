@@ -19,7 +19,7 @@ class TaxonomyField extends CreatesFields
     {
         $result = [];
 
-        foreach (array_keys($this->plugin->config->get('taxonomies')) as $taxonomy) {
+        foreach (array_keys($this->plugin->make('config')->get('taxonomies')) as $taxonomy) {
             $result[$taxonomy] = $this->getTerms($post->ID, $taxonomy);
         }
 

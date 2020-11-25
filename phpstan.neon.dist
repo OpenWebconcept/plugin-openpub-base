@@ -19,11 +19,11 @@ parameters:
     scanDirectories:
         - %currentWorkingDirectory%/src/
     ignoreErrors:
-        - '#Call to method get\(\) on an unknown class OWC\\OpenPub\\Base\\Config\.#'
-        # Uses func_get_args()
-        # Fixed in WordPress 5.3
-        - '#Function register_extended_taxonomy not found\.#'
-        #- '#^Function do_action(_ref_array)? invoked with [3456] parameters, 1-2 required\.$#'
+        - '#^Function p2p\_type not found.$#'
+        - '#^Function register\_extended\_taxonomy not found.$#'
+        - '#^Function apply_filters invoked with 3 parameters, (.+) required.$#'
+        - '#^Cannot access offset .*$#'
+        - '#^Offset .* does not exist on .*$#'
         #- '#^Function current_user_can invoked with 2 parameters, 1 required\.$#'
         #- '#^Function add_query_arg invoked with [123] parameters?, 0 required\.$#'
         #- '#^Function wp_sprintf invoked with [23456] parameters, 1 required\.$#'

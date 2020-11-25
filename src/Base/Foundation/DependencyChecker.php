@@ -26,16 +26,23 @@ class DependencyChecker
      */
     private $failed = [];
 
+    /** @var array */
+    private $suggestions = [];
+
+    /** @var DismissableAdminNotice */
+    protected $dismissableAdminNotice;
+
     /**
      * Determine which plugins need to be present.
      *
      * @param array $dependencies
-     *
-     * @return void
+     * @param array $suggestions
      */
-    public function __construct(array $dependencies)
+    public function __construct(array $dependencies, array $suggestions = [], $dismissableAdminNotice = null)
     {
-        $this->dependencies = $dependencies;
+        $this->dependencies           = $dependencies;
+        $this->suggestions            = $suggestions;
+        $this->dismissableAdminNotice = $dismissableAdminNotice;
     }
 
     /**
@@ -43,7 +50,7 @@ class DependencyChecker
      *
      * @return bool
      */
-    public function failed(): bool
+    public function hasFailures(): bool
     {
         foreach ($this->dependencies as $dependency) {
             switch ($dependency['type']) {
@@ -60,12 +67,33 @@ class DependencyChecker
     }
 
     /**
+     * Determines if the dependencies are not met.
+     *
+     * @return bool
+     */
+    public function hasSuggestions(): bool
+    {
+        foreach ($this->suggestions as $suggestion) {
+            switch ($suggestion['type']) {
+                case 'class':
+                    $this->checkClass($suggestion);
+                    break;
+                case 'plugin':
+                    $this->checkPlugin($suggestion);
+                    break;
+            }
+        }
+
+        return 0 < count($this->suggestions);
+    }
+
+    /**
      * Notifies the administrator which plugins need to be enabled,
      * or which plugins have the wrong version.
      *
      * @return void
      */
-    public function notify()
+    public function notifyFailed(): void
     {
         add_action('admin_notices', function () {
             $list = '<p>' . __(
@@ -81,6 +109,34 @@ class DependencyChecker
             $list .= '</ol>';
 
             printf('<div class="notice notice-error"><p>%s</p></div>', $list);
+        });
+    }
+
+    /**
+     * Notifies the administrator which plugins need to be enabled,
+     * or which plugins have the wrong version.
+     *
+     * @return void
+     */
+    public function notifySuggestions(): void
+    {
+        add_action('admin_notices', function () {
+            if (! $this->dismissableAdminNotice->isAdminNoticeActive('dependency-suggestions-forever')) {
+                return;
+            }
+            $list = '<p>' . __(
+                'The following plugins or libraries are suggested and supported to be used with the OpenPub:',
+                'openpub-base'
+            ) . '</p><ol>';
+
+            foreach ($this->suggestions as $suggestion) {
+                $info = (isset($suggestion['message']) and (!empty($suggestion['message']))) ? ' (' . $suggestion['message'] . ')' : '';
+                $list .= sprintf('<li>%s%s</li>', $suggestion['label'], $info);
+            }
+
+            $list .= '</ol>';
+
+            printf('<div data-dismissible="dependency-suggestions-forever" class="updated notice notice-info is-dismissible"><p>%s</p></div>', $list);
         });
     }
 

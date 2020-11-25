@@ -2,12 +2,13 @@
 
 namespace OWC\OpenPub\Base\ElasticPress;
 
+use Illuminate\Config\Repository;
 use OWC\OpenPub\Base\Models\Item;
 
 class ElasticPress
 {
     /**
-     * @var \OWC\OpenPub\Base\Foundation\Config
+     * @var Repository
      */
     private $config;
 
@@ -19,7 +20,7 @@ class ElasticPress
     /**
      * ElasticPress constructor.
      *
-     * @param \OWC\OpenPub\Base\Foundation\Config $config
+     * @param Repository $config
      */
     public function __construct($config, Item $item)
     {
@@ -30,12 +31,12 @@ class ElasticPress
     /**
      * Initialize ElasticPress integration.
      */
-    public function init()
+    public function init(): void
     {
         $this->setFilters();
     }
 
-    public function setFilters()
+    public function setFilters(): void
     {
         /**
          * Default settings
@@ -61,14 +62,8 @@ class ElasticPress
 
     /**
      * Set decay of post.
-     *
-     * @param int $decay
-     * @param array $formatted_args
-     * @param array $args
-     *
-     * @return int
      */
-    public function setDecay($decay, $formatted_args, $args)
+    public function setDecay(int $decay, array $formatted_args, array $args): int
     {
         return $this->config->get('elasticpress.expire.decay');
     }
@@ -132,7 +127,7 @@ class ElasticPress
     /**
      * Sets the filter to modify the posttypes which gets indexed in the ElasticSearch instance
      */
-    public function setIndexables($postTypes)
+    public function setIndexables(array $postTypes): array
     {
         return $this->config->get('elasticpress.indexables');
     }
@@ -166,38 +161,26 @@ class ElasticPress
 
     /**
      * Set the language for the ES instance.
-     *
-     * @var string $language
-     * @return string
      */
-    public function setLanguage($language, $analyzer)
+    public function setLanguage(string $language, string $analyzer): string
     {
         return $this->config->get('elasticpress.language');
     }
 
     /**
      * Set the args of the post which is synced to the instance.
-     *
-     * @param array $item
-     * @param int $postID
-     * @return array
      */
-    public function setPostSyncArgs($item, $postID)
+    public function setPostSyncArgs(array $item, int $postID): array
     {
         return $this->transform($item, $postID);
     }
 
     /**
      * Transforms the postArgs to a filterable object.
-     *
-     * @param $item
-     * @param $postID
-     *
-     * @return array
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
      */
-    protected function transform($item, $postID): array
+    protected function transform(array $item, int $postID): array
     {
         $author = $item['post_author'] ?? [];
         $item   = $this->item
@@ -263,7 +246,7 @@ class ElasticPress
     /**
      * Define all the necessary settings.
      */
-    public function setSettings()
+    public function setSettings(): void
     {
         $settings = $this->getSettings();
 
@@ -281,7 +264,7 @@ class ElasticPress
 
             define('EP_HOST', implode('', (array_filter($build))));
 
-            update_option('ep_host', EP_HOST);
+            \update_option('ep_host', EP_HOST);
         }
 
         if (isset($settings['_owc_setting_elasticsearch_prefix']) && (!defined('EP_INDEX_PREFIX'))) {
@@ -291,13 +274,8 @@ class ElasticPress
 
     /**
      * Sets the uniformed indexName for ElasticSearch, based on prefix, environment variable and site ID.
-     *
-     * @param $indexName
-     * @param $siteID
-     *
-     * @return string
      */
-    public function setIndexNameByEnvironment($indexName, $siteID)
+    public function setIndexNameByEnvironment(string $indexName, int $siteID): string
     {
         $siteUrl      = pathinfo(get_site_url());
         $siteBasename = $siteUrl['basename'];
@@ -335,18 +313,12 @@ class ElasticPress
         return get_option('_owc_openpub_base_settings', []);
     }
 
-    public function setSearchArgs($args, $scope, $query_args)
+    public function setSearchArgs(array $args, string $scope, array $query_args): array
     {
         return $args;
     }
 
-    /**
-     * @param $searchFields
-     * @param $args
-     *
-     * @return array
-     */
-    public function setSearchFields($searchFields, $args)
+    public function setSearchFields(array $searchFields, array $args): array
     {
         $searchFields[] = 'meta';
         $searchFields[] = 'connected';
@@ -354,29 +326,12 @@ class ElasticPress
         return $searchFields;
     }
 
-    /**
-     * @param $host
-     * @param $failures
-     * @param $path
-     * @param $args
-     *
-     * @return mixed
-     */
-    public function setRequestHost($host, $failures, $path, $args)
+    public function setRequestHost(string $host, int $failures, string $path, array $args): string
     {
         return $host;
     }
 
-    /**
-     * @param $url
-     * @param $failures
-     * @param $host
-     * @param $path
-     * @param $args
-     *
-     * @return mixed
-     */
-    public function setRequestUrl($url, $failures, $host, $path, $args)
+    public function setRequestUrl(string $url, int $failures, string $host, string $path, array $args): string
     {
         return $url;
     }

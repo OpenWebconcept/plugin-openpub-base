@@ -25,14 +25,15 @@ class RestAPIServiceProviderTest extends TestCase
     public function check_registration_of_rest_endpoints()
     {
         $config = m::mock(Config::class);
+        $loader = m::mock(Loader::class);
         $plugin = m::mock(Plugin::class);
 
-        $plugin->config = $config;
-        $plugin->loader = m::mock(Loader::class);
+        $plugin->shouldReceive('make')->with('loader')->andReturn($loader);
+        $plugin->shouldReceive('make')->with('config')->andReturn($config);
 
         $service = new RestAPIServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $plugin->make('loader')->shouldReceive('addFilter')->withArgs([
             'owc/config-expander/rest-api/whitelist',
             $service,
             'whitelist',
@@ -40,7 +41,7 @@ class RestAPIServiceProviderTest extends TestCase
             1
         ])->once();
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $plugin->make('loader')->shouldReceive('addFilter')->withArgs([
             'rest_api_init',
             $service,
             'registerRoutes'

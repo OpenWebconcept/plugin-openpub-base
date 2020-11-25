@@ -6,7 +6,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
     public function register()
     {
-        $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
+        $this->plugin->make('loader')->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
     }
 
     /**
@@ -18,7 +18,7 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerMetaboxes($rwmbMetaboxes)
     {
-        $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $configMetaboxes = $this->plugin->make('config')->get('metaboxes');
         $metaboxes       = [];
 
         foreach ($configMetaboxes as $metabox) {

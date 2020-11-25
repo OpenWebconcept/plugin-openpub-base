@@ -24,14 +24,14 @@ class SettingsServiceProviderTest extends TestCase
     public function check_registration_of_settings_metaboxes()
     {
         $config = m::mock(Config::class);
+        $loader = m::mock(Loader::class);
         $plugin = m::mock(Plugin::class);
-
-        $plugin->config = $config;
-        $plugin->loader = m::mock(Loader::class);
+        $plugin->shouldReceive('make')->with('loader')->andReturn($loader);
+        $plugin->shouldReceive('make')->with('config')->andReturn($config);
 
         $service = new SettingsServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $plugin->make('loader')->shouldReceive('addFilter')->withArgs([
             'mb_settings_pages',
             $service,
             'registerSettingsPage',
@@ -39,7 +39,7 @@ class SettingsServiceProviderTest extends TestCase
             1
         ])->once();
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
+        $plugin->make('loader')->shouldReceive('addFilter')->withArgs([
             'rwmb_meta_boxes',
             $service,
             'registerSettings',

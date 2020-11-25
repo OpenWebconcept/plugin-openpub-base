@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OWC OpenPub\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-15 14:55+0100\n"
-"PO-Revision-Date: 2018-11-15 14:56+0100\n"
+"POT-Creation-Date: 2020-11-25 21:12+0100\n"
+"PO-Revision-Date: 2020-11-25 21:13+0100\n"
 "Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
-"Language-Team: Yard Digital <inf@yard.nl>\n"
+"Language-Team: Yard Digital <info@yard.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -51,55 +51,55 @@ msgstr ""
 msgid "Select end date"
 msgstr "Selecteer een einddatum"
 
-#: config/metaboxes.php:34
+#: config/metaboxes.php:35
 msgid "Links"
 msgstr "Links"
 
-#: config/metaboxes.php:41
+#: config/metaboxes.php:42
 msgid "Add new link"
 msgstr "Voeg nieuwe link toe"
 
-#: config/metaboxes.php:45
+#: config/metaboxes.php:46
 msgid "Link title"
 msgstr "Link titel"
 
-#: config/metaboxes.php:46 config/metaboxes.php:73
+#: config/metaboxes.php:47 config/metaboxes.php:74
 msgid "Use the title to replace the URL"
 msgstr "Wordt gebruikt om de link te tonen ipv de URL"
 
-#: config/metaboxes.php:51
+#: config/metaboxes.php:52
 msgid "Link URL"
 msgstr "Link URL"
 
-#: config/metaboxes.php:52 config/metaboxes.php:79 config/settings.php:14
+#: config/metaboxes.php:53 config/metaboxes.php:80 config/settings.php:14
 msgid "URL including http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/metaboxes.php:61
+#: config/metaboxes.php:62
 msgid "Downloads"
 msgstr "Downloads"
 
-#: config/metaboxes.php:68
+#: config/metaboxes.php:69
 msgid "Add new download"
 msgstr "Voeg nieuwe download toe"
 
-#: config/metaboxes.php:72
+#: config/metaboxes.php:73
 msgid "Download title"
 msgstr "Download titel"
 
-#: config/metaboxes.php:78
+#: config/metaboxes.php:79
 msgid "Download URL"
 msgstr "Download URL"
 
-#: config/metaboxes.php:88
+#: config/metaboxes.php:89
 msgid "Other"
 msgstr "Overig"
 
-#: config/metaboxes.php:91
+#: config/metaboxes.php:92
 msgid "Notes"
 msgstr "Vrij notitieveld"
 
-#: config/metaboxes.php:92
+#: config/metaboxes.php:93
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
@@ -107,13 +107,13 @@ msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 msgid "Connected item(s)"
 msgstr "Gekoppelde item(s)"
 
-#: config/p2p_connections.php:14 config/posttypes.php:108
-#: config/posttypes.php:109
+#: config/p2p_connections.php:14 config/posttypes.php:101
+#: config/posttypes.php:102
 msgid "Theme"
 msgstr "Thema"
 
-#: config/p2p_connections.php:19 config/posttypes.php:147
-#: config/posttypes.php:148 config/posttypes.php:164 config/posttypes.php:165
+#: config/p2p_connections.php:19 config/posttypes.php:140
+#: config/posttypes.php:141 config/posttypes.php:157 config/posttypes.php:158
 msgid "Subtheme"
 msgstr "Subthema"
 
@@ -121,243 +121,243 @@ msgstr "Subthema"
 msgid "Locations"
 msgstr "Locaties"
 
-#: config/posttypes.php:25 config/posttypes.php:65
+#: config/posttypes.php:20 config/posttypes.php:59
 msgctxt "Admin Filter definition"
 msgid "Type"
 msgstr "Type"
 
-#: config/posttypes.php:29 config/posttypes.php:69
+#: config/posttypes.php:24 config/posttypes.php:63
 msgctxt "Admin Filter definition"
 msgid "Audience"
 msgstr "Doelgroep"
 
-#: config/posttypes.php:33 config/posttypes.php:73
+#: config/posttypes.php:28 config/posttypes.php:67
 msgctxt "Admin Filter definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/posttypes.php:37 config/posttypes.php:45
+#: config/posttypes.php:32 config/posttypes.php:39
 msgid "Expired"
 msgstr "Verlopen"
 
-#: config/posttypes.php:49
+#: config/posttypes.php:43
 msgid "No expire date"
 msgstr "Geen verloopdatum"
 
-#: config/posttypes.php:51
+#: config/posttypes.php:45
 msgid "Will expire on"
 msgstr "Verloopt op"
 
-#: config/posttypes.php:57
+#: config/posttypes.php:51
 msgid "Published"
 msgstr "Gepubliceerd"
 
-#: config/posttypes.php:77
+#: config/posttypes.php:71
 msgctxt "Admin Filter definition"
 msgid "Aspect"
 msgstr "Kenmerk"
 
-#: config/posttypes.php:82 config/posttypes.php:84
+#: config/posttypes.php:76 config/posttypes.php:78
 msgid "OpenPub item"
 msgstr "OpenPub item"
 
-#: config/posttypes.php:83
+#: config/posttypes.php:77
 msgid "OpenPub items"
 msgstr "OpenPub items"
 
-#: config/posttypes.php:85 config/posttypes.php:86
+#: config/posttypes.php:79 config/posttypes.php:80
 msgid "Add new OpenPub"
 msgstr "Nieuw OpenPub item"
 
-#: config/posttypes.php:87
+#: config/posttypes.php:81
 msgid "New OpenPub"
 msgstr "Nieuw OpenPub item"
 
-#: config/posttypes.php:88
+#: config/posttypes.php:82
 msgid "Edit OpenPub"
 msgstr "Bewerk OpenPub item"
 
-#: config/posttypes.php:89
+#: config/posttypes.php:83
 msgid "View OpenPub"
 msgstr "Bekijk OpenPub item"
 
-#: config/posttypes.php:90
+#: config/posttypes.php:84
 msgid "All OpenPub items"
 msgstr "Alle OpenPub items"
 
-#: config/posttypes.php:91
+#: config/posttypes.php:85
 msgid "Search OpenPub items"
 msgstr "Zoek OpenPub items"
 
-#: config/posttypes.php:92
+#: config/posttypes.php:86
 msgid "Parent OpenPub items:"
 msgstr "Hoofd OpenPub items:"
 
-#: config/posttypes.php:93
+#: config/posttypes.php:87
 msgid "No OpenPub items found."
 msgstr "Geen OpenPub items gevonden."
 
-#: config/posttypes.php:94
+#: config/posttypes.php:88
 msgid "No OpenPub items found in trash."
 msgstr "Geen OpenPub items gevonden in prullenbak."
 
-#: config/posttypes.php:100
+#: config/posttypes.php:93
 msgctxt "Posttype definition"
 msgid "Item"
 msgstr "Item"
 
-#: config/posttypes.php:101
+#: config/posttypes.php:94
 msgctxt "Posttype definition"
 msgid "Items"
 msgstr "Items"
 
-#: config/posttypes.php:102
+#: config/posttypes.php:95
 msgctxt "post type general name"
 msgid "Items"
 msgstr "Items"
 
-#: config/posttypes.php:110 config/posttypes.php:111
+#: config/posttypes.php:103 config/posttypes.php:104
 msgid "Add new theme"
 msgstr "Voeg nieuwe thema toe"
 
-#: config/posttypes.php:112
+#: config/posttypes.php:105
 msgid "Edit theme"
 msgstr "Bewerk thema"
 
-#: config/posttypes.php:113
+#: config/posttypes.php:106
 msgid "New theme"
 msgstr "Voeg nieuwe thema toe"
 
-#: config/posttypes.php:114
+#: config/posttypes.php:107
 msgid "View theme"
 msgstr "Bekijk thema"
 
-#: config/posttypes.php:115
+#: config/posttypes.php:108
 msgid "View themes"
 msgstr "Bekijk thema's"
 
-#: config/posttypes.php:116
+#: config/posttypes.php:109
 msgid "Search themes"
 msgstr "Zoek thema's"
 
-#: config/posttypes.php:117
+#: config/posttypes.php:110
 msgid "No themes found."
 msgstr "Geen thema's gevonden."
 
-#: config/posttypes.php:118
+#: config/posttypes.php:111
 msgid "No themes found in Trash."
 msgstr "Geen thema's gevonden in prullenbak."
 
-#: config/posttypes.php:119
+#: config/posttypes.php:112
 msgid "All themes"
 msgstr "Alle thema's"
 
-#: config/posttypes.php:120
+#: config/posttypes.php:113
 msgid "Themes archives"
 msgstr "Thema's archieven"
 
-#: config/posttypes.php:121
+#: config/posttypes.php:114
 msgid "Theme attributes"
 msgstr "Thema attributen"
 
-#: config/posttypes.php:122
+#: config/posttypes.php:115
 msgid "Insert into theme"
 msgstr "Voeg in thema"
 
-#: config/posttypes.php:123 config/posttypes.php:162
+#: config/posttypes.php:116 config/posttypes.php:155
 msgid "Featured image"
 msgstr "Aanbevolen afbeelding"
 
-#: config/posttypes.php:124 config/posttypes.php:163
+#: config/posttypes.php:117 config/posttypes.php:156
 msgid "Set featured image"
 msgstr "Stel aanbevolen afbeelding in"
 
-#: config/posttypes.php:125 config/posttypes.php:126
+#: config/posttypes.php:118 config/posttypes.php:119
 msgid "Themes"
 msgstr "Thema's"
 
-#: config/posttypes.php:127
+#: config/posttypes.php:120
 msgid "Parent themes:"
 msgstr "Hoofd thema's:"
 
-#: config/posttypes.php:139
+#: config/posttypes.php:132
 msgctxt "Posttype definition"
 msgid "Theme"
 msgstr "Thema"
 
-#: config/posttypes.php:140
+#: config/posttypes.php:133
 msgctxt "Posttype definition"
 msgid "Themes"
 msgstr "Thema's"
 
-#: config/posttypes.php:149 config/posttypes.php:150
+#: config/posttypes.php:142 config/posttypes.php:143
 msgid "Add new subtheme"
 msgstr "Voeg nieuwe subthema toe"
 
-#: config/posttypes.php:151
+#: config/posttypes.php:144
 msgid "Edit subtheme"
 msgstr "Bewerk subthema"
 
-#: config/posttypes.php:152
+#: config/posttypes.php:145
 msgid "New subtheme"
 msgstr "Voeg nieuwe subthema toe"
 
-#: config/posttypes.php:153
+#: config/posttypes.php:146
 msgid "View subtheme"
 msgstr "Bekijk subthema"
 
-#: config/posttypes.php:154
+#: config/posttypes.php:147
 msgid "View subthemes"
 msgstr "Bekijk subthema's"
 
-#: config/posttypes.php:155
+#: config/posttypes.php:148
 msgid "Search subthemes"
 msgstr "Zoek subthema's"
 
-#: config/posttypes.php:156
+#: config/posttypes.php:149
 msgid "No subthemes found."
 msgstr "Geen subthema's gevonden."
 
-#: config/posttypes.php:157
+#: config/posttypes.php:150
 msgid "No subthemes found in Trash."
 msgstr "Geen subthema's gevonden in prullenbak."
 
-#: config/posttypes.php:158
+#: config/posttypes.php:151
 msgid "All subthemes"
 msgstr "Alle subthema's"
 
-#: config/posttypes.php:159
+#: config/posttypes.php:152
 msgid "Subthemes archives"
 msgstr "Subthema's archieven"
 
-#: config/posttypes.php:160
+#: config/posttypes.php:153
 msgid "Subtheme attributes"
 msgstr "Subthema attributen"
 
-#: config/posttypes.php:161
+#: config/posttypes.php:154
 msgid "Insert into subtheme"
 msgstr "Voeg in subthema"
 
-#: config/posttypes.php:166
+#: config/posttypes.php:159
 msgid "Parent subthemes:"
 msgstr "Hoofd subthema's:"
 
-#: config/posttypes.php:182
+#: config/posttypes.php:174
 msgctxt "Posttype definition"
 msgid "Subtheme"
 msgstr "Subthema"
 
-#: config/posttypes.php:183
+#: config/posttypes.php:175
 msgctxt "Posttype definition"
 msgid "Subthemes"
 msgstr "Subthema's"
 
-#: config/posttypes.php:205
+#: config/posttypes.php:195
 msgctxt "Posttype definition"
 msgid "Location"
 msgstr "Locatie"
 
-#: config/posttypes.php:206
+#: config/posttypes.php:196
 msgctxt "Posttype definition"
 msgid "Locations"
 msgstr "Locaties"
@@ -424,53 +424,54 @@ msgctxt "OpenPub settings tab"
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
 
-#: config/taxonomies.php:22
+#: config/taxonomies.php:15
 msgctxt "Taxonomy definition"
 msgid "Audience"
 msgstr "Doelgroep"
 
-#: config/taxonomies.php:23
+#: config/taxonomies.php:16
 msgctxt "Taxonomy definition"
 msgid "Audiences"
 msgstr "Doelgroepen"
 
-#: config/taxonomies.php:42
+#: config/taxonomies.php:32
 msgctxt "Taxonomy definition"
 msgid "Type"
 msgstr "Type"
 
-#: config/taxonomies.php:43
+#: config/taxonomies.php:33
 msgctxt "Taxonomy definition"
 msgid "Types"
 msgstr "Typen"
 
-#: config/taxonomies.php:61
+#: config/taxonomies.php:49
 msgctxt "Taxonomy definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/taxonomies.php:62
+#: config/taxonomies.php:50
 msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr "Toepassingen"
 
-#: src/Base/Foundation/DependencyChecker.php:62
+#: src/Base/Foundation/DependencyChecker.php:72
 msgid "The following plugins are required to use the OpenPub:"
 msgstr "De volgende plugins zijn vereist om gebruik te maken van de OpenPub:"
 
-#: src/Base/Foundation/DependencyChecker.php:98
+#: src/Base/Foundation/DependencyChecker.php:112
 msgid "Class does not exist"
 msgstr "Class bestaat niet"
 
-#: src/Base/Foundation/DependencyChecker.php:112
+#: src/Base/Foundation/DependencyChecker.php:132
 msgid "Inactive"
 msgstr "Inactief"
 
-#: src/Base/Foundation/DependencyChecker.php:120
+#: src/Base/Foundation/DependencyChecker.php:140
 msgid "Minimal version:"
 msgstr "Minimale versie:"
 
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:51
+#: src/Base/RestAPI/ItemFields/ConnectedThemeItemField.php:48
 #, php-format
 msgid "Connection type \"%s\" does not exist"
 msgstr "Verbindingstype \"%s\" bestaat niet"

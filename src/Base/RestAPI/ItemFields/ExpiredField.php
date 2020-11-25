@@ -7,7 +7,6 @@ use WP_Post;
 
 class ExpiredField extends CreatesFields
 {
-
     /**
      * Get the expired status to the post.
      *
@@ -44,7 +43,7 @@ class ExpiredField extends CreatesFields
         }
         $timezone = \get_option('timezone_string');
         $date     = \DateTime::createFromFormat('Y-m-d H:i', implode('', $status), new \DateTimeZone($timezone));
-        $dateNow  = new \DateTime(null, new \DateTimeZone($timezone));
+        $dateNow  = new \DateTime('now', new \DateTimeZone($timezone));
         return [
             'message' => ($date < $dateNow) ? 'Item is expired' : '',
             'status'  => ($date < $dateNow),

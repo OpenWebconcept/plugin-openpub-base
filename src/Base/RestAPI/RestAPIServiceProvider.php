@@ -22,8 +22,8 @@ class RestAPIServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
-        $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
+        $this->plugin->make('loader')->addFilter('rest_api_init', $this, 'registerRoutes');
+        $this->plugin->make('loader')->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
 
         $this->registerModelFields();
     }
@@ -118,7 +118,7 @@ class RestAPIServiceProvider extends ServiceProvider
     private function registerModelFields(): void
     {
         // Add global fields for all Models.
-        foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
+        foreach ($this->plugin->make('config')->get('api.models') as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
                 $class = '\OWC\OpenPub\Base\Models\\' . ucfirst($posttype);
                 if (class_exists($class)) {

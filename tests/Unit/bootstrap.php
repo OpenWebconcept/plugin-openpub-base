@@ -19,6 +19,7 @@ array_map(function ($file) {
 
 define('WP_PLUGIN_DIR', __DIR__);
 define('WP_DEBUG', false);
+define('OWC_OP_VERSION', '1.0');
 
 /**
  * Bootstrap WordPress Mock.

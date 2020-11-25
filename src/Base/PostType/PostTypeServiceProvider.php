@@ -7,17 +7,10 @@ use WP_Query;
 
 class PostTypeServiceProvider extends ServiceProvider
 {
-    /**
-     * The array of posttype definitions from the config
-     *
-     * @var array
-     */
-    protected $configPostTypes = [];
-
     public function register()
     {
-        $this->plugin->loader->addAction('init', $this, 'registerPostTypes');
-        $this->plugin->loader->addAction('pre_get_posts', $this, 'orderByPublishedDate');
+        $this->plugin->make('loader')->addAction('init', $this, 'registerPostTypes');
+        $this->plugin->make('loader')->addAction('pre_get_posts', $this, 'orderByPublishedDate');
     }
 
     /**
@@ -26,7 +19,7 @@ class PostTypeServiceProvider extends ServiceProvider
      * @param WP_Query $query
      * @return void
      */
-    public function orderByPublishedDate(WP_Query $query)
+    public function orderByPublishedDate(WP_Query $query): void
     {
         if (!is_admin()) {
             return;
@@ -45,15 +38,13 @@ class PostTypeServiceProvider extends ServiceProvider
     }
 
     /**
-     * register custom posttypes.
+     * Register custom posttypes.
      */
     public function registerPostTypes()
     {
         if (function_exists('register_extended_post_type')) {
-            $this->configPostTypes = $this->plugin->config->get('posttypes');
-            foreach ($this->configPostTypes as $postTypeName => $postType) {
-                // Examples of registering post types: http://johnbillion.com/extended-cpts/
-                register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
+            foreach ($this->plugin->make('config')->get('posttypes', []) as $postTypeName => $postType) {
+                \register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
             }
         }
     }
