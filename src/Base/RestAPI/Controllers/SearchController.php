@@ -2,7 +2,7 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
-use OWC\OpenPub\Base\Models\Search;
+use OWC\OpenPub\Base\Repositories\Search;
 use WP_REST_Request;
 
 class SearchController extends ItemController
@@ -19,7 +19,7 @@ class SearchController extends ItemController
      */
     public function search(WP_REST_Request $request)
     {
-        $search = ( new Search($request) )
+        $search = (new Search($request))
             ->query(['post_type' => 'any'])
             ->query(apply_filters('owc/openpub/rest-api/search/query', $this->getPaginatorParams($request)));
 

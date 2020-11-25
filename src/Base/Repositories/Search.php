@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Models;
+namespace OWC\OpenPub\Base\Repositories;
 
 use WP_REST_Request;
 

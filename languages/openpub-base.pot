@@ -257,7 +257,7 @@ msgctxt "OpenPub instellingen subpagina"
 msgid "Portal"
 msgstr ""
 
-#: config/settings.php:13
+#: config/settings.php:12 config/settings.php:24
 msgid "Portal URL"
 msgstr ""
 
@@ -267,6 +267,10 @@ msgstr ""
 
 #: config/settings.php:20
 msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
+msgstr ""
+
+#: config/settings.php:25
+msgid "Use portal url in api."
 msgstr ""
 
 #: config/settings.php:29

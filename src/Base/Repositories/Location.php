@@ -1,8 +1,8 @@
 <?php
 
-namespace OWC\OpenPub\Base\Models;
+namespace OWC\OpenPub\Base\Repositories;
 
-class Location extends Model
+class Location extends AbstractRepository
 {
     protected $posttype = 'openpub-location';
 

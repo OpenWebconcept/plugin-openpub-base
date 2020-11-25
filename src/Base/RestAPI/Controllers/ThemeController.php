@@ -2,7 +2,7 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
-use OWC\OpenPub\Base\Models\Theme;
+use OWC\OpenPub\Base\Repositories\Theme;
 use WP_Post;
 use WP_REST_Request;
 

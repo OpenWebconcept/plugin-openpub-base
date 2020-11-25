@@ -2,7 +2,7 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
-use OWC\OpenPub\Base\Models\Item;
+use OWC\OpenPub\Base\Repositories\Item;
 use WP_Error;
 use WP_Post;
 use WP_Query;
@@ -149,7 +149,7 @@ class ItemController extends BaseController
 
         return $data;
     }
-    
+
     protected function getHighlightedParam(WP_REST_Request $request): bool
     {
         return filter_var($request->get_param('highlighted'), FILTER_VALIDATE_BOOLEAN);
@@ -161,7 +161,7 @@ class ItemController extends BaseController
             return false;
         }
 
-        if (! $this->validateBoolean($request->get_param('highlighted'))) {
+        if (!$this->validateBoolean($request->get_param('highlighted'))) {
             return false;
         };
 

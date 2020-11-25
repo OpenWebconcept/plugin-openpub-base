@@ -14,6 +14,22 @@ class RestAPIServiceProviderTest extends TestCase
     protected function setUp(): void
     {
         WP_Mock::setUp();
+
+        \WP_Mock::userFunction('wp_parse_args', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_openpub_item_slug'         => '',
+                '_owc_setting_use_portal_url'                   => 0,
+            ]
+        ]);
+
+        \WP_Mock::userFunction('get_option', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_openpub_item_slug'         => '',
+                '_owc_setting_use_portal_url'                   => 0,
+            ]
+        ]);
     }
 
     protected function tearDown(): void
@@ -49,31 +65,31 @@ class RestAPIServiceProviderTest extends TestCase
         $configRestAPIFields = [
             'posttype1' => [
                 'endpoint_field1' =>
-                    [
-                        'get_callback'    => ['object', 'callback1'],
-                        'update_callback' => null,
-                        'schema'          => null,
-                    ],
+                [
+                    'get_callback'    => ['object', 'callback1'],
+                    'update_callback' => null,
+                    'schema'          => null,
+                ],
                 'endpoint_field2' =>
-                    [
-                        'get_callback'    => ['object', 'callback2'],
-                        'update_callback' => null,
-                        'schema'          => null,
-                    ]
+                [
+                    'get_callback'    => ['object', 'callback2'],
+                    'update_callback' => null,
+                    'schema'          => null,
+                ]
             ],
             'posttype2' => [
                 'endpoint_field1' =>
-                    [
-                        'get_callback'    => ['object', 'callback1'],
-                        'update_callback' => null,
-                        'schema'          => null,
-                    ],
+                [
+                    'get_callback'    => ['object', 'callback1'],
+                    'update_callback' => null,
+                    'schema'          => null,
+                ],
                 'endpoint_field2' =>
-                    [
-                        'get_callback'    => ['object', 'callback2'],
-                        'update_callback' => null,
-                        'schema'          => null,
-                    ]
+                [
+                    'get_callback'    => ['object', 'callback2'],
+                    'update_callback' => null,
+                    'schema'          => null,
+                ]
             ]
         ];
 

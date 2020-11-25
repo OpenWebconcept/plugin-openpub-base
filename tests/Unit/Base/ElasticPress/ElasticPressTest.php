@@ -6,7 +6,7 @@ use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
-use OWC\OpenPub\Base\Models\Item;
+use OWC\OpenPub\Base\Repositories\Item;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
 use WP_Mock;
 

@@ -62,32 +62,38 @@ class RestAPIServiceProvider extends ServiceProvider
         register_rest_route($this->namespace, 'items/active', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getActiveItems'],
+            'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getItems'],
+            'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ItemController($this->plugin), 'getItem'],
+            'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
+            'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'themes', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new ThemeController($this->plugin), 'getThemes'],
+            'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'search', [
             'methods'  => WP_REST_Server::READABLE,
             'callback' => [new SearchController($this->plugin), 'search'],
             'args'     => [],
+            'permission_callback' => '__return_true',
         ]);
     }
 
@@ -120,7 +126,7 @@ class RestAPIServiceProvider extends ServiceProvider
         // Add global fields for all Models.
         foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
-                $class = '\OWC\OpenPub\Base\Models\\' . ucfirst($posttype);
+                $class = '\OWC\OpenPub\Base\Repositories\\' . ucfirst($posttype);
                 if (class_exists($class)) {
                     $creator = new $creator($this->plugin);
                     $class::addGlobalField($key, $creator, function () use ($creator) {

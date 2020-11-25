@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Admin\Settings;
+namespace OWC\OpenPub\Base\Settings;
 
 use OWC\OpenPub\Base\Metabox\MetaboxBaseServiceProvider;
 

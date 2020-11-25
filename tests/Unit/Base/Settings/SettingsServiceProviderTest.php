@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Admin\Settings;
+namespace OWC\OpenPub\Base\Settings;
 
 use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
@@ -10,12 +10,29 @@ use OWC\OpenPub\Base\Tests\Unit\TestCase;
 
 class SettingsServiceProviderTest extends TestCase
 {
-    protected function setUp(): void
+    public function setUp(): void
     {
         \WP_Mock::setUp();
+
+        \WP_Mock::userFunction('wp_parse_args', [
+            'return' => [
+                '_owc_setting_portal_url'               => '',
+                '_owc_setting_portal_openpub_item_slug' => '',
+                '_owc_setting_use_portal_url'           => 0,
+            ]
+        ]);
+
+        \WP_Mock::userFunction('get_option', [
+            'return' => [
+                '_owc_setting_portal_url'               => '',
+                '_owc_setting_portal_openpub_item_slug' => '',
+                '_owc_setting_use_portal_url'           => 0,
+
+            ]
+        ]);
     }
 
-    protected function tearDown(): void
+    public function tearDown(): void
     {
         \WP_Mock::tearDown();
     }
@@ -51,8 +68,8 @@ class SettingsServiceProviderTest extends TestCase
 
         $configSettingsPage = [
             'base' => [
-                'id'          => 'base_settings_page',
-                'option_name' => 'base_settings_page'
+                'id'          => '_owc_openpub_base_settings',
+                'option_name' => '_owc_openpub_base_settings'
             ]
         ];
 
@@ -74,8 +91,8 @@ class SettingsServiceProviderTest extends TestCase
                 'option_name' => 'existing_settings_page'
             ],
             'base' => [
-                'id'          => 'base_settings_page',
-                'option_name' => 'base_settings_page'
+                'id'          => '_owc_openpub_base_settings',
+                'option_name' => '_owc_openpub_base_settings'
             ]
         ];
 

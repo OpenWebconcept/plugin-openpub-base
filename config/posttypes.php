@@ -1,6 +1,6 @@
 <?php
 
-use OWC\OpenPub\Base\Models\Item;
+use OWC\OpenPub\Base\Repositories\Item;
 
 return [
     /**

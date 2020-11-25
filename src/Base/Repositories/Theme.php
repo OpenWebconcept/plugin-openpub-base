@@ -1,8 +1,8 @@
 <?php
 
-namespace OWC\OpenPub\Base\Models;
+namespace OWC\OpenPub\Base\Repositories;
 
-class Theme extends Model
+class Theme extends AbstractRepository
 {
     protected $posttype = 'openpub-theme';
 

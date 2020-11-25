@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Models;
+namespace OWC\OpenPub\Base\Repositories;
 
 use Closure;
 use OWC\OpenPub\Base\Exceptions\PropertyNotExistsException;
@@ -8,7 +8,7 @@ use OWC\OpenPub\Base\Support\CreatesFields;
 use WP_Post;
 use WP_Query;
 
-abstract class Model
+abstract class AbstractRepository
 {
     protected $posttype;
 

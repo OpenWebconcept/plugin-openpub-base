@@ -11,6 +11,7 @@ return [
         'columns'       => 1,
         'submit_button' => _x('Submit', 'OpenPub settings subpage', 'openpub-base'),
         'tabs'          => [
+            'base'          => _x('General', 'PDC settings tab', 'openpub-base'),
             'elasticsearch' => _x('Elasticsearch', 'OpenPub settings tab', 'openpub-base'),
         ],
     ],

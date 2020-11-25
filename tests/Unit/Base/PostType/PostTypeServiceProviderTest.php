@@ -14,6 +14,22 @@ class PostTypeServiceProviderTest extends TestCase
     protected function setUp(): void
     {
         WP_Mock::setUp();
+
+        \WP_Mock::userFunction('wp_parse_args', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_openpub_item_slug'         => '',
+                '_owc_setting_use_portal_url'                   => 0,
+            ]
+        ]);
+
+        \WP_Mock::userFunction('get_option', [
+            'return' => [
+                '_owc_setting_portal_url'                       => '',
+                '_owc_setting_portal_openpub_item_slug'         => '',
+                '_owc_setting_use_portal_url'                   => 0,
+            ]
+        ]);
     }
 
     protected function tearDown(): void
@@ -49,10 +65,8 @@ class PostTypeServiceProviderTest extends TestCase
          */
         $configPostTypes = [
             'posttype' => [
-                'args' => [
-                ],
-                'names' => [
-                ],
+                'args' => [],
+                'names' => [],
             ],
         ];
 

@@ -3,7 +3,7 @@
 namespace OWC\OpenPub\Base\ElasticPress;
 
 use OWC\OpenPub\Base\Foundation\ServiceProvider;
-use OWC\OpenPub\Base\Models\Item;
+use OWC\OpenPub\Base\Repositories\Item;
 
 class ElasticPressServiceProvider extends ServiceProvider
 {

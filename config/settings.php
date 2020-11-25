@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'base'          => [
         'id'             => 'general',
         'title'          => _x('Portal', 'OpenPub instellingen subpagina', 'openpub-base'),
@@ -21,6 +20,12 @@ return [
                     'id'   => 'setting_portal_openpub_item_slug',
                     'type' => 'text',
                 ],
+                'openpub_use_portal_url' => [
+                    'name' => __('Portal url', 'openpub-base'),
+                    'desc' => __('Use portal url in api.', 'openpub-base'),
+                    'id'   => 'setting_use_portal_url',
+                    'type' => 'checkbox',
+                ]
             ],
         ],
     ],
