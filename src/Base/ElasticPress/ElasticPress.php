@@ -30,12 +30,12 @@ class ElasticPress
     /**
      * Initialize ElasticPress integration.
      */
-    public function init()
+    public function init(): void
     {
         $this->setFilters();
     }
 
-    public function setFilters()
+    public function setFilters(): void
     {
         /**
          * Default settings
@@ -68,7 +68,7 @@ class ElasticPress
      *
      * @return int
      */
-    public function setDecay($decay, $formatted_args, $args)
+    public function setDecay(int $decay, array $formatted_args, array $args): int
     {
         return $this->config->get('elasticpress.expire.decay');
     }
@@ -82,7 +82,7 @@ class ElasticPress
      *
      * @return string
      */
-    public function setOffset($decay, $formatted_args, $args)
+    public function setOffset(string $decay, array $formatted_args, array $args): string
     {
         return $this->config->get('elasticpress.expire.offset');
     }
@@ -132,7 +132,7 @@ class ElasticPress
     /**
      * Sets the filter to modify the posttypes which gets indexed in the ElasticSearch instance
      */
-    public function setIndexables($postTypes)
+    public function setIndexables(array $postTypes): array
     {
         return $this->config->get('elasticpress.indexables');
     }
@@ -168,9 +168,10 @@ class ElasticPress
      * Set the language for the ES instance.
      *
      * @var string $language
+     * @var string $analyzer
      * @return string
      */
-    public function setLanguage($language, $analyzer)
+    public function setLanguage(string $language, string $analyzer): string
     {
         return $this->config->get('elasticpress.language');
     }
@@ -190,14 +191,14 @@ class ElasticPress
     /**
      * Transforms the postArgs to a filterable object.
      *
-     * @param $item
-     * @param $postID
+     * @param array $item
+     * @param int $postID
      *
      * @return array
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
      */
-    protected function transform($item, $postID): array
+    protected function transform(array $item, int $postID): array
     {
         $author = $item['post_author'] ?? [];
         $item   = $this->item
@@ -263,7 +264,7 @@ class ElasticPress
     /**
      * Define all the necessary settings.
      */
-    public function setSettings()
+    public function setSettings(): void
     {
         $settings = $this->getSettings();
 
@@ -281,7 +282,7 @@ class ElasticPress
 
             define('EP_HOST', implode('', (array_filter($build))));
 
-            update_option('ep_host', EP_HOST);
+            \update_option('ep_host', EP_HOST);
         }
 
         if (isset($settings['_owc_setting_elasticsearch_prefix']) && (!defined('EP_INDEX_PREFIX'))) {
@@ -292,12 +293,12 @@ class ElasticPress
     /**
      * Sets the uniformed indexName for ElasticSearch, based on prefix, environment variable and site ID.
      *
-     * @param $indexName
-     * @param $siteID
+     * @param string $indexName
+     * @param int $siteID
      *
      * @return string
      */
-    public function setIndexNameByEnvironment($indexName, $siteID)
+    public function setIndexNameByEnvironment(string $indexName, int $siteID): string
     {
         $siteUrl      = pathinfo(get_site_url());
         $siteBasename = $siteUrl['basename'];
@@ -330,23 +331,23 @@ class ElasticPress
     /**
      * @return array
      */
-    public function getSettings()
+    public function getSettings(): array
     {
-        return get_option('_owc_openpub_base_settings', []);
+        return \get_option('_owc_openpub_base_settings', []);
     }
 
-    public function setSearchArgs($args, $scope, $query_args)
+    public function setSearchArgs(array $args, array $scope, array $query_args): array
     {
         return $args;
     }
 
     /**
-     * @param $searchFields
-     * @param $args
+     * @param array $searchFields
+     * @param array $args
      *
      * @return array
      */
-    public function setSearchFields($searchFields, $args)
+    public function setSearchFields(array $searchFields, array $args): array
     {
         $searchFields[] = 'meta';
         $searchFields[] = 'connected';
@@ -355,28 +356,28 @@ class ElasticPress
     }
 
     /**
-     * @param $host
-     * @param $failures
-     * @param $path
-     * @param $args
+     * @param string $host
+     * @param int $failures
+     * @param string $path
+     * @param array $args
      *
-     * @return mixed
+     * @return string
      */
-    public function setRequestHost($host, $failures, $path, $args)
+    public function setRequestHost(string $host, int $failures, string $path, array $args): string
     {
         return $host;
     }
 
     /**
-     * @param $url
-     * @param $failures
-     * @param $host
-     * @param $path
-     * @param $args
+     * @param string $url
+     * @param int $failures
+     * @param string $host
+     * @param string $path
+     * @param array $args
      *
-     * @return mixed
+     * @return string
      */
-    public function setRequestUrl($url, $failures, $host, $path, $args)
+    public function setRequestUrl(string $url, int $failures, string $host, string $path, array $args): string
     {
         return $url;
     }

@@ -7,6 +7,8 @@ includes:
     # Include this extension
     - vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
+    bootstrapFiles:
+        - %currentWorkingDirectory%/phpstan-bootstrap.php
     # bootstrap: phpstan-bootstrap.php
     level: max
     checkMissingIterableValueType: false
@@ -19,10 +21,13 @@ parameters:
     scanDirectories:
         - %currentWorkingDirectory%/src/
     ignoreErrors:
-        - '#Call to method get\(\) on an unknown class OWC\\OpenPub\\Base\\Config\.#'
         # Uses func_get_args()
-        # Fixed in WordPress 5.3
+        - '#Function p2p_register_connection_type not found\.#'
+        - '#Function register_extended_post_type not found\.#'
         - '#Function register_extended_taxonomy not found\.#'
+        - '#^Function apply_filters invoked with 3 parameters, (.+) required.$#'
+        - '#^Parameter \#2 \$function_to_add of function add_action expects callable\(\): mixed, array\(mixed, mixed\) given\.$#'
+        - '#^Parameter \#2 \$function_to_add of function add_filter expects callable\(\): mixed, array\(mixed, mixed\) given\.$#'
         #- '#^Function do_action(_ref_array)? invoked with [3456] parameters, 1-2 required\.$#'
         #- '#^Function current_user_can invoked with 2 parameters, 1 required\.$#'
         #- '#^Function add_query_arg invoked with [123] parameters?, 0 required\.$#'

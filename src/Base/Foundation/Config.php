@@ -1,34 +1,27 @@
 <?php
-/**
- * Config object to store, save and retrieve configurations.
- */
 
 namespace OWC\OpenPub\Base\Foundation;
 
-/**
- * Config object to store, save and retrieve configurations.
- */
 class Config
 {
-
     /**
      * Directory where config files are located.
      *
-     * @var string $path
+     * @var string
      */
     protected $path;
 
     /**
      * Array with names of protected nodes in the config-items.
      *
-     * @var array $protectNodes
+     * @var array
      */
     protected $protectedNodes = [];
 
     /**
      * Array with all the config values.
      *
-     * @var array $items
+     * @var array
      */
     protected $items = [];
 
@@ -40,36 +33,26 @@ class Config
      *
      * @param string $path Path to the configuration files.
      * @param array  $items
-     *
-     * @return void
      */
     public function __construct($path, array $items = [])
     {
         $this->items = $items;
         $this->path  = $path;
-    }
-
-    /**
-     * Boot up the configuration repository.
-     *
-     * @return void
-     */
-    public function boot()
-    {
         $this->scanDirectory($this->getPath());
     }
 
     /**
      * Retrieve a specific config value from the configuration repository.
      *
-     * @param $setting
+     * @param string $setting
+     * @param string $default
      *
      * @return array|mixed
      */
-    public function get($setting)
+    public function get(string $setting, $default = '')
     {
-        if (! $setting) {
-            return $this->all();
+        if (!$setting) {
+            return $default;
         }
 
         $parts = explode('.', $setting);
@@ -93,7 +76,7 @@ class Config
      */
     public function set($key, $value = null)
     {
-        $keys = is_array($key) ? $key : [ $key => $value ];
+        $keys = is_array($key) ? $key : [$key => $value];
 
         $tempItems = &$this->items;
 
@@ -108,7 +91,7 @@ class Config
                 // If the key doesn't exist at this depth, we will just create an empty array
                 // to hold the next value, allowing us to create the arrays to hold final
                 // values at the correct depth. Then we'll keep digging into the array.
-                if (! isset($tempItems[$part]) || ! is_array($tempItems[$part])) {
+                if (!isset($tempItems[$part]) || !is_array($tempItems[$part])) {
                     $tempItems[$part] = [];
                 }
                 $tempItems = &$tempItems[$part];
@@ -123,7 +106,7 @@ class Config
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->items;
     }
@@ -133,7 +116,7 @@ class Config
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -141,35 +124,42 @@ class Config
     /**
      * Sets the path where the config files are fetched from.
      *
-     * @param $path
+     * @param string $path
+     *
+     * @return self
      */
-    public function setPath($path)
+    public function setPath(string $path): self
     {
         $this->path = $path;
+        return $this;
     }
 
     /**
-     * Some nodes must not be changed by outside interference.
-     *
      * @param array $nodes
+     *
+     * @return self
      */
-    public function setProtectedNodes($nodes = [])
+    public function setProtectedNodes($nodes = []): self
     {
         $this->protectedNodes = $nodes;
+        return $this;
     }
 
     /**
-     * Scan a given directory for certain files.
+     * @param string $path
      *
-     * @param $path
+     * @return void
      */
-    private function scanDirectory($path)
+    private function scanDirectory(string $path): void
     {
-        $files = glob($path.'/*', GLOB_NOSORT);
+        $files = glob($path . '/*', GLOB_NOSORT);
+
+        if (false === $files) {
+            return;
+        }
 
         foreach ($files as $file) {
             $fileType = filetype($file);
-
             if ("dir" == $fileType) {
                 $this->scanDirectory($file);
             } else {
@@ -183,13 +173,13 @@ class Config
                 }
 
                 // Get the path from the starting path.
-                $path = str_replace($this->path.'/', '', $path);
+                $path = str_replace($this->path . '/', '', $path);
 
                 // Build an array from the path.
                 $items        = [];
                 $items[$name] = $value;
                 foreach (array_reverse(explode('/', $path)) as $key) {
-                    $items = [ $key => $items ];
+                    $items = [$key => $items];
                 }
 
                 // Merge it recursively into items

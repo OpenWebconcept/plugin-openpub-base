@@ -9,9 +9,8 @@ class ElasticPressServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
-     * @throws Exception
      */
-    public function register()
+    public function register(): void
     {
         $elasticPress = new ElasticPress($this->plugin->config, new Item);
         $this->plugin->loader->addAction('init', $elasticPress, 'setSettings', 10, 1);

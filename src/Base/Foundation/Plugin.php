@@ -1,17 +1,11 @@
 <?php
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
-
 namespace OWC\OpenPub\Base\Foundation;
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
+use OWC\OpenPub\Base\Settings\SettingsPageOptions;
+
 class Plugin
 {
-
     /**
      * Name of the plugin.
      *
@@ -37,7 +31,7 @@ class Plugin
     /**
      * Instance of the configuration repository.
      *
-     * @var \OWC\OpenPub\Base\Config
+     * @var \OWC\OpenPub\Base\Foundation\Config
      */
     public $config;
 
@@ -49,6 +43,10 @@ class Plugin
     public $loader;
 
     /**
+     * @var \OWC\OpenPub\Base\Settings\SettingsPageOptions
+     */
+    public $settings;
+    /**
      * Constructor of the BasePlugin
      *
      * @param string $rootPath
@@ -58,13 +56,14 @@ class Plugin
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+        \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
         $this->loader = new Loader;
 
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
-        $this->config->boot();
+
+        $this->settings = SettingsPageOptions::make(\get_option('_owc_openpub_base_settings', []));
     }
 
     /**
@@ -76,19 +75,27 @@ class Plugin
      */
     public function boot(): bool
     {
-        $dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
+        $dependencyChecker = new DependencyChecker(
+            $this->config->get('dependencies.required'),
+            $this->config->get('dependencies.suggested'),
+            new DismissableAdminNotice
+        );
 
-        if ($dependencyChecker->failed()) {
-            $dependencyChecker->notify();
-            deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+        if ($dependencyChecker->hasFailures()) {
+            $dependencyChecker->notifyFailed();
+            \deactivate_plugins(\plugin_basename(OWC_OP_PLUGIN_FILE));
 
             return false;
+        }
+
+        if ($dependencyChecker->hasSuggestions()) {
+            $dependencyChecker->notifySuggestions();
         }
 
         // Set up service providers
         $this->callServiceProviders('register');
 
-        if (is_admin()) {
+        if (\is_admin()) {
             $this->callServiceProviders('register', 'admin');
             $this->callServiceProviders('boot', 'admin');
         }
@@ -112,9 +119,9 @@ class Plugin
      *
      * @return void
      */
-    public function filterPlugin()
+    public function filterPlugin(): void
     {
-        do_action('owc/' . self::NAME . '/plugin', $this);
+        \do_action('owc/' . self::NAME . '/plugin', $this);
     }
 
     /**
@@ -127,7 +134,7 @@ class Plugin
      *
      * @throws \Exception
      */
-    public function callServiceProviders($method, $key = '')
+    public function callServiceProviders($method, $key = ''): void
     {
         $offset   = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
@@ -154,7 +161,7 @@ class Plugin
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -164,7 +171,7 @@ class Plugin
      *
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return static::VERSION;
     }

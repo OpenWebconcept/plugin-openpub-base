@@ -65,7 +65,7 @@ class PostTypeServiceProviderTest extends TestCase
          */
         $configPostTypes = [
             'posttype' => [
-                'args' => [],
+                'args'  => [],
                 'names' => [],
             ],
         ];

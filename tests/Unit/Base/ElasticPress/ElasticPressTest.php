@@ -229,14 +229,14 @@ class ElasticPressTest extends TestCase
     }
 
     /** @test */
-    public function test_get_settings()
+    public function get_settings()
     {
         \WP_Mock::passthruFunction('get_option', [
             'times'  => 1,
-            'return' => '',
+            'return' => [],
         ]);
 
-        $expected = '_owc_openpub_base_settings';
+        $expected = [];
         $actual   = $this->service->getSettings();
 
         $this->assertEquals($expected, $actual);

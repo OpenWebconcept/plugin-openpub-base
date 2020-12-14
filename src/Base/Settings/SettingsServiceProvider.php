@@ -11,18 +11,18 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
     /**
      * Register the service provider.
      */
-    public function register()
+    public function register(): void
     {
         $this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage', 10, 1);
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
     }
 
     /**
-     * @param $rwmbSettingsPages
+     * @param array $rwmbSettingsPages
      *
      * @return array
      */
-    public function registerSettingsPage($rwmbSettingsPages)
+    public function registerSettingsPage(array $rwmbSettingsPages): array
     {
         $settingsPages = $this->plugin->config->get('settings_pages');
 
@@ -32,11 +32,11 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
     /**
      * Register metaboxes for settings page
      *
-     * @param $rwmbMetaboxes
+     * @param array $rwmbMetaboxes
      *
      * @return array
      */
-    public function registerSettings($rwmbMetaboxes)
+    public function registerSettings(array $rwmbMetaboxes): array
     {
         $configMetaboxes = $this->plugin->config->get('settings');
         $metaboxes       = [];

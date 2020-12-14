@@ -18,7 +18,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
         'duplicate_connections' => false,
     ];
 
-    public function register()
+    public function register(): void
     {
         $this->plugin->loader->addAction('init', $this, 'registerPostsToPostsConnections');
         $this->plugin->loader->addFilter('p2p_connectable_args', $this, 'filterP2PConnectableArgs', 10);
@@ -27,7 +27,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * Register P2P connections
      */
-    public function registerPostsToPostsConnections()
+    public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
             $posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
@@ -61,7 +61,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
                 $connectionType = apply_filters("owc/openpub/base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
 
-                p2p_register_connection_type($connectionType);
+                \p2p_register_connection_type($connectionType);
             }
         }
     }
@@ -69,7 +69,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * method for changing default P2P behaviour. Override by adding additional filter with higher priority (=larger number)
      */
-    public function filterP2PConnectableArgs($args)
+    public function filterP2PConnectableArgs(array $args): array
     {
         $args['orderby']      = 'title';
         $args['order']        = 'asc';

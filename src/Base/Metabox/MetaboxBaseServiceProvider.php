@@ -8,7 +8,7 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
 {
     const PREFIX = '_owc_';
 
-    protected function processMetabox(array $metabox)
+    protected function processMetabox(array $metabox): array
     {
         $fields = [];
         foreach ($metabox['fields'] as $fieldGroup) {
@@ -19,7 +19,7 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
         return $metabox;
     }
 
-    private function processFieldGroup($fieldGroup)
+    private function processFieldGroup(array $fieldGroup): array
     {
         $fields = [];
         foreach ($fieldGroup as $field) {
@@ -29,7 +29,7 @@ abstract class MetaboxBaseServiceProvider extends ServiceProvider
         return $fields;
     }
 
-    private function addPrefix($field)
+    private function addPrefix(array $field): array
     {
         if (isset($field['id'])) {
             $field['id'] = self::PREFIX . $field['id'];

@@ -36,7 +36,7 @@ class DependencyCheckerTest extends TestCase
             ->once()
             ->andReturn(false);
 
-        $this->assertTrue($checker->failed());
+        $this->assertTrue($checker->hasFailures());
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class DependencyCheckerTest extends TestCase
         WP_Mock::userFunction('is_plugin_active')
             ->never();
 
-        $this->assertFalse($checker->failed());
+        $this->assertFalse($checker->hasFailures());
     }
 
     /**
@@ -72,7 +72,7 @@ class DependencyCheckerTest extends TestCase
             ->once()
             ->andReturn(true);
 
-        $this->assertTrue($checker->failed());
+        $this->assertTrue($checker->hasFailures());
     }
 
     /**
@@ -97,7 +97,7 @@ class DependencyCheckerTest extends TestCase
             ->once()
             ->andReturn(true);
 
-        $this->assertFalse($checker->failed());
+        $this->assertFalse($checker->hasFailures());
     }
 
     /**

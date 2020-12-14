@@ -50,9 +50,9 @@ class Item
      * Make Post model from WP_Post object
      *
      * @param \WP_Post $post
-     * @return Post
+     * @return self
      */
-    public static function makeFrom(\WP_Post $post)
+    public static function makeFrom(\WP_Post $post): self
     {
         return new static($post->to_array());
     }
@@ -102,7 +102,7 @@ class Item
      *
      * @return \DateTime
      */
-    public function getPostModified($gmt = false): \DateTime
+    public function getPostModified(string $gmt = null): \DateTime
     {
         $timezone = $gmt ? 'post_modified_gmt' : 'post_modified';
 
@@ -118,7 +118,7 @@ class Item
      */
     public function getDateI18n(string $format): string
     {
-        return date_i18n($format, $this->getDate()->getTimestamp());
+        return \date_i18n($format, $this->getDate()->getTimestamp());
     }
 
     /**
@@ -128,7 +128,7 @@ class Item
      */
     public function getPostType(): string
     {
-        return get_post_type($this->getID());
+        return \get_post_type($this->getID());
     }
 
     /**
@@ -138,7 +138,7 @@ class Item
      */
     public function getLink(): string
     {
-        return get_permalink($this->getID()) ?? '';
+        return \get_permalink($this->getID()) ?? '';
     }
 
     /**
@@ -148,9 +148,9 @@ class Item
      *
      * @return string
      */
-    public function getThumbnail($size = 'post-thumbnail'): string
+    public function getThumbnail(string $size = 'post-thumbnail'): string
     {
-        return get_the_post_thumbnail_url($this->getID(), $size) ?? '';
+        return \get_the_post_thumbnail_url($this->getID(), $size) ?? '';
     }
 
     /**
@@ -167,7 +167,7 @@ class Item
      * Get the excerpt of the post, else fallback to the post content.
      *
      * @param integer $length
-     * 
+     *
      * @return string
      */
     public function getExcerpt(int $length = 20): string
@@ -216,9 +216,9 @@ class Item
      *
      * @return \WP_Term[]
      */
-    public function getTerms(string $taxonomy)
+    public function getTerms(string $taxonomy): array
     {
-        return get_the_terms($this->getID(), $taxonomy);
+        return \get_the_terms($this->getID(), $taxonomy);
     }
 
     /**
@@ -263,25 +263,25 @@ class Item
     /**
      * Create portal url, used in 'pdc items' overview
      * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
-     * 
+     *
      * @return string
      */
     private function createPortalURL(): string
     {
         $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_openpub_item_slug']));
 
-        $portalURL .=  trailingslashit($this->getPostName()) . $this->getID();
+        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
 
         return $portalURL;
     }
 
     /**
      * @param array $array
-     * 
+     *
      * @return array
      */
-    public function arrayUnique($array): array
+    public function arrayUnique(array $array): array
     {
-        return is_array($array) ?  array_unique($array) : [];
+        return is_array($array) ? array_unique($array) : [];
     }
 }

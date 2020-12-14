@@ -4,7 +4,7 @@ namespace OWC\OpenPub\Base\Metabox;
 
 class MetaboxServiceProvider extends MetaboxBaseServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
     }
@@ -12,11 +12,10 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     /**
      * Register metaboxes.
      *
-     * @param $rwmbMetaboxes
-     *
+     * @param array $rwmbMetaboxes
      * @return array
      */
-    public function registerMetaboxes($rwmbMetaboxes)
+    public function registerMetaboxes(array $rwmbMetaboxes): array
     {
         $configMetaboxes = $this->plugin->config->get('metaboxes');
         $metaboxes       = [];

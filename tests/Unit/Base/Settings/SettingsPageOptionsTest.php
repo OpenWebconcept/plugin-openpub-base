@@ -2,7 +2,6 @@
 
 namespace OWC\PDC\Base\Settings;
 
-use Mockery as m;
 use OWC\OpenPub\Base\Settings\SettingsPageOptions;
 use OWC\OpenPub\Base\Tests\Unit\TestCase;
 
@@ -15,7 +14,7 @@ class SettingsPageOptionsTest extends TestCase
     {
         \WP_Mock::setUp();
 
-        $this->settingsPageOptions = new SettingsPageOptions([
+        $this->settingsPageOptions = SettingsPageOptions::make([
             '_owc_setting_portal_url'                       => 'www.test.nl',
             '_owc_setting_portal_openpub_item_slug'         => 'direct/regelen',
             '_owc_setting_use_portal_url'                   => 0,

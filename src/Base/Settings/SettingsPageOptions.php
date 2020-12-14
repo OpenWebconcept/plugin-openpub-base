@@ -11,7 +11,7 @@ class SettingsPageOptions
      */
     private $settings;
 
-    public function __construct(array $settings)
+    final private function __construct(array $settings = [])
     {
         $this->settings = $settings;
     }
@@ -42,13 +42,13 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_use_portal_url'] ?? '';
     }
 
-    public static function make(): self
+    public static function make(array $settings = []): self
     {
         $defaultSettings = [
             '_owc_setting_portal_url'                       => '',
             '_owc_setting_portal_openpub_item_slug'         => '',
         ];
 
-        return new static(wp_parse_args(get_option('_owc_openpub_base_settings'), $defaultSettings));
+        return new static(\wp_parse_args($settings, $defaultSettings));
     }
 }
