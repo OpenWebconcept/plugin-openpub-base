@@ -124,7 +124,9 @@ class ItemController extends BaseController
                 'posts_per_page' => 10,
                 'post_status'    => 'publish',
                 'post_type'      => 'openpub-item',
-            ]);
+            ])
+            ->query(Item::addExpirationParameters());
+
         $query = new WP_Query($items->getQueryArgs());
         return array_map([$this, 'transform'], $query->posts);
     }
