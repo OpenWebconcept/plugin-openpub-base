@@ -57,6 +57,11 @@ class FeaturedImageField extends CreatesFields
             return [];
         }
 
+        $meta['sizes']['full']['file'] = basename(get_attached_file($id));
+        $meta['sizes']['full']['width'] = $meta['width'];
+        $meta['sizes']['full']['height'] = $meta['height'];
+        $meta['sizes']['full']['mime-type'] = get_post_mime_type($id);
+
         foreach (array_keys($meta['sizes']) as $size) {
             $src                              = wp_get_attachment_image_src($id, $size);
             $meta['sizes'][$size]['url']      = $src[0];
