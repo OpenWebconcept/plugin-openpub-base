@@ -1,13 +1,14 @@
 <?php
 
-namespace OWC\OpenPub\Base\ElasticPress;
+namespace OWC\OpenPub\Tests\Base\ElasticPress;
 
 use Mockery as m;
+use OWC\OpenPub\Base\ElasticPress\ElasticPress;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
 use OWC\OpenPub\Base\Repositories\Item;
-use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use OWC\OpenPub\Tests\TestCase;
 use WP_Mock;
 
 class ElasticPressTest extends TestCase

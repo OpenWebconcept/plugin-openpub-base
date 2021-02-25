@@ -60,39 +60,39 @@ class RestAPIServiceProvider extends ServiceProvider
     public function registerRoutes()
     {
         register_rest_route($this->namespace, 'items/active', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new ItemController($this->plugin), 'getActiveItems'],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new ItemController($this->plugin), 'getActiveItems'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new ItemController($this->plugin), 'getItems'],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new ItemController($this->plugin), 'getItems'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new ItemController($this->plugin), 'getItem'],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new ItemController($this->plugin), 'getItem'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'themes', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new ThemeController($this->plugin), 'getThemes'],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new ThemeController($this->plugin), 'getThemes'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'search', [
-            'methods'  => WP_REST_Server::READABLE,
-            'callback' => [new SearchController($this->plugin), 'search'],
-            'args'     => [],
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new SearchController($this->plugin), 'search'],
+            'args'                => [],
             'permission_callback' => '__return_true',
         ]);
     }

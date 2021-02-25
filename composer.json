@@ -1,14 +1,19 @@
 {
   "name": "plugin/openpub-base",
   "description": "OpenPub base plugin",
+  "type": "wordpress-plugin",
+  "config": {
+    "preferred-install": "dist",
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
   "authors": [
     {
-      "name": "Yard Digital Agency",
+      "name": "Yard | Digital Agency",
       "email": "info@yard.nl",
       "homepage": "https://www.yard.nl"
     }
   ],
-  "type": "wordpress-plugin",
   "repositories": [
     {
       "type": "composer",
@@ -17,6 +22,7 @@
   ],
   "require": {
     "php": ">=7.0",
+    "symfony/var-dumper": "^5.2",
     "wpackagist-plugin/elasticpress": ">2.0"
   },
   "require-dev": {
@@ -34,16 +40,16 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "OWC\\OpenPub\\Base\\Tests\\": "./tests"
+      "OWC\\OpenPub\\Tests\\": "./tests/Unit"
     }
   },
   "scripts": {
-    "format": "./vendor/bin/php-cs-fixer fix",
+    "format": "vendor/bin/php-cs-fixer fix",
     "phpstan": "./vendor/bin/phpstan analyse",
     "test": [
         "@unit"
     ],
     "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage"
+    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage"
   }
 }

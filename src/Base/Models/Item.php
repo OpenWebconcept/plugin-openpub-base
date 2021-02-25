@@ -167,7 +167,7 @@ class Item
      * Get the excerpt of the post, else fallback to the post content.
      *
      * @param integer $length
-     * 
+     *
      * @return string
      */
     public function getExcerpt(int $length = 20): string
@@ -263,21 +263,21 @@ class Item
     /**
      * Create portal url, used in 'pdc items' overview
      * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
-     * 
+     *
      * @return string
      */
     private function createPortalURL(): string
     {
         $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_openpub_item_slug']));
 
-        $portalURL .=  trailingslashit($this->getPostName()) . $this->getID();
+        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
 
         return $portalURL;
     }
 
     /**
      * @param array $array
-     * 
+     *
      * @return array
      */
     public function arrayUnique($array): array

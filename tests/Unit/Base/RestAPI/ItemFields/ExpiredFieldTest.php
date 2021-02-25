@@ -1,12 +1,13 @@
 <?php
 
-namespace OWC\OpenPub\Base\RestAPI\ItemFields;
+namespace OWC\OpenPub\Tests\Base\RestAPI\ItemFields;
 
 use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
-use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use OWC\OpenPub\Base\RestAPI\ItemFields\ExpiredField;
+use OWC\OpenPub\Tests\TestCase;
 use WP_Mock;
 use WP_Post;
 

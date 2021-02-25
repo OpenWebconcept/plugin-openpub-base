@@ -1,6 +1,6 @@
 <?php
 
-namespace OWC\OpenPub\Base\Tests\Unit;
+namespace OWC\OpenPub\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnit;
 

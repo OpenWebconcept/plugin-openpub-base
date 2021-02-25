@@ -1,10 +1,9 @@
 <?php
 
-namespace OWC\PDC\Base\Settings;
+namespace OWC\PDC\Tests\Base\Settings;
 
-use Mockery as m;
 use OWC\OpenPub\Base\Settings\SettingsPageOptions;
-use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use OWC\OpenPub\Tests\TestCase;
 
 class SettingsPageOptionsTest extends TestCase
 {

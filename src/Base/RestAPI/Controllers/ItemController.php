@@ -110,13 +110,9 @@ class ItemController extends BaseController
     }
 
     /**
-     * Get related items.
-     *
-     * @param array $item
-     *
-     * @return array
+     * Get related items
      */
-    protected function addRelated($item)
+    protected function addRelated(array $item): array
     {
         $items = (new Item())
             ->query([
@@ -132,21 +128,18 @@ class ItemController extends BaseController
     }
 
     /**
-     * Transform a single WP_Post item.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
+     * Transform a single WP_Post item into an array
      */
-    public function transform(WP_Post $post)
+    public function transform(WP_Post $post): array
     {
         $data = [
-            'id'              => $post->ID,
-            'title'           => $post->post_title,
-            'content'         => apply_filters('the_content', $post->post_content),
-            'excerpt'         => $post->post_excerpt,
-            'date'            => $post->post_date,
-            'thumbnail_url'   => get_the_post_thumbnail_url($post->ID),
+            'id'            => $post->ID,
+            'title'         => $post->post_title,
+            'content'       => \apply_filters('the_content', $post->post_content),
+            'excerpt'       => $post->post_excerpt,
+            'date'          => $post->post_date,
+            'thumbnail_url' => \get_the_post_thumbnail_url($post->ID),
+            'slug'          => $post->post_name,
         ];
 
         return $data;

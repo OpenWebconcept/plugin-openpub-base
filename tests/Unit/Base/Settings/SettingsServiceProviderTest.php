@@ -1,12 +1,13 @@
 <?php
 
-namespace OWC\OpenPub\Base\Settings;
+namespace OWC\OpenPub\Tests\Base\Settings;
 
 use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
-use OWC\OpenPub\Base\Tests\Unit\TestCase;
+use OWC\OpenPub\Base\Settings\SettingsServiceProvider;
+use OWC\OpenPub\Tests\TestCase;
 
 class SettingsServiceProviderTest extends TestCase
 {

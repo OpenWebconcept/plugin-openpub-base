@@ -50,7 +50,7 @@ class Item extends AbstractRepository
      * Add parameters to meta_query to remove items that are expired or not expired
      *
      * @param boolean $highlighted
-     * 
+     *
      * @return array
      */
     public static function addHighlightedParameters(bool $highlighted): array
@@ -58,7 +58,7 @@ class Item extends AbstractRepository
         return [
             'meta_query' => [
                 [
-                    'key'  => '_owc_openpub_highlighted_item',
+                    'key'     => '_owc_openpub_highlighted_item',
                     'value'   => $highlighted ? 1 : 0,
                     'compare' => '=',
                 ],

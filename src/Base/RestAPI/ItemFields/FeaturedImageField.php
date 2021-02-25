@@ -17,12 +17,12 @@ class FeaturedImageField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-        if (! has_post_thumbnail($post->ID)) {
+        if (! \has_post_thumbnail($post->ID)) {
             return [];
         }
 
-        $id         = get_post_thumbnail_id($post->ID);
-        $attachment = get_post($id);
+        $id         = \get_post_thumbnail_id($post->ID);
+        $attachment = \get_post($id);
         $imageSize  = 'large';
 
         $result = [];
@@ -30,13 +30,13 @@ class FeaturedImageField extends CreatesFields
         $result['title']       = $attachment->post_title;
         $result['description'] = $attachment->post_content;
         $result['caption']     = $attachment->post_excerpt;
-        $result['alt']         = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
+        $result['alt']         = \get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
 
         $meta = $this->getAttachmentMeta($id);
 
-        $result['rendered'] = wp_get_attachment_image($id, $imageSize);
-        $result['sizes']    = wp_get_attachment_image_sizes($id, $imageSize, $meta);
-        $result['srcset']   = wp_get_attachment_image_srcset($id, $imageSize, $meta);
+        $result['rendered'] = \wp_get_attachment_image($id, $imageSize);
+        $result['sizes']    = \wp_get_attachment_image_sizes($id, $imageSize, $meta);
+        $result['srcset']   = \wp_get_attachment_image_srcset($id, $imageSize, $meta);
         $result['meta']     = $meta;
 
         return $result;
@@ -49,23 +49,23 @@ class FeaturedImageField extends CreatesFields
      *
      * @return array
      */
-    private function getAttachmentMeta($id): array
+    private function getAttachmentMeta(int $id): array
     {
-        $meta = wp_get_attachment_metadata($id, false);
+        $meta = \wp_get_attachment_metadata($id, false);
 
         if (empty($meta['sizes'])) {
             return [];
         }
 
-        $meta['sizes']['full']['file'] = basename(get_attached_file($id));
-        $meta['sizes']['full']['width'] = $meta['width'];
-        $meta['sizes']['full']['height'] = $meta['height'];
-        $meta['sizes']['full']['mime-type'] = get_post_mime_type($id);
+        $meta['sizes']['full']['file']      = \basename(\get_attached_file($id));
+        $meta['sizes']['full']['width']     = $meta['width'];
+        $meta['sizes']['full']['height']    = $meta['height'];
+        $meta['sizes']['full']['mime-type'] = \get_post_mime_type($id);
 
-        foreach (array_keys($meta['sizes']) as $size) {
-            $src                              = wp_get_attachment_image_src($id, $size);
+        foreach (\array_keys($meta['sizes']) as $size) {
+            $src                              = \wp_get_attachment_image_src($id, $size);
             $meta['sizes'][$size]['url']      = $src[0];
-            $meta['sizes'][$size]['rendered'] = wp_get_attachment_image($id, $size);
+            $meta['sizes'][$size]['rendered'] = \wp_get_attachment_image($id, $size);
         }
 
         unset($meta['image_meta']);
