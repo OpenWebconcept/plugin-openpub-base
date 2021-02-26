@@ -153,12 +153,12 @@ class CommentFieldTest extends TestCase
                             'date'     => '12-01-2020',
                             'replies'  => [
                                 [
-'id'                                   => 4,
-                            'parentid' => 3,
-                            'author'   => 'child author 2',
-                            'content'  => 'child comment 2',
-                            'date'     => '12-01-2020',
-                            'replies'  => []
+                                    'id'       => 4,
+                                    'parentid' => 3,
+                                    'author'   => 'child author 2',
+                                    'content'  => 'child comment 2',
+                                    'date'     => '12-01-2020',
+                                    'replies'  => []
                                 ]
                             ]
                         ]
@@ -167,5 +167,33 @@ class CommentFieldTest extends TestCase
             ]
         ];
         $this->assertEquals($expected, $actual);
+    }
+
+    /** @test */
+    public function it_returns_nothing_if_comments_are_not_allow_to_be_outputted_in_the_api()
+    {
+        WP_Mock::userFunction('get_comments', [
+            'return' => []
+        ]);
+
+        $commentField = new CommentField($this->plugin);
+        $actual       = $commentField->executeCondition();
+
+        $this->assertInstanceOf('Closure', $actual);
+        $this->assertFalse($actual());
+    }
+
+    /** @test */
+    public function it_returns_true_if_comments_are_allow_to_be_outputted_in_the_api()
+    {
+        WP_Mock::userFunction('get_comments', [
+            'return' => []
+        ]);
+
+        $_REQUEST['with'] = 'comments';
+        $commentField     = new CommentField($this->plugin);
+        $actual           = $commentField->executeCondition();
+
+        $this->assertTrue($actual());
     }
 }

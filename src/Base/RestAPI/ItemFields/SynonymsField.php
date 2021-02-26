@@ -9,25 +9,17 @@ class SynonymsField extends CreatesFields
 {
     /**
      * Generate the synonyms field.
-     *
-     * @param WP_Post $post
-     *
-     * @return string
      */
     public function create(WP_Post $post): string
     {
-        return esc_attr(strip_tags($this->getSynonyms($post)));
+        return \esc_attr(\strip_tags($this->getSynonyms($post)));
     }
 
     /**
      * Get synonyms of a post, if URL & title are present.
-     *
-     * @param WP_Post $post
-     *
-     * @return string
      */
-    private function getSynonyms(WP_Post $post)
+    private function getSynonyms(WP_Post $post): string
     {
-        return get_post_meta($post->ID, '_owc_openpub_tags', true) ?: '';
+        return \get_post_meta($post->ID, '_owc_openpub_tags', true) ?: '';
     }
 }

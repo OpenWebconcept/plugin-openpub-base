@@ -58,7 +58,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
             return [];
         }
 
-
         return array_map(function ($comment) {
             return $this->format($comment, $this->getChild($comment));
         }, array_values($comments));

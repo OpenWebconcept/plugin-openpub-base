@@ -12,13 +12,13 @@ This README documents whatever steps are necessary to get this plugin up and run
 
 See [Hooks](/docs/hooks.md)
 
-## Rest api ##
+## REST API ##
 
-See [Rest Api](/docs/restapi.md)
+See [REST API](/docs/restapi.md)
 
 ## Translations ##
 
-If you want to use your own set of labels/names/descriptions and so on you can do so. 
+If you want to use your own set of labels/names/descriptions and so on you can do so.
 All text output in this plugin is controlled via the gettext methods.
 
 Please use your preferred way to make your own translations from the /wp-content/plugins/openpub-base/languages/openpub-base.pot file
@@ -52,7 +52,7 @@ phpunit --coverage-html ./tests/coverage
 
 ### Writing tests ###
 
-Have a look at the code coverage reports to see where more coverage can be obtained. 
+Have a look at the code coverage reports to see where more coverage can be obtained.
 Write tests
 Create a Pull request to the OWC repository
 
