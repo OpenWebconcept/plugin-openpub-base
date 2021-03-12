@@ -29,12 +29,16 @@ class Item extends AbstractRepository
      */
     public static function addExpirationParameters(): array
     {
+        $timezone = \get_option('timezone_string');
+        $dateNow  = new \DateTime('now', new \DateTimeZone($timezone));
+        $dateNow  = $dateNow->format("Y-m-d H:i");
+
         return [
             'meta_query' => [
                 'relation' => 'OR',
                 [
                     'key'     => '_owc_openpub_expirationdate',
-                    'value'   => date("Y-m-d H:I"),
+                    'value'   => $dateNow,
                     'compare' => '>=',
                     'type'    => 'DATETIME',
                 ],
