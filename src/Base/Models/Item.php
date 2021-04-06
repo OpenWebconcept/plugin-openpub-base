@@ -43,7 +43,7 @@ class Item
     public function __construct(array $data, array $meta = null)
     {
         $this->data = $data;
-        $this->meta = is_null($meta) ? [] : $meta;
+        $this->meta = is_null($meta) ? get_post_meta($data['ID']) : $meta;
     }
 
     /**
@@ -253,6 +253,11 @@ class Item
         }
 
         return $single ? current($this->meta[$prefix]) : $this->meta[$prefix];
+    }
+
+    public function getEscapeElement(): bool
+    {
+        return $this->getMeta('escape_element_active', '0', true, '_owc_');
     }
 
     public function getPortalURL(): string

@@ -25,6 +25,12 @@ return [
                     'desc' => __('Use portal url in api.', 'openpub-base'),
                     'id'   => 'setting_use_portal_url',
                     'type' => 'checkbox',
+                ],
+                'openpub_use_escape_element' => [
+                    'name' => __('Escape element', 'openpub-base'),
+                    'desc' => __('Enable escape element.', 'openpub-base'),
+                    'id'   => 'setting_use_escape_element',
+                    'type' => 'checkbox',
                 ]
             ],
         ],

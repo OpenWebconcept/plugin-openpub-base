@@ -18,8 +18,13 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerMetaboxes($rwmbMetaboxes)
     {
-        $configMetaboxes = $this->plugin->config->get('metaboxes');
-        $metaboxes       = [];
+        $configMetaboxes  = $this->plugin->config->get('metaboxes');
+
+        if ($this->plugin->settings->useEscapeElement()) {
+            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
+        }
+
+        $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);

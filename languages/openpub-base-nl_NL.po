@@ -21,6 +21,26 @@ msgstr ""
 "X-Poedit-SearchPath-1: src\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
+#: config/escape_element_metabox.php:6 config/settings.php:30
+msgid "Escape element"
+msgstr "Ontsnap element"
+
+#: config/escape_element_metabox.php:14
+msgid "Enable escape element"
+msgstr "Gebruik ontsnap element"
+
+#: config/escape_element_metabox.php:15
+msgid "Show escape element on portal page."
+msgstr "Ontsnap element weergeven op portaal pagina."
+
+#: config/escape_element_metabox.php:19
+msgid "Yes"
+msgstr "Ja"
+
+#: config/escape_element_metabox.php:20
+msgid "No"
+msgstr "Nee"
+
 #: config/metaboxes.php:6
 msgid "Data"
 msgstr "Gegevens"
@@ -30,11 +50,8 @@ msgid "Highlighted item"
 msgstr "Uitgelichte item"
 
 #: config/metaboxes.php:15
-msgid ""
-"Use this option to select current item to be a highlighted (featured) item"
-msgstr ""
-"Gebruik deze optie om het huidige item te selecteren als een uitgelicht "
-"(gekenmerkt) item"
+msgid "Use this option to select current item to be a highlighted (featured) item"
+msgstr "Gebruik deze optie om het huidige item te selecteren als een uitgelicht (gekenmerkt) item"
 
 #: config/metaboxes.php:20
 msgid "Synonyms"
@@ -371,11 +388,11 @@ msgstr "Portal"
 msgid "Portal URL"
 msgstr "Portal URL"
 
-#: config/settings.php:19
+#: config/settings.php:18
 msgid "Portal OpenPub item slug"
 msgstr "Portal OpenPub item slug"
 
-#: config/settings.php:20
+#: config/settings.php:19
 msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
 msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
 
@@ -383,27 +400,31 @@ msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
 msgid "Use portal url in api."
 msgstr "Gebruik portal url in de api."
 
-#: config/settings.php:29
+#: config/settings.php:31
+msgid "Enable escape element."
+msgstr "Gebruik ontsnap element."
+
+#: config/settings.php:40
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
 
-#: config/settings.php:36
+#: config/settings.php:47
 msgid "Instance url"
 msgstr "Instance url"
 
-#: config/settings.php:37 config/settings.php:43
+#: config/settings.php:48 config/settings.php:54
 msgid "URL inclusief http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/settings.php:42
+#: config/settings.php:53
 msgid "Instance shield"
 msgstr "Instance user/wachtwoord"
 
-#: config/settings.php:48
+#: config/settings.php:59
 msgid "Instance prefix"
 msgstr "Instance prefix"
 
-#: config/settings.php:49
+#: config/settings.php:60
 msgid "Use this prefix to group multiple instances"
 msgstr ""
 "Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te "

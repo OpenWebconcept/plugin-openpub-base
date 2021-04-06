@@ -26,6 +26,26 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 "X-Poedit-SearchPathExcluded-2: vendor\n"
 
+#: config/escape_element_metabox.php:6 config/settings.php:30
+msgid "Escape element"
+msgstr ""
+
+#: config/escape_element_metabox.php:14
+msgid "Enable escape element"
+msgstr ""
+
+#: config/escape_element_metabox.php:15
+msgid "Show escape element on portal page."
+msgstr ""
+
+#: config/escape_element_metabox.php:19
+msgid "Yes"
+msgstr ""
+
+#: config/escape_element_metabox.php:20
+msgid "No"
+msgstr ""
+
 #: config/metaboxes.php:6
 msgid "Data"
 msgstr ""
@@ -261,11 +281,11 @@ msgstr ""
 msgid "Portal URL"
 msgstr ""
 
-#: config/settings.php:19
+#: config/settings.php:18
 msgid "Portal OpenPub item slug"
 msgstr ""
 
-#: config/settings.php:20
+#: config/settings.php:19
 msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
 msgstr ""
 
@@ -273,27 +293,31 @@ msgstr ""
 msgid "Use portal url in api."
 msgstr ""
 
-#: config/settings.php:29
+#: config/settings.php:31
+msgid "Enable escape element."
+msgstr ""
+
+#: config/settings.php:40
 msgid "Elasticsearch"
 msgstr ""
 
-#: config/settings.php:36
+#: config/settings.php:47
 msgid "Instance url"
 msgstr ""
 
-#: config/settings.php:37 config/settings.php:43
+#: config/settings.php:48 config/settings.php:54
 msgid "URL inclusief http(s)://"
 msgstr ""
 
-#: config/settings.php:42
+#: config/settings.php:53
 msgid "Instance shield"
 msgstr ""
 
-#: config/settings.php:48
+#: config/settings.php:59
 msgid "Instance prefix"
 msgstr ""
 
-#: config/settings.php:49
+#: config/settings.php:60
 msgid "Use this prefix to group multiple instances"
 msgstr ""
 

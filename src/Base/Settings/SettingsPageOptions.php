@@ -42,11 +42,18 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_use_portal_url'] ?? '';
     }
 
+    public function useEscapeElement(): bool
+    {
+        return $this->settings['_owc_setting_use_escape_element'] ?? false;
+    }
+
     public static function make(): self
     {
         $defaultSettings = [
-            '_owc_setting_portal_url'                       => '',
-            '_owc_setting_portal_openpub_item_slug'         => '',
+            '_owc_setting_portal_url'               => '',
+            '_owc_setting_portal_openpub_item_slug' => '',
+            '_owc_setting_use_portal_url'           => 0,
+            '_owc_setting_use_escape_element'       => 0
         ];
 
         return new static(wp_parse_args(get_option('_owc_openpub_base_settings'), $defaultSettings));

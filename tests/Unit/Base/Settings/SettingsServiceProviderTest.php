@@ -20,6 +20,7 @@ class SettingsServiceProviderTest extends TestCase
                 '_owc_setting_portal_url'               => '',
                 '_owc_setting_portal_openpub_item_slug' => '',
                 '_owc_setting_use_portal_url'           => 0,
+                '_owc_setting_use_escape_element'       => 0
             ]
         ]);
 
@@ -28,6 +29,7 @@ class SettingsServiceProviderTest extends TestCase
                 '_owc_setting_portal_url'               => '',
                 '_owc_setting_portal_openpub_item_slug' => '',
                 '_owc_setting_use_portal_url'           => 0,
+                '_owc_setting_use_escape_element'       => 0
 
             ]
         ]);

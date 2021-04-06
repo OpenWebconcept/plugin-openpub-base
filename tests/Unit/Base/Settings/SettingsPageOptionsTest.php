@@ -15,15 +15,25 @@ class SettingsPageOptionsTest extends TestCase
         \WP_Mock::setUp();
 
         $this->settingsPageOptions = new SettingsPageOptions([
-            '_owc_setting_portal_url'                       => 'www.test.nl',
-            '_owc_setting_portal_openpub_item_slug'         => 'direct/regelen',
-            '_owc_setting_use_portal_url'                   => 0,
+            '_owc_setting_portal_url'               => 'www.test.nl',
+            '_owc_setting_portal_openpub_item_slug' => 'direct/regelen',
+            '_owc_setting_use_portal_url'           => 0,
+            '_owc_setting_use_escape_element'       => 0
         ]);
     }
 
     public function tearDown(): void
     {
         \WP_Mock::tearDown();
+    }
+
+    /** @test */
+    public function do_not_use_escape_element_setting(): void
+    {
+        $expectedResult = false;
+        $result         = $this->settingsPageOptions->useEscapeElement();
+
+        $this->assertEquals($expectedResult, $result);
     }
 
     /** @test */
