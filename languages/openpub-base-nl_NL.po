@@ -25,6 +25,18 @@ msgstr ""
 msgid "Escape element"
 msgstr "Ontsnap element"
 
+#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:69 config/taxonomies.php:70
+msgid "Show on"
+msgstr "Tonen op"
+
+#: config/settings.php:31
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
+msgstr "Gebruik een element waarmee de website verlaten kan worden zonder dat er terug genavigeerd kan worden via de 'Vorige' knop in de browser."
+
+#: config/settings.php:37
+msgid "Used for configuring on which websites an openpub-item should be displayed on."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een openpub-item weergegeven moet worden."
+
 #: config/escape_element_metabox.php:14
 msgid "Enable escape element"
 msgstr "Gebruik ontsnap element"
@@ -41,13 +53,21 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
+#: config/show_on_metabox.php:6
+msgid "External"
+msgstr "Extern"
+
+#: config/show_on_metabox.php:15
+msgid "Select websites where this item should be displayed on."
+msgstr "Selecteer websites waarop dit item getoond moet worden."
+
 #: config/metaboxes.php:6
 msgid "Data"
 msgstr "Gegevens"
 
 #: config/metaboxes.php:14
 msgid "Highlighted item"
-msgstr "Uitgelichte item"
+msgstr "Uitgelicht item"
 
 #: config/metaboxes.php:15
 msgid "Use this option to select current item to be a highlighted (featured) item"
@@ -58,65 +78,62 @@ msgid "Synonyms"
 msgstr "Synoniemen"
 
 #: config/metaboxes.php:21
-msgid ""
-"Use this option to add an comma separated list of synonyms or related terms"
-msgstr ""
-"Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
-"gerelateerde termen mee te geven"
+msgid "Use this option to add an comma separated list of synonyms or related terms"
+msgstr "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven"
 
 #: config/metaboxes.php:27
 msgid "Select end date"
 msgstr "Selecteer een einddatum"
 
-#: config/metaboxes.php:34
+#: config/metaboxes.php:35
 msgid "Links"
 msgstr "Links"
 
-#: config/metaboxes.php:41
+#: config/metaboxes.php:42
 msgid "Add new link"
 msgstr "Voeg nieuwe link toe"
 
-#: config/metaboxes.php:45
+#: config/metaboxes.php:46
 msgid "Link title"
 msgstr "Link titel"
 
-#: config/metaboxes.php:46 config/metaboxes.php:73
+#: config/metaboxes.php:47 config/metaboxes.php:74
 msgid "Use the title to replace the URL"
 msgstr "Wordt gebruikt om de link te tonen ipv de URL"
 
-#: config/metaboxes.php:51
+#: config/metaboxes.php:52
 msgid "Link URL"
 msgstr "Link URL"
 
-#: config/metaboxes.php:52 config/metaboxes.php:79 config/settings.php:14
+#: config/metaboxes.php:53 config/metaboxes.php:80 config/settings.php:13
 msgid "URL including http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/metaboxes.php:61
+#: config/metaboxes.php:62
 msgid "Downloads"
 msgstr "Downloads"
 
-#: config/metaboxes.php:68
+#: config/metaboxes.php:69
 msgid "Add new download"
 msgstr "Voeg nieuwe download toe"
 
-#: config/metaboxes.php:72
+#: config/metaboxes.php:73
 msgid "Download title"
 msgstr "Download titel"
 
-#: config/metaboxes.php:78
+#: config/metaboxes.php:79
 msgid "Download URL"
 msgstr "Download URL"
 
-#: config/metaboxes.php:88
+#: config/metaboxes.php:89
 msgid "Other"
 msgstr "Overig"
 
-#: config/metaboxes.php:91
+#: config/metaboxes.php:92
 msgid "Notes"
 msgstr "Vrij notitieveld"
 
-#: config/metaboxes.php:92
+#: config/metaboxes.php:93
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
@@ -404,27 +421,27 @@ msgstr "Gebruik portal url in de api."
 msgid "Enable escape element."
 msgstr "Gebruik ontsnap element."
 
-#: config/settings.php:40
+#: config/settings.php:46
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
 
-#: config/settings.php:47
+#: config/settings.php:53
 msgid "Instance url"
 msgstr "Instance url"
 
-#: config/settings.php:48 config/settings.php:54
+#: config/settings.php:54 config/settings.php:60
 msgid "URL inclusief http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/settings.php:53
+#: config/settings.php:59
 msgid "Instance shield"
 msgstr "Instance user/wachtwoord"
 
-#: config/settings.php:59
+#: config/settings.php:65
 msgid "Instance prefix"
 msgstr "Instance prefix"
 
-#: config/settings.php:60
+#: config/settings.php:66
 msgid "Use this prefix to group multiple instances"
 msgstr ""
 "Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te "
@@ -449,32 +466,32 @@ msgctxt "OpenPub settings tab"
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
 
-#: config/taxonomies.php:22
+#: config/taxonomies.php:16
 msgctxt "Taxonomy definition"
 msgid "Audience"
 msgstr "Doelgroep"
 
-#: config/taxonomies.php:23
+#: config/taxonomies.php:17
 msgctxt "Taxonomy definition"
 msgid "Audiences"
 msgstr "Doelgroepen"
 
-#: config/taxonomies.php:42
+#: config/taxonomies.php:30
 msgctxt "Taxonomy definition"
 msgid "Type"
 msgstr "Type"
 
-#: config/taxonomies.php:43
+#: config/taxonomies.php:31
 msgctxt "Taxonomy definition"
 msgid "Types"
 msgstr "Typen"
 
-#: config/taxonomies.php:61
+#: config/taxonomies.php:43
 msgctxt "Taxonomy definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/taxonomies.php:62
+#: config/taxonomies.php:44
 msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr "Toepassingen"

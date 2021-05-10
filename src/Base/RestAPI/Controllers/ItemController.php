@@ -28,6 +28,10 @@ class ItemController extends BaseController
             $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
         }
 
+        if ($this->hasShowOnParam($request)) {
+            $items->query(Item::addShowOnParameter($request->get_param('source')));
+        }
+
         $data  = $items->all();
         $query = $items->getQuery();
 
@@ -168,6 +172,19 @@ class ItemController extends BaseController
         $value = filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 
         if (null === $value) {
+            return false;
+        }
+
+        return true;
+    }
+
+    protected function hasShowOnParam(WP_REST_Request $request): bool
+    {
+        if (empty($request->get_param('source'))) {
+            return false;
+        }
+
+        if (is_numeric($request->get_param('source'))) {
             return false;
         }
 

@@ -28,9 +28,15 @@ return [
                 ],
                 'openpub_use_escape_element' => [
                     'name' => __('Escape element', 'openpub-base'),
-                    'desc' => __('Enable escape element.', 'openpub-base'),
+                    'desc' => __("Use an element to leave the website without being able to navigate back via the browser 'Back' button.", 'openpub-base'),
                     'id'   => 'setting_use_escape_element',
                     'type' => 'checkbox',
+                ],
+                'openpub_enable_show_on' => [
+                    'name' => __('Show on', 'openpub-base'),
+                    'desc' => __('Used for configuring on which websites an openpub-item should be displayed on.', 'openpub-base'),
+                    'id'   => 'setting_openpub_enable_show_on',
+                    'type' => 'checkbox'
                 ]
             ],
         ],

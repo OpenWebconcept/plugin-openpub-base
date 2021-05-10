@@ -26,8 +26,8 @@ return [
                     'id'          => 'openpub_expirationdate',
                     'name'        => __('Select end date', 'openpub-base'),
                     'type'        => 'datetime',
-                    'save_format' => 'Y-m-d H:i',
-                ],
+                    'save_format' => 'Y-m-d H:i'
+                ]
             ],
             'links'     => [
                 'heading' => [
@@ -83,7 +83,7 @@ return [
                     ],
                 ],
             ],
-            'other'     => [
+            'other' => [
                 'heading' => [
                     'type' => 'heading',
                     'name' => __('Other', 'openpub-base'),
@@ -96,7 +96,7 @@ return [
                     'cols' => 20,
                     'rows' => 5,
                 ],
-            ],
+            ]
         ],
     ],
 ];

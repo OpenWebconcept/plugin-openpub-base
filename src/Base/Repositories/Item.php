@@ -51,7 +51,7 @@ class Item extends AbstractRepository
     }
 
     /**
-     * Add parameters to meta_query to remove items that are expired or not expired
+     * Add parameters to meta_query to remove items that are expired or not expired.
      *
      * @param boolean $highlighted
      *
@@ -67,6 +67,27 @@ class Item extends AbstractRepository
                     'compare' => '=',
                 ],
             ],
+        ];
+    }
+
+    /**
+     * Add parameters to tax_query to filter items on selected blog slugs.
+     *
+     * @param string $blogSlug
+     * 
+     * @return array
+     */
+    public static function addShowOnParameter(string $blogSlug): array
+    {
+        return [
+            'tax_query' => [
+                [
+                    'taxonomy' => 'openpub-show-on',
+                    'terms'    => sanitize_text_field($blogSlug),
+                    'field'    => 'slug',
+                    'operator' => 'IN'
+                ]
+            ]
         ];
     }
 }

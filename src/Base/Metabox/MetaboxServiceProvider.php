@@ -20,8 +20,14 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
     {
         $configMetaboxes  = $this->plugin->config->get('metaboxes');
 
+        // add metabox if plugin setting is checked.
         if ($this->plugin->settings->useEscapeElement()) {
-            $configMetaboxes = array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
+            $configMetaboxes = $this->getEscapeElementMetabox($configMetaboxes);
+        }
+
+        // add metabox if plugin setting is checked.
+        if ($this->plugin->settings->useShowOn()) {
+            $configMetaboxes = $this->getShowOnMetabox($configMetaboxes);
         }
 
         $metaboxes = [];
@@ -31,5 +37,15 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
         }
 
         return array_merge($rwmbMetaboxes, apply_filters("owc/openpub/base/before-register-metaboxes", $metaboxes));
+    }
+
+    protected function getEscapeElementMetabox(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('escape_element_metabox'));
+    }
+
+    protected function getShowOnMetabox(array $configMetaboxes): array
+    {
+        return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
     }
 }

@@ -30,6 +30,18 @@ msgstr ""
 msgid "Escape element"
 msgstr ""
 
+#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:69 config/taxonomies.php:70
+msgid "Show on"
+msgstr ""
+
+#: config/settings.php:31
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
+msgstr ""
+
+#: config/settings.php:37
+msgid "Used for configuring on which websites an openpub-item should be displayed on."
+msgstr ""
+
 #: config/escape_element_metabox.php:14
 msgid "Enable escape element"
 msgstr ""
@@ -46,72 +58,87 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+#: config/show_on_metabox.php:6
+msgid "External"
+msgstr ""
+
+#: config/show_on_metabox.php:15
+msgid "Select websites where this item should be displayed on."
+msgstr ""
+
 #: config/metaboxes.php:6
 msgid "Data"
 msgstr ""
 
 #: config/metaboxes.php:14
-msgid "Synonyms"
+msgid "Highlighted item"
 msgstr ""
 
 #: config/metaboxes.php:15
-msgid ""
-"Use this option to add an comma separated list of synonyms or related terms"
+msgid "Use this option to select current item to be a highlighted (featured) item"
+msgstr ""
+
+#: config/metaboxes.php:20
+msgid "Synonyms"
 msgstr ""
 
 #: config/metaboxes.php:21
-msgid "Select end date"
+msgid "Use this option to add an comma separated list of synonyms or related terms"
 msgstr ""
 
-#: config/metaboxes.php:28
+#: config/metaboxes.php:27
+msgid "Select end date"
+msgstr "
+
+#: config/metaboxes.php:35
 msgid "Links"
 msgstr ""
 
-#: config/metaboxes.php:35
+#: config/metaboxes.php:42
 msgid "Add new link"
 msgstr ""
 
-#: config/metaboxes.php:39
+#: config/metaboxes.php:46
 msgid "Link title"
 msgstr ""
 
-#: config/metaboxes.php:40 config/metaboxes.php:67
+#: config/metaboxes.php:47 config/metaboxes.php:74
 msgid "Use the title to replace the URL"
 msgstr ""
 
-#: config/metaboxes.php:45
+#: config/metaboxes.php:52
 msgid "Link URL"
 msgstr ""
 
-#: config/metaboxes.php:46 config/metaboxes.php:73 config/settings.php:14
+#: config/metaboxes.php:53 config/metaboxes.php:80 config/settings.php:13
 msgid "URL including http(s)://"
 msgstr ""
 
-#: config/metaboxes.php:55
+#: config/metaboxes.php:62
 msgid "Downloads"
 msgstr ""
 
-#: config/metaboxes.php:62
+#: config/metaboxes.php:69
 msgid "Add new download"
 msgstr ""
 
-#: config/metaboxes.php:66
+#: config/metaboxes.php:73
 msgid "Download title"
 msgstr ""
 
-#: config/metaboxes.php:72
+#: config/metaboxes.php:79
 msgid "Download URL"
 msgstr ""
 
-#: config/metaboxes.php:82
+#: config/metaboxes.php:89
 msgid "Other"
 msgstr ""
 
-#: config/metaboxes.php:85
+#: config/metaboxes.php:92
 msgid "Notes"
-msgstr ""
+msgstr "
 
-#: config/metaboxes.php:86
+#: config/metaboxes.php:93
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
@@ -297,27 +324,27 @@ msgstr ""
 msgid "Enable escape element."
 msgstr ""
 
-#: config/settings.php:40
+#: config/settings.php:46
 msgid "Elasticsearch"
 msgstr ""
 
-#: config/settings.php:47
+#: config/settings.php:53
 msgid "Instance url"
 msgstr ""
 
-#: config/settings.php:48 config/settings.php:54
+#: config/settings.php:54 config/settings.php:60
 msgid "URL inclusief http(s)://"
 msgstr ""
 
-#: config/settings.php:53
+#: config/settings.php:59
 msgid "Instance shield"
 msgstr ""
 
-#: config/settings.php:59
+#: config/settings.php:65
 msgid "Instance prefix"
 msgstr ""
 
-#: config/settings.php:60
+#: config/settings.php:66
 msgid "Use this prefix to group multiple instances"
 msgstr ""
 
@@ -345,32 +372,32 @@ msgctxt "OpenPub settings tab"
 msgid "Elasticsearch"
 msgstr ""
 
-#: config/taxonomies.php:22
+#: config/taxonomies.php:16
 msgctxt "Taxonomy definition"
 msgid "Audience"
 msgstr ""
 
-#: config/taxonomies.php:23
+#: config/taxonomies.php:17
 msgctxt "Taxonomy definition"
 msgid "Audiences"
 msgstr ""
 
-#: config/taxonomies.php:42
+#: config/taxonomies.php:30
 msgctxt "Taxonomy definition"
 msgid "Type"
 msgstr ""
 
-#: config/taxonomies.php:43
+#: config/taxonomies.php:31
 msgctxt "Taxonomy definition"
 msgid "Types"
 msgstr ""
 
-#: config/taxonomies.php:61
+#: config/taxonomies.php:43
 msgctxt "Taxonomy definition"
 msgid "Usage"
 msgstr ""
 
-#: config/taxonomies.php:62
+#: config/taxonomies.php:44
 msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr ""
