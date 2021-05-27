@@ -71,7 +71,7 @@ class Item extends AbstractRepository
     }
 
     /**
-     * Add parameters to tax_query to filter items on selected blog slugs.
+     * Add parameters to tax_query used for filtering items on selected blog (id) slugs.
      *
      * @param string $blogSlug
      * 
