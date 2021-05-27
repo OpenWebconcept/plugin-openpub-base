@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  version: 2.0.4
+  title: 'OpenWebConcept OpenPub API'
+  termsOfService: 'https://www.openwebconcept.nl/'
+  contact:
+    name: OpenWebConcept
+    url: 'https://www.openwebconcept.nl/'
+    email: info@openwebconcept.nl
+  license:
+    name: OpenWebConcept
+    url: 'https://www.openwebconcept.nl/'
+  x-logo:
+    url: 'https://openwebconcept.nl/wp-content/themes/openwebconcept/assets/src/images/logo.png'
+  description:
+    $ref: ../chapters/description.md
+  x-externalDocs:
+    description: 'Find out how to create Github repo for your OpenAPI spec.'
+    url: 'https://openwebconcept.bitbucket.io/openpub/'
+servers:
+  -
+    url: 'https://{site}/wp-json/owc/openpub/v1'
+    description: ''
+paths:
+  /items:
+    get:
+      summary: 'Get all OpenPub items'
+      operationId: getItems
+      tags:
+        - API
+      parameters:
+        - name: 'filter[]'
+          in: query
+          description: 'Filter items by date of modification'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            pattern: 'updatedAfterDate:YYYY-MM-DD'
+          example: 'updatedAfterDate:2021-03-01'
+        - name: 'filter[]'
+          in: query
+          description: 'Filter items by date of publication'
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+            pattern: 'publishedAfterDate:YYYY-MM-DD'
+          example: 'publishedAfterDate:2021-03-01'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  '/items/{ID}':
+    get:
+      tags:
+        - API
+      description: 'Get OpenPub item by ID'
+      operationId: getItemByID
+      parameters:
+        -
+          name: ID
+          in: path
+          description: 'ID of OpenPub item'
+          required: true
+          schema:
+            type: integer
+            format: int64
+          example: /1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenPubItem'
+        '404':
+          description: 'OpenPub not found'
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    OpenPubItem:
+      title: 'OpenPub model'
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        content:
+          type: string
+        except:
+          type: string
+        date:
+          type: string
+        slug:
+          type: string
+        connected:
+          type: array
+          items:
+            name: openpub-item_to_openpub-theme
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+    Response:
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OpenPubItem'
+        pagination:
+          type: array
+          items: {  }
+        query_parameters: {  }
+      type: object

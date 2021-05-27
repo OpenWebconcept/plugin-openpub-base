@@ -1,0 +1,13 @@
+{
+  "name": "openpub-docs",
+  "description": "OpenPUB docs",
+  "author": "Yard | Digital Agency",
+  "license": "ISC",
+  "version": "1.0.0",
+  "dependencies": {
+    "redoc-cli": "^0.11"
+  },
+  "scripts": {
+    "doc-build": "redoc-cli bundle ./specs/openapi.yaml --output ./index.html -t templates/template.hbs"
+  }
+}
