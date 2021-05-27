@@ -25,7 +25,7 @@ msgstr ""
 msgid "Escape element"
 msgstr "Ontsnap element"
 
-#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:69 config/taxonomies.php:70
+#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:61 config/taxonomies.php:62
 msgid "Show on"
 msgstr "Tonen op"
 

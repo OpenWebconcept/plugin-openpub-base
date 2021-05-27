@@ -28,7 +28,7 @@ class ItemController extends BaseController
             $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
         }
 
-        if ($this->hasShowOnParam($request)) {
+        if ($this->showOnParamIsValid($request)) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
@@ -52,6 +52,10 @@ class ItemController extends BaseController
         $items = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query(Item::addExpirationParameters());
+
+        if ($this->showOnParamIsValid($request)) {
+            $items->query(Item::addShowOnParameter($request->get_param('source')));
+        }
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -178,7 +182,14 @@ class ItemController extends BaseController
         return true;
     }
 
-    protected function hasShowOnParam(WP_REST_Request $request): bool
+    /**
+     * Validate if show on param is valid.
+     * Param should be a numeric value.
+     *
+     * @param WP_REST_Request $request
+     * @return boolean
+     */
+    protected function showOnParamIsValid(WP_REST_Request $request): bool
     {
         if (empty($request->get_param('source'))) {
             return false;

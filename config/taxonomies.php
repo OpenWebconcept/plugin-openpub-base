@@ -49,7 +49,13 @@ return [
         'object_types' => ['openpub-item'],
         'args'         => [
             'show_in_rest'      => false,
-            'show_admin_column' => true
+            'show_admin_column' => true,
+            'capabilities'      => [
+                'manage_terms' => 'manage_options',
+                'edit_terms' => 'manage_options',
+                'delete_terms' => 'manage_options',
+                'assign_terms' => 'manage_categories'
+            ]
         ],
         'names'        => [
             'singular' => __('Show on', 'openpub-base'),
