@@ -422,3 +422,11 @@ msgstr ""
 #, php-format
 msgid "Connection type \"%s\" does not exist"
 msgstr ""
+
+#: src/Base/Taxonomy/TaxonomyController.php:21
+msgid "Additional explanation"
+msgstr ""
+
+#: src/Base/Taxonomy/TaxonomyController.php:22
+msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
+msgstr ""

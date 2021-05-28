@@ -20,10 +20,24 @@ class TaxonomyServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
+
+        if ($this->plugin->settings->useShowOn()) {
+            $this->showOnFormFields();
+        }
     }
 
     /**
-     * Register custom taxonomies via extended_cpts
+     * Add elements to the taxonomy form.
+     *
+     * @return void
+     */
+    protected function showOnFormFields()
+    {
+        $this->plugin->loader->addAction('openpub-show-on_add_form_fields', TaxonomyController::class, 'addShowOnExplanation');
+    }
+
+    /**
+     * Register custom taxonomies via extended_cpts.
      *
      * @return void
      */

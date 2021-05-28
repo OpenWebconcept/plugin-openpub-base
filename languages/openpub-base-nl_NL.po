@@ -636,3 +636,11 @@ msgstr "Verbindingstype \"%s\" bestaat niet"
 
 #~ msgid "This link does not work, go to our website: <a href=\"%s\">%s</a>"
 #~ msgstr "Deze link werkt niet, bekijk onze website: <a href=\"%s\">%s</a>"
+
+#: src/Base/Taxonomy/TaxonomyController.php:21
+msgid "Additional explanation"
+msgstr "Aanvullende uitleg"
+
+#: src/Base/Taxonomy/TaxonomyController.php:22
+msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
+msgstr "De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als term. Het ID wordt gebruikt om de juiste openpub-items weer te geven op alle blogs."
