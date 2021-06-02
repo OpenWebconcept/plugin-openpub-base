@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version [2.0.8]
 
+### Feat
+
 -   Add explanation to 'show on' taxonomy form.
+-   Only use 'show on' filtering in endpoints when setting is active.
+-   Filter related items on source slug when param is set.
 
 ## Version [2.0.7]
 

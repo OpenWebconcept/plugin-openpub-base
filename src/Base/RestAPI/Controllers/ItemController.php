@@ -28,7 +28,7 @@ class ItemController extends BaseController
             $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
         }
 
-        if ($this->showOnParamIsValid($request)) {
+        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
@@ -53,7 +53,7 @@ class ItemController extends BaseController
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
             ->query(Item::addExpirationParameters());
 
-        if ($this->showOnParamIsValid($request)) {
+        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
@@ -86,7 +86,7 @@ class ItemController extends BaseController
             ]);
         }
 
-        $item['related'] = $this->addRelated($item);
+        $item['related'] = $this->addRelated($item, $request);
 
         return $item;
     }
@@ -112,7 +112,7 @@ class ItemController extends BaseController
             ]);
         }
 
-        $item['related'] = $this->addRelated($item);
+        $item['related'] = $this->addRelated($item, $request);
 
         return $item;
     }
@@ -120,7 +120,7 @@ class ItemController extends BaseController
     /**
      * Get related items
      */
-    protected function addRelated(array $item): array
+    protected function addRelated(array $item, WP_REST_Request $request): array
     {
         $items = (new Item())
             ->query([
@@ -130,6 +130,10 @@ class ItemController extends BaseController
                 'post_type'      => 'openpub-item',
             ])
             ->query(Item::addExpirationParameters());
+
+        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
+            $items->query(Item::addShowOnParameter($request->get_param('source')));
+        }
 
         $query = new WP_Query($items->getQueryArgs());
         return array_map([$this, 'transform'], $query->posts);
