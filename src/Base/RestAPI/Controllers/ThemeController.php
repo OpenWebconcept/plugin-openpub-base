@@ -23,10 +23,7 @@ class ThemeController extends BaseController
         $themes = (new Theme())
             ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
 
-        $data  = $themes->all();
-        $query = $themes->getQuery();
-
-        return $this->addPaginator($data, $query);
+        return $this->response($themes);
     }
 
     /**

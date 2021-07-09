@@ -34,12 +34,6 @@ class Item
      */
     protected $meta;
 
-    /**
-     * Post constructor.
-     *
-     * @param array      $data
-     * @param array|null $meta
-     */
     public function __construct(array $data, array $meta = null)
     {
         $this->data = $data;
@@ -47,20 +41,15 @@ class Item
     }
 
     /**
-     * Make Post model from WP_Post object
-     *
-     * @param \WP_Post $post
-     * @return Post
+     * Make Post model from WP_Post object.
      */
-    public static function makeFrom(\WP_Post $post)
+    public static function makeFrom(\WP_Post $post): self
     {
         return new static($post->to_array());
     }
 
     /**
      * Get the ID of the post.
-     *
-     * @return int
      */
     public function getID(): int
     {
@@ -69,8 +58,6 @@ class Item
 
     /**
      * Get the title of the post.
-     *
-     * @return string
      */
     public function getTitle(): string
     {
@@ -79,8 +66,6 @@ class Item
 
     /**
      * Get the title of the post.
-     *
-     * @return string
      */
     public function getPostName(): string
     {
@@ -89,8 +74,6 @@ class Item
 
     /**
      * Get the date of the post as a DateTime object.
-     *
-     * @return \DateTime
      */
     public function getDate(): \DateTime
     {
@@ -99,8 +82,6 @@ class Item
 
     /**
      * Get the modified date of the post as a DateTime object.
-     *
-     * @return \DateTime
      */
     public function getPostModified($gmt = false): \DateTime
     {
@@ -111,10 +92,6 @@ class Item
 
     /**
      * Retrieve the date in localized format.
-     *
-     * @param string $format
-     *
-     * @return string
      */
     public function getDateI18n(string $format): string
     {
@@ -133,8 +110,6 @@ class Item
 
     /**
      * Get the permalink to the post.
-     *
-     * @return string
      */
     public function getLink(): string
     {
@@ -143,20 +118,14 @@ class Item
 
     /**
      * Get the thumbnail URL of the author.
-     *
-     * @param string $size
-     *
-     * @return string
      */
-    public function getThumbnail($size = 'post-thumbnail'): string
+    public function getThumbnail(string $size = 'post-thumbnail'): string
     {
         return get_the_post_thumbnail_url($this->getID(), $size) ?? '';
     }
 
     /**
      * Determines if the post has a thumbnail
-     *
-     * @return bool
      */
     public function hasThumbnail(): bool
     {
@@ -165,10 +134,6 @@ class Item
 
     /**
      * Get the excerpt of the post, else fallback to the post content.
-     *
-     * @param integer $length
-     *
-     * @return string
      */
     public function getExcerpt(int $length = 20): string
     {
@@ -181,8 +146,6 @@ class Item
 
     /**
      * Get the content of the post.
-     *
-     * @return string
      */
     public function getContent(): string
     {
@@ -191,8 +154,6 @@ class Item
 
     /**
      * Determines if the post has content.
-     *
-     * @return bool
      */
     public function hasContent(): bool
     {
@@ -201,8 +162,6 @@ class Item
 
     /**
      * Get the taxonomies of a post.
-     *
-     * @return array
      */
     public function getTaxonomies(): array
     {
@@ -211,8 +170,6 @@ class Item
 
     /**
      * Get the terms of a particular taxonomy.
-     *
-     * @param string $taxonomy
      *
      * @return \WP_Term[]
      */
@@ -224,9 +181,6 @@ class Item
     /**
      * Get a particular key from the data.
      *
-     * @param string $value
-     * @param string $default
-     *
      * @return mixed
      */
     protected function getKey(string $value, string $default = '')
@@ -237,9 +191,6 @@ class Item
     /**
      * Get a meta value from the metadata.
      *
-     * @param string $value
-     * @param string $default
-     * @param bool   $single
      * @param null|string $prefix
      *
      * @return mixed
@@ -267,9 +218,7 @@ class Item
 
     /**
      * Create portal url, used in 'pdc items' overview
-     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url
-     *
-     * @return string
+     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url.
      */
     private function createPortalURL(): string
     {
@@ -278,15 +227,5 @@ class Item
         $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
 
         return $portalURL;
-    }
-
-    /**
-     * @param array $array
-     *
-     * @return array
-     */
-    public function arrayUnique($array): array
-    {
-        return is_array($array) ?  array_unique($array) : [];
     }
 }

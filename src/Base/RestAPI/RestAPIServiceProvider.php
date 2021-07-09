@@ -10,15 +10,11 @@ use WP_REST_Server;
 
 class RestAPIServiceProvider extends ServiceProvider
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $namespace = 'owc/openpub/v1';
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register(): void
     {
@@ -54,10 +50,8 @@ class RestAPIServiceProvider extends ServiceProvider
      *
      * Endpoint of searching.
      * @link https://url/wp-json/owc/openpub/v1/search
-     *
-     * @return void
      */
-    public function registerRoutes()
+    public function registerRoutes(): void
     {
         register_rest_route($this->namespace, 'items/active', [
             'methods'             => WP_REST_Server::READABLE,
@@ -99,9 +93,6 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Whitelist endpoints within Config Expander.
-     *
-     * @param array $whitelist
-     * @return array
      */
     public function whitelist(array $whitelist): array
     {
@@ -118,8 +109,6 @@ class RestAPIServiceProvider extends ServiceProvider
 
     /**
      * Register fields for all configured posttypes.
-     *
-     * @return void
      */
     private function registerModelFields(): void
     {
@@ -127,12 +116,13 @@ class RestAPIServiceProvider extends ServiceProvider
         foreach ($this->plugin->config->get('api.models') as $posttype => $data) {
             foreach ($data['fields'] as $key => $creator) {
                 $class = '\OWC\OpenPub\Base\Repositories\\' . ucfirst($posttype);
-                if (class_exists($class)) {
-                    $creator = new $creator($this->plugin);
-                    $class::addGlobalField($key, $creator, function () use ($creator) {
-                        return $creator->executeCondition()();
-                    });
+                if (!class_exists($class)) {
+                    throw new \Exception(sprintf('%s does not exist', $class));
                 }
+                $creator = new $creator($this->plugin);
+                $class::addGlobalField($key, $creator, function () use ($creator) {
+                    return $creator->executeCondition()();
+                });
             }
         }
     }

@@ -10,6 +10,7 @@ use WP_Query;
 
 abstract class AbstractRepository
 {
+    /** @var string */
     protected $posttype;
 
     /**
@@ -21,22 +22,16 @@ abstract class AbstractRepository
 
     /**
      * Arguments for the WP_Query.
-     *
-     * @var array
      */
     protected $queryArgs = [];
 
     /**
      * Fields that need to be hidden.
-     *
-     * @var array
      */
     protected $hidden = [];
 
     /**
      * Dynamically added fields.
-     *
-     * @var array
      */
     protected $fields = [];
 
@@ -143,12 +138,8 @@ abstract class AbstractRepository
 
     /**
      * Add additional query arguments.
-     *
-     * @param array $args
-     *
-     * @return $this
      */
-    public function query(array $args)
+    public function query(array $args): AbstractRepository
     {
         $this->queryArgs = array_merge($this->queryArgs, $args);
 
