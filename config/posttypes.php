@@ -16,10 +16,13 @@ return [
             ],
             'public'       => true,
             'show_ui'      => true,
-            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments'],
+            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments', 'author'],
             'menu_icon'    => 'dashicons-format-aside',
             'show_in_rest' => true,
             'admin_cols'   => [
+                'author' => [
+                    'title'      => __('Author', 'pdc-base'),
+                ],
                 'type' => [
                     'title'    => _x('Type', 'Admin Filter definition', 'openpub-base'),
                     'taxonomy' => 'openpub-type',
