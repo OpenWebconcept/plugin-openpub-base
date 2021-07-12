@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version [2.0.10]
 
+### Feat
+
+- Add preview parameter for retrieving drafts
+- Purge Varnish on save_post
+
 ### Fix
 
 -  Add addHighlightedParameters to active items

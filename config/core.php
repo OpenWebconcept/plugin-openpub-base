@@ -3,10 +3,10 @@
 return [
 
     /**
-             * Service Providers.
-         */
+    * Service Providers.
+    */
     'providers'    => [
-        /**
+    /**
      * Global providers.
      */
         OWC\OpenPub\Base\PostType\PostTypeServiceProvider::class,
@@ -15,6 +15,9 @@ return [
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
         OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
+        OWC\OpenPub\Base\Admin\AdminServiceProvider::class,
+        OWC\OpenPub\Base\Varnish\VarnishServiceProvider::class,
+
         /**
          * Providers specific to the admin.
          */

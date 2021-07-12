@@ -227,12 +227,13 @@ abstract class AbstractRepository
     public function transform(WP_Post $post)
     {
         $data = [
-            'id'      => $post->ID,
-            'title'   => $post->post_title,
-            'content' => apply_filters('the_content', $post->post_content),
-            'excerpt' => $post->post_excerpt,
-            'date'    => $post->post_date,
-            'slug'    => $post->post_name
+            'id'          => $post->ID,
+            'title'       => $post->post_title,
+            'content'     => apply_filters('the_content', $post->post_content),
+            'excerpt'     => $post->post_excerpt,
+            'date'        => $post->post_date,
+            'slug'        => $post->post_name,
+            'post_status' => $post->post_status
         ];
 
         $data = $this->assignFields($data, $post);

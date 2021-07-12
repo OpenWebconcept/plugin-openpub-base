@@ -63,9 +63,9 @@ class ItemController extends BaseController
     {
         $id = (int) $request->get_param('id');
 
-        $item = (new Item)
-            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
-            ->find($id);
+        $item = $this->singleItemQueryBuilder($request);
+
+        $item = $item->find($id);
 
         if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found (anymore)', $id), [
@@ -89,9 +89,9 @@ class ItemController extends BaseController
     {
         $slug = $request->get_param('slug');
 
-        $item = (new Item)
-            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []))
-            ->findBySlug($slug);
+        $item = $this->singleItemQueryBuilder($request);
+
+        $item = $item->findBySlug($slug);
 
         if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
@@ -100,6 +100,20 @@ class ItemController extends BaseController
         }
 
         $item['related'] = $this->addRelated($item, $request);
+
+        return $item;
+    }
+
+    public function singleItemQueryBuilder(WP_REST_Request $request): Item
+    {
+        $item = (new Item)
+            ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
+        
+        $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
+
+        if (true === $preview) {
+            $item->query(['post_status' => ['publish', 'draft']]);
+        }
 
         return $item;
     }
