@@ -3,17 +3,13 @@
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
 use OWC\OpenPub\Base\Foundation\Plugin;
+use OWC\OpenPub\Base\Repositories\AbstractRepository;
 use WP_Query;
 use WP_REST_Request;
 
 abstract class BaseController
 {
-
-    /**
-     * Instance of the plugin.
-     *
-     * @var Plugin
-     */
+    /** @var Plugin */
     protected $plugin;
 
     public function __construct(Plugin $plugin)
@@ -21,13 +17,13 @@ abstract class BaseController
         $this->plugin = $plugin;
     }
 
+    public function response(AbstractRepository $data): array
+    {
+        return $this->addPaginator($data->all(), $data->getQuery());
+    }
+
     /**
      * Merges a paginator, based on a WP_Query, inside a data arary.
-     *
-     * @param array    $data
-     * @param WP_Query $query
-     *
-     * @return array
      */
     protected function addPaginator(array $data, WP_Query $query): array
     {
@@ -49,13 +45,8 @@ abstract class BaseController
 
     /**
      * Get the paginator query params for a given query.
-     *
-     * @param WP_REST_Request $request
-     * @param int             $limit
-     *
-     * @return array
      */
-    protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10)
+    protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
     {
         return array_merge($request->get_params(), [
             'posts_per_page' => $request->get_param('limit') ?: $limit,

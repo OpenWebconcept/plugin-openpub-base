@@ -10,12 +10,8 @@ class Item extends AbstractRepository
 
     /**
      * Add additional query arguments.
-     *
-     * @param array $args
-     *
-     * @return $this
      */
-    public function query(array $args)
+    public function query(array $args): AbstractRepository
     {
         $this->queryArgs = array_merge($this->queryArgs, $args);
 
@@ -72,10 +68,6 @@ class Item extends AbstractRepository
 
     /**
      * Add parameters to tax_query used for filtering items on selected blog (id) slugs.
-     *
-     * @param string $blogSlug
-     * 
-     * @return array
      */
     public static function addShowOnParameter(string $blogSlug): array
     {

@@ -10,24 +10,13 @@ class Search extends Item
 
     protected static $globalFields = [];
 
-    /**
-     * @var WP_REST_Request
-     */
+    /** @var WP_REST_Request */
     protected $request;
 
-    /**
-     * @var array
-     */
+    /** @var array */
     protected $whitelist = ['s', 'posts_per_page'];
 
-    /**
-     * Search constructor.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
-     * @throws \ReflectionException
-     */
+    /** @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException */
     public function __construct(WP_REST_Request $request)
     {
         parent::__construct();
@@ -37,12 +26,8 @@ class Search extends Item
 
     /**
      * Add additional query arguments.
-     *
-     * @param array $args
-     *
-     * @return $this
      */
-    public function query(array $args)
+    public function query(array $args): AbstractRepository
     {
         $this->queryArgs = array_merge($this->queryArgs, $args);
         $this->queryArgs = array_merge($this->queryArgs, $this->addSearchParameters());
@@ -50,10 +35,7 @@ class Search extends Item
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    private function addSearchParameters()
+    private function addSearchParameters(): array
     {
         return [
             'post_type'      => 'any',
@@ -63,18 +45,12 @@ class Search extends Item
         ];
     }
 
-    /**
-     * @return string
-     */
-    protected function sanitizeSearch()
+    protected function sanitizeSearch(): string
     {
         return sanitize_text_field($this->request->get_param('s'));
     }
 
-    /**
-     * @return int
-     */
-    protected function perPage()
+    protected function perPage(): int
     {
         $amount = $this->request->get_param('posts_per_page') ?? 10;
 

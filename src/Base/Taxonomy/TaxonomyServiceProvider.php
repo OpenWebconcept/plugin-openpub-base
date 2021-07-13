@@ -67,7 +67,7 @@ class TaxonomyServiceProvider extends ServiceProvider
         }
 
         return array_filter($this->plugin->config->get('taxonomies'), function ($taxonomyKey) {
-            return $taxonomyKey !== 'openpub-show-on';
+            return ('openpub-show-on' !== $taxonomyKey);
         }, ARRAY_FILTER_USE_KEY);
     }
 }

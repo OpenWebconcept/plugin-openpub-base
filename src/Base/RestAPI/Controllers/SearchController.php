@@ -11,21 +11,14 @@ class SearchController extends ItemController
     /**
      * Search all items.
      *
-     * @param WP_REST_Request $request
-     *
-     * @return array
-     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
-     * @throws \ReflectionException
+     * @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      */
-    public function search(WP_REST_Request $request)
+    public function search(WP_REST_Request $request): array
     {
         $search = (new Search($request))
             ->query(['post_type' => 'any'])
             ->query(apply_filters('owc/openpub/rest-api/search/query', $this->getPaginatorParams($request)));
 
-        $data  = $search->all();
-        $query = $search->getQuery();
-
-        return $this->addPaginator($data, $query);
+        return $this->response($search);
     }
 }

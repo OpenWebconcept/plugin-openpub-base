@@ -13,16 +13,32 @@ class ItemController extends BaseController
     /**
      * Get a list of all items, active and inactive.
      *
-     * @param WP_REST_Request $request
-     *
-     * @return array
-     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
-     * @throws \ReflectionException
+     * @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      */
-    public function getItems(WP_REST_Request $request)
+    public function getItems(WP_REST_Request $request): array
     {
-        $items = (new Item())
-            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
+        $items = $this->itemQueryBuilder($request);
+
+        return $this->response($items);
+    }
+
+    /**
+     * Get a list of all active items.
+     *
+     * @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
+     */
+    public function getActiveItems(WP_REST_Request $request): array
+    {
+        $items = $this->itemQueryBuilder($request)
+            ->query(Item::addExpirationParameters());
+
+        return $this->response($items);
+    }
+
+    protected function itemQueryBuilder(WP_REST_Request $request = null): Item
+    {
+        $items = new Item();
+        $items = $items->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
 
         if ($this->hasHighlightedParam($request)) {
             $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
@@ -31,36 +47,7 @@ class ItemController extends BaseController
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
-
-        $data  = $items->all();
-        $query = $items->getQuery();
-
-        return $this->addPaginator($data, $query);
-    }
-
-    /**
-     * Get a list of all active items.
-     *
-     * @param WP_REST_Request $request
-     *
-     * @return array
-     * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
-     * @throws \ReflectionException
-     */
-    public function getActiveItems(WP_REST_Request $request)
-    {
-        $items = (new Item())
-            ->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)))
-            ->query(Item::addExpirationParameters());
-
-        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
-            $items->query(Item::addShowOnParameter($request->get_param('source')));
-        }
-
-        $data  = $items->all();
-        $query = $items->getQuery();
-
-        return $this->addPaginator($data, $query);
+        return $items;
     }
 
     /**

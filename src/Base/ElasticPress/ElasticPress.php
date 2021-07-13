@@ -12,15 +12,10 @@ class ElasticPress
     private $config;
 
     /**
-     * @var Item $item
+     * @var \OWC\OpenPub\Base\Repositories\Item
      */
     protected $item;
 
-    /**
-     * ElasticPress constructor.
-     *
-     * @param \OWC\OpenPub\Base\Foundation\Config $config
-     */
     public function __construct($config, Item $item)
     {
         $this->config = $config;
@@ -30,7 +25,7 @@ class ElasticPress
     /**
      * Initialize ElasticPress integration.
      */
-    public function init()
+    public function init(): void
     {
         $this->setFilters();
     }
@@ -190,14 +185,10 @@ class ElasticPress
     /**
      * Transforms the postArgs to a filterable object.
      *
-     * @param $item
-     * @param $postID
-     *
-     * @return array
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
      */
-    protected function transform($item, $postID): array
+    protected function transform(array $item, int $postID): array
     {
         $author = $item['post_author'] ?? [];
         $item   = $this->item
