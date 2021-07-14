@@ -13,7 +13,7 @@ class VarnishServiceProvider extends ServiceProvider
 
     public function purgeVarnishCache(int $postID, \WP_Post $post): void
     {
-        if ( ! function_exists('curl_init')){
+        if (! function_exists('curl_init')) {
             return;
         }
 
@@ -23,7 +23,7 @@ class VarnishServiceProvider extends ServiceProvider
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PURGE');
     
-        $headers = [];
+        $headers   = [];
         $headers[] = 'Host: '. \parse_url(get_site_url(), PHP_URL_HOST);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     

@@ -20,7 +20,7 @@ class AdminServiceProvider extends ServiceProvider
     public function filterPostLink($link, \WP_Post $post): string
     {
         $itemModel = Item::makeFrom($post);
-        $url = $itemModel->getPortalURL();
+        $url       = $itemModel->getPortalURL();
         return $url . "?preview=true";
     }
 
@@ -30,7 +30,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function restPrepareResponseLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
     {
-        $itemModel = Item::makeFrom($post);
+        $itemModel              = Item::makeFrom($post);
         $response->data['link'] = $itemModel->getPortalURL() ?? '';
         
         return $response;

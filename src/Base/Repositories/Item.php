@@ -9,16 +9,6 @@ class Item extends AbstractRepository
     protected static $globalFields = [];
 
     /**
-     * Add additional query arguments.
-     */
-    public function query(array $args): AbstractRepository
-    {
-        $this->queryArgs = array_merge($this->queryArgs, $args);
-
-        return $this;
-    }
-
-    /**
      * Add parameters to meta_query to remove items with expired date.
      *
      * @return array
@@ -31,17 +21,19 @@ class Item extends AbstractRepository
 
         return [
             'meta_query' => [
-                'relation' => 'OR',
                 [
-                    'key'     => '_owc_openpub_expirationdate',
-                    'value'   => $dateNow,
-                    'compare' => '>=',
-                    'type'    => 'DATETIME',
-                ],
-                [
-                    'key'     => '_owc_openpub_expirationdate',
-                    'compare' => 'NOT EXISTS',
-                ],
+                    'relation' => 'OR',
+                    [
+                        'key'     => '_owc_openpub_expirationdate',
+                        'value'   => $dateNow,
+                        'compare' => '>=',
+                        'type'    => 'DATETIME',
+                    ],
+                    [
+                        'key'     => '_owc_openpub_expirationdate',
+                        'compare' => 'NOT EXISTS',
+                    ],
+                ]
             ],
         ];
     }
@@ -58,10 +50,12 @@ class Item extends AbstractRepository
         return [
             'meta_query' => [
                 [
-                    'key'     => '_owc_openpub_highlighted_item',
-                    'value'   => $highlighted ? 1 : 0,
-                    'compare' => '=',
-                ],
+                    [
+                        'key'     => '_owc_openpub_highlighted_item',
+                        'value'   => $highlighted ? 1 : 0,
+                        'compare' => '=',
+                    ],
+                ]
             ],
         ];
     }
