@@ -141,7 +141,7 @@ abstract class AbstractRepository
      */
     public function query(array $args): AbstractRepository
     {
-        $this->queryArgs = array_merge($this->queryArgs, $args);
+        $this->queryArgs = array_merge_recursive($this->queryArgs, $args);
 
         return $this;
     }
