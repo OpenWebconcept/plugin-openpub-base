@@ -216,16 +216,33 @@ class Item
         return $this->createPortalURL();
     }
 
-    /**
-     * Create portal url, used in 'pdc items' overview
-     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url.
-     */
     private function createPortalURL(): string
     {
-        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_openpub_item_slug']));
+        $optionOpenPubSettings = get_option(self::PREFIX . 'openpub_base_settings');
 
-        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
+        if (!is_array($optionOpenPubSettings)) {
+            return '';
+        }
 
-        return $portalURL;
+        $portalURL = $optionOpenPubSettings[self::PREFIX . 'setting_portal_url'] ?? '';
+
+        if (empty($portalURL)) {
+            return '';
+        }
+
+        $itemSlug = $optionOpenPubSettings[self::PREFIX . 'setting_portal_openpub_item_slug'] ?? '';
+
+        if (empty($itemSlug)) {
+            return '';
+        }
+
+        $postName = $this->getPostName();
+
+        // Drafts do not have a postName so use the sanitized title instead.
+        if (empty($postName)) {
+            $postName = sanitize_title($this->getTitle(), 'untitled-draft');
+        }
+
+        return sprintf('%s/%s/%s', $portalURL, $itemSlug, $postName);
     }
 }

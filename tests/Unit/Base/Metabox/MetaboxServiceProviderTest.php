@@ -18,19 +18,23 @@ class MetaboxServiceProviderTest extends TestCase
 
         \WP_Mock::userFunction('wp_parse_args', [
             'return' => [
-                '_owc_setting_portal_url'           => '',
-                '_owc_setting_portal_pdc_item_slug' => '',
-                '_owc_setting_use_portal_url'       => 0,
-                '_owc_setting_use_escape_element'   => 1
+                '_owc_setting_portal_url'                      => '',
+                '_owc_setting_portal_openpub_item_slug'        => '',
+                '_owc_setting_use_portal_url'                  => 0,
+                '_owc_setting_use_escape_element'              => 1,
+                '_owc_setting_openpub_expired_auto'            => 0,
+                '_owc_setting_openpub_expired_auto_after_days' => 0
             ]
         ]);
 
         \WP_Mock::userFunction('get_option', [
             'return' => [
-                '_owc_setting_portal_url'           => '',
-                '_owc_setting_portal_pdc_item_slug' => '',
-                '_owc_setting_use_portal_url'       => 0,
-                '_owc_setting_use_escape_element'   => 1
+                '_owc_setting_portal_url'                      => '',
+                '_owc_setting_portal_openpub_item_slug'        => '',
+                '_owc_setting_use_portal_url'                  => 0,
+                '_owc_setting_use_escape_element'              => 1,
+                '_owc_setting_openpub_expired_auto'            => 0,
+                '_owc_setting_openpub_expired_auto_after_days' => 0
             ]
         ]);
     }

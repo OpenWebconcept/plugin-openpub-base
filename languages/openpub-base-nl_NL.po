@@ -29,14 +29,6 @@ msgstr "Ontsnap element"
 msgid "Show on"
 msgstr "Tonen op"
 
-#: config/settings.php:31
-msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
-msgstr "Gebruik een element waarmee de website verlaten kan worden zonder dat er terug genavigeerd kan worden via de 'Vorige' knop in de browser."
-
-#: config/settings.php:37
-msgid "Used for configuring on which websites an openpub-item should be displayed on."
-msgstr "Wordt gebruikt voor het instellen van de websites waarop een openpub-item weergegeven moet worden."
-
 #: config/escape_element_metabox.php:14
 msgid "Enable escape element"
 msgstr "Gebruik ontsnap element"
@@ -170,7 +162,7 @@ msgctxt "Admin Filter definition"
 msgid "Usage"
 msgstr "Toepassing"
 
-#: config/posttypes.php:37 config/posttypes.php:45
+#: config/posttypes.php:37 config/posttypes.php:45 config/settings.php:43
 msgid "Expired"
 msgstr "Verlopen"
 
@@ -418,34 +410,48 @@ msgid "Use portal url in api."
 msgstr "Gebruik portal url in de api."
 
 #: config/settings.php:31
-msgid "Enable escape element."
-msgstr "Gebruik ontsnap element."
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
+msgstr "Gebruik een element waarmee de website verlaten kan worden zonder dat er terug genavigeerd kan worden via de 'Vorige' knop in de browser."
 
-#: config/settings.php:46
+#: config/settings.php:37
+msgid "Used for configuring on which websites an OpenPub item should be displayed on."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPub item weergegeven moet worden."
+
+#: config/settings.php:44
+msgid "OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days."
+msgstr "Items zonder een einddatum verlopen automatisch als het veld hieronder een waarde heeft die groter is dan 0. Bestaande OpenPub items zonder een einddatum krijgen een waarde toegewezen van de publicatie datum plus de waarde die is opgegeven in dagen. Nieuwe OpenPub items krijgen een waarde van de huidige datum plus de waarde die is opgegeven in dagen."
+
+#: config/settings.php:47
+msgid "Days to expire"
+msgstr "Dagen tot verlopen"
+
+#: config/settings.php:48
+msgid "After how many days should an item expire?"
+msgstr "Na hoeveel dagen moet een item verlopen?"
+
+#: config/settings.php:57
 msgid "Elasticsearch"
 msgstr "Elasticsearch"
 
-#: config/settings.php:53
+#: config/settings.php:64
 msgid "Instance url"
 msgstr "Instance url"
 
-#: config/settings.php:54 config/settings.php:60
+#: config/settings.php:65 config/settings.php:71
 msgid "URL inclusief http(s)://"
 msgstr "URL inclusief http(s)://"
 
-#: config/settings.php:59
+#: config/settings.php:70
 msgid "Instance shield"
 msgstr "Instance user/wachtwoord"
 
-#: config/settings.php:65
+#: config/settings.php:76
 msgid "Instance prefix"
 msgstr "Instance prefix"
 
-#: config/settings.php:66
+#: config/settings.php:77
 msgid "Use this prefix to group multiple instances"
-msgstr ""
-"Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te "
-"groeperen"
+msgstr "Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te groeperen"
 
 #: config/settings_pages.php:7
 msgid "OpenPub settings"
@@ -644,3 +650,7 @@ msgstr "Aanvullende uitleg"
 #: src/Base/Taxonomy/TaxonomyController.php:22
 msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
 msgstr "De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als term. Het ID wordt gebruikt om de juiste openpub-items weer te geven op alle blogs."
+
+#: src/Base/Metabox/MetaboxServiceProvider.php:50
+msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
+msgstr "Items met een einddatum worden uitgesloten van de zoekresultaten en op de nieuws pagina vanaf deze datum."

@@ -3,12 +3,12 @@
 return [
 
     /**
-    * Service Providers.
-    */
-    'providers'    => [
-    /**
-     * Global providers.
+     * Service Providers.
      */
+    'providers'    => [
+        /**
+         * Global providers.
+         */
         OWC\OpenPub\Base\PostType\PostTypeServiceProvider::class,
         OWC\OpenPub\Base\Taxonomy\TaxonomyServiceProvider::class,
         OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
@@ -23,6 +23,7 @@ return [
          */
         'admin' => [
             OWC\OpenPub\Base\Settings\SettingsServiceProvider::class,
+            OWC\OpenPub\Base\Expired\ExpiredServiceProvider::class,
         ],
 
         'cli'   => [

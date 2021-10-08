@@ -5,28 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Version [2.0.12]
+
+### Feat
+
+-   Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days.
+-   New OpenPub items will have a value of the current date plus the value given in days.
+
 ## Version [2.0.11]
 
 ### Fix
 
-- Meta-query with multiple arguments not working correctly.
+-   Meta-query with multiple arguments not working correctly.
 
 ## Version [2.0.10]
 
 ### Feat
 
-- Add preview parameter for retrieving drafts
-- Purge Varnish on save_post
+-   Add preview parameter for retrieving drafts
+-   Purge Varnish on save_post
 
 ### Fix
 
--  Add addHighlightedParameters to active items
+-   Add addHighlightedParameters to active items
 
 ## Version [2.0.9]
 
 ### Feat
 
--  Add author column for openpub items
+-   Add author column for openpub items
 
 ## Version [2.0.8]
 
