@@ -218,7 +218,7 @@ class Item
 
     private function createPortalURL(): string
     {
-        $optionOpenPubSettings = get_option(self::PREFIX . 'openpub_base_settings');
+        $optionOpenPubSettings = \get_option(self::PREFIX . 'openpub_base_settings');
 
         if (!is_array($optionOpenPubSettings)) {
             return '';
@@ -236,13 +236,17 @@ class Item
             return '';
         }
 
-        $postName = $this->getPostName();
+       
+        return sprintf('%s/%s/%s/%s', $portalURL, $itemSlug, $this->createPostSlug(), $this->getID());
+    }
 
-        // Drafts do not have a postName so use the sanitized title instead.
-        if (empty($postName)) {
-            $postName = sanitize_title($this->getTitle(), 'untitled-draft');
+    private function createPostSlug(): string
+    {
+        if (!empty($this->getPostName())) {
+            return $this->getPostName();
         }
 
-        return sprintf('%s/%s/%s', $portalURL, $itemSlug, $postName);
+        // Drafts do not have a post_name so use the sanitized title instead.
+        return sanitize_title($this->getTitle(), 'untitled-draft');
     }
 }

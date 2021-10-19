@@ -7,23 +7,33 @@ use OWC\OpenPub\Base\Models\Item;
 
 class AdminServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->plugin->loader->addFilter('preview_post_link', $this, 'filterPostLink', 10, 2);
+        $this->plugin->loader->addFilter('preview_post_link', $this, 'filterPreviewLink', 10, 2);
         $this->plugin->loader->addFilter('post_type_link', $this, 'filterPostLink', 10, 2);
     }
 
     /**
-     * Changes the url user for live preview to the portal url.
+     * Change the url for preview in the portal.
      */
-    public function filterPostLink($link, \WP_Post $post): string
+    public function filterPostLink(string $link, \WP_Post $post): string
     {
         if ($post->post_type !== 'openpub-item') {
             return $link;
         }
 
-        $itemModel = Item::makeFrom($post);
+        return Item::makeFrom($post)->getPortalURL();
+    }
 
-        return $itemModel->getPortalURL();
+   /**
+     * Change the url for preview of drafts in the portal.
+     */
+    public function filterPreviewLink(string $link, \WP_Post $post): string
+    {
+        if ($post->post_type !== 'openpub-item') {
+            return $link;
+        }
+
+        return Item::makeFrom($post)->getPortalURL() . "?preview=true";
     }
 }
