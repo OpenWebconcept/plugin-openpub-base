@@ -31,7 +31,7 @@ class SettingsPageOptionsTest extends TestCase
     public function do_not_use_auto_expiration_after_days(): void
     {
         $expectedResult = 0;
-        $result         = $this->settingsPageOptions->expireAfter();
+        $result = $this->settingsPageOptions->expireAfter();
 
         $this->assertTrue($expectedResult === $result);
     }
@@ -40,7 +40,7 @@ class SettingsPageOptionsTest extends TestCase
     public function do_not_use_escape_element_setting(): void
     {
         $expectedResult = false;
-        $result         = $this->settingsPageOptions->useEscapeElement();
+        $result = $this->settingsPageOptions->useEscapeElement();
 
         $this->assertEquals($expectedResult, $result);
     }
@@ -49,7 +49,7 @@ class SettingsPageOptionsTest extends TestCase
     public function portal_url_has_value(): void
     {
         $expectedResult = 'www.test.nl';
-        $result         = $this->settingsPageOptions->getPortalURL();
+        $result = $this->settingsPageOptions->getPortalURL();
 
         $this->assertEquals($expectedResult, $result);
     }
@@ -58,7 +58,7 @@ class SettingsPageOptionsTest extends TestCase
     public function portal_url_has_no_value(): void
     {
         $expectedResult = '';
-        $result         = $this->settingsPageOptions->getPortalURL();
+        $result = $this->settingsPageOptions->getPortalURL();
 
         $this->assertNotEquals($expectedResult, $result);
     }
@@ -67,7 +67,7 @@ class SettingsPageOptionsTest extends TestCase
     public function portal_item_slug_has_value(): void
     {
         $expectedResult = 'direct/regelen';
-        $result         = $this->settingsPageOptions->getPortalItemSlug();
+        $result = $this->settingsPageOptions->getPortalItemSlug();
 
         $this->assertEquals($expectedResult, $result);
     }
@@ -76,7 +76,7 @@ class SettingsPageOptionsTest extends TestCase
     public function portal_item_slug_has_no_value(): void
     {
         $expectedResult = '';
-        $result         = $this->settingsPageOptions->getPortalItemSlug();
+        $result = $this->settingsPageOptions->getPortalItemSlug();
 
         $this->assertNotEquals($expectedResult, $result);
     }

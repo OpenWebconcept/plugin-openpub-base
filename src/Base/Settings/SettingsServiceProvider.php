@@ -38,8 +38,8 @@ class SettingsServiceProvider extends MetaboxBaseServiceProvider
      */
     public function registerSettings($rwmbMetaboxes)
     {
-        $configMetaboxes  = $this->plugin->config->get('settings');
-        $metaboxes        = [];
+        $configMetaboxes = $this->plugin->config->get('settings');
+        $metaboxes = [];
 
         foreach ($configMetaboxes as $metabox) {
             $metaboxes[] = $this->processMetabox($metabox);

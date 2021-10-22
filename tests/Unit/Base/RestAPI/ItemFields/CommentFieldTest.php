@@ -22,15 +22,15 @@ class CommentFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post                 = m::mock(WP_Post::class);
-        $this->post->ID             = 1;
-        $this->post->comment_count  = 0;
+        $this->post = m::mock(WP_Post::class);
+        $this->post->ID = 1;
+        $this->post->comment_count = 0;
         $this->post->comment_status = 'closed';
     }
 
@@ -42,11 +42,11 @@ class CommentFieldTest extends TestCase
     /** @test */
     public function it_returns_with_no_results_if_comments_are_disabled()
     {
-        $this->post->comment_count  = 0;
+        $this->post->comment_count = 0;
         $this->post->comment_status = 'closed';
 
-        $commentField       = new CommentField($this->plugin);
-        $actual             = $commentField->create($this->post);
+        $commentField = new CommentField($this->plugin);
+        $actual = $commentField->create($this->post);
 
         $expected = [
             'count'  => 0,
@@ -59,7 +59,7 @@ class CommentFieldTest extends TestCase
     /** @test */
     public function it_returns_the_comments_if_comments_are_enabled_but_there_are_no_comments()
     {
-        $this->post->comment_count  = 0;
+        $this->post->comment_count = 0;
         $this->post->comment_status = 'open';
 
         WP_Mock::userFunction('get_comments', [
@@ -67,7 +67,7 @@ class CommentFieldTest extends TestCase
         ]);
 
         $commentField = new CommentField($this->plugin);
-        $actual       = $commentField->create($this->post);
+        $actual = $commentField->create($this->post);
 
         $expected = [
             'count'  => 0,
@@ -80,51 +80,51 @@ class CommentFieldTest extends TestCase
     /** @test */
     public function it_returns_the_comments_if_comments_are_enabled_and_there_are_comments()
     {
-        $this->post->comment_count  = 2;
+        $this->post->comment_count = 2;
         $this->post->comment_status = 'open';
 
-        $comment1                 = m::mock(WP_Comment::class);
+        $comment1 = m::mock(WP_Comment::class);
         $comment1->shouldReceive('get_children')
             ->andReturn([]);
-        $comment1->comment_ID             = 1;
-        $comment1->comment_parent         = 0;
-        $comment1->comment_author         = 'author 1';
-        $comment1->comment_content        = 'comment 1';
-        $comment1->comment_date           = '13-01-2020';
+        $comment1->comment_ID = 1;
+        $comment1->comment_parent = 0;
+        $comment1->comment_author = 'author 1';
+        $comment1->comment_content = 'comment 1';
+        $comment1->comment_date = '13-01-2020';
 
-        $comment_child2                 = m::mock(WP_Comment::class);
+        $comment_child2 = m::mock(WP_Comment::class);
         $comment_child2->shouldReceive('get_children')
             ->andReturn([]);
-        $comment_child2->comment_ID             = 4;
-        $comment_child2->comment_parent         = 3;
-        $comment_child2->comment_author         = 'child author 2';
-        $comment_child2->comment_content        = 'child comment 2';
-        $comment_child2->comment_date           = '12-01-2020';
+        $comment_child2->comment_ID = 4;
+        $comment_child2->comment_parent = 3;
+        $comment_child2->comment_author = 'child author 2';
+        $comment_child2->comment_content = 'child comment 2';
+        $comment_child2->comment_date = '12-01-2020';
 
-        $comment_child1                 = m::mock(WP_Comment::class);
+        $comment_child1 = m::mock(WP_Comment::class);
         $comment_child1->shouldReceive('get_children')
             ->andReturn([$comment_child2]);
-        $comment_child1->comment_ID             = 3;
-        $comment_child1->comment_parent         = 2;
-        $comment_child1->comment_author         = 'child author 1';
-        $comment_child1->comment_content        = 'child comment 1';
-        $comment_child1->comment_date           = '12-01-2020';
+        $comment_child1->comment_ID = 3;
+        $comment_child1->comment_parent = 2;
+        $comment_child1->comment_author = 'child author 1';
+        $comment_child1->comment_content = 'child comment 1';
+        $comment_child1->comment_date = '12-01-2020';
 
-        $comment2                 = m::mock(WP_Comment::class);
+        $comment2 = m::mock(WP_Comment::class);
         $comment2->shouldReceive('get_children')
             ->andReturn([$comment_child1]);
-        $comment2->comment_ID             = 2;
-        $comment2->comment_parent         = 0;
-        $comment2->comment_author         = 'author 2';
-        $comment2->comment_content        = 'comment 2';
-        $comment2->comment_date           = '12-01-2020';
+        $comment2->comment_ID = 2;
+        $comment2->comment_parent = 0;
+        $comment2->comment_author = 'author 2';
+        $comment2->comment_content = 'comment 2';
+        $comment2->comment_date = '12-01-2020';
 
         WP_Mock::userFunction('get_comments', [
             'return' => [$comment1, $comment2]
         ]);
 
         $commentField = new CommentField($this->plugin);
-        $actual       = $commentField->create($this->post);
+        $actual = $commentField->create($this->post);
 
         $expected = [
             'count'  => 2,
@@ -177,7 +177,7 @@ class CommentFieldTest extends TestCase
         ]);
 
         $commentField = new CommentField($this->plugin);
-        $actual       = $commentField->executeCondition();
+        $actual = $commentField->executeCondition();
 
         $this->assertInstanceOf('Closure', $actual);
         $this->assertFalse($actual());
@@ -191,8 +191,8 @@ class CommentFieldTest extends TestCase
         ]);
 
         $_REQUEST['with'] = 'comments';
-        $commentField     = new CommentField($this->plugin);
-        $actual           = $commentField->executeCondition();
+        $commentField = new CommentField($this->plugin);
+        $actual = $commentField->executeCondition();
 
         $this->assertTrue($actual());
     }

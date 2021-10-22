@@ -26,7 +26,7 @@ abstract class ServiceProvider
      */
     public function __construct(Plugin $plugin)
     {
-        $this->plugin           = $plugin;
+        $this->plugin = $plugin;
         $this->plugin->settings = SettingsPageOptions::make();
     }
 

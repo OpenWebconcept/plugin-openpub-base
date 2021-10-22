@@ -30,9 +30,9 @@ class PostsToPostsServiceProvider extends ServiceProvider
     public function registerPostsToPostsConnections()
     {
         if (function_exists('p2p_register_connection_type')) {
-            $posttypesInfo         = $this->plugin->config->get('p2p_connections.posttypes_info');
+            $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info');
             $defaultConnectionArgs = apply_filters('owc/openpub/base/p2p-connection-defaults', $this->connectionDefaults);
-            $connections           = $this->plugin->config->get('p2p_connections.connections');
+            $connections = $this->plugin->config->get('p2p_connections.connections');
 
             foreach ($connections as $connectionArgs) {
                 $args = array_merge($defaultConnectionArgs, $connectionArgs);
@@ -56,7 +56,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
 
                 if ($connectionArgs['from'] == $connectionArgs['to']) {
                     $connectionType['title']['to'] = '';
-                    $connectionType['admin_box']   = 'from';
+                    $connectionType['admin_box'] = 'from';
                 }
 
                 $connectionType = apply_filters("owc/openpub/base/before-register-p2p-connection/{$posttypesInfo[$connectionArgs['from']]['id']}/{$posttypesInfo[$connectionArgs['to']]['id']}", $connectionType);
@@ -71,8 +71,8 @@ class PostsToPostsServiceProvider extends ServiceProvider
      */
     public function filterP2PConnectableArgs($args)
     {
-        $args['orderby']      = 'title';
-        $args['order']        = 'asc';
+        $args['orderby'] = 'title';
+        $args['order'] = 'asc';
         $args['p2p:per_page'] = 25;
 
         return $args;

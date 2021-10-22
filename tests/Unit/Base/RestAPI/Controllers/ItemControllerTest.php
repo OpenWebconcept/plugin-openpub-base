@@ -20,7 +20,7 @@ class ItemControllerTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
@@ -35,13 +35,13 @@ class ItemControllerTest extends TestCase
     /** @test */
     public function it_transforms_a_wp_object_to_array()
     {
-        $post               = m::mock(WP_Post::class);
-        $post->ID           = 1;
-        $post->post_title   = 'Test Test';
+        $post = m::mock(WP_Post::class);
+        $post->ID = 1;
+        $post->post_title = 'Test Test';
         $post->post_content = 'Test Content';
         $post->post_excerpt = 'Test excerpt';
-        $post->post_date    = '01-01-2021';
-        $post->post_name    = 'test-test';
+        $post->post_date = '01-01-2021';
+        $post->post_name = 'test-test';
 
         WP_Mock::userFunction('get_the_post_thumbnail_url', [
             'args' => [

@@ -43,8 +43,8 @@ class ExpiredField extends CreatesFields
             $status[] = ' 00:00';
         }
         $timezone = \get_option('timezone_string');
-        $date     = \DateTime::createFromFormat('Y-m-d H:i', implode('', $status), new \DateTimeZone($timezone));
-        $dateNow  = new \DateTime(null, new \DateTimeZone($timezone));
+        $date = \DateTime::createFromFormat('Y-m-d H:i', implode('', $status), new \DateTimeZone($timezone));
+        $dateNow = new \DateTime(null, new \DateTimeZone($timezone));
         return [
             'message' => ($date < $dateNow) ? 'Item is expired' : '',
             'status'  => ($date < $dateNow),

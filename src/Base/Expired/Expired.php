@@ -6,7 +6,7 @@ class Expired
 {
     /**
      * Validate if the expiration setting is changed and switched on.
-     * Fill '_owc_openpub_expirationdate' meta field of open-pub items which have no value. 
+     * Fill '_owc_openpub_expirationdate' meta field of open-pub items which have no value.
      */
     public function expirationOptionChange(array $oldValue, array $newValue): array
     {
@@ -29,7 +29,7 @@ class Expired
     }
 
     /**
-     * Fill '_owc_openpub_expirationdate' meta field of open-pub items which have no value. 
+     * Fill '_owc_openpub_expirationdate' meta field of open-pub items which have no value.
      */
     protected function fillExpiredDates(int $expireAfterDaysSetting): void
     {

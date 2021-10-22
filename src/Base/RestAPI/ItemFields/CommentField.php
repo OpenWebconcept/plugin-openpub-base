@@ -25,10 +25,10 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
      */
     public function create(\WP_Post $post): array
     {
-        $result           = [];
-        $result['count']  = (int) $post->comment_count;
+        $result = [];
+        $result['count'] = (int) $post->comment_count;
         $result['status'] = $post->comment_status;
-        $result['items']  = [];
+        $result['items'] = [];
 
         if (!in_array($post->comment_status, ['open'])) {
             return $result;
@@ -72,14 +72,14 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
      */
     protected function getChild(\WP_Comment $comment): array
     {
-        $replies         = [];
+        $replies = [];
         $repliesChildren = [];
 
         foreach ($comment->get_children() as $child) {
             if ($child->get_children()) {
                 $repliesChildren = $this->getChild($child);
             }
-            $replies[]       = $this->format($child, $repliesChildren);
+            $replies[] = $this->format($child, $repliesChildren);
             $repliesChildren = [];
         }
 

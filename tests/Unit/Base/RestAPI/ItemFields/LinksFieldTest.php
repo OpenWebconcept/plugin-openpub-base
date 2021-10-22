@@ -21,13 +21,13 @@ class LinksFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
     }
 
@@ -48,8 +48,8 @@ class LinksFieldTest extends TestCase
             ]
         ]);
 
-        $linksField   = new LinksField($this->plugin);
-        $actual       = $linksField->create($this->post);
+        $linksField = new LinksField($this->plugin);
+        $actual = $linksField->create($this->post);
 
         $this->assertTrue(is_array($actual));
 

@@ -27,7 +27,7 @@ class ConnectedField extends CreatesFields
         $result = [];
 
         foreach ($connections as $connection) {
-            $type            = $connection['from'] . '_to_' . $connection['to'];
+            $type = $connection['from'] . '_to_' . $connection['to'];
             $result[ $type ] = $this->getConnectedItems($post->ID, $type);
         }
 

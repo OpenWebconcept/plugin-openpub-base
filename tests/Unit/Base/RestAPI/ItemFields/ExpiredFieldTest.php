@@ -14,7 +14,7 @@ use WP_Post;
 class ExpiredFieldTest extends TestCase
 {
     const DATETIMEFORMAT = 'Y-m-d H:i';
-    const DATEFORMAT     = 'Y-m-d';
+    const DATEFORMAT = 'Y-m-d';
 
     protected $post;
 
@@ -28,13 +28,13 @@ class ExpiredFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
 
         WP_Mock::userFunction('get_option', [
@@ -42,7 +42,7 @@ class ExpiredFieldTest extends TestCase
             'return' => 'Europe/Amsterdam'
         ]);
 
-        $this->now      = date(self::DATETIMEFORMAT);
+        $this->now = date(self::DATETIMEFORMAT);
         $this->dateTime = new \DateTimeZone('Europe/Amsterdam');
     }
 
@@ -65,7 +65,7 @@ class ExpiredFieldTest extends TestCase
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
-        $status       = $expiredField->create($this->post);
+        $status = $expiredField->create($this->post);
 
         $this->assertTrue(is_array($status));
 
@@ -93,7 +93,7 @@ class ExpiredFieldTest extends TestCase
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
-        $status       = $expiredField->create($this->post);
+        $status = $expiredField->create($this->post);
         $this->assertTrue(is_array($status));
         $this->assertEquals([
                     'message' => '',
@@ -119,7 +119,7 @@ class ExpiredFieldTest extends TestCase
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
-        $status       = $expiredField->create($this->post);
+        $status = $expiredField->create($this->post);
         $this->assertTrue(is_array($status));
         $this->assertEquals([
                     'message' => '',
@@ -145,7 +145,7 @@ class ExpiredFieldTest extends TestCase
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
-        $status       = $expiredField->create($this->post);
+        $status = $expiredField->create($this->post);
         $this->assertTrue(is_array($status));
         $this->assertEquals([
                     'message' => 'Item is expired',
