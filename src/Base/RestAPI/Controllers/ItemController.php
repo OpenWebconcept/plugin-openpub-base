@@ -109,7 +109,7 @@ class ItemController extends BaseController
         $item = (new Item)
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
         
-        $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
         if (true === $preview) {
             $item->query(['post_status' => ['publish', 'draft']]);
