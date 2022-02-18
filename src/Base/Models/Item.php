@@ -1,14 +1,7 @@
 <?php
 
-/**
- * Model for the item
- */
-
 namespace OWC\OpenPub\Base\Models;
 
-/**
- * Model for the item
- */
 class Item
 {
     const PREFIX = '_owc_';
@@ -211,42 +204,20 @@ class Item
         return $this->getMeta('escape_element_active', '0', true, '_owc_');
     }
 
+    /**
+     * URL contains ONLY a connected theme and subtheme.
+     * Is used in 'post_type_link' filter registered in '\OWC\OpenPub\Base\Admin\AdminServiceProvider::class'.
+     */
+    public function getBasePortalURL(): string
+    {
+        return PortalLinkGenerator::make($this)->generateBasePortalLink();
+    }
+
+    /**
+     * URL contains portal URL, post slug and ID.
+     */
     public function getPortalURL(): string
     {
-        return $this->createPortalURL();
-    }
-
-    private function createPortalURL(): string
-    {
-        $optionOpenPubSettings = \get_option(self::PREFIX . 'openpub_base_settings');
-
-        if (!is_array($optionOpenPubSettings)) {
-            return '';
-        }
-
-        $portalURL = $optionOpenPubSettings[self::PREFIX . 'setting_portal_url'] ?? '';
-
-        if (empty($portalURL)) {
-            return '';
-        }
-
-        $itemSlug = $optionOpenPubSettings[self::PREFIX . 'setting_portal_openpub_item_slug'] ?? '';
-
-        if (empty($itemSlug)) {
-            return '';
-        }
-
-       
-        return sprintf('%s/%s/%s/%s', $portalURL, $itemSlug, $this->createPostSlug(), $this->getID());
-    }
-
-    private function createPostSlug(): string
-    {
-        if (!empty($this->getPostName())) {
-            return $this->getPostName();
-        }
-
-        // Drafts do not have a post_name so use the sanitized title instead.
-        return sanitize_title($this->getTitle(), 'untitled-draft');
+        return PortalLinkGenerator::make($this)->generateFullPortalLink();
     }
 }

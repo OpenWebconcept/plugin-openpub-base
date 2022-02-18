@@ -29,6 +29,11 @@ class SettingsPageOptions
         return $this->settings['_owc_setting_portal_openpub_item_slug'] ?? '';
     }
 
+    public function isPortalSlugValid(): bool
+    {
+        return !empty($this->getPortalURL()) && !empty($this->getPortalItemSlug());
+    }
+
     public function usePortalURL(): bool
     {
         return $this->settings['_owc_setting_use_portal_url'] ?? false;
