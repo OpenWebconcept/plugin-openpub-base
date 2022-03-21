@@ -232,7 +232,7 @@ class ElasticPress
      */
     public function addMappings(array $mapping): array
     {
-        $mapping['mappings']['properties']['expired'] = [
+        $mapping['mappings']['post']['properties']['expired'] = [
             'type'       => 'object',
             'properties' => [
                 'on' => [
@@ -242,7 +242,7 @@ class ElasticPress
             ],
         ];
 
-        $mapping['mappings']['properties']['post_date_gmt'] = [
+        $mapping['mappings']['post']['properties']['post_date_gmt'] = [
             'type'   => 'date',
             'format' => 'yyyy-MM-dd HH:mm:ss',
         ];
