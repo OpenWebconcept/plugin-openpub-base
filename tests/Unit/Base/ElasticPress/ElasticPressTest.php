@@ -35,7 +35,7 @@ class ElasticPressTest extends TestCase
 
         $this->config = m::mock(Config::class);
 
-        $this->plugin         = m::mock(Plugin::class);
+        $this->plugin = m::mock(Plugin::class);
         $this->plugin->config = $this->config;
         $this->plugin->loader = m::mock(Loader::class);
 
@@ -122,26 +122,26 @@ class ElasticPressTest extends TestCase
         ]);
 
         $indexName = '';
-        $siteID    = 1;
+        $siteID = 1;
 
         putenv('environment=development');
 
         $expected = 'owc-openpub--1--development';
-        $actual   = $this->service->setIndexNameByEnvironment($indexName, $siteID);
+        $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
 
         putenv('environment=test');
 
         $expected = 'owc-openpub--1--test';
-        $actual   = $this->service->setIndexNameByEnvironment($indexName, $siteID);
+        $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
 
         putenv('environment=');
 
         $expected = 'owc-openpub--1';
-        $actual   = $this->service->setIndexNameByEnvironment($indexName, $siteID);
+        $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
 
@@ -149,7 +149,7 @@ class ElasticPressTest extends TestCase
         putenv('environment=test');
 
         $expected = 'prefix--owc-openpub--1--test';
-        $actual   = $this->service->setIndexNameByEnvironment($indexName, $siteID);
+        $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
     }
@@ -180,7 +180,7 @@ class ElasticPressTest extends TestCase
             ->with(true)
             ->reply(false);
 
-        $postIDStub   = 1;
+        $postIDStub = 1;
         $postArgsStub = [
             'ID'                => $postIDStub,
             'post_author'       => [],
@@ -238,7 +238,7 @@ class ElasticPressTest extends TestCase
         ]);
 
         $expected = '_owc_openpub_base_settings';
-        $actual   = $this->service->getSettings();
+        $actual = $this->service->getSettings();
 
         $this->assertEquals($expected, $actual);
     }

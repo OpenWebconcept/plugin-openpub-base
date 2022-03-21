@@ -1,14 +1,7 @@
 <?php
 
-/**
- * Model for the item
- */
-
 namespace OWC\OpenPub\Base\Models;
 
-/**
- * Model for the item
- */
 class Item
 {
     const PREFIX = '_owc_';
@@ -211,21 +204,20 @@ class Item
         return $this->getMeta('escape_element_active', '0', true, '_owc_');
     }
 
-    public function getPortalURL(): string
+    /**
+     * URL contains ONLY a connected theme and subtheme.
+     * Is used in 'post_type_link' filter registered in '\OWC\OpenPub\Base\Admin\AdminServiceProvider::class'.
+     */
+    public function getBasePortalURL(): string
     {
-        return $this->createPortalURL();
+        return PortalLinkGenerator::make($this)->generateBasePortalLink();
     }
 
     /**
-     * Create portal url, used in 'pdc items' overview
-     * When connected add 'pdc category', 'pdc-subcategory', name and post ID to url.
+     * URL contains portal URL, post slug and ID.
      */
-    private function createPortalURL(): string
+    public function getPortalURL(): string
     {
-        $portalURL = esc_url(trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_url']) . trailingslashit(get_option(self::PREFIX . 'openpub_base_settings')[self::PREFIX . 'setting_portal_openpub_item_slug']));
-
-        $portalURL .= trailingslashit($this->getPostName()) . $this->getID();
-
-        return $portalURL;
+        return PortalLinkGenerator::make($this)->generateFullPortalLink();
     }
 }

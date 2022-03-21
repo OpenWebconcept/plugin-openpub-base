@@ -34,14 +34,6 @@ msgstr ""
 msgid "Show on"
 msgstr ""
 
-#: config/settings.php:31
-msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
-msgstr ""
-
-#: config/settings.php:37
-msgid "Used for configuring on which websites an openpub-item should be displayed on."
-msgstr ""
-
 #: config/escape_element_metabox.php:14
 msgid "Enable escape element"
 msgstr ""
@@ -177,7 +169,7 @@ msgctxt "Admin Filter definition"
 msgid "Usage"
 msgstr ""
 
-#: config/posttypes.php:37 config/posttypes.php:45
+#: config/posttypes.php:37 config/posttypes.php:45 config/settings.php:43
 msgid "Expired"
 msgstr ""
 
@@ -321,30 +313,46 @@ msgid "Use portal url in api."
 msgstr ""
 
 #: config/settings.php:31
-msgid "Enable escape element."
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
 msgstr ""
 
-#: config/settings.php:46
+#: config/settings.php:37
+msgid "Used for configuring on which websites an OpenPub item should be displayed on."
+msgstr ""
+
+#: config/settings.php:44
+msgid "OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days."
+msgstr ""
+
+#: config/settings.php:47
+msgid "Days to expire"
+msgstr ""
+
+#: config/settings.php:48
+msgid "After how many days should an item expire?"
+msgstr ""
+
+#: config/settings.php:57
 msgid "Elasticsearch"
 msgstr ""
 
-#: config/settings.php:53
+#: config/settings.php:64
 msgid "Instance url"
 msgstr ""
 
-#: config/settings.php:54 config/settings.php:60
+#: config/settings.php:65 config/settings.php:71
 msgid "URL inclusief http(s)://"
 msgstr ""
 
-#: config/settings.php:59
+#: config/settings.php:70
 msgid "Instance shield"
 msgstr ""
 
-#: config/settings.php:65
+#: config/settings.php:76
 msgid "Instance prefix"
 msgstr ""
 
-#: config/settings.php:66
+#: config/settings.php:77
 msgid "Use this prefix to group multiple instances"
 msgstr ""
 
@@ -429,4 +437,8 @@ msgstr ""
 
 #: src/Base/Taxonomy/TaxonomyController.php:22
 msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
+msgstr ""
+
+#: src/Base/Metabox/MetaboxServiceProvider.php:50
+msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
 msgstr ""

@@ -7,32 +7,48 @@ use OWC\OpenPub\Base\Models\Item;
 
 class AdminServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
-        $this->plugin->loader->addAction('preview_post_link', $this, 'filterPostLink', 10, 10, 2);
-        $this->plugin->loader->addAction('rest_prepare_pdc-item', $this, 'restPrepareResponseLink', 10, 2);
+        $this->plugin->loader->addFilter('post_type_link', $this, 'filterPostLink', 10, 4);
+        $this->plugin->loader->addFilter('preview_post_link', $this, 'filterPreviewLink', 10, 2);
+        $this->plugin->loader->addAction('rest_prepare_openpub-item', $this, 'filterPreviewInNewTabLink', 10, 2);
     }
 
     /**
-     * Changes the url user for live preview to the portal url.
-     * Works in the old editor (not gutenberg)
+     * Change the url for preview of published posts in the portal.
      */
-    public function filterPostLink($link, \WP_Post $post): string
+    public function filterPostLink(string $link, \WP_Post $post, bool $leavename, $sample): string
     {
-        $itemModel = Item::makeFrom($post);
-        $url       = $itemModel->getPortalURL();
-        return $url . "?preview=true";
+        if ($post->post_type !== 'openpub-item' || !$this->plugin->settings->isPortalSlugValid()) {
+            return $link;
+        }
+
+        return sprintf('%s%s', Item::makeFrom($post)->getBasePortalURL(), ($leavename ? '%postname%' : $post->post_name));
     }
 
     /**
-     * Changes the url used for live preview to the portal url.
-     * Works in the gutenberg editor.
+     * Change the url for preview of draft posts in the portal.
      */
-    public function restPrepareResponseLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
+    public function filterPreviewLink(string $link, \WP_Post $post): string
     {
-        $itemModel              = Item::makeFrom($post);
-        $response->data['link'] = $itemModel->getPortalURL() ?? '';
-        
+        if ($post->post_type !== 'openpub-item'  || !$this->plugin->settings->isPortalSlugValid()) {
+            return $link;
+        }
+
+        return sprintf('%s%s', Item::makeFrom($post)->getPortalURL(), '?draft-preview=true');
+    }
+
+    /**
+     * Change the url of "preview in new tab" button for preview in the portal.
+     */
+    public function filterPreviewInNewTabLink(\WP_REST_Response $response, \WP_Post $post): \WP_REST_Response
+    {
+        if ($post->post_status === 'publish' || !$this->plugin->settings->isPortalSlugValid()) {
+            return $response;
+        }
+
+        $response->data['link'] = Item::makeFrom($post)->getPortalURL() . "?draft-preview=true";
+
         return $response;
     }
 }

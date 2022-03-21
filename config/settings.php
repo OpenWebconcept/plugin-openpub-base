@@ -34,9 +34,20 @@ return [
                 ],
                 'openpub_enable_show_on' => [
                     'name' => __('Show on', 'openpub-base'),
-                    'desc' => __('Used for configuring on which websites an openpub-item should be displayed on.', 'openpub-base'),
+                    'desc' => __('Used for configuring on which websites an OpenPub item should be displayed on.', 'openpub-base'),
                     'id'   => 'setting_openpub_enable_show_on',
                     'type' => 'checkbox'
+                ],
+                'openpub_expired_heading' => [
+                    'type' => 'heading',
+                    'name' => __('Expired', 'openpub-base'),
+                    'desc' => __('OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days.', 'openpub-base'),
+                ],
+                'openpub_expired_auto_after_days' => [
+                    'name' => __('Days to expire', 'openpub-base'),
+                    'desc' => __('After how many days should an item expire?', 'openpub-base'),
+                    'id'   => 'setting_openpub_expired_auto_after_days',
+                    'type' => 'number'
                 ]
             ],
         ],

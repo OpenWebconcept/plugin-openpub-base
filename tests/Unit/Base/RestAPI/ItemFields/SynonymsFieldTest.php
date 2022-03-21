@@ -21,13 +21,13 @@ class SynonymsFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
     }
 
@@ -44,7 +44,7 @@ class SynonymsFieldTest extends TestCase
         ]);
 
         $synonymsField = new SynonymsField($this->plugin);
-        $actual        = $synonymsField->create($this->post);
+        $actual = $synonymsField->create($this->post);
 
         $this->assertEquals('', $actual);
     }
@@ -61,7 +61,7 @@ class SynonymsFieldTest extends TestCase
         ]);
 
         $synonymsField = new SynonymsField($this->plugin);
-        $actual        = $synonymsField->create($this->post);
+        $actual = $synonymsField->create($this->post);
 
         $this->assertEquals('sofa couch divan', $actual);
     }

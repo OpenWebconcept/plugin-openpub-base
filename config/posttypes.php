@@ -107,6 +107,8 @@ return [
     ],
     'openpub-theme' => [
         'args' => [
+            // Exclude from ElasticPress sync.
+            'public' => false,
             'labels' => [
                 'name'               => __('Theme', 'openpub-base'),
                 'singular_name'      => __('Theme', 'openpub-base'),
@@ -146,6 +148,8 @@ return [
     ],
     'openpub-subtheme' => [
         'args' => [
+            // Exclude from ElasticPress sync.
+            'public' => false,
             'labels' => [
                 'name'               => __('Subtheme', 'openpub-base'),
                 'singular_name'      => __('Subtheme', 'openpub-base'),
@@ -188,6 +192,8 @@ return [
     ],
     'openpub-location' => [
         'args' => [
+            // Exclude from ElasticPress sync.
+            'public' => false,
             // Add the post type to the site's main RSS feed:
             'show_in_feed' => false,
 

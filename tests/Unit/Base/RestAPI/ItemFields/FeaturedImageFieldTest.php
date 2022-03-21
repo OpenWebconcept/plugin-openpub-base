@@ -14,7 +14,7 @@ use WP_Post;
 class FeaturedImageFieldTest extends TestCase
 {
     const DATETIMEFORMAT = 'Y-m-d H:i';
-    const DATEFORMAT     = 'Y-m-d';
+    const DATEFORMAT = 'Y-m-d';
 
     protected $post;
 
@@ -28,13 +28,13 @@ class FeaturedImageFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
     }
 
@@ -51,7 +51,7 @@ class FeaturedImageFieldTest extends TestCase
         ]);
 
         $featuredImageField = new FeaturedImageField($this->plugin);
-        $status             = $featuredImageField->create($this->post);
+        $status = $featuredImageField->create($this->post);
 
         $this->assertEmpty($status);
     }
@@ -67,9 +67,9 @@ class FeaturedImageFieldTest extends TestCase
             'return' => 2
         ]);
 
-        $attachment               = m::mock(WP_Post::class);
-        $attachment->ID           = 1;
-        $attachment->post_title   = 'title';
+        $attachment = m::mock(WP_Post::class);
+        $attachment->ID = 1;
+        $attachment->post_title = 'title';
         $attachment->post_content = 'content';
         $attachment->post_excerpt = 'excerpt';
 
@@ -98,7 +98,7 @@ class FeaturedImageFieldTest extends TestCase
         ]);
 
         $featuredImageField = new FeaturedImageField($this->plugin);
-        $actual             = $featuredImageField->create($this->post);
+        $actual = $featuredImageField->create($this->post);
 
         $expected = [
             'title'       => 'title',
@@ -124,9 +124,9 @@ class FeaturedImageFieldTest extends TestCase
             'return' => 2
         ]);
 
-        $attachment               = m::mock(WP_Post::class);
-        $attachment->ID           = 1;
-        $attachment->post_title   = 'title';
+        $attachment = m::mock(WP_Post::class);
+        $attachment->ID = 1;
+        $attachment->post_title = 'title';
         $attachment->post_content = 'content';
         $attachment->post_excerpt = 'excerpt';
 
@@ -177,7 +177,7 @@ class FeaturedImageFieldTest extends TestCase
         ]);
 
         $featuredImageField = new FeaturedImageField($this->plugin);
-        $actual             = $featuredImageField->create($this->post);
+        $actual = $featuredImageField->create($this->post);
 
         $expected = [
             'title'       => 'title',

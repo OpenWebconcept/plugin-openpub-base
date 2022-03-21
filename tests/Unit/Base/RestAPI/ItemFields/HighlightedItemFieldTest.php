@@ -21,13 +21,13 @@ class HighlightedItemFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
     }
 
@@ -43,8 +43,8 @@ class HighlightedItemFieldTest extends TestCase
             'return' => false
         ]);
 
-        $highlightedItemField  = new HighlightedItemField($this->plugin);
-        $condition             = $highlightedItemField->create($this->post);
+        $highlightedItemField = new HighlightedItemField($this->plugin);
+        $condition = $highlightedItemField->create($this->post);
 
         $this->assertFalse($condition);
     }
@@ -56,8 +56,8 @@ class HighlightedItemFieldTest extends TestCase
             'return' => true
         ]);
 
-        $highlightedItemField  = new HighlightedItemField($this->plugin);
-        $condition             = $highlightedItemField->create($this->post);
+        $highlightedItemField = new HighlightedItemField($this->plugin);
+        $condition = $highlightedItemField->create($this->post);
 
         $this->assertTrue($condition);
     }

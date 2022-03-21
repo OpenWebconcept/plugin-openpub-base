@@ -25,7 +25,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    const VERSION = '2.0.11';
+    const VERSION = '2.0.18';
 
     /**
      * Path to the root of the plugin.
@@ -129,7 +129,7 @@ class Plugin
      */
     public function callServiceProviders($method, $key = '')
     {
-        $offset   = $key ? "core.providers.{$key}" : 'core.providers';
+        $offset = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
 
         foreach ($services as $service) {

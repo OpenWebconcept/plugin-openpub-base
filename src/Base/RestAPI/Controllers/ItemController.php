@@ -3,6 +3,7 @@
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
 use OWC\OpenPub\Base\Repositories\Item;
+use OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField;
 use WP_Error;
 use WP_Post;
 use WP_Query;
@@ -109,7 +110,7 @@ class ItemController extends BaseController
         $item = (new Item)
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
         
-        $preview = filter_var($request->get_param('preview'), FILTER_VALIDATE_BOOLEAN);
+        $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
         if (true === $preview) {
             $item->query(['post_status' => ['publish', 'draft']]);
@@ -152,6 +153,7 @@ class ItemController extends BaseController
             'excerpt'       => $post->post_excerpt,
             'date'          => $post->post_date,
             'thumbnail_url' => \get_the_post_thumbnail_url($post->ID),
+            'image'         => (new FeaturedImageField($this->plugin))->create($post),
             'slug'          => $post->post_name,
         ];
 

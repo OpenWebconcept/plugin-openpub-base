@@ -5,28 +5,75 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Version [2.0.18]
+
+### Refactor
+
+-   Generating portal url.
+
+### Fix 
+
+-   Return value in filter 'post_type_link' registered in '\OWC\OpenPub\Base\Admin\AdminServiceProvider::class.
+
+## Version [2.0.17]
+
+### Feat
+
+-   Set argument public to false for the CPT's 'openpub-theme', 'openpub-subtheme' and 'openpub-location' so ElasticPress does not include them in the sync.
+
+## Version [2.0.16]
+
+### Feat
+
+-   Add featured image field to related items
+
+## Version [2.0.15]
+
+### Feat
+
+-   Change 'preview' parameter into 'draft-preview'
+
+## Version [2.0.14]
+
+### Fix
+
+-   Append id for pdc draft previews
+
+## Version [2.0.13]
+
+### Fix
+
+-   Elasticpress indexables posttypes and statuses hooks was not correctly returned.
+
+## Version [2.0.12]
+
+### Feat
+
+-   Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days.
+-   New OpenPub items will have a value of the current date plus the value given in days.
+
 ## Version [2.0.11]
 
 ### Fix
 
-- Meta-query with multiple arguments not working correctly.
+-   Meta-query with multiple arguments not working correctly.
 
 ## Version [2.0.10]
 
 ### Feat
 
-- Add preview parameter for retrieving drafts
-- Purge Varnish on save_post
+-   Add preview parameter for retrieving drafts
+-   Purge Varnish on save_post
 
 ### Fix
 
--  Add addHighlightedParameters to active items
+-   Add addHighlightedParameters to active items
 
 ## Version [2.0.9]
 
 ### Feat
 
--  Add author column for openpub items
+-   Add author column for openpub items
 
 ## Version [2.0.8]
 

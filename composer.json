@@ -22,16 +22,16 @@
   ],
   "require": {
     "php": ">=7.0",
-    "symfony/var-dumper": "^5.2",
     "wpackagist-plugin/elasticpress": ">2.0"
   },
   "require-dev": {
-    "mockery/mockery": "^1.0.0",
-    "phpunit/phpunit": "~8.0",
     "10up/wp_mock": "dev-master",
-    "friendsofphp/php-cs-fixer": "^2.0",
+    "mockery/mockery": "^1.0",
+    "phpunit/phpunit": "~8.0 | ~9.0",
+    "friendsofphp/php-cs-fixer": "^3.0",
     "phpstan/phpstan": "^0.12",
-    "szepeviktor/phpstan-wordpress": "^0.6.0"
+    "symfony/var-dumper": "^5.0",
+    "szepeviktor/phpstan-wordpress": "^0.7.0"
   },
   "autoload": {
     "psr-4": {
@@ -47,7 +47,7 @@
     "format": "vendor/bin/php-cs-fixer fix",
     "phpstan": "./vendor/bin/phpstan analyse",
     "test": [
-        "@unit"
+      "@unit"
     ],
     "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
     "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage"

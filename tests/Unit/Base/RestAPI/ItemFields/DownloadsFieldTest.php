@@ -21,13 +21,13 @@ class DownloadsFieldTest extends TestCase
     {
         WP_Mock::setUp();
 
-        $config       = m::mock(Config::class);
+        $config = m::mock(Config::class);
         $this->plugin = m::mock(Plugin::class);
 
         $this->plugin->config = $config;
         $this->plugin->loader = m::mock(Loader::class);
 
-        $this->post     = m::mock(WP_Post::class);
+        $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
     }
 
@@ -49,7 +49,7 @@ class DownloadsFieldTest extends TestCase
         ]);
 
         $downloadsField = new DownloadsField($this->plugin);
-        $actual         = $downloadsField->create($this->post);
+        $actual = $downloadsField->create($this->post);
 
         $this->assertTrue(is_array($actual));
 
