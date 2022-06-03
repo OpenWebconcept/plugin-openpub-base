@@ -15,7 +15,7 @@ class Item extends AbstractRepository
      */
     public static function addExpirationParameters(): array
     {
-        $timezone = \get_option('timezone_string');
+        $timezone = wp_timezone_string();
         $dateNow = new \DateTime('now', new \DateTimeZone($timezone));
         $dateNow = $dateNow->format("Y-m-d H:i");
 
