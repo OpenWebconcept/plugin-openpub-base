@@ -48,6 +48,9 @@
 # track readme.md in the root (i.e. do NOT ignore it)
 !readme.md
 
+# track .github in the root (i.e. do NOT ignore it)
+!.github
+
 # ignore all files that start with ~
 ~*
 
@@ -98,8 +101,6 @@ vendor
 !/src/vendor
 
 tests/coverage
-<<<<<<< HEAD
-<<<<<<< HEAD
 wp-content/
 
 .DS_Store
