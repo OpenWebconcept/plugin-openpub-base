@@ -10,6 +10,7 @@
     stopOnError="false"
     stopOnFailure="false"
     verbose="true"
+	testdox="true"
 >
     <testsuites>
         <testsuite name="Unit Test Suite">
