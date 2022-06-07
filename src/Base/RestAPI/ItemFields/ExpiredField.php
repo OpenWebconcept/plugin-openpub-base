@@ -43,7 +43,7 @@ class ExpiredField extends CreatesFields
             $status[] = ' 00:00';
         }
 
-        $timezone = wp_timezone_string();
+        $timezone = \wp_timezone_string();
         $date = \DateTime::createFromFormat('Y-m-d H:i', implode('', $status), new \DateTimeZone($timezone));
         $dateNow = new \DateTime('now', new \DateTimeZone($timezone));
 
