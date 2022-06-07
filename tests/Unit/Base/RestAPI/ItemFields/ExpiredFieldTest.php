@@ -37,8 +37,7 @@ class ExpiredFieldTest extends TestCase
         $this->post = m::mock(WP_Post::class);
         $this->post->ID = 1;
 
-        WP_Mock::userFunction('get_option', [
-            'args'   => 'timezone_string',
+        WP_Mock::userFunction('wp_timezone_string', [
             'return' => 'Europe/Amsterdam'
         ]);
 
