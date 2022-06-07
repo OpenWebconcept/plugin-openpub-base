@@ -109,7 +109,7 @@ class ItemController extends BaseController
     {
         $item = (new Item)
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
-        
+
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
         if (true === $preview) {
@@ -153,12 +153,17 @@ class ItemController extends BaseController
             'excerpt'       => $post->post_excerpt,
             'date'          => $post->post_date,
             'thumbnail_url' => \get_the_post_thumbnail_url($post->ID),
-            'image'         => (new FeaturedImageField($this->plugin))->create($post),
+            'image'         => $this->getImageUrl($post),
             'slug'          => $post->post_name,
         ];
 
         return $data;
     }
+
+	public function getImageUrl(WP_Post $post): array
+	{
+		return (new FeaturedImageField($this->plugin))->create($post);
+	}
 
     protected function getHighlightedParam(WP_REST_Request $request): bool
     {
