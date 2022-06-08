@@ -1,12 +1,12 @@
-# README
+# Plugin OpenPub Base
 
 This README documents whatever steps are necessary to get this plugin up and running.
 
-## How do I get set up
+## Getting started
 
--   Unzip and/or move all files to the /wp-content/plugins/openpub-base directory
--   Log into WordPress admin and activate the ‘OpenPub Base’ plugin through the ‘Plugins’ menu
--   Go to the 'OpenPub instellingen pagina' in the left-hand menu to enter some of the required settings
+1. Unzip and/or move all files to the /wp-content/plugins/openpub-base directory
+2. Log into the WordPress admin and activate the ‘OpenPub Base’ plugin through the ‘Plugins’ menu
+3. Go to the 'OpenPub instellingen' pagina in the left-hand menu to enter some of the required settings
 
 ## Hooks
 
@@ -16,65 +16,60 @@ See [Hooks](/docs/hooks.md)
 
 See [REST API](/docs/restapi.md)
 
-## Translations
-
-If you want to use your own set of labels/names/descriptions and so on you can do so.
-All text output in this plugin is controlled via the gettext methods.
-
-Please use your preferred way to make your own translations from the /wp-content/plugins/openpub-base/languages/openpub-base.pot file
-
-Be careful not to put the translation files in a location which can be overwritten by a subsequent update of the plugin, theme or WordPress core.
-
-We recommend using the [Loco Translate plugin](https://wordpress.org/plugins/loco-translate/)
-
-This plugin provides an easy interface for custom translations and a way to store these files without them getting overwritten by updates.
-
-For instructions how to use the 'Loco Translate' plugin, we advice you to read the Beginners's guide page on their website: https://localise.biz/wordpress/plugin/beginners
-or start at the homepage: https://localise.biz/wordpress/plugin
-
 ## Running tests
 
 To run the Unit tests go to a command-line.
 
-```bash
-cd /path/to/wordpress/htdocs/wp-content/plugins/openpub-base/
+```sh
+# 1. go into the plugin directory
+cd <path>
+
+# 2. install the composer deps
 composer install
+
+# 3. run the tests
 phpunit
 ```
 
-For code coverage report, generate report with command line command and view results with browser.
+You can run code coverage reports with the command below:
 
-```bash
+```sh
 phpunit --coverage-html ./tests/coverage
 ```
 
-## Shared environment
+## Shared environments
 
-If the openpub environment is shared by multiple websites and it is required to configure the websites where an openpub-item should be displayed on, follow the steps below:
+If the OpenPub environment is shared by multiple websites and it is required to configure the websites where an openpub-item should be displayed on, follow the steps below:
 
--   Go to the 'OpenPub instellingen pagina' in the left-hand menu and look for the setting 'Show on'. Check the checkbox.
+### Step 1
 
-When this setting is enabled this plugin creates a taxonomy 'Show on'.
+Go to the 'OpenPub instellingen pagina' in the left-hand menu and look for the setting 'Show on'. Check the checkbox. When this setting is enabled this plugin creates a taxonomy 'Show on'.
 
--   Add terms to the taxonomy so the terms can be used in the editor of an openpub-item.
+### Step 2
 
-This plugin also adds a select element to the editor of an openpub-item.
+Add terms to the taxonomy so the terms can be used in the editor of an openpub-item.
 
--   Look for the select beneath the heading 'External'.
--   Select the websites you want this item to be displayed on.
+### Step 3
 
-The selected websites are able now to make requests to the items endpoint and only retrieve openpub-items that are intended for the selected website.
-Example url: https://url/wp-json/owc/openpub/v1/items?source={blog_slug}
+This plugin adds a select element to the editor of an openpub-item. Look for the select beneath the heading 'External' and select the websites you want this item to be displayed on.
 
-## Contribution guidelines
+The selected websites are now able to make requests to the items endpoint and only retrieve openpub-items which are intended for the selected website. Example url: https://url/wp-json/owc/openpub/v1/items?source={blog_slug}
 
-### Writing tests
+## Translations
 
-Have a look at the code coverage reports to see where more coverage can be obtained.
-Write tests
-Create a Pull request to the OWC repository
+All of the descriptions, labels and names inside this plugin can be translated since they are controlled by gettext methods. You can find the .pot file at in the languages directory.
 
-### Who do I talk to
+> Be careful not to put the translation files in a location which can be overwritten by a subsequent update of the plugin, theme or WordPress core.
 
-IF you have questions about or suggestions for this plugin, please contact
-[Holgers Peters](mailto:hpeters@Buren.nl) from Gemeente Buren.
+Use your own preferred way of translating .pot files, however if this is your first time doing translations within WordPress, we recommend you use the [Loco Translate plugin](https://wordpress.org/plugins/loco-translate/) which is a great tool for translating WordPress plugins.
+
+## Contributing
+
+You're welcome to contribute or suggest improvements to this plugin.
+When you submit a pull request, please make sure all the tests pass.
+
+Want to contribute but have no idea what to begin with? Take a look at the coverage reports to see where more coverage can be obtained.
+
+## Questions
+
+You can ask technical questions at the [GitHub issues](https://github.com/OpenWebconcept/plugin-openpub-base/issues) page. For general questions about the Open Webconcept we ask you get in touch with us via the [Open Webconcept website](https://openwebconcept.nl/contact/).
