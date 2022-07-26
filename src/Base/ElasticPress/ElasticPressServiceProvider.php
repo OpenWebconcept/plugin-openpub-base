@@ -13,6 +13,10 @@ class ElasticPressServiceProvider extends ServiceProvider
      */
     public function register()
     {
+		if (\is_plugin_active('yard-elasticsearch/yard-elasticsearch.php')) {
+			return;
+		}
+
         $elasticPress = new ElasticPress($this->plugin->config, new Item);
         $this->plugin->loader->addAction('init', $elasticPress, 'setSettings', 10, 1);
         $this->plugin->loader->addAction('init', $elasticPress, 'init', 10, 1);
