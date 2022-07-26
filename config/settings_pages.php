@@ -1,6 +1,6 @@
 <?php
 
-return [
+$settings =  [
     'base' => [
         'id'            => '_owc_openpub_base_settings',
         'option_name'   => '_owc_openpub_base_settings',
@@ -12,7 +12,12 @@ return [
         'submit_button' => _x('Submit', 'OpenPub settings subpage', 'openpub-base'),
         'tabs'          => [
             'base'          => _x('General', 'PDC settings tab', 'openpub-base'),
-            'elasticsearch' => _x('Elasticsearch', 'OpenPub settings tab', 'openpub-base'),
         ],
     ],
 ];
+
+if (!\is_plugin_active('yard-elasticsearch/yard-elasticsearch.php')) {
+	$settings['base']['tabs']['elasticsearch'] = _x('Elasticsearch', 'OpenPub settings tab', 'openpub-base');
+}
+
+return $settings;
