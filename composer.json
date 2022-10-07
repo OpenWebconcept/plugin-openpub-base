@@ -5,7 +5,10 @@
   "config": {
     "preferred-install": "dist",
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/installers": true
+    }
   },
   "authors": [
     {
@@ -22,10 +25,10 @@
   ],
   "require": {
     "php": ">=7.0",
-    "wpackagist-plugin/elasticpress": ">2.0"
+    "wpackagist-plugin/elasticpress": "^3.0"
   },
   "require-dev": {
-    "10up/wp_mock": "dev-master",
+    "10up/wp_mock": "~0.4",
     "mockery/mockery": "^1.0",
     "phpunit/phpunit": "~8.0 | ~9.0",
     "friendsofphp/php-cs-fixer": "^3.0",
