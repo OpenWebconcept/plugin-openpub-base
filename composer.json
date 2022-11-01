@@ -25,7 +25,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "wpackagist-plugin/elasticpress": "^3.0"
+    "wpackagist-plugin/elasticpress": "^4.0"
   },
   "require-dev": {
     "10up/wp_mock": "~0.4",
