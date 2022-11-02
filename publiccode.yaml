@@ -1,5 +1,8 @@
 name: "plugin-openpub-base"
 
+applicationSuite:
+  name: "OpenWebconcept"
+
 publiccodeYmlVersion: 1.0
 url: "https://github.com/OpenWebconcept/plugin-openpub-base"
 
@@ -19,3 +22,8 @@ description:
 nl:
   commonground:
     layerType: "service"
+
+dependsOn:
+  open:
+    - name: "WordPress"
+    - versionMin: 6.0.3
