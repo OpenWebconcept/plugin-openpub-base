@@ -11,13 +11,12 @@ namespace OWC\OpenPub\Base\Foundation;
  */
 class Plugin
 {
-
     /**
      * Name of the plugin.
      *
      * @var string
      */
-    const NAME = 'openpub-base';
+    public const NAME = 'openpub-base';
 
     /**
      * Version of the plugin.
@@ -25,7 +24,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    const VERSION = '2.0.19';
+    public const VERSION = '2.0.20';
 
     /**
      * Path to the root of the plugin.
@@ -60,7 +59,7 @@ class Plugin
         $this->rootPath = $rootPath;
         load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
-        $this->loader = new Loader;
+        $this->loader = new Loader();
 
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
