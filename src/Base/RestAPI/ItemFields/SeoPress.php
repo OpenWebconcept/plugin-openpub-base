@@ -9,7 +9,7 @@ class SeoPress extends AbstractSEO
     protected function condition(): callable
     {
         return function () {
-            return $this->isPluginSeoPressActive();
+            return $this->isPluginActive('wp-seopress/seopress.php');
         };
     }
 
