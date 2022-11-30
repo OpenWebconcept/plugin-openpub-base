@@ -20,11 +20,11 @@ abstract class AbstractSEO extends CreatesFields
         return is_array($postMeta) && ! empty($postMeta) ? $postMeta : [];
     }
 
-    protected function getRelatedMetaFields(array $seoMetaFields, array $postmeta): array
+    protected function getRelatedMetaFields(array $seoMetaFields, array $postMeta): array
     {
-        return array_filter($postmeta, function ($item, $key) use ($seoMetaFields) {
+        return array_filter($postMeta, function ($key) use ($seoMetaFields) {
             return in_array($key, $seoMetaFields);
-        }, ARRAY_FILTER_USE_BOTH);
+        }, ARRAY_FILTER_USE_KEY);
     }
 
     public function mapFields(array $relatedFields): array
