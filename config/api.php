@@ -24,7 +24,9 @@ return [
                 'notes'             => OWC\OpenPub\Base\RestAPI\ItemFields\NotesField::class,
                 'synonyms'          => OWC\OpenPub\Base\RestAPI\ItemFields\SynonymsField::class,
                 'taxonomies'        => OWC\OpenPub\Base\RestAPI\ItemFields\TaxonomyField::class,
-                'escape_element'    => OWC\OpenPub\Base\RestAPI\ItemFields\EscapeElementField::class
+                'escape_element'    => OWC\OpenPub\Base\RestAPI\ItemFields\EscapeElementField::class,
+                'seopress'          => OWC\OpenPub\Base\RestAPI\ItemFields\SeoPress::class,
+                'yoast'             => OWC\OpenPub\Base\RestAPI\ItemFields\Yoast::class
             ],
         ],
         'theme'  => [
