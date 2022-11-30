@@ -23,6 +23,7 @@ trait CheckPluginActive
 
     public function isPluginYoastSeoActive(): bool
     {
-        return $this->isPluginActive('wordpress-seo/wp-seo.php');
+        return $this->isPluginActive('wordpress-seo/wp-seo.php')
+            || $this->isPluginActive('wordpress-seo-premium/wp-seo-premium.php');
     }
 }
