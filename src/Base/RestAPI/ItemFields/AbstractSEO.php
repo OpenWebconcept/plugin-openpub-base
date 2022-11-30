@@ -22,10 +22,6 @@ abstract class AbstractSEO extends CreatesFields
 
     protected function getRelatedMetaFields(array $seoMetaFields, array $postmeta): array
     {
-        if (empty($seoMetaFields) || empty($postmeta)) {
-            return [];
-        }
-
         return array_filter($postmeta, function ($item, $key) use ($seoMetaFields) {
             return in_array($key, $seoMetaFields);
         }, ARRAY_FILTER_USE_BOTH);
@@ -33,10 +29,6 @@ abstract class AbstractSEO extends CreatesFields
 
     public function mapFields(array $relatedFields): array
     {
-        if (empty($relatedFields)) {
-            return [];
-        }
-
         $mapped = array_map(function ($field) {
             return ! empty($field[0]) ? $field[0] : null;
         }, $relatedFields);
