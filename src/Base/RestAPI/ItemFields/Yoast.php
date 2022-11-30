@@ -9,7 +9,8 @@ class Yoast extends AbstractSEO
     protected function condition(): callable
     {
         return function () {
-            return $this->isPluginYoastSeoActive();
+            return $this->isPluginActive('wordpress-seo/wp-seo.php')
+                || $this->isPluginActive('wordpress-seo-premium/wp-seo-premium.php');
         };
     }
 

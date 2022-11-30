@@ -15,15 +15,4 @@ trait CheckPluginActive
 
         return is_plugin_active($file);
     }
-
-    public function isPluginSeoPressActive(): bool
-    {
-        return $this->isPluginActive('wp-seopress/seopress.php');
-    }
-
-    public function isPluginYoastSeoActive(): bool
-    {
-        return $this->isPluginActive('wordpress-seo/wp-seo.php')
-            || $this->isPluginActive('wordpress-seo-premium/wp-seo-premium.php');
-    }
 }
