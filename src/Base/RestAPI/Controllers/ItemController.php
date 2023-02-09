@@ -45,9 +45,15 @@ class ItemController extends BaseController
             $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
         }
 
+        if ($this->getTypeParam($request)) {
+            $items->query(Item::addTypeParameter($this->getTypeParam($request)));
+        }
+
+
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
+        
         return $items;
     }
 
@@ -160,10 +166,10 @@ class ItemController extends BaseController
         return $data;
     }
 
-	public function getImageUrl(WP_Post $post): array
-	{
-		return (new FeaturedImageField($this->plugin))->create($post);
-	}
+    public function getImageUrl(WP_Post $post): array
+    {
+        return (new FeaturedImageField($this->plugin))->create($post);
+    }
 
     protected function getHighlightedParam(WP_REST_Request $request): bool
     {
@@ -181,6 +187,13 @@ class ItemController extends BaseController
         };
 
         return true;
+    }
+
+    protected function getTypeParam(WP_REST_Request $request): string
+    {
+        $typeParam = $request->get_param('type');
+
+        return ! empty($typeParam) && is_string($typeParam) ? $typeParam : '';
     }
 
     protected function validateBoolean(string $value): bool

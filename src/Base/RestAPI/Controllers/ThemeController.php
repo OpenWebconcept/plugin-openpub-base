@@ -8,7 +8,6 @@ use WP_REST_Request;
 
 class ThemeController extends BaseController
 {
-
     /**
      * Get a list of all items.
      *

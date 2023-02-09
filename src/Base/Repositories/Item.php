@@ -76,4 +76,18 @@ class Item extends AbstractRepository
             ]
         ];
     }
+
+    public static function addTypeParameter(string $type): array
+    {
+        return [
+            'tax_query' => [
+                [
+                    'taxonomy' => 'openpub-type',
+                    'terms'    => sanitize_text_field($type),
+                    'field'    => 'slug',
+                    'operator' => 'IN'
+                ]
+            ]
+        ];
+    }
 }
