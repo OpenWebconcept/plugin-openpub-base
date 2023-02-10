@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'base'          => [
+    'pub_base'          => [
         'id'             => 'general',
         'title'          => _x('Portal', 'OpenPub instellingen subpagina', 'openpub-base'),
         'settings_pages' => '_owc_openpub_base_settings',
