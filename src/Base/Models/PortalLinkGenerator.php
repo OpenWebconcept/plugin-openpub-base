@@ -6,6 +6,9 @@ use OWC\OpenPub\Base\Settings\SettingsPageOptions;
 
 class PortalLinkGenerator
 {
+    protected Item $post;
+    protected SettingsPageOptions $pubSettings;
+
     protected string $portalURL = '';
 
     public function __construct(Item $post)
@@ -50,7 +53,7 @@ class PortalLinkGenerator
 
     private function appendPostSlug(): self
     {
-        if (!empty($this->post->getPostName())) {
+        if (! empty($this->post->getPostName())) {
             $this->updatePortalURL($this->post->getPostName());
         } else {
             // Drafts do not have a post_name so use the sanitized title instead.

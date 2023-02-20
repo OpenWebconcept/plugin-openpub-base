@@ -2,49 +2,67 @@
 
 namespace OWC\OpenPub\Base\Settings;
 
-use OWC\OpenPub\Base\Metabox\MetaboxBaseServiceProvider;
+use CMB2;
+use OWC\OpenPub\Base\Foundation\ServiceProvider;
 
-class SettingsServiceProvider extends MetaboxBaseServiceProvider
+class SettingsServiceProvider extends ServiceProvider
 {
     const PREFIX = '_owc_';
 
-    /**
-     * Register the service provider.
-     */
     public function register()
     {
-        $this->plugin->loader->addFilter('mb_settings_pages', $this, 'registerSettingsPage', 10, 1);
-        $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerSettings', 10, 1);
+        $this->plugin->loader->addAction('cmb2_render_number', $this, 'registerMissingNumberField', 10, 5);
+        $this->plugin->loader->addAction('cmb2_admin_init', $this, 'registerSettingsPages', 10, 0);
     }
 
-    /**
-     * @param $rwmbSettingsPages
-     *
-     * @return array
-     */
-    public function registerSettingsPage($rwmbSettingsPages)
+    public function registerMissingNumberField($field, $escapedValue, $objectID, $objectType, $fieldTypeObject): void
     {
-        $settingsPages = $this->plugin->config->get('settings_pages');
-
-        return array_merge($rwmbSettingsPages, $settingsPages);
+        echo $fieldTypeObject->input(array( 'type' => 'number' ));
     }
 
-    /**
-     * Register metaboxes for settings page
-     *
-     * @param $rwmbMetaboxes
-     *
-     * @return array
-     */
-    public function registerSettings($rwmbMetaboxes)
+    public function registerSettingsPages(): void
     {
-        $configMetaboxes = $this->plugin->config->get('settings');
-        $metaboxes = [];
+        $settingsPages = $this->plugin->config->get('cmb2_settings_pages');
 
-        foreach ($configMetaboxes as $metabox) {
-            $metaboxes[] = $this->processMetabox($metabox);
+        if (! is_array($settingsPages)) {
+            return;
         }
 
-        return array_merge($rwmbMetaboxes, apply_filters("owc/openpub/base/before-register-settings", $metaboxes));
+        foreach ($settingsPages as $page) {
+            if (! is_array($page)) {
+                continue;
+            }
+            
+            $this->registerSettingsPage($page);
+        }
+    }
+
+    protected function registerSettingsPage(array $page): void
+    {
+        $fields = $page['fields'] ?? [];
+        unset($page['fields']); // Fields will be added later on.
+
+        $optionsPage = \new_cmb2_box($page);
+
+        if (empty($fields) || ! is_array($fields)) {
+            return;
+        }
+            
+        $this->registerSettingsPageFields($optionsPage, $fields);
+    }
+
+    protected function registerSettingsPageFields(CMB2 $optionsPage, array $fields)
+    {
+        foreach ($fields as $field) {
+            if (! is_array($field)) {
+                continue;
+            }
+
+            if (isset($field['id'])) {
+                $field['id'] = self::PREFIX . $field['id'];
+            }
+
+            $optionsPage->add_field($field);
+        }
     }
 }

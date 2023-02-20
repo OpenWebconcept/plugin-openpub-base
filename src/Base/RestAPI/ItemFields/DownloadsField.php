@@ -7,13 +7,8 @@ use WP_Post;
 
 class DownloadsField extends CreatesFields
 {
-
     /**
      * Get the downloads associated to the post.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
@@ -27,14 +22,10 @@ class DownloadsField extends CreatesFields
 
     /**
      * Get downloads of a post, if URL & title are present.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
-    private function getDownloads(WP_Post $post)
+    private function getDownloads(WP_Post $post): array
     {
-        return array_filter(get_post_meta($post->ID, '_owc_openpub_downloads_group', true) ?: [], function ($download) {
+        return array_filter(\get_post_meta($post->ID, '_owc_openpub_downloads_group', true) ?: [], function ($download) {
             return ! empty($download['openpub_downloads_url']) && ! empty($download['openpub_downloads_title']);
         });
     }

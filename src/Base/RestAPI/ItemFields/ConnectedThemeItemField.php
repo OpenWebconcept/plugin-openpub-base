@@ -7,13 +7,8 @@ use WP_Post;
 
 class ConnectedThemeItemField extends CreatesFields
 {
-
     /**
      * Creates an array of connected posts.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
@@ -33,11 +28,6 @@ class ConnectedThemeItemField extends CreatesFields
 
     /**
      * Get connected items of a post, for a specific connection type.
-     *
-     * @param int    $postID
-     * @param string $type
-     *
-     * @return array
      */
     protected function getConnectedItems(int $postID, string $type): array
     {

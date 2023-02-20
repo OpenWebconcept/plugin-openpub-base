@@ -9,21 +9,11 @@ use OWC\OpenPub\Base\Settings\SettingsPageOptions;
  */
 abstract class ServiceProvider
 {
-
     /**
      * Instance of the plugin.
-     *
-     * @var \OWC\OpenPub\Base\Foundation\Plugin
      */
-    protected $plugin;
+    protected Plugin $plugin;
 
-    /**
-     * Construction of the service provider.
-     *
-     * @param Plugin $plugin
-     *
-     * @return void
-     */
     public function __construct(Plugin $plugin)
     {
         $this->plugin = $plugin;

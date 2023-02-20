@@ -6,8 +6,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 {
     /**
      * The condition for the creator.
-     *
-     * @return callable
      */
     protected function condition(): callable
     {
@@ -18,10 +16,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 
     /**
      * Creates an array of comments.
-     *
-     * @param \WP_Post $post
-     *
-     * @return array
      */
     public function create(\WP_Post $post): array
     {
@@ -41,10 +35,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 
     /**
      * Get comment items of a post.
-     *
-     * @param int    $postID
-     *
-     * @return array
      */
     protected function getComments(int $postID): array
     {
@@ -65,10 +55,6 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 
     /**
      * Get the child(s) of the comment.
-     *
-     * @param \WP_Comment $comment
-     *
-     * @return array
      */
     protected function getChild(\WP_Comment $comment): array
     {
@@ -88,13 +74,8 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
 
     /**
      * Format the comment.
-     *
-     * @param \WP_Comment $comment
-     * @param array $replies
-     *
-     * @return array
      */
-    protected function format(\WP_Comment $comment, $replies = []): array
+    protected function format(\WP_Comment $comment, array $replies = []): array
     {
         return [
             'id'            => (int) $comment->comment_ID,

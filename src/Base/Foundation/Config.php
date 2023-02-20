@@ -1,7 +1,4 @@
 <?php
-/**
- * Config object to store, save and retrieve configurations.
- */
 
 namespace OWC\OpenPub\Base\Foundation;
 
@@ -10,38 +7,26 @@ namespace OWC\OpenPub\Base\Foundation;
  */
 class Config
 {
-
     /**
      * Directory where config files are located.
-     *
-     * @var string $path
      */
-    protected $path;
+    protected string $path;
 
     /**
      * Array with names of protected nodes in the config-items.
-     *
-     * @var array $protectNodes
      */
-    protected $protectedNodes = [];
+    protected array $protectedNodes = [];
 
     /**
      * Array with all the config values.
-     *
-     * @var array $items
      */
-    protected $items = [];
+    protected array $items = [];
 
     /**
      * Config repository constructor.
      *
      * Boot the configuration files and get all the files from the
      * config directory and add them to the config array.
-     *
-     * @param string $path Path to the configuration files.
-     * @param array  $items
-     *
-     * @return void
      */
     public function __construct($path, array $items = [])
     {
@@ -51,10 +36,8 @@ class Config
 
     /**
      * Boot up the configuration repository.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->scanDirectory($this->getPath());
     }
@@ -88,10 +71,8 @@ class Config
      *
      * @param  array|string $key
      * @param  mixed        $value
-     *
-     * @return void
      */
-    public function set($key, $value = null)
+    public function set($key, $value = null): void
     {
         $keys = is_array($key) ? $key : [ $key => $value ];
 
@@ -120,50 +101,40 @@ class Config
 
     /**
      * Return all config values.
-     *
-     * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->items;
     }
 
     /**
      * Get the path where the files will be fetched from.
-     *
-     * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
     /**
      * Sets the path where the config files are fetched from.
-     *
-     * @param $path
      */
-    public function setPath($path)
+    public function setPath(string $path)
     {
         $this->path = $path;
     }
 
     /**
      * Some nodes must not be changed by outside interference.
-     *
-     * @param array $nodes
      */
-    public function setProtectedNodes($nodes = [])
+    public function setProtectedNodes(array $nodes = [])
     {
         $this->protectedNodes = $nodes;
     }
 
     /**
      * Scan a given directory for certain files.
-     *
-     * @param $path
      */
-    private function scanDirectory($path)
+    private function scanDirectory(string $path)
     {
         $files = glob($path.'/*', GLOB_NOSORT);
 

@@ -24,8 +24,6 @@ class ItemController extends BaseController
     }
 
     /**
-     * Get a list of all active items.
-     *
      * @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      */
     public function getActiveItems(WP_REST_Request $request): array
@@ -59,8 +57,6 @@ class ItemController extends BaseController
     /**
      * Get an individual post item.
      *
-     * @param WP_REST_Request $request $request
-     *
      * @return array|WP_Error
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
@@ -86,8 +82,6 @@ class ItemController extends BaseController
 
     /**
      * Get an individual post item by slug.
-     *
-     * @param $request $request
      *
      * @return array|WP_Error
      */
@@ -213,9 +207,6 @@ class ItemController extends BaseController
     /**
      * Validate if show on param is valid.
      * Param should be a numeric value.
-     *
-     * @param WP_REST_Request $request
-     * @return boolean
      */
     protected function showOnParamIsValid(WP_REST_Request $request): bool
     {

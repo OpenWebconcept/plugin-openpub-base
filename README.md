@@ -2,6 +2,22 @@
 
 This README documents whatever steps are necessary to get this plugin up and running.
 
+## :bangbang: Please take notice :bangbang:
+
+Since version 3.0.0 CMB2 is used instead of the metabox.io plugin.
+Projects that have used earlier versions need to execute two commands from their terminal.
+If these commands are not executed there is a potential loss of data inside the meta table for all connected openpub-items.
+
+### Command 1: wp convert:highlighted
+
+When using the metabox.io plugin the value of meta field '\_owc_openpub_highlighted_item' was '0' or '1'.
+CMB2 saves this value as 'on' or does not save a value at all when the checkbox is unchecked.
+
+### Command 2: wp convert:expiration-date
+
+When using the metabox.io plugin the value of meta field '\_owc_openpub_expirationdate' was a date + time (2023-02-20 00:00).
+CMB2 saves this value as a timestamp
+
 ## Installation
 
 ### For users

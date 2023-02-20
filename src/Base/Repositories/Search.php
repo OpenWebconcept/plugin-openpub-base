@@ -6,15 +6,10 @@ use WP_REST_Request;
 
 class Search extends Item
 {
-    protected $posttype = 'openpub-item';
-
-    protected static $globalFields = [];
-
-    /** @var WP_REST_Request */
-    protected $request;
-
-    /** @var array */
-    protected $whitelist = ['s', 'posts_per_page'];
+    protected string $posttype = 'openpub-item';
+    protected static array $globalFields = [];
+    protected WP_REST_Request$request;
+    protected array $whitelist = ['s', 'posts_per_page'];
 
     /** @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException */
     public function __construct(WP_REST_Request $request)
@@ -53,15 +48,13 @@ class Search extends Item
     protected function perPage(): int
     {
         $amount = $this->request->get_param('posts_per_page') ?? 10;
-
         $amount = absint($amount);
 
         /**
          * Change the maximum number of posts per page
-         *
-         * @param int $max Maximum posts per page.
          */
         $max = (int)10;
+        
         if ((int)$max < $amount) {
             $amount = $max;
         }

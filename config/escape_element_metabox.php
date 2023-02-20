@@ -4,7 +4,7 @@ return [
     'escape_element' => [
         'id'         => 'escape_element',
         'title'      => __('Escape element', 'openpub-base'),
-        'post_types' => ['openpub-item'],
+        'object_types' => ['openpub-item'],
         'context'    => 'normal',
         'priority'   => 'low',
         'autosave'   => true,

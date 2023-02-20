@@ -6,11 +6,7 @@ use OWC\OpenPub\Base\Foundation\ServiceProvider;
 
 class PostsToPostsServiceProvider extends ServiceProvider
 {
-
-    /**
-     * @var array
-     */
-    private $connectionDefaults = [
+    private array $connectionDefaults = [
         'can_create_post'       => false,
         'reciprocal'            => true,
         'sortable'              => 'any',
@@ -27,7 +23,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * Register P2P connections
      */
-    public function registerPostsToPostsConnections()
+    public function registerPostsToPostsConnections(): void
     {
         if (function_exists('p2p_register_connection_type')) {
             $posttypesInfo = $this->plugin->config->get('p2p_connections.posttypes_info');
@@ -69,7 +65,7 @@ class PostsToPostsServiceProvider extends ServiceProvider
     /**
      * method for changing default P2P behaviour. Override by adding additional filter with higher priority (=larger number)
      */
-    public function filterP2PConnectableArgs($args)
+    public function filterP2PConnectableArgs(array $args): array
     {
         $args['orderby'] = 'title';
         $args['order'] = 'asc';

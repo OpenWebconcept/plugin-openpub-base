@@ -9,8 +9,7 @@ use WP_REST_Request;
 
 abstract class BaseController
 {
-    /** @var Plugin */
-    protected $plugin;
+    protected Plugin $plugin;
 
     public function __construct(Plugin $plugin)
     {

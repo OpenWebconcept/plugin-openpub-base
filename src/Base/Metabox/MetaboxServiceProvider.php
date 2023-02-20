@@ -2,23 +2,32 @@
 
 namespace OWC\OpenPub\Base\Metabox;
 
-class MetaboxServiceProvider extends MetaboxBaseServiceProvider
+use CMB2;
+use OWC\OpenPub\Base\Foundation\ServiceProvider;
+use OWC\OpenPub\Base\Metabox\Commands\ConvertExpirationDate;
+use OWC\OpenPub\Base\Metabox\Commands\ConvertHighlighted;
+
+class MetaboxServiceProvider extends ServiceProvider
 {
+    public const PREFIX = '_owc_';
+    
     public function register()
     {
-        $this->plugin->loader->addFilter('rwmb_meta_boxes', $this, 'registerMetaboxes', 10, 1);
+        $this->plugin->loader->addAction('cmb2_admin_init', $this, 'registerMetaboxes', 10, 0);
+
+        if (class_exists('\WP_CLI')) {
+            \WP_CLI::add_command('convert:expiration-date', [ConvertExpirationDate::class, 'execute'], ['shortdesc' => 'Convert meta value expiration date to timestamp because of the implementation of CMB2.']);
+            \WP_CLI::add_command('convert:highlighted', [ConvertHighlighted::class, 'execute'], ['shortdesc' => 'Convert meta value highlighted from numeric value to text because of the implementation of CMB2.']);
+        }
     }
 
-    /**
-     * Register metaboxes.
-     *
-     * @param $rwmbMetaboxes
-     *
-     * @return array
-     */
-    public function registerMetaboxes($rwmbMetaboxes)
+    public function registerMetaboxes(): void
     {
-        $configMetaboxes = $this->plugin->config->get('metaboxes');
+        $configMetaboxes = $this->plugin->config->get('cmb2_metaboxes');
+        
+        if (! is_array($configMetaboxes)) {
+            return;
+        }
 
         // Add metabox if plugin setting is checked.
         if ($this->plugin->settings->useEscapeElement()) {
@@ -35,13 +44,46 @@ class MetaboxServiceProvider extends MetaboxBaseServiceProvider
             $configMetaboxes = $this->addExpirationDefaultValue($configMetaboxes);
         }
 
-        $metaboxes = [];
+        foreach ($configMetaboxes as $configMetabox) {
+            if (! is_array($configMetabox)) {
+                continue;
+            }
 
-        foreach ($configMetaboxes as $metabox) {
-            $metaboxes[] = $this->processMetabox($metabox);
+            $this->registerMetabox($configMetabox);
+        }
+    }
+
+    protected function registerMetabox(array $configMetabox): void
+    {
+        $fields = $configMetabox['fields'] ?? [];
+        unset($configMetabox['fields']); // Fields will be added later on.
+
+        $metabox = \new_cmb2_box($configMetabox);
+
+        if (empty($fields) || ! is_array($fields)) {
+            return;
         }
 
-        return array_merge($rwmbMetaboxes, apply_filters("owc/openpub/base/before-register-metaboxes", $metaboxes));
+        $this->registerMetaboxFields($metabox, $fields);
+    }
+
+    protected function registerMetaboxFields(CMB2 $metabox, array $fields): void
+    {
+        foreach ($fields as $field) {
+            $fieldKeys = array_keys($field);
+            
+            foreach ($fieldKeys as $fieldKey) {
+                if (! is_array($field[$fieldKey])) {
+                    continue;
+                }
+
+                if (isset($field[$fieldKey]['id'])) {
+                    $field[$fieldKey]['id'] = self::PREFIX . $field[$fieldKey]['id'];
+                }
+
+                $metabox->add_field($field[$fieldKey]);
+            }
+        }
     }
 
     protected function addExpirationDefaultValue(array $configMetaboxes): array

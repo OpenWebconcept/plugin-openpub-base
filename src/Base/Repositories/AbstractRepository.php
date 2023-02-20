@@ -10,8 +10,7 @@ use WP_Query;
 
 abstract class AbstractRepository
 {
-    /** @var string */
-    protected $posttype;
+    protected string $posttype;
 
     /**
      * Instance of the WP_Query object.
@@ -23,24 +22,24 @@ abstract class AbstractRepository
     /**
      * Arguments for the WP_Query.
      */
-    protected $queryArgs = [];
+    protected array $queryArgs = [];
 
     /**
      * Fields that need to be hidden.
      */
-    protected $hidden = [];
+    protected array $hidden = [];
 
     /**
      * Dynamically added fields.
      */
-    protected $fields = [];
+    protected array $fields = [];
 
     /**
      * Additional fields that needs to be added to an item.
      *
      * @var CreatesFields[]
      */
-    protected static $globalFields = [];
+    protected static array $globalFields = [];
 
     /**
      * Construct a new Model class.
