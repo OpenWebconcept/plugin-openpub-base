@@ -1,11 +1,8 @@
 <?php
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
-
 namespace OWC\OpenPub\Base\Foundation;
 
+use OWC\OpenPub\Base\Settings\SettingsPageOptions;
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 /**
@@ -15,57 +12,50 @@ class Plugin
 {
     /**
      * Name of the plugin.
-     *
-     * @var string
      */
     public const NAME = 'openpub-base';
 
     /**
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
-     *
-     * @var string VERSION
      */
-    public const VERSION = '2.3.3';
+    public const VERSION = '3.0.0';
 
     /**
      * Path to the root of the plugin.
-     *
-     * @var string $rootPath
      */
-    protected $rootPath;
+    protected string $rootPath;
 
     /**
      * Instance of the configuration repository.
-     *
-     * @var \OWC\OpenPub\Base\Config
      */
-    public $config;
+    public Config $config;
 
     /**
      * Instance of the Hook loader.
-     *
-     * @var Loader
      */
-    public $loader;
+    public Loader $loader;
+
+    /**
+     * Instance of the Settings object.
+     */
+    public SettingsPageOptions $settings;
 
     /**
      * Constructor of the BasePlugin
-     *
-     * @param string $rootPath
-     *
-     * @return void
      */
     public function __construct(string $rootPath)
     {
         $this->rootPath = $rootPath;
-        load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+        \load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
         $this->loader = new Loader();
 
         $this->config = new Config($this->rootPath . '/config');
         $this->config->setProtectedNodes(['core']);
         $this->config->boot();
+
+        $this->settings = SettingsPageOptions::make();
     }
 
     /**
@@ -81,7 +71,7 @@ class Plugin
 
         if ($dependencyChecker->failed()) {
             $dependencyChecker->notify();
-            deactivate_plugins(plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+            \deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
             return false;
         }
@@ -91,7 +81,7 @@ class Plugin
         // Set up service providers
         $this->callServiceProviders('register');
 
-        if (is_admin()) {
+        if (\is_admin()) {
             $this->callServiceProviders('register', 'admin');
             $this->callServiceProviders('boot', 'admin');
         }
@@ -142,25 +132,18 @@ class Plugin
 
     /**
      * Allows for hooking into the plugin name.
-     *
-     * @return void
      */
-    public function filterPlugin()
+    public function filterPlugin(): void
     {
-        do_action('owc/' . self::NAME . '/plugin', $this);
+        \do_action('owc/' . self::NAME . '/plugin', $this);
     }
 
     /**
      * Call method on service providers.
      *
-     * @param string $method
-     * @param string $key
-     *
-     * @return void
-     *
      * @throws \Exception
      */
-    public function callServiceProviders($method, $key = '')
+    public function callServiceProviders(string $method, string $key = ''): void
     {
         $offset = $key ? "core.providers.{$key}" : 'core.providers';
         $services = $this->config->get($offset);
@@ -184,28 +167,22 @@ class Plugin
 
     /**
      * Get the name of the plugin.
-     *
-     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
 
     /**
      * Get the version of the plugin.
-     *
-     * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return static::VERSION;
     }
 
     /**
      * Return root path of plugin.
-     *
-     * @return string
      */
     public function getRootPath(): string
     {

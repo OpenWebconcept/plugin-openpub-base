@@ -43,14 +43,14 @@ return [
                         $item = (new Item)
                             ->query(apply_filters('owc/openpub/rest-api/items/query/single', array_merge([], (new Item)->addExpirationParameters())))
                             ->find($post->ID);
-                        if (!$item) {
+                        if (! $item) {
                             echo sprintf('<span style="color: red">%s</span>', __('Expired', 'openpub-base'));
                         } else {
                             $willExpire = get_post_meta($item['id'], '_owc_openpub_expirationdate', true);
-                            if (!$willExpire) {
+                            if (! $willExpire) {
                                 echo sprintf('<span>%s</span>', __('No expire date', 'openpub-base'));
                             } else {
-                                echo sprintf('<span style="color: green">%s %s</span>', __('Will expire on', 'openpub-base'), date_i18n(get_option('date_format') . ', ' . get_option('time_format'), strtotime($willExpire)));
+                                echo sprintf('<span style="color: green">%s %s</span>', __('Will expire on', 'openpub-base'), date_i18n(get_option('date_format') . ', ' . get_option('time_format'), $willExpire));
                             }
                         }
                     },

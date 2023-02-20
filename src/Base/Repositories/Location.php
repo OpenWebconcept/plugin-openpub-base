@@ -4,7 +4,6 @@ namespace OWC\OpenPub\Base\Repositories;
 
 class Location extends AbstractRepository
 {
-    protected $posttype = 'openpub-location';
-
-    protected static $globalFields = [];
+    protected string $posttype = 'openpub-location';
+    protected static array $globalFields = [];
 }

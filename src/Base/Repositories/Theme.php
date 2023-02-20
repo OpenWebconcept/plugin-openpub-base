@@ -4,7 +4,6 @@ namespace OWC\OpenPub\Base\Repositories;
 
 class Theme extends AbstractRepository
 {
-    protected $posttype = 'openpub-theme';
-
-    protected static $globalFields = [];
+    protected string $posttype = 'openpub-theme';
+    protected static array $globalFields = [];
 }

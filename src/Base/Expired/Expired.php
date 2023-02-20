@@ -36,7 +36,7 @@ class Expired
         $posts = $this->getPostsWithoutExpirationDate();
 
         foreach ($posts as $post) {
-            update_post_meta($post->ID, '_owc_openpub_expirationdate', (new \DateTime($post->post_date, new \DateTimeZone('Europe/Amsterdam')))->modify('+' . $expireAfterDaysSetting . ' days')->format('Y-m-d H:i'));
+            \update_post_meta($post->ID, '_owc_openpub_expirationdate', (new \DateTime($post->post_date, new \DateTimeZone('Europe/Amsterdam')))->modify('+' . $expireAfterDaysSetting . ' days')->getTimestamp());
         }
     }
 

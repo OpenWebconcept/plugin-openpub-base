@@ -4,20 +4,16 @@ namespace OWC\OpenPub\Base\Repositories;
 
 class Item extends AbstractRepository
 {
-    protected $posttype = 'openpub-item';
-
-    protected static $globalFields = [];
+    protected string $posttype = 'openpub-item';
+    protected static array $globalFields = [];
 
     /**
      * Add parameters to meta_query to remove items with expired date.
-     *
-     * @return array
      */
     public static function addExpirationParameters(): array
     {
         $timezone = wp_timezone_string();
         $dateNow = new \DateTime('now', new \DateTimeZone($timezone));
-        $dateNow = $dateNow->format("Y-m-d H:i");
 
         return [
             'meta_query' => [
@@ -25,9 +21,8 @@ class Item extends AbstractRepository
                     'relation' => 'OR',
                     [
                         'key'     => '_owc_openpub_expirationdate',
-                        'value'   => $dateNow,
+                        'value'   => $dateNow->getTimestamp(),
                         'compare' => '>=',
-                        'type'    => 'DATETIME',
                     ],
                     [
                         'key'     => '_owc_openpub_expirationdate',
@@ -38,26 +33,32 @@ class Item extends AbstractRepository
         ];
     }
 
-    /**
-     * Add parameters to meta_query to remove items that are expired or not expired.
-     *
-     * @param boolean $highlighted
-     *
-     * @return array
-     */
     public static function addHighlightedParameters(bool $highlighted): array
     {
-        return [
-            'meta_query' => [
+        $query = [];
+
+        if (! $highlighted) {
+            $query['meta_query'] = [
                 [
                     [
                         'key'     => '_owc_openpub_highlighted_item',
-                        'value'   => $highlighted ? 1 : 0,
-                        'compare' => '=',
+                        'compare' => 'NOT EXISTS'
                     ],
                 ]
-            ],
-        ];
+            ];
+        } else {
+            $query['meta_query'] = [
+                [
+                    [
+                        'key'     => '_owc_openpub_highlighted_item',
+                        'value'   => 'on',
+                        'compare' => '='
+                    ],
+                ]
+            ];
+        }
+
+        return $query;
     }
 
     /**

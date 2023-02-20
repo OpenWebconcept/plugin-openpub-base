@@ -13,8 +13,6 @@ class EscapeElementField extends CreatesFields
 {
     /**
      * The condition for the creator.
-     *
-     * @return callable
      */
     protected function condition(): callable
     {
@@ -25,10 +23,6 @@ class EscapeElementField extends CreatesFields
 
     /**
      * Create the identifications field for a given post.
-     *
-     * @param WP_Post $post
-     *
-     * @return bool
      */
     public function create(WP_Post $post): bool
     {

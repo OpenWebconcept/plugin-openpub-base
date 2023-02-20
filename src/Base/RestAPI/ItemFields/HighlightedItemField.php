@@ -9,10 +9,6 @@ class HighlightedItemField extends CreatesFields
 {
     /**
      * Generate the highlighted field.
-     *
-     * @param WP_Post $post
-     *
-     * @return boolean
      */
     public function create(WP_Post $post): bool
     {
@@ -21,13 +17,9 @@ class HighlightedItemField extends CreatesFields
 
     /**
      * Get option if post is highlighted.
-     *
-     * @param WP_Post $post
-     *
-     * @return bool
      */
     private function getHighlightedItem(WP_Post $post): bool
     {
-        return (bool) get_post_meta($post->ID, '_owc_openpub_highlighted_item', true) ?: false;
+        return (bool) \get_post_meta($post->ID, '_owc_openpub_highlighted_item', true) ?: false;
     }
 }

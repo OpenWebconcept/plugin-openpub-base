@@ -9,10 +9,8 @@ class PostTypeServiceProvider extends ServiceProvider
 {
     /**
      * The array of posttype definitions from the config
-     *
-     * @var array
      */
-    protected $configPostTypes = [];
+    protected array $configPostTypes = [];
 
     public function register()
     {
@@ -22,17 +20,14 @@ class PostTypeServiceProvider extends ServiceProvider
 
     /**
      * Add default order.
-     *
-     * @param WP_Query $query
-     * @return void
      */
-    public function orderByPublishedDate(WP_Query $query)
+    public function orderByPublishedDate(WP_Query $query): void
     {
-        if (!is_admin()) {
+        if (! is_admin()) {
             return;
         }
 
-        if (!$query->is_main_query() || 'openpub-item' != $query->get('post_type')) {
+        if (! $query->is_main_query() || 'openpub-item' != $query->get('post_type')) {
             return;
         }
 
@@ -45,9 +40,9 @@ class PostTypeServiceProvider extends ServiceProvider
     }
 
     /**
-     * register custom posttypes.
+     * Register custom posttypes.
      */
-    public function registerPostTypes()
+    public function registerPostTypes(): void
     {
         if (function_exists('register_extended_post_type')) {
             $this->configPostTypes = $this->plugin->config->get('posttypes');

@@ -14,8 +14,6 @@ class DateModified extends CreatesFields
 {
     /**
      * The condition for the creator.
-     *
-     * @return callable
      */
     protected function condition(): callable
     {
@@ -26,10 +24,6 @@ class DateModified extends CreatesFields
 
     /**
      * Create the portal url field for a given post.
-     *
-     * @param WP_Post $post
-     *
-     * @return string
      */
     public function create(WP_Post $post): string
     {

@@ -9,10 +9,6 @@ class ConnectedField extends CreatesFields
 {
     /**
      * Creates an array of connected posts.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
@@ -36,11 +32,6 @@ class ConnectedField extends CreatesFields
 
     /**
      * Get connected items of a post, for a specific connection type.
-     *
-     * @param int    $postID
-     * @param string $type
-     *
-     * @return array
      */
     protected function getConnectedItems(int $postID, string $type): array
     {

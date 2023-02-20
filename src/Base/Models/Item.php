@@ -8,29 +8,23 @@ class Item
 
     /**
      * Type of model.
-     *
-     * @var string $posttype
      */
-    protected $posttype = 'openpub-item';
+    protected string $posttype = 'openpub-item';
 
     /**
      * Data of the Post.
-     *
-     * @var array
      */
-    protected $data;
+    protected array $data;
 
     /**
      * Metadata of the post.
-     *
-     * @var array
      */
-    protected $meta;
+    protected array $meta;
 
     public function __construct(array $data, array $meta = null)
     {
         $this->data = $data;
-        $this->meta = is_null($meta) ? get_post_meta($data['ID']) : $meta;
+        $this->meta = is_null($meta) ? \get_post_meta($data['ID']) : $meta;
     }
 
     /**
@@ -93,12 +87,12 @@ class Item
 
     /**
      * Returns the type of the post.
-     *
-     * @return string|false
      */
     public function getPostType(): string
     {
-        return get_post_type($this->getID());
+        $postType = \get_post_type($this->getID());
+
+        return is_string($postType) ? $postType : '';
     }
 
     /**
@@ -106,7 +100,9 @@ class Item
      */
     public function getLink(): string
     {
-        return get_permalink($this->getID()) ?? '';
+        $permalink = \get_permalink($this->getID());
+
+        return is_string($permalink) ? $permalink : '';
     }
 
     /**
@@ -114,7 +110,9 @@ class Item
      */
     public function getThumbnail(string $size = 'post-thumbnail'): string
     {
-        return get_the_post_thumbnail_url($this->getID(), $size) ?? '';
+        $url = \get_the_post_thumbnail_url($this->getID(), $size);
+
+        return is_string($url) ? $url : '';
     }
 
     /**
@@ -122,7 +120,7 @@ class Item
      */
     public function hasThumbnail(): bool
     {
-        return has_post_thumbnail($this->getID());
+        return \has_post_thumbnail($this->getID());
     }
 
     /**
@@ -131,7 +129,7 @@ class Item
     public function getExcerpt(int $length = 20): string
     {
         if (empty($this->getKey('post_excerpt'))) {
-            return wp_trim_words(strip_shortcodes($this->getKey('post_content')), $length);
+            return \wp_trim_words(\strip_shortcodes($this->getKey('post_content')), $length);
         }
 
         return $this->getKey('post_excerpt');
@@ -142,7 +140,7 @@ class Item
      */
     public function getContent(): string
     {
-        return apply_filters('the_content', $this->getKey('post_content'));
+        return \apply_filters('the_content', $this->getKey('post_content'));
     }
 
     /**
@@ -150,7 +148,7 @@ class Item
      */
     public function hasContent(): bool
     {
-        return !empty($this->getKey('post_content'));
+        return ! empty($this->getKey('post_content'));
     }
 
     /**
@@ -158,17 +156,17 @@ class Item
      */
     public function getTaxonomies(): array
     {
-        return get_post_taxonomies($this->getID());
+        return \get_post_taxonomies($this->getID());
     }
 
     /**
      * Get the terms of a particular taxonomy.
-     *
-     * @return \WP_Term[]
      */
-    public function getTerms(string $taxonomy)
+    public function getTerms(string $taxonomy): array
     {
-        return get_the_terms($this->getID(), $taxonomy);
+        $terms = \get_the_terms($this->getID(), $taxonomy);
+
+        return is_array($terms) ? $terms : [];
     }
 
     /**

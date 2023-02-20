@@ -6,12 +6,8 @@ class TaxonomyController
 {
     /**
      * Add 'show on' additional explanation.
-     *
-     * @param string $taxonomy
-     *
-     * @return void
      */
-    public function addShowOnExplanation(string $taxonomy): void
+    public static function addShowOnExplanation(string $taxonomy): void
     {
         if ('openpub-show-on' !== $taxonomy) {
             return;

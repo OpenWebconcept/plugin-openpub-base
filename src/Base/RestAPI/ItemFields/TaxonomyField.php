@@ -7,13 +7,8 @@ use WP_Post;
 
 class TaxonomyField extends CreatesFields
 {
-
     /**
      * Create an additional field on an array.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
@@ -28,17 +23,12 @@ class TaxonomyField extends CreatesFields
 
     /**
      * Get terms of a taxonomy to which the post is connected.
-     *
-     * @param int    $postID
-     * @param string $taxonomy
-     *
-     * @return array
      */
     private function getTerms(int $postID, string $taxonomy): array
     {
-        $terms = wp_get_post_terms($postID, $taxonomy);
+        $terms = \wp_get_post_terms($postID, $taxonomy);
 
-        if (is_wp_error($terms)) {
+        if (\is_wp_error($terms)) {
             return [];
         }
 

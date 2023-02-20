@@ -7,13 +7,8 @@ use WP_Post;
 
 class FeaturedImageField extends CreatesFields
 {
-
     /**
      * Gets the featured image of a post.
-     *
-     * @param WP_Post $post
-     *
-     * @return array
      */
     public function create(WP_Post $post): array
     {
@@ -44,10 +39,6 @@ class FeaturedImageField extends CreatesFields
 
     /**
      * Get meta data of an attachment.
-     *
-     * @param $id
-     *
-     * @return array
      */
     private function getAttachmentMeta(int $id): array
     {
