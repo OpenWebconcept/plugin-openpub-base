@@ -6,6 +6,8 @@
 
 namespace OWC\OpenPub\Base\Foundation;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 /**
  * BasePlugin which sets all the serviceproviders.
  */
@@ -84,6 +86,8 @@ class Plugin
             return false;
         }
 
+        $this->checkForUpdate();
+
         // Set up service providers
         $this->callServiceProviders('register');
 
@@ -104,6 +108,25 @@ class Plugin
         $this->loader->register();
 
         return true;
+    }
+
+    protected function checkForUpdate()
+    {
+    	if (! class_exists(PucFactory::class)) {
+    		return;
+    	}
+
+        try {
+            $updater = PucFactory::buildUpdateChecker(
+                'https://github.com/OpenWebconcept/plugin-openpub-base/',
+                $this->rootPath . '/openpub-base.php',
+                'openpub-base'
+            );
+
+            $updater->getVcsApi()->enableReleaseAssets();
+        } catch (\Throwable $e) {
+            error_log($e->getMessage());
+        }
     }
 
     /**

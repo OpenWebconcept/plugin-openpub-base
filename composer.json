@@ -25,7 +25,8 @@
   ],
   "require": {
     "php": "^7.0|^8.0",
-    "wpackagist-plugin/elasticpress": "^4.0"
+    "wpackagist-plugin/elasticpress": "^4.0",
+    "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
     "10up/wp_mock": "~0.5",
