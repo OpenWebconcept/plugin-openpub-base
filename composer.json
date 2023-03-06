@@ -24,8 +24,9 @@
     }
   ],
   "require": {
-    "php": "^7.0|^8.0",
-    "wpackagist-plugin/elasticpress": "^4.0"
+    "php": "^7.4|^8.0",
+    "wpackagist-plugin/elasticpress": "^4.0",
+    "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
     "10up/wp_mock": "~0.5",
@@ -53,6 +54,7 @@
       "@unit"
     ],
     "unit": "clear && ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always",
-    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage"
+    "unit-coverage": "clear && XDEBUG_MODE=coverage ./vendor/bin/phpunit  --testsuite 'Unit Test Suite' --colors=always --coverage-html ./tests/coverage",
+    "package": "chmod +x ./bin/package.sh && ./bin/package.sh"
   }
 }

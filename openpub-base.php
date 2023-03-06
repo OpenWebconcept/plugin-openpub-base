@@ -4,7 +4,7 @@
  * Plugin Name:       Yard | OpenPub Base
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           2.2.2
+ * Version:           2.3.0
  * Author:            Yard | Digital Agency
  * Author URI:        https://www.yard.nl/
  * License:           GPL-3.0
@@ -21,10 +21,21 @@ if (!defined('WPINC')) {
 }
 
 /**
- * manual loaded file: the autoloader.
+ * Manual loaded file: the autoloader.
  */
 require_once __DIR__ . '/autoloader.php';
 $autoloader = new OWC\OpenPub\Base\Autoloader();
+
+/**
+ * Not all the members of the OpenWebconcept are using composer in the root of their project.
+ * Therefore they are required to run a composer install inside this plugin directory.
+ * In this case the composer autoload file needs to be required.
+ */
+$composerAutoload = __DIR__ . '/vendor/autoload.php';
+
+if (file_exists($composerAutoload)) {
+    require_once $composerAutoload;
+}
 
 /**
  * Begin execution of the plugin
