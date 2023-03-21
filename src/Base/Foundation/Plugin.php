@@ -26,7 +26,7 @@ class Plugin
      *
      * @var string VERSION
      */
-    public const VERSION = '2.3.0';
+    public const VERSION = '2.3.1';
 
     /**
      * Path to the root of the plugin.
@@ -112,21 +112,32 @@ class Plugin
 
     protected function checkForUpdate()
     {
-    	if (! class_exists(PucFactory::class)) {
-    		return;
-    	}
+        if (! class_exists(PucFactory::class) || $this->isExtendedClass()) {
+            return;
+        }
 
         try {
             $updater = PucFactory::buildUpdateChecker(
                 'https://github.com/OpenWebconcept/plugin-openpub-base/',
                 $this->rootPath . '/openpub-base.php',
-                'openpub-base'
+                self::NAME
             );
 
             $updater->getVcsApi()->enableReleaseAssets();
         } catch (\Throwable $e) {
             error_log($e->getMessage());
         }
+    }
+
+    /**
+     * Check if current class extends parent class.
+     *
+     * self::const always refers to the parent class.
+     * static::const refers to the child class.
+     */
+    protected function isExtendedClass(): bool
+    {
+        return self::NAME !== static::NAME;
     }
 
     /**
