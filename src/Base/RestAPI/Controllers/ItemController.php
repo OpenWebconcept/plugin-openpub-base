@@ -49,11 +49,10 @@ class ItemController extends BaseController
             $items->query(Item::addTypeParameter($this->getTypeParam($request)));
         }
 
-
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
-        
+
         return $items;
     }
 
@@ -138,6 +137,10 @@ class ItemController extends BaseController
                 'post_type'      => 'openpub-item',
             ])
             ->query(Item::addExpirationParameters());
+
+		if ($this->getTypeParam($request)) {
+			$items->query(Item::addTypeParameter($this->getTypeParam($request)));
+		}
 
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
