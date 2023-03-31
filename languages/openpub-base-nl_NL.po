@@ -654,3 +654,15 @@ msgstr "De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen
 #: src/Base/Metabox/MetaboxServiceProvider.php:50
 msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
 msgstr "Items met een einddatum worden uitgesloten van de zoekresultaten en op de nieuws pagina vanaf deze datum."
+
+#: src/Base/Metabox/AdminNotice.php:18
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin two manual actions are required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin zijn er twee handmatige acties vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen."
+
+#: src/Base/Metabox/AdminNotice.php:24
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:highlighted'."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin is er nog één handmatige actie vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen en met name het deel over 'convert:highlighted'."
+
+#: src/Base/Metabox/AdminNotice.php:30
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:expiration-date'."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin is er nog één handmatige actie vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen en met name het deel over 'convert:expiration-date'."

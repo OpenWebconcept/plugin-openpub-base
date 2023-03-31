@@ -11,6 +11,8 @@ use WP_Query;
 abstract class AbstractConvert
 {
     use FlattenArray;
+
+    protected string $command;
     
     public function execute(): void
     {
@@ -33,6 +35,8 @@ abstract class AbstractConvert
                 WP_CLI::error(sprintf('Something went wrong with converting item [%s]. Error: %s', $item->post_title, $e->getMessage()));
             }
         }
+
+        $this->registerExecutedCommand();
     }
 
     abstract protected function convert(WP_Post $item): void;
@@ -42,12 +46,30 @@ abstract class AbstractConvert
         $args = [
             'post_type' => 'openpub-item',
             'post_status' => 'any',
-            'post_per_page' => 10,
+            'posts_per_page' => 10,
             'paged' => $paged
         ];
 
         $results = new WP_Query($args);
 
         return $results->posts ?? [];
+    }
+
+    /**
+     * Register which command was executed.
+     * Used for displaying a critical admin notice that states there is an urgent action required.
+     */
+    protected function registerExecutedCommand(): void
+    {
+        $optionName = '_owc_openpub_base_executed_commands_upgrade_v3';
+        $executedCommands = \get_option($optionName, []);
+
+        if (empty($executedCommands)) {
+            $executedCommands = [$this->command];
+        } else {
+            array_push($executedCommands, $this->command);
+        }
+
+        \update_option($optionName, array_unique($executedCommands));
     }
 }

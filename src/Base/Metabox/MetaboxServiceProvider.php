@@ -14,6 +14,7 @@ class MetaboxServiceProvider extends ServiceProvider
     public function register()
     {
         $this->plugin->loader->addAction('cmb2_admin_init', $this, 'registerMetaboxes', 10, 0);
+        $this->plugin->loader->addAction('admin_notices', new AdminNotice, 'upgradeAdminNotice', 10, 0);
 
         if (class_exists('\WP_CLI')) {
             \WP_CLI::add_command('convert:expiration-date', [ConvertExpirationDate::class, 'execute'], ['shortdesc' => 'Convert meta value expiration date to timestamp because of the implementation of CMB2.']);

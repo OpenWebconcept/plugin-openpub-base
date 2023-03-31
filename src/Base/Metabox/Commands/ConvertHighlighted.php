@@ -6,6 +6,8 @@ use WP_Post;
 
 class ConvertHighlighted extends AbstractConvert
 {
+    protected string $command = 'convert:highlighted';
+    
     /**
      * This meta field value can be '1' or '0' when using the metabox.io plugin
      * With the usage of the cmb2 plugin this meta field has the value 'on' or does not have a value at all.
