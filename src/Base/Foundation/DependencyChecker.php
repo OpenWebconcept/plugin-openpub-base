@@ -110,7 +110,7 @@ class DependencyChecker
 
         // If there is a version lock set on the dependency...
         if (isset($dependency['version'])) {
-            if (!$this->checkVersion($dependency)) {
+            if (! $this->checkVersion($dependency)) {
                 $this->markFailed($dependency, __('Minimal version:', 'openpub-base') . ' <b>' . $dependency['version'] . '</b>');
             }
         }
@@ -121,7 +121,11 @@ class DependencyChecker
      */
     private function checkVersion(array $dependency): bool
     {
-        $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
+        try {
+            $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
+        } catch(\Exception $e) {
+            return false;
+        }
 
         preg_match('/^(?: ?\* ?Version: ?)(.*)$/m', $file, $matches);
         $version = isset($matches[1]) ? str_replace(' ', '', $matches[1]) : '0.0.0';
