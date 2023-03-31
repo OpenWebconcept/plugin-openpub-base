@@ -8,7 +8,7 @@ class Search extends Item
 {
     protected string $posttype = 'openpub-item';
     protected static array $globalFields = [];
-    protected WP_REST_Request$request;
+    protected WP_REST_Request $request;
     protected array $whitelist = ['s', 'posts_per_page'];
 
     /** @throws \ReflectionException|\OWC\OpenPub\Base\Exceptions\PropertyNotExistsException */
