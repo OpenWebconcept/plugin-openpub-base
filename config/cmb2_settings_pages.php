@@ -8,6 +8,8 @@ return [
         'option_key'   => '_owc_openpub_base_settings',
         'tab_group'    => 'base',
         'tab_title'    => __('General', 'openpub-base'),
+        'position'     => 30,
+        'icon_url'    => 'dashicons-admin-settings',
         'fields'       => [
             'portal_url'        => [
                 'name' => __('Portal URL', 'openpub-base'),

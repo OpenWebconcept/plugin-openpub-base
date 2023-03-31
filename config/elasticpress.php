@@ -15,5 +15,4 @@ return [
     'search' => [
         'weight' => 2
     ]
-
 ];

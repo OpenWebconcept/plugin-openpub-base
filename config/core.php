@@ -14,6 +14,7 @@ return [
         OWC\OpenPub\Base\PostsToPosts\PostsToPostsServiceProvider::class,
         OWC\OpenPub\Base\Metabox\MetaboxServiceProvider::class,
         OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider::class,
+        OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
         OWC\OpenPub\Base\Admin\AdminServiceProvider::class,
         OWC\OpenPub\Base\Varnish\VarnishServiceProvider::class,
 
@@ -26,6 +27,7 @@ return [
         ],
 
         'cli'   => [
+            OWC\OpenPub\Base\ElasticPress\ElasticPressServiceProvider::class,
         ],
     ],
 
