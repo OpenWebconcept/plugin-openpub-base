@@ -17,6 +17,10 @@ class ElasticPressServiceProvider extends ServiceProvider
             return;
         }
 
+        if (! \is_plugin_active('elasticpress/elasticpress.php')) {
+            return;
+        }
+
         $elasticPress = new ElasticPress($this->plugin->config, new Item);
         $this->plugin->loader->addAction('init', $elasticPress, 'setSettings', 10, 1);
         $this->plugin->loader->addAction('init', $elasticPress, 'init', 10, 1);
