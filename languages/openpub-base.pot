@@ -442,3 +442,15 @@ msgstr ""
 #: src/Base/Metabox/MetaboxServiceProvider.php:50
 msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
 msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:18
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin two manual actions are required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder."
+msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:24
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:highlighted'."
+msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:30
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:expiration-date'."
+msgstr ""

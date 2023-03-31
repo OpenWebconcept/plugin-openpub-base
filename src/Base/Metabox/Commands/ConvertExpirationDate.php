@@ -8,6 +8,8 @@ use WP_Post;
 
 class ConvertExpirationDate extends AbstractConvert
 {
+    protected string $command = 'convert:expiration-date';
+
     protected function convert(WP_Post $item): void
     {
         $timestamp = $this->convertDateToTimeStamp($item);
