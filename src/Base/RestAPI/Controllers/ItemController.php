@@ -112,7 +112,7 @@ class ItemController extends BaseController
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
         if (true === $preview) {
-            $item->query(['post_status' => ['publish', 'draft']]);
+            $item->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 
         return $item;
@@ -132,9 +132,9 @@ class ItemController extends BaseController
             ])
             ->query(Item::addExpirationParameters());
 
-		if ($this->getTypeParam($request)) {
-			$items->query(Item::addTypeParameter($this->getTypeParam($request)));
-		}
+        if ($this->getTypeParam($request)) {
+            $items->query(Item::addTypeParameter($this->getTypeParam($request)));
+        }
 
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
