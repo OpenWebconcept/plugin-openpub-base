@@ -12,19 +12,6 @@ use WP_Post;
 
 class DateModified extends CreatesFields
 {
-    /**
-     * The condition for the creator.
-     */
-    protected function condition(): callable
-    {
-        return function () {
-            return $this->plugin->settings->usePortalURL();
-        };
-    }
-
-    /**
-     * Create the portal url field for a given post.
-     */
     public function create(WP_Post $post): string
     {
         return (Item::makeFrom($post))->getPostModified()->format('Y-m-d H:i:s');
