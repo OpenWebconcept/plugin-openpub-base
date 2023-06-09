@@ -93,8 +93,8 @@ class ItemController extends BaseController
         $item = $this->singleItemQueryBuilder($request);
         $item = $item->findBySlug($slug);
 
-        if (!$item) {
-            return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
+        if (! $item) {
+            return new WP_Error('no_item_found', sprintf('Item with slug "%s" not found', $slug), [
                 'status' => 404,
             ]);
         }

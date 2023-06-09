@@ -105,7 +105,7 @@ abstract class AbstractRepository
     public function findBySlug(string $slug): ?array
     {
         $args = array_merge($this->queryArgs, [
-            'post_title' => \sanitize_title($slug),
+            'name' => $slug,
             'post_type' => [$this->posttype],
         ]);
 
