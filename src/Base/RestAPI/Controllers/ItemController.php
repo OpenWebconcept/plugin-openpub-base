@@ -59,8 +59,6 @@ class ItemController extends BaseController
     /**
      * Get an individual post item.
      *
-     * @param WP_REST_Request $request $request
-     *
      * @return array|WP_Error
      * @throws \OWC\OpenPub\Base\Exceptions\PropertyNotExistsException
      * @throws \ReflectionException
@@ -70,10 +68,9 @@ class ItemController extends BaseController
         $id = (int) $request->get_param('id');
 
         $item = $this->singleItemQueryBuilder($request);
-
         $item = $item->find($id);
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found (anymore)', $id), [
                 'status' => 404,
             ]);
@@ -87,8 +84,6 @@ class ItemController extends BaseController
     /**
      * Get an individual post item by slug.
      *
-     * @param $request $request
-     *
      * @return array|WP_Error
      */
     public function getItemBySlug(WP_REST_Request $request)
@@ -96,7 +91,6 @@ class ItemController extends BaseController
         $slug = $request->get_param('slug');
 
         $item = $this->singleItemQueryBuilder($request);
-
         $item = $item->findBySlug($slug);
 
         if (!$item) {

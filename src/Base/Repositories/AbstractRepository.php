@@ -82,15 +82,11 @@ abstract class AbstractRepository
 
     /**
      * Find a particular openpub item by ID.
-     *
-     * @param int $id
-     *
-     * @return array|null
      */
-    public function find(int $id)
+    public function find(int $id): ?array
     {
         $args = array_merge($this->queryArgs, [
-            'p'         => $id,
+            'p' => $id,
             'post_type' => [$this->posttype],
         ]);
 
@@ -105,16 +101,12 @@ abstract class AbstractRepository
 
     /**
      * Find a particular pdc item by slug.
-     *
-     * @param string $slug
-     *
-     * @return array|null
      */
-    public function findBySlug(string $slug)
+    public function findBySlug(string $slug): ?array
     {
         $args = array_merge($this->queryArgs, [
-            'name'        => $slug,
-            'post_type'   => [$this->posttype],
+            'post_title' => \sanitize_title($slug),
+            'post_type' => [$this->posttype],
         ]);
 
         $this->query = new WP_Query($args);
