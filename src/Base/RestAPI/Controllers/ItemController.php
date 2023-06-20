@@ -66,10 +66,9 @@ class ItemController extends BaseController
         $id = (int) $request->get_param('id');
 
         $item = $this->singleItemQueryBuilder($request);
-
         $item = $item->find($id);
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with ID "%d" not found (anymore)', $id), [
                 'status' => 404,
             ]);
@@ -90,10 +89,9 @@ class ItemController extends BaseController
         $slug = $request->get_param('slug');
 
         $item = $this->singleItemQueryBuilder($request);
-
         $item = $item->findBySlug($slug);
 
-        if (!$item) {
+        if (! $item) {
             return new WP_Error('no_item_found', sprintf('Item with slug "%d" not found', $slug), [
                 'status' => 404,
             ]);
