@@ -429,6 +429,14 @@ msgstr "Dagen tot verlopen"
 msgid "After how many days should an item expire?"
 msgstr "Na hoeveel dagen moet een item verlopen?"
 
+#: config/settings.php:53
+msgid "Admin notices"
+msgstr "Administratieve mededelingen"
+
+#: config/settings.php:54
+msgid "Disable upgrade admin notices."
+msgstr "Schakel administratieve mededelingen over upgraden uit."
+
 #: config/settings.php:57
 msgid "Elasticsearch"
 msgstr "Elasticsearch"

@@ -332,6 +332,14 @@ msgstr ""
 msgid "After how many days should an item expire?"
 msgstr ""
 
+#: config/settings.php:53
+msgid "Admin notices"
+msgstr ""
+
+#: config/settings.php:54
+msgid "Disable upgrade admin notices."
+msgstr ""
+
 #: config/settings.php:57
 msgid "Elasticsearch"
 msgstr ""

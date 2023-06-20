@@ -51,6 +51,12 @@ return [
                 'desc' => __('After how many days should an item expire?', 'openpub-base'),
                 'id'   => 'setting_openpub_expired_auto_after_days',
                 'type' => 'number'
+            ],
+            'openpub_disable_upgrade_admin_notice' => [
+                'name' => __('Admin notices', 'openpub-base'),
+                'desc' => __('Disable upgrade admin notices.', 'openpub-base'),
+                'id'   => 'setting_openpub_disable_upgrade_admin_notice',
+                'type' => 'checkbox'
             ]
         ]
     ]
