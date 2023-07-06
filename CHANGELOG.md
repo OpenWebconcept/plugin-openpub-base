@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Version [3.1.1]
+
+## Feat
+
+-   Always fill the post_name when an openpub-item is saved, is required for previewing openpub-items
+
 ## Version [3.1.0]
 
 ## Feat
 
--   Fill the post_name when openpub-item is not published, is required for previewing openpub-items
+-   Fill the post_name when an openpub-item is not published, is required for previewing openpub-items
 
 ## Refactor
 
