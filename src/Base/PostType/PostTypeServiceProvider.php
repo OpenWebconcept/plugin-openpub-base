@@ -60,15 +60,12 @@ class PostTypeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Fill the post_name when empty.
+     * Always fill the post_name based om the post_title.
+     * When previewing an openpub-item the post_name needs to be present, which is set by default until the post is published.
      */
     public function fillPostName(array $post = []): array
     {
         if ($post['post_type'] !== 'openpub-item') {
-            return $post;
-        }
-
-        if (! empty($post['post_name'])) {
             return $post;
         }
 
