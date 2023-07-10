@@ -16,7 +16,7 @@ return [
             ],
             'public'       => true,
             'show_ui'      => true,
-            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments', 'author'],
+            'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments', 'author', 'custom-fields'],
             'menu_icon'    => 'dashicons-format-aside',
             'show_in_rest' => true,
             'admin_cols'   => [
