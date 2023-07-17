@@ -46,4 +46,5 @@ if (file_exists($composerAutoload)) {
  */
 \add_action('plugins_loaded', function () {
     $plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__))->boot();
+    do_action('owc/openpub-base/plugin', $plugin);
 }, 10);
