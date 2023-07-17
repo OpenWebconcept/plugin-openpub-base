@@ -22,7 +22,10 @@ class SettingsServiceProvider extends ServiceProvider
 
     public function registerSettingsPages(): void
     {
-        $settingsPages = $this->plugin->config->get('cmb2_settings_pages');
+        $settingsPages = apply_filters(
+            'owc/openpub-base/before-register-settings-pages',
+            $this->plugin->config->get('cmb2_settings_pages')
+        );
 
         if (! is_array($settingsPages)) {
             return;
@@ -32,8 +35,11 @@ class SettingsServiceProvider extends ServiceProvider
             if (! is_array($page)) {
                 continue;
             }
-            
-            $this->registerSettingsPage($page);
+
+            $this->registerSettingsPage(apply_filters(
+                'owc/openpub-base/before-register-settings',
+                $page
+            ));
         }
     }
 
@@ -47,7 +53,7 @@ class SettingsServiceProvider extends ServiceProvider
         if (empty($fields) || ! is_array($fields)) {
             return;
         }
-            
+
         $this->registerSettingsPageFields($optionsPage, $fields);
     }
 

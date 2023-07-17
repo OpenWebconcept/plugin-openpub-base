@@ -90,7 +90,12 @@ owc/openpub-base/before-register-metaboxes
 owc/openpub-base/before-register-metabox
 ```
 
-### Filters the settings to be registered just before registration
+### Filters all setting pages to be registered just before registration
+```php
+owc/openpub-base/before-register-settings-pages
+```
+
+### Filters an individual setting page to be registered just before registration
 
 ```php
 owc/openpub-base/before-register-settings
