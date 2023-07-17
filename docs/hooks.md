@@ -84,6 +84,12 @@ owc/openpub-base/rest-api/openpubsubcategory/field/has-appointment
 owc/openpub-base/before-register-metaboxes
 ```
 
+### Filters a single metabox just before registration
+
+```php
+owc/openpub-base/before-register-metabox
+```
+
 ### Filters the settings to be registered just before registration
 
 ```php
