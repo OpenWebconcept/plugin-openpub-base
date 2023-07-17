@@ -45,7 +45,7 @@ class MetaboxServiceProvider extends ServiceProvider
             $configMetaboxes = $this->addExpirationDefaultValue($configMetaboxes);
         }
 
-        $configMetaboxes = apply_filters("owc/openpub/base/before-register-metaboxes", $configMetaboxes);
+        $configMetaboxes = apply_filters('owc/openpub/base/before-register-metaboxes', $configMetaboxes);
 
         foreach ($configMetaboxes as $configMetabox) {
             if (! is_array($configMetabox)) {
@@ -53,7 +53,7 @@ class MetaboxServiceProvider extends ServiceProvider
             }
 
             $this->registerMetabox(apply_filters(
-                "owc/openpub/base/before-register-metabox",
+                'owc/openpub/base/before-register-metabox',
                 $configMetabox
             ));
         }
