@@ -18,7 +18,7 @@ class PostTypeServiceProvider extends ServiceProvider
     {
         $this->plugin->loader->addAction('init', $this, 'registerPostTypes');
         $this->plugin->loader->addAction('pre_get_posts', $this, 'orderByPublishedDate');
-        $this->plugin->loader->addAction('wp_insert_post_data', $this, 'fillPostName', 10, 1);
+        $this->plugin->loader->addAction('wp_insert_post_data', $this, 'fillPostName', 10, 4);
     }
 
     /**
@@ -60,12 +60,16 @@ class PostTypeServiceProvider extends ServiceProvider
     }
 
     /**
-     * Always fill the post_name based om the post_title.
-     * When previewing an openpub-item the post_name needs to be present, which is set by default until the post is published.
+     * Always fill the post_name when empty and a post is not published.
+     * When previewing an openpub-item the post_name needs to be present, which is set by default when the post is published.
      */
-    public function fillPostName(array $post = []): array
+    public function fillPostName(array $post = [], array $postarr, array $unsanitized_postarr, bool $update): array
     {
-        if ($post['post_type'] !== 'openpub-item') {
+        if ($post['post_type'] !== 'openpub-item' || empty($postarr['ID']) || $post['post_status'] === 'publish') {
+            return $post;
+        }
+
+        if (! empty($postarr['post_name'])) {
             return $post;
         }
 
