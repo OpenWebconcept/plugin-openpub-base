@@ -48,6 +48,9 @@ class RestAPIServiceProvider extends ServiceProvider
      * Endpoint of the theme detail page.
      * @link https://url/wp-json/owc/openpub/v1/themes/{id}
      *
+     * Endpoint of the theme detail page.
+     * @link https://url/wp-json/owc/openpub/v1/themes/{slug}
+     *
      * Endpoint of searching.
      * @link https://url/wp-json/owc/openpub/v1/search
      */
@@ -73,13 +76,19 @@ class RestAPIServiceProvider extends ServiceProvider
 
         register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new Controllers\ItemController($this->plugin), 'getItemBySlug'],
+            'callback'            => [new ItemController($this->plugin), 'getItemBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'themes', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new ThemeController($this->plugin), 'getThemes'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        register_rest_route($this->namespace, 'themes/(?P<slug>[\w-]+)', [
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new ThemeController($this->plugin), 'getThemeBySlug'],
             'permission_callback' => '__return_true',
         ]);
 
