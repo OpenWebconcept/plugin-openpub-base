@@ -32,6 +32,8 @@ return [
         'theme'  => [
             'fields' => [
                 'connected' => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedThemeItemField::class,
+                'date_modified'     => OWC\OpenPub\Base\RestAPI\ItemFields\DateModified::class,
+                'yoast'             => OWC\OpenPub\Base\RestAPI\ItemFields\Yoast::class,
             ],
         ],
         'search' => [
