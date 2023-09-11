@@ -2,40 +2,42 @@
 
 namespace OWC\OpenPub\Base\RestAPI\ItemFields;
 
+use DateTime;
+use DateTimeZone;
 use OWC\OpenPub\Base\Support\CreatesFields;
 use WP_Post;
 
 class ExpiredField extends CreatesFields
 {
-    /**
-     * Get the expired status to the post.
-     */
     public function create(WP_Post $post): array
     {
         return $this->getExpiredStatus($post);
     }
 
     /**
-     * Get expired status of a post, if URL & title are present.
+     * Get the expired status to the post.
      */
     private function getExpiredStatus(WP_Post $post): array
     {
-        $date = \get_post_meta($post->ID, '_owc_openpub_expirationdate', true);
-        if (empty($date)) {
+        $date = \get_post_meta($post->ID, '_owc_openpub_expirationdate', true); // Is timestamp.
+
+        if (empty($date) || ! is_numeric($date)) {
             return [
-                    'message' => '',
-                    'status'  => false,
-                    'on'      => false
+                'message' => '',
+                'status' => false,
+                'on' => false
             ];
         }
 
         $timezone = \wp_timezone_string();
-        $dateNow = new \DateTime('now', new \DateTimeZone($timezone));
+
+        $dateNow = new DateTime('now', new DateTimeZone($timezone));
+        $date = new DateTime(date('Y-m-d H:i:s', $date), new DateTimeZone($timezone));
 
         return [
-            'message' => ((int) $date < $dateNow->getTimestamp()) ? 'Item is expired' : '',
-            'status'  => ((int) $date < $dateNow->getTimestamp()),
-            'on'      => (new \DateTime())->setTimestamp((int) $date)->format('Y-m-d H:i')
+            'message' => ($date->getTimestamp() < $dateNow->getTimestamp()) ? 'Item is expired' : '',
+            'status' => ($date->getTimestamp() < $dateNow->getTimestamp()),
+            'on' => $date->format('Y-m-d H:i')
         ];
     }
 }
