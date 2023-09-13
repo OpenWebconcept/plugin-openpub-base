@@ -2,6 +2,9 @@
 
 namespace OWC\OpenPub\Base\Repositories;
 
+use DateTime;
+use DateTimeZone;
+
 class Item extends AbstractRepository
 {
     protected string $posttype = 'openpub-item';
@@ -13,7 +16,7 @@ class Item extends AbstractRepository
     public static function addExpirationParameters(): array
     {
         $timezone = wp_timezone_string();
-        $dateNow = new \DateTime('now', new \DateTimeZone($timezone));
+        $dateNowWP = new DateTime('now', new DateTimeZone($timezone));
 
         return [
             'meta_query' => [
@@ -21,7 +24,7 @@ class Item extends AbstractRepository
                     'relation' => 'OR',
                     [
                         'key'     => '_owc_openpub_expirationdate',
-                        'value'   => $dateNow->getTimestamp(),
+                        'value'   => $dateNowWP->modify(sprintf('+%d hours', self::calculateDifferenceInHours($dateNowWP)))->getTimestamp(),
                         'compare' => '>=',
                     ],
                     [
@@ -31,6 +34,19 @@ class Item extends AbstractRepository
                 ]
             ],
         ];
+    }
+
+    /**
+     * The CMB2 field type 'text_datetime_timestamp' is not working correctly.
+     * Inside the datepicker the timezone being used is UTC. The value saved is converted to the timezone of the Wordpress installation.
+     * So when '13:55:00' is saved it is actually saved as '15:55:00', assuming the timezone is Europe/Amsterdam (+2).
+     * Let's calculate the difference in hours between the two timezones, the outcome is used to modify the DateTime object which is used inside the MetaQuery.
+     */
+    private static function calculateDifferenceInHours(DateTime $dateNowWP): int
+    {
+        $dateNowUTC = new DateTime('now', new DateTimeZone('UTC'));
+
+        return (int) ($dateNowWP->getOffset() / 3600) - ($dateNowUTC->getOffset() / 3600);
     }
 
     public static function addHighlightedParameters(bool $highlighted): array
