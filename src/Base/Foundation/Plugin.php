@@ -19,7 +19,7 @@ class Plugin
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
      */
-    public const VERSION = '3.3.2';
+    public const VERSION = '3.3.3';
 
     /**
      * Path to the root of the plugin.

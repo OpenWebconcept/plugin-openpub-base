@@ -24,7 +24,7 @@ class Item extends AbstractRepository
                     'relation' => 'OR',
                     [
                         'key'     => '_owc_openpub_expirationdate',
-                        'value'   => $dateNowWP->modify(sprintf('+%d hours', self::calculateDifferenceInHours($dateNowWP)))->getTimestamp(),
+                        'value'   => $dateNowWP->modify(sprintf('%d hours', self::calculateDifferenceInHours($dateNowWP)))->getTimestamp(),
                         'compare' => '>=',
                     ],
                     [
