@@ -96,11 +96,20 @@ class Item extends AbstractRepository
 
     public static function addTypeParameter(string $type): array
     {
+        return self::addTypeParameters($type);
+    }
+
+    public static function addTypeParameters(string $types): array
+    {
+        $types = explode(',', $types); // Explode to array for usage inside the query.
+
         return [
             'tax_query' => [
                 [
                     'taxonomy' => 'openpub-type',
-                    'terms'    => sanitize_text_field($type),
+                    'terms'    => array_map(function ($type) {
+                        return sanitize_text_field($type);
+                    }, $types),
                     'field'    => 'slug',
                     'operator' => 'IN'
                 ]
