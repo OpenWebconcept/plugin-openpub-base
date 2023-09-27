@@ -104,7 +104,7 @@ class ItemController extends BaseController
 
     public function singleItemQueryBuilder(WP_REST_Request $request): Item
     {
-        $item = (new Item)
+        $item = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
@@ -188,7 +188,19 @@ class ItemController extends BaseController
     {
         $typeParam = $request->get_param('type');
 
-        return ! empty($typeParam) && is_string($typeParam) ? $typeParam : '';
+        if (empty($typeParam)) {
+            return '';
+        }
+
+        if (is_array($typeParam)) {
+            /**
+             * Implode to a string so the ItemRepository class can work with multiple params.
+             * In the previous versions the $typeParam was always assumed to be a string.
+             */
+            $typeParam = implode(',', $typeParam);
+        }
+
+        return is_string($typeParam) ? $typeParam : '';
     }
 
     protected function validateBoolean(string $value): bool
