@@ -62,4 +62,17 @@ return [
             'plural'   => __('Show on', 'openpub-base')
         ]
     ],
+	'openpub-district' => [
+		'object_types' => ['openpub-item'],
+		'args'         => [
+			'show_in_rest'      => true,
+			'show_admin_column' => true,
+			'capabilities'      => []
+		],
+		'names'        => [
+			'singular' => _x('District', 'Taxonomy definition', 'openpub-base'),
+			'plural'   => _x('Districts', 'Taxonomy definition', 'openpub-base'),
+			'slug'     => 'openpub-kern'
+		]
+	]
 ];

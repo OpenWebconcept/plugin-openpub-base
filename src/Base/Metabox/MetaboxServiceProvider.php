@@ -14,6 +14,7 @@ class MetaboxServiceProvider extends ServiceProvider
     public function register()
     {
         $this->plugin->loader->addAction('cmb2_admin_init', $this, 'registerMetaboxes', 10, 0);
+		$this->plugin->loader->addAction('cmb2_save_term_fields', $this, 'saveGroupUnserialized', 10, 1);
         $this->plugin->loader->addAction('admin_notices', new AdminNotice, 'upgradeAdminNotice', 10, 0);
 
         if (class_exists('\WP_CLI')) {
@@ -109,4 +110,22 @@ class MetaboxServiceProvider extends ServiceProvider
     {
         return array_merge($configMetaboxes, $this->plugin->config->get('show_on_metabox'));
     }
+
+	/**
+	 * Save group unserialized so it can be used in the search query.
+	 *
+	 * @param int $termId The current term ID.
+	 *
+	 * @return void
+	 */
+	public function saveGroupUnserialized(int $termId): void
+	{
+		delete_term_meta($termId, self::PREFIX . 'openpub_zipcode');
+		$zipcodes = get_term_meta($termId, self::PREFIX . 'openpub_zipcodes_group');
+		if ($zipcodes) {
+			foreach ( $zipcodes[0] as $zipcode ) {
+				add_term_meta( $termId, self::PREFIX . 'openpub_zipcode', $zipcode['openpub_zipcode'] );
+			}
+		}
+	}
 }

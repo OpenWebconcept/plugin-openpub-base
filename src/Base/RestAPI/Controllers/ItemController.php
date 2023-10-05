@@ -51,6 +51,10 @@ class ItemController extends BaseController
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
+		if ($this->getZipcodeParam($request)) {
+			$items->query(Item::addZipcodeParameter($this->getZipcodeParam($request)));
+		}
+
         return $items;
     }
 
@@ -190,6 +194,13 @@ class ItemController extends BaseController
 
         return ! empty($typeParam) && is_string($typeParam) ? $typeParam : '';
     }
+
+	protected function getZipcodeParam(WP_REST_Request $request): string
+	{
+		$typeParam = $request->get_param('zipcode');
+
+		return ! empty($typeParam) && is_string($typeParam) ? $typeParam : '';
+	}
 
     protected function validateBoolean(string $value): bool
     {
