@@ -16,6 +16,7 @@ return [
                 'connected'         => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
                 'portal_url'        => OWC\OpenPub\Base\RestAPI\ItemFields\PortalURL::class,
                 'date_modified'     => OWC\OpenPub\Base\RestAPI\ItemFields\DateModified::class,
+                'date_modified_gmt' => OWC\OpenPub\Base\RestAPI\ItemFields\DateModifiedGMT::class,
                 'downloads'         => OWC\OpenPub\Base\RestAPI\ItemFields\DownloadsField::class,
                 'expired'           => OWC\OpenPub\Base\RestAPI\ItemFields\ExpiredField::class,
                 'highlighted'       => OWC\OpenPub\Base\RestAPI\ItemFields\HighlightedItemField::class,
