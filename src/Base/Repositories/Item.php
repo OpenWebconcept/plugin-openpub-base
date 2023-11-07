@@ -117,7 +117,7 @@ class Item extends AbstractRepository
         ];
     }
 
-    public static function addAudienceParameters(string $audiences)
+    public static function addAudienceParameters(string $audiences): array
     {
         $audiences = explode(',', $audiences); // Explode to array for usage inside the query.
 
