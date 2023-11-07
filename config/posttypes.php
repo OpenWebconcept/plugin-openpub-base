@@ -21,7 +21,7 @@ return [
             'show_in_rest' => true,
             'admin_cols'   => [
                 'author' => [
-                    'title'      => __('Author', 'pdc-base'),
+                    'title'      => __('Author', 'openpub-base'),
                 ],
                 'type' => [
                     'title'    => _x('Type', 'Admin Filter definition', 'openpub-base'),
@@ -40,8 +40,8 @@ return [
                     'function' => function () {
                         global $post;
 
-                        $item = (new Item)
-                            ->query(apply_filters('owc/openpub/rest-api/items/query/single', array_merge([], (new Item)->addExpirationParameters())))
+                        $item = (new Item())
+                            ->query(apply_filters('owc/openpub/rest-api/items/query/single', array_merge([], (new Item())->addExpirationParameters())))
                             ->find($post->ID);
                         if (! $item) {
                             echo sprintf('<span style="color: red">%s</span>', __('Expired', 'openpub-base'));

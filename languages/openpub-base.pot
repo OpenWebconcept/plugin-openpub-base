@@ -173,6 +173,10 @@ msgstr ""
 msgid "Expired"
 msgstr ""
 
+#: config/posttypes.php:24
+msgid "Author"
+msgstr ""
+
 #: config/posttypes.php:49
 msgid "No expire date"
 msgstr ""

@@ -166,6 +166,10 @@ msgstr "Toepassing"
 msgid "Expired"
 msgstr "Verlopen"
 
+#: config/posttypes.php:24
+msgid "Author"
+msgstr "Auteur"
+
 #: config/posttypes.php:49
 msgid "No expire date"
 msgstr "Geen verloopdatum"
