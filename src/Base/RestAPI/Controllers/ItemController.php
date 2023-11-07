@@ -51,6 +51,10 @@ class ItemController extends BaseController
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
+        if ($this->getAudienceParam($request)) {
+            $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
+        }
+
         return $items;
     }
 
@@ -138,6 +142,10 @@ class ItemController extends BaseController
             $items->query(Item::addShowOnParameter($request->get_param('source')));
         }
 
+        if ($this->getAudienceParam($request)) {
+            $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
+        }
+
         $query = new WP_Query($items->getQueryArgs());
         return array_map([$this, 'transform'], $query->posts);
     }
@@ -177,7 +185,7 @@ class ItemController extends BaseController
             return false;
         }
 
-        if (!$this->validateBoolean($request->get_param('highlighted'))) {
+        if (! $this->validateBoolean($request->get_param('highlighted'))) {
             return false;
         };
 
@@ -224,10 +232,26 @@ class ItemController extends BaseController
             return false;
         }
 
-        if (!is_numeric($request->get_param('source'))) {
+        if (! is_numeric($request->get_param('source'))) {
             return false;
         }
 
         return true;
+    }
+
+    protected function getAudienceParam(WP_REST_Request $request): string
+    {
+        $audienceParam = $request->get_param('audience');
+
+        if (empty($audienceParam)) {
+            return '';
+        }
+
+        if (is_array($audienceParam)) {
+            // Implode to a string so the ItemRepository class can work with multiple params
+            $audienceParam = implode(',', $audienceParam);
+        }
+
+        return is_string($audienceParam) ? $audienceParam : '';
     }
 }

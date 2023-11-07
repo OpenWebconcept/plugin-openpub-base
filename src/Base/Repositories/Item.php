@@ -116,4 +116,22 @@ class Item extends AbstractRepository
             ]
         ];
     }
+
+    public static function addAudienceParameters(string $audiences)
+    {
+        $audiences = explode(',', $audiences); // Explode to array for usage inside the query.
+
+        return [
+            'tax_query' => [
+                [
+                    'taxonomy' => 'openpub-audience',
+                    'terms'    => array_map(function ($audience) {
+                        return sanitize_text_field($audience);
+                    }, $audiences),
+                    'field'    => 'slug',
+                    'operator' => 'IN'
+                ]
+            ]
+        ];
+    }
 }
