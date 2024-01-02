@@ -113,7 +113,7 @@ class ItemController extends BaseController
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
-        if (true === $preview) {
+        if (true === $preview && is_user_logged_in()) {
             $item->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 
