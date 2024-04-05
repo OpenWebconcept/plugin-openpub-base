@@ -1,448 +1,306 @@
-# CHANGELOG
+# Changelog
 
-All notable changes to this project will be documented in this file.
+## v3.4.3
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+- Chore: Updated CMB2 to version 2.11.0
 
-## Version [3.4.2]
+## v3.4.2
 
-## Fix
+- Fix: Ensure that only authenticated users can access draft preview items in the API response
 
--   Ensure that only authenticated users can access draft preview items in the API response
+## v3.4.1
 
-## Version [3.4.1]
+- Feat: Enable filtering on taxonomy 'openpub-audience'
+- Feat: Add 'date_modified_gmt' to the API response
+- Feat: Add translation for 'Author'
 
-## Feat
+## v3.4.0
 
--   Enable filtering on taxonomy 'openpub-audience'
--   Add 'date_modified_gmt' to the api response
--   Add translation for 'Author'
+- Feat: Support for multiple type params in tax query used in API responses
 
-## Version [3.4]
+## v3.3.3
 
-## Feat
+- Feat: DateTime modifier could also be a negative integer inside Item repository class.
 
--   Support for multiple type params in tax query used in api responses
+## v3.3.2
 
-## Version [3.3.3]
+- Fix: Expiration Parameters because the CMB2 field type 'text_datetime_timestamp' is not working correctly.
 
-## Refactor
+## v3.3.1
 
--   DateTime modifier could also be a negative integer inside Item respository class
+- Fix: Comparing expiration date with 'now' is done wrongly by comparing different timezones.
 
-## Version [3.3.2]
+## v3.3.0
 
-## Fix
+- Feat: Add 'date_modified' to theme endpoints.
+- Feat: Add 'yoast' to theme endpoints.
 
--   Expiration Parameters because the CMB2 field type 'text_datetime_timestamp' is not working correctly
+## v3.2.0
 
-## Version [3.3.1]
+- Feat: Add endpoint to search for themes by their slug.
 
-## Fix
+## v3.1.3
 
--   Comparing expiration date with 'now' is done wrongly by comparing different timezones
+- Fix: Duplicated post_names when multiple items had the same post_title.
 
-## Version [3.3.0]
+## v3.1.2
 
-## Feat
+- Fix: Restore some of the documented actions and filters.
 
--   Add 'date_modified' to theme endpoints
--   Add 'yoast' to theme endpoints
+## v3.1.1
 
-## Version [3.2.0]
+- Feat: Always fill the post_name when an openpub-item is saved, is required for previewing openpub-items.
 
-## Feat
+## v3.1.0
 
--   Add endpoint to search for themes by their slug
+- Feat: Fill the post_name when an openpub-item is not published, is required for previewing openpub-items.
+- Feat: Upgrade admin notices.
 
-## Version [3.1.3]
+## v3.0.2
 
-## Fix
+- Feat: Always return date_modified in API.
 
--   Duplicated post_names when multiple items had the same post_title
+## v3.0.1
 
-## Version [3.1.2]
+- Feat: Add future post status when retrieving item for draft preview.
 
-## Feat
+## v3.0.0
 
--   Restore some of the documented actions and filters
+- Feat: Implement CMB2 metabox plugin.
+- Chore: Clean-up/refactoring.
 
-## Version [3.1.1]
+## v2.3.3
 
-## Feat
+- Feat: Related items type taxonomy args.
 
--   Always fill the post_name when an openpub-item is saved, is required for previewing openpub-items
+## v2.3.2
 
-## Version [3.1.0]
+- Feat: Added the 'johnbillion/extended-cpts' package as dependency to composer.json.
+- Chore: Update dependencies.
+- Chore: Directory name of plugin in README.md.
 
-## Feat
+## v2.3.1
 
--   Fill the post_name when an openpub-item is not published, is required for previewing openpub-items
+- Fix: checkForUpdate() inside Plugin class should not run when class is being extended.
 
-## Refactor
+## v2.3.0
 
--   Upgrade admin notices
+- Feat: Updates can now be provided through the Admin interface.
 
-## Version [3.0.2]
+## v2.2.2
 
-## Refactor
+- Chore: Change the settings page identifier to prevent collision with OpenPDC.
 
--   Always return date_modified in api
+## v2.2.1
 
-## Version [3.0.1]
+- Feat: Filter items, in API, on type taxonomy slug when param is set.
 
-## Feat
+## v2.2.0
 
--   Add future post status when retrieving item for draft preview
+- Feat: Support PHP 8
+- Chore: Update dependencies.
 
-## Version [3.0.0]
+## v2.1.1
 
-### Feat
+- Feat: Remove Elasticpress settings when plugin yard-elasticsearch is active
 
--   Implement CMB2 metabox plugin
--   Clean-up/refactoring
+## v2.1.0
 
-## Version [2.3.3]
+- Feat: Include SEO meta fields, provided by multiple plugins, in API.
 
-## Feat
+## v2.0.20
 
--   Related items type taxonomy args
+- Chore: Taxonomy openpub-show-on change capabilities from manage_options to manage_categories.
 
-## Version [2.3.2]
+## v2.0.19
 
-## Refactor
+- Chore: Update dependencies.
 
--   Directory name of plugin in README.md.
--   Added the 'johnbillion/extended-cpts' package as dependency to composer.json.
+## v2.0.18
 
-## Chore
-
--   Update dependencies.
-
-## Version [2.3.1]
+- Feat: Generating portal URL.
 
 ### Fix
 
--   checkForUpdate() inside Plugin class should not run when class is being extended.
+- Fix: Return value in filter 'post_type_link' registered in '\OWC\OpenPub\Base\Admin\AdminServiceProvider::class.
 
-## Version [2.3.0]
+## v2.0.17
 
-### Feat
+- Feat: Set argument public to false for the CPT's 'openpub-theme', 'openpub-subtheme' and 'openpub-location' so ElasticPress does not include them in the sync.
 
--   Updates can now be provided through the Admin interface
+## v2.0.16
 
-## Version [2.2.2]
+- Feat: Add featured image field to related items
 
-### Chore
+## v2.0.15
 
--   Change the settings page identifier to prevent collision with OpenPDC
+- Feat: Change 'preview' parameter into 'draft-preview'
 
-## Version [2.2.1]
+## v2.0.14
 
-### Feat
+- Fix: Append id for pdc draft previews
 
--   Filter items, in api, on type taxonomy slug when param is set.
+## v2.0.13
 
-## Version [2.2.0]
+- Fix: Elasticpress indexables posttypes and statuses hooks was not correctly returned.
 
-### Feat
+## v2.0.12
 
--   Support php8 + update deps
+- Feat: Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days.
+- Feat: New OpenPub items will have a value of the current date plus the value given in days.
 
-## Version [2.1.1]
+## v2.0.11
 
-### Feat
+- Fix: Meta-query with multiple arguments not working correctly.
 
--   Remove Elasticpress settings when plugin yard-elasticsearch is active
+## v2.0.10
 
-## Version [2.1.0]
+- Feat: Add preview parameter for retrieving drafts
+- Feat: Purge Varnish on save_post
+- Fix: Add addHighlightedParameters to active items
 
-### Feat
+## v2.0.9
 
--   Include SEO meta fields, provided by multiple plugins, in API.
+- Feat: Add author column for openpub items
 
-## Version [2.0.20]
+## v2.0.8
 
-### Chore
+- Feat: Add explanation to 'show on' taxonomy form.
+- Feat: Only use 'show on' filtering in endpoints when setting is active.
+- Feat: Filter related items on source slug when param is set.
 
--   Taxonomy openpub-show-on change capabilities from manage_options to manage_categories.
+## v2.0.7
 
-## Version [2.0.19]
+- Feat: Add filtering on 'show on' to active items endpoint.
+- Feat: 'show on' taxonomy is only allowed to be managed by administrators.
 
-### Chore
+## v2.0.6
 
--   Update dependencies.
+- Refactor: Filtering on 'show on' in items endpoint from string to numeric value.
 
-## Version [2.0.18]
+## v2.0.5
 
-### Refactor
+- Feat: Add 'show on' setting to openpub-settings.
+- Feat: Add 'show on' setting in editor of openpub-item.
+- Feat: Add filtering on 'show on' to items endpoint.
 
--   Generating portal url.
+## v2.0.4
 
-### Fix
+- Feat: Add escape element setting to openpub-settings.
+- Feat: Add escape element setting in editor of openpub-item.
 
--   Return value in filter 'post_type_link' registered in '\OWC\OpenPub\Base\Admin\AdminServiceProvider::class.
+## v2.0.3
 
-## Version [2.0.17]
+- Fix: Filter inactive items
 
-### Feat
+## v2.0.2
 
--   Set argument public to false for the CPT's 'openpub-theme', 'openpub-subtheme' and 'openpub-location' so ElasticPress does not include them in the sync.
+- Feat: Add slug to related item in API.
+- Feat: Add multiple unit tests.
 
-## Version [2.0.16]
+## v2.0.1
 
-### Feat
+- Feat: Add full image size to attachment meta
+- Feat: Add expiration parameters to related items
 
--   Add featured image field to related items
+## v2.0.0
 
-## Version [2.0.15]
+- Chore: Clean-up for version 1.0.
+- Feat: Add settings on settings page.
+- Feat: Add SettingsPageOptions model.
+- Feat: Add portal_url to API output on conditional.
+- Feat: Add date_modified to API output on conditional.
+- Fix: Base settings on settings page.
 
-### Feat
+## v1.2.0
 
--   Change 'preview' parameter into 'draft-preview'
+- Feat: Comments to items.
 
-## Version [2.0.14]
+## v1.1.9
 
-### Fix
+- Feat: Highlighted parameter on rest endpoint.
 
--   Append id for pdc draft previews
+## v1.1.8
 
-## Version [2.0.13]
+- Feat: Add correct mappings for ElasticSearch.
 
-### Fix
+## v1.1.7
 
--   Elasticpress indexables posttypes and statuses hooks was not correctly returned.
+- Feat: Add openpub rest route route on slug.
 
-## Version [2.0.12]
+## v1.1.6
 
-### Feat
+- Feat: Add add thumnbail url to related posts.
 
--   Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days.
--   New OpenPub items will have a value of the current date plus the value given in days.
+## v1.1.5
 
-## Version [2.0.11]
+- Fix: Standardize expired date for better compatibility.
 
-### Fix
+## v1.1.4
 
--   Meta-query with multiple arguments not working correctly.
+- Feat: Add make posttypes and taxonomies available in REST API.
 
-## Version [2.0.10]
+## v1.1.3
 
-### Feat
+- Feat: Add make taxonomy "openpub-type" available in REST API.
 
--   Add preview parameter for retrieving drafts
--   Purge Varnish on save_post
+## v1.1.2
 
-### Fix
+- Feat: Add endpoint for active items only: `wp-json/owc/openpub/v1/items/active`.
 
--   Add addHighlightedParameters to active items
+## v1.1.1
 
-## Version [2.0.9]
+- Fix: Remove unwanted redirect.
 
-### Feat
+## v1.1.0
 
--   Add author column for openpub items
+- Fix: Remove unwanted exit.
+- Fix: Related items of theme REST API.
 
-## Version [2.0.8]
+## v1.0.9
 
-### Feat
+- Chore: Remove Hooks class.
 
--   Add explanation to 'show on' taxonomy form.
--   Only use 'show on' filtering in endpoints when setting is active.
--   Filter related items on source slug when param is set.
+## v1.0.8
 
-## Version [2.0.7]
+- Feat: Add query args for REST API.
+- Update: PHPunit 8.
 
-### Refactor
+## v1.0.7
 
--   Add filtering on 'show on' to active items endpoint.
--   'show on' taxonomy is only allowed to be managed by administrators.
+- Fix: Check if required file for `is_plugin_active` is already loaded, otherwise load it. _Props @Jasper Heidebrink_
 
-## Version [2.0.6]
+## v1.0.6
 
-### Refactor
+- Feat: Add openpub endpoint description for documentation.
 
--   Filtering on 'show on' in items endpoint from string to numeric value.
+## v1.0.5
 
-## Version [2.0.5]
+- Feat: Add default order of published date.
 
-### Feat
+## v1.0.4
 
--   Add 'show on' setting to openpub-settings.
--   Add 'show on' setting in editor of openpub-item.
--   Add filtering on 'show on' to items endpoint.
+- Feat: Add filter options to REST API.
 
-## Version [2.0.4]
+## v1.0.3
 
-### Feat
+- Update: Languages
+- Feat: Add highlighted item to API.
 
--   Add escape element setting to openpub-settings.
--   Add escape element setting in editor of openpub-item.
+## v1.0.2
 
-## Version [2.0.3]
+- Update: Languages
+- Change: Format of REST API to follow WP_Post for elasticsearch
+- Chore: Remove unused setting tab
 
-### Fix:
+## v1.0.1
 
--   Filter inactive items
+- Feat: Add docs.
+- Feat: Add PHP style linter.
+- Change: Add REST API output to follow WP_Post.
 
-## Version [2.0.2]
+## v1.0.0
 
-### Features:
+- Initial release.
 
--   Add slug to related item in API.
--   Add multiple unit tests.
-
-## Version [2.0.1]
-
-### Features:
-
--   Add full image size to attachment meta
--   Add expiration parameters to related items
-
-## Version [2.0.0]
-
-### Features:
-
--   Refactor: clean-up for version 1.0.
--   Add settings on settings page
--   Add SettingsPageOptions model
--   Add portal_url to api output on conditional
--   Add date_modified to api output on conditional
-
-### Fix
-
--   Base settings on settings page
-
-## [1.2.0] - 2020-10-10
-
-### Added
-
--   Comments to items
-
-## [1.1.9]
-
-### Features
-
--   highlighted parameter on rest endpoint
-
-## [1.1.8]
-
-### Fix
-
--   Add: correct mappings for Elasticsearch
-
-## [1.1.7]
-
-### Features
-
--   Add: openpub rest route route on slug
-
-## [1.1.6]
-
-### Features
-
--   Add: add thumnbail url to related posts
-
-## [1.1.5]
-
-### Features
-
--   Fix: Standardize expired date for better compatibility.
-
-## [1.1.4]
-
-### Features
-
--   Add: make posttypes and taxonomies available in rest api.
-
-## [1.1.3]
-
-### Features
-
--   Add: make taxonomy "openpub-type" available in rest api.
-
-## [1.1.2]
-
-### Features
-
--   Chore: add endpoint for active items only: `wp-json/owc/openpub/v1/items/active`.
-
-## [1.1.1]
-
-### Features
-
--   Fix: remove unwanted redirect.
-
-## [1.1.0]
-
-### Features
-
--   Fix: remove unwanted exit.
--   Fix: related items of theme rest api.
-
-## [1.0.9]
-
-### Features
-
--   Chore: remove Hooks class.
-
-## [1.0.8]
-
-### Features
-
--   Add: Query args for rest api.
--   Update: PHPunit 8.
-
-## [1.0.7]
-
-### Fix
-
--   (fix): check if required file for `is_plugin_active` is already loaded, otherwise load it. Props @Jasper Heidebrink
-
-## [1.0.6]
-
-### Features
-
--   Add: openpub endpoint description for documentation.
-
-## [1.0.5]
-
-### Features
-
--   Add: default order of published date.
-
-## [1.0.4]
-
-### Features
-
--   Add: filter options to rest api.
-
-## [1.0.3]
-
-### Features
-
--   Update: languages
--   Add: add highlighted item to api.
-
-## [1.0.2]
-
-### Features
-
--   Update: languages
--   Change: format of rest api to follow WP_Post for elasticsearch
--   Remove: unused setting tab
-
-## [1.0.1]
-
-### Features
-
--   Add: docs.
--   Add: php style linter
--   Change: add rest api output to follow WP_Post
-
-## [1.0.0]
-
-### Features
-
--   Initial release
+ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
