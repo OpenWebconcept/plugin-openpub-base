@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.4
+
+- Refactor: CMB2 'show on' taxonomy field type from 'select_advanced' to 'taxonomy_multicheck'
+
 ## v3.4.3
 
 - Chore: Updated CMB2 to version 2.11.0

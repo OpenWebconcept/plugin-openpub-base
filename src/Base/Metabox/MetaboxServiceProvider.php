@@ -10,7 +10,7 @@ use OWC\OpenPub\Base\Metabox\Commands\ConvertHighlighted;
 class MetaboxServiceProvider extends ServiceProvider
 {
     public const PREFIX = '_owc_';
-    
+
     public function register()
     {
         $this->plugin->loader->addAction('cmb2_admin_init', $this, 'registerMetaboxes', 10, 0);
@@ -25,7 +25,7 @@ class MetaboxServiceProvider extends ServiceProvider
     public function registerMetaboxes(): void
     {
         $configMetaboxes = $this->plugin->config->get('cmb2_metaboxes');
-        
+
         if (! is_array($configMetaboxes)) {
             return;
         }
@@ -77,7 +77,7 @@ class MetaboxServiceProvider extends ServiceProvider
     {
         foreach ($fields as $field) {
             $fieldKeys = array_keys($field);
-            
+
             foreach ($fieldKeys as $fieldKey) {
                 if (! is_array($field[$fieldKey])) {
                     continue;

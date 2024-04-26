@@ -19,7 +19,7 @@ class Plugin
      * Version of the plugin.
      * Used for setting versions of enqueue scripts and styles.
      */
-    public const VERSION = '3.4.3';
+    public const VERSION = '3.4.4';
 
     /**
      * Path to the root of the plugin.
@@ -155,7 +155,7 @@ class Plugin
 
             $service = new $service($this);
 
-            if (!$service instanceof ServiceProvider) {
+            if (! $service instanceof ServiceProvider) {
                 throw new \Exception('Provider must be an instance of ServiceProvider.');
             }
 
