@@ -129,6 +129,26 @@ msgstr "Vrij notitieveld"
 msgid "(the law, authority, local regulations, etc.)"
 msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
 
+#: config/metaboxes.php:133 config/metaboxes.php:143
+msgid "Zipcodes"
+msgstr "Postcodes"
+
+#: config/metaboxes.php:149
+msgid "Add new zipcode"
+msgstr "Voeg nieuwe postcode toe"
+
+#: config/metaboxes.php:150
+msgid "Remove zipcode"
+msgstr "Verwijder postcode"
+
+#: config/metaboxes.php:155
+msgid "Zipcode"
+msgstr "Postcode"
+
+#: config/metaboxes.php:156
+msgid "A zipcode that is part of this district. (Only numbers, no letters)"
+msgstr "Een postcode die bij deze wijk hoort. (Alleen cijfer, geen letters)"
+
 #: config/p2p_connections.php:9
 msgid "Connected item(s)"
 msgstr "Gekoppelde item(s)"
@@ -513,6 +533,16 @@ msgstr "Toepassing"
 msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr "Toepassingen"
+
+#: config/taxonomies.php:73
+msgctxt "Taxonomy definition"
+msgid "District"
+msgstr "Wijk"
+
+#: config/taxonomies.php:73
+msgctxt "Taxonomy definition"
+msgid "Districts"
+msgstr "Wijken"
 
 #: src/Base/Foundation/DependencyChecker.php:62
 msgid "The following plugins are required to use the OpenPub:"

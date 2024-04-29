@@ -134,6 +134,26 @@ msgstr "
 msgid "(the law, authority, local regulations, etc.)"
 msgstr ""
 
+#: config/metaboxes.php:133 config/metaboxes.php:143
+msgid "Zipcodes"
+msgstr ""
+
+#: config/metaboxes.php:149
+msgid "Add new zipcode"
+msgstr ""
+
+#: config/metaboxes.php:150
+msgid "Remove zipcode"
+msgstr ""
+
+#: config/metaboxes.php:155
+msgid "Zipcode"
+msgstr ""
+
+#: config/metaboxes.php:156
+msgid "A zipcode that is part of this district. (Only numbers, no letters)"
+msgstr ""
+
 #: config/p2p_connections.php:9
 msgctxt "P2P titel"
 msgid "Connected item(s)"
@@ -420,6 +440,16 @@ msgstr ""
 #: config/taxonomies.php:44
 msgctxt "Taxonomy definition"
 msgid "Usages"
+msgstr ""
+
+#: config/taxonomies.php:73
+msgctxt "Taxonomy definition"
+msgid "District"
+msgstr ""
+
+#: config/taxonomies.php:73
+msgctxt "Taxonomy definition"
+msgid "Districts"
 msgstr ""
 
 #: src/Base/Foundation/DependencyChecker.php:62

@@ -115,17 +115,19 @@ class MetaboxServiceProvider extends ServiceProvider
 	 * Save group unserialized so it can be used in the search query.
 	 *
 	 * @param int $termId The current term ID.
-	 *
-	 * @return void
 	 */
 	public function saveGroupUnserialized(int $termId): void
 	{
 		delete_term_meta($termId, self::PREFIX . 'openpub_zipcode');
+
 		$zipcodes = get_term_meta($termId, self::PREFIX . 'openpub_zipcodes_group');
-		if ($zipcodes) {
-			foreach ( $zipcodes[0] as $zipcode ) {
-				add_term_meta( $termId, self::PREFIX . 'openpub_zipcode', $zipcode['openpub_zipcode'] );
-			}
+
+		if (! $zipcodes || empty($zipcodes[0])) {
+			return;
+		}
+
+		foreach ( $zipcodes[0] as $zipcode ) {
+			add_term_meta( $termId, self::PREFIX . 'openpub_zipcode', $zipcode['openpub_zipcode'] );
 		}
 	}
 }

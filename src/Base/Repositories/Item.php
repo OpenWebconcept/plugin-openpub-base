@@ -141,18 +141,15 @@ class Item extends AbstractRepository
 		$sql = "SELECT term_id FROM {$wpdb->termmeta} WHERE meta_key = '_owc_openpub_zipcode' AND meta_value = %s";
 		$results = $wpdb->get_col($wpdb->prepare($sql, (int)$zipcode));
 
-		if ($results) {
-			return [
-				'tax_query' => [
-					[
-						'taxonomy' => 'openpub-district',
-						'terms' => $results,
-						'field' => 'term_id',
-						'operator' => 'IN'
-					]
+		return [
+			'tax_query' => [
+				[
+					'taxonomy' => 'openpub-district',
+					'terms' => $results,
+					'field' => 'term_id',
+					'operator' => 'IN'
 				]
-			];
-		}
-		return [];
+			]
+		];
 	}
 }
