@@ -55,6 +55,10 @@ class ItemController extends BaseController
 			$items->query(Item::addZipcodeParameter($this->getZipcodeParam($request)));
 		}
 
+        if ($this->getAudienceParam($request)) {
+            $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
+        }
+
         return $items;
     }
 
@@ -108,12 +112,12 @@ class ItemController extends BaseController
 
     public function singleItemQueryBuilder(WP_REST_Request $request): Item
     {
-        $item = (new Item)
+        $item = (new Item())
             ->query(apply_filters('owc/openpub/rest-api/items/query/single', []));
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
-        if (true === $preview) {
+        if (true === $preview && is_user_logged_in()) {
             $item->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 
@@ -140,6 +144,10 @@ class ItemController extends BaseController
 
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
             $items->query(Item::addShowOnParameter($request->get_param('source')));
+        }
+
+        if ($this->getAudienceParam($request)) {
+            $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
         }
 
         $query = new WP_Query($items->getQueryArgs());
@@ -181,7 +189,7 @@ class ItemController extends BaseController
             return false;
         }
 
-        if (!$this->validateBoolean($request->get_param('highlighted'))) {
+        if (! $this->validateBoolean($request->get_param('highlighted'))) {
             return false;
         };
 
@@ -192,7 +200,19 @@ class ItemController extends BaseController
     {
         $typeParam = $request->get_param('type');
 
-        return ! empty($typeParam) && is_string($typeParam) ? $typeParam : '';
+        if (empty($typeParam)) {
+            return '';
+        }
+
+        if (is_array($typeParam)) {
+            /**
+             * Implode to a string so the ItemRepository class can work with multiple params.
+             * In the previous versions the $typeParam was always assumed to be a string.
+             */
+            $typeParam = implode(',', $typeParam);
+        }
+
+        return is_string($typeParam) ? $typeParam : '';
     }
 
 	protected function getZipcodeParam(WP_REST_Request $request): string
@@ -223,10 +243,26 @@ class ItemController extends BaseController
             return false;
         }
 
-        if (!is_numeric($request->get_param('source'))) {
+        if (! is_numeric($request->get_param('source'))) {
             return false;
         }
 
         return true;
+    }
+
+    protected function getAudienceParam(WP_REST_Request $request): string
+    {
+        $audienceParam = $request->get_param('audience');
+
+        if (empty($audienceParam)) {
+            return '';
+        }
+
+        if (is_array($audienceParam)) {
+            // Implode to a string so the ItemRepository class can work with multiple params
+            $audienceParam = implode(',', $audienceParam);
+        }
+
+        return is_string($audienceParam) ? $audienceParam : '';
     }
 }

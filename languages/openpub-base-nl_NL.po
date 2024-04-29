@@ -2,234 +2,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OWC OpenPub\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-04 15:58+0200\n"
-"PO-Revision-Date: 2023-10-04 15:59+0200\n"
-"Last-Translator: Richard Korthuis <richardkorthuis@acato.nl>\n"
+"POT-Creation-Date: 2018-11-15 14:55+0100\n"
+"PO-Revision-Date: 2018-11-15 14:56+0100\n"
+"Last-Translator: Edwin Siebel <edwin@yard.nl>\n"
 "Language-Team: Yard Digital <inf@yard.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: config\n"
 "X-Poedit-SearchPath-1: src\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
 
-#: config/cmb2_metaboxes.php:6
-msgid "Data"
-msgstr "Gegevens"
-
-#: config/cmb2_metaboxes.php:14
-msgid "Highlighted item"
-msgstr "Uitgelicht item"
-
-#: config/cmb2_metaboxes.php:15
-msgid ""
-"Use this option to select current item to be a highlighted (featured) item"
-msgstr ""
-"Gebruik deze optie om het huidige item te selecteren als een uitgelicht "
-"(gekenmerkt) item"
-
-#: config/cmb2_metaboxes.php:20
-msgid "Synonyms"
-msgstr "Synoniemen"
-
-#: config/cmb2_metaboxes.php:21
-msgid ""
-"Use this option to add an comma separated list of synonyms or related terms"
-msgstr ""
-"Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of "
-"gerelateerde termen mee te geven"
-
-#: config/cmb2_metaboxes.php:27
-msgid "Select end date"
-msgstr "Selecteer een einddatum"
-
-#: config/cmb2_metaboxes.php:37
-msgid "Links"
-msgstr "Links"
-
-#: config/cmb2_metaboxes.php:48
-#, fuzzy
-#| msgid "Add new link"
-msgid "Add new link group"
-msgstr "Voeg nieuwe link toe"
-
-#: config/cmb2_metaboxes.php:49
-msgid "Remove link group"
-msgstr ""
-
-#: config/cmb2_metaboxes.php:54
-msgid "Link title"
-msgstr "Link titel"
-
-#: config/cmb2_metaboxes.php:55 config/cmb2_metaboxes.php:93
-msgid "Use the title to replace the URL"
-msgstr "Wordt gebruikt om de link te tonen ipv de URL"
-
-#: config/cmb2_metaboxes.php:60
-msgid "Link URL"
-msgstr "Link URL"
-
-#: config/cmb2_metaboxes.php:61 config/cmb2_metaboxes.php:99
-#: config/cmb2_settings_pages.php:16
-msgid "URL including http(s)://"
-msgstr "URL inclusief http(s)://"
-
-#: config/cmb2_metaboxes.php:71 config/cmb2_metaboxes.php:80
-msgid "Downloads"
-msgstr "Downloads"
-
-#: config/cmb2_metaboxes.php:86
-#, fuzzy
-#| msgid "Add new download"
-msgid "Add new download group"
-msgstr "Voeg nieuwe download toe"
-
-#: config/cmb2_metaboxes.php:87
-msgid "Remove download group"
-msgstr ""
-
-#: config/cmb2_metaboxes.php:92
-msgid "Download title"
-msgstr "Download titel"
-
-#: config/cmb2_metaboxes.php:98
-msgid "Download URL"
-msgstr "Download URL"
-
-#: config/cmb2_metaboxes.php:109 config/cmb2_metaboxes.php:118
-msgid "Other"
-msgstr "Overig"
-
-#: config/cmb2_metaboxes.php:121
-msgid "Notes"
-msgstr "Vrij notitieveld"
-
-#: config/cmb2_metaboxes.php:122
-msgid "(the law, authority, local regulations, etc.)"
-msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
-
-#: config/cmb2_metaboxes.php:133 config/cmb2_metaboxes.php:143
-msgid "Zipcodes"
-msgstr "Postcodes"
-
-#: config/cmb2_metaboxes.php:149
-msgid "Add new zipcode"
-msgstr "Voeg nieuwe postcode toe"
-
-#: config/cmb2_metaboxes.php:150
-msgid "Remove zipcode"
-msgstr "Verwijder postcode"
-
-#: config/cmb2_metaboxes.php:155
-msgid "Zipcode"
-msgstr "Postcode"
-
-#: config/cmb2_metaboxes.php:156
-msgid "A zipcode that is part of this district. (Only numbers, no letters)"
-msgstr ""
-"Een postcode die onderdeel is van deze kern. (Alleen cijfers, geen letters)"
-
-#: config/cmb2_settings_pages.php:6
-msgid "OpenPub settings"
-msgstr "OpenPub instellingen"
-
-#: config/cmb2_settings_pages.php:10
-#, fuzzy
-#| msgctxt "OpenPub settings tab"
-#| msgid "General"
-msgid "General"
-msgstr "Algemeen"
-
-#: config/cmb2_settings_pages.php:15
-msgid "Portal URL"
-msgstr "Portal URL"
-
-#: config/cmb2_settings_pages.php:21
-msgid "Portal OpenPub item slug"
-msgstr "Portal OpenPub item slug"
-
-#: config/cmb2_settings_pages.php:22
-msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
-msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
-
-#: config/cmb2_settings_pages.php:27
-#, fuzzy
-#| msgctxt "OpenPub instellingen subpagina"
-#| msgid "Portal"
-msgid "Portal url"
-msgstr "Portal"
-
-#: config/cmb2_settings_pages.php:28
-msgid "Use portal url in api."
-msgstr "Gebruik portal url in de api."
-
-#: config/cmb2_settings_pages.php:33 config/escape_element_metabox.php:6
+#: config/escape_element_metabox.php:6 config/settings.php:30
 msgid "Escape element"
 msgstr "Ontsnap element"
 
-#: config/cmb2_settings_pages.php:34
-msgid ""
-"Use an element to leave the website without being able to navigate back via "
-"the browser 'Back' button."
-msgstr ""
-"Gebruik een element waarmee de website verlaten kan worden zonder dat er "
-"terug genavigeerd kan worden via de 'Vorige' knop in de browser."
-
-#: config/cmb2_settings_pages.php:39 config/show_on_metabox.php:14
-#: config/taxonomies.php:61 config/taxonomies.php:62
+#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:61 config/taxonomies.php:62
 msgid "Show on"
 msgstr "Tonen op"
-
-#: config/cmb2_settings_pages.php:40
-msgid ""
-"Used for configuring on which websites an OpenPub item should be displayed "
-"on."
-msgstr ""
-"Wordt gebruikt voor het instellen van de websites waarop een OpenPub item "
-"weergegeven moet worden."
-
-#: config/cmb2_settings_pages.php:46 config/posttypes.php:39
-#: config/posttypes.php:47
-msgid "Expired"
-msgstr "Verlopen"
-
-#: config/cmb2_settings_pages.php:47
-msgid ""
-"OpenPub items without an expiration date expire automatically when the field "
-"below has a value bigger than 0. Existing OpenPub items without an "
-"expiration date will be assigned a value of the published date plus the "
-"value given in days. New OpenPub items will have a value of the current date "
-"plus the value given in days."
-msgstr ""
-"Items zonder een einddatum verlopen automatisch als het veld hieronder een "
-"waarde heeft die groter is dan 0. Bestaande OpenPub items zonder een "
-"einddatum krijgen een waarde toegewezen van de publicatie datum plus de "
-"waarde die is opgegeven in dagen. Nieuwe OpenPub items krijgen een waarde "
-"van de huidige datum plus de waarde die is opgegeven in dagen."
-
-#: config/cmb2_settings_pages.php:50
-msgid "Days to expire"
-msgstr "Dagen tot verlopen"
-
-#: config/cmb2_settings_pages.php:51
-msgid "After how many days should an item expire?"
-msgstr "Na hoeveel dagen moet een item verlopen?"
-
-#: config/cmb2_settings_pages.php:56
-msgid "Admin notices"
-msgstr "Administratieve mededelingen"
-
-#: config/cmb2_settings_pages.php:57
-msgid "Disable upgrade admin notices."
-msgstr "Schakel administratieve mededelingen over upgraden uit."
 
 #: config/escape_element_metabox.php:14
 msgid "Enable escape element"
@@ -247,265 +45,6 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
-#: config/p2p_connections.php:9
-msgid "Connected item(s)"
-msgstr "Gekoppelde item(s)"
-
-#: config/p2p_connections.php:14 config/posttypes.php:113
-#: config/posttypes.php:114
-msgid "Theme"
-msgstr "Thema"
-
-#: config/p2p_connections.php:19 config/posttypes.php:154
-#: config/posttypes.php:155 config/posttypes.php:171 config/posttypes.php:172
-msgid "Subtheme"
-msgstr "Subthema"
-
-#: config/p2p_connections.php:24
-msgid "Locations"
-msgstr "Locaties"
-
-#: config/posttypes.php:24
-msgid "Author"
-msgstr ""
-
-#: config/posttypes.php:27 config/posttypes.php:68
-msgctxt "Admin Filter definition"
-msgid "Type"
-msgstr "Type"
-
-#: config/posttypes.php:31 config/posttypes.php:72
-msgctxt "Admin Filter definition"
-msgid "Audience"
-msgstr "Doelgroep"
-
-#: config/posttypes.php:35 config/posttypes.php:76
-msgctxt "Admin Filter definition"
-msgid "Usage"
-msgstr "Toepassing"
-
-#: config/posttypes.php:51
-msgid "No expire date"
-msgstr "Geen verloopdatum"
-
-#: config/posttypes.php:53
-msgid "Will expire on"
-msgstr "Verloopt op"
-
-#: config/posttypes.php:59
-msgid "Published"
-msgstr "Gepubliceerd"
-
-#: config/posttypes.php:80
-msgctxt "Admin Filter definition"
-msgid "Aspect"
-msgstr "Kenmerk"
-
-#: config/posttypes.php:85 config/posttypes.php:87
-msgid "OpenPub item"
-msgstr "OpenPub item"
-
-#: config/posttypes.php:86
-msgid "OpenPub items"
-msgstr "OpenPub items"
-
-#: config/posttypes.php:88 config/posttypes.php:89
-msgid "Add new OpenPub"
-msgstr "Nieuw OpenPub item"
-
-#: config/posttypes.php:90
-msgid "New OpenPub"
-msgstr "Nieuw OpenPub item"
-
-#: config/posttypes.php:91
-msgid "Edit OpenPub"
-msgstr "Bewerk OpenPub item"
-
-#: config/posttypes.php:92
-msgid "View OpenPub"
-msgstr "Bekijk OpenPub item"
-
-#: config/posttypes.php:93
-msgid "All OpenPub items"
-msgstr "Alle OpenPub items"
-
-#: config/posttypes.php:94
-msgid "Search OpenPub items"
-msgstr "Zoek OpenPub items"
-
-#: config/posttypes.php:95
-msgid "Parent OpenPub items:"
-msgstr "Hoofd OpenPub items:"
-
-#: config/posttypes.php:96
-msgid "No OpenPub items found."
-msgstr "Geen OpenPub items gevonden."
-
-#: config/posttypes.php:97
-msgid "No OpenPub items found in trash."
-msgstr "Geen OpenPub items gevonden in prullenbak."
-
-#: config/posttypes.php:103
-msgctxt "Posttype definition"
-msgid "Item"
-msgstr "Item"
-
-#: config/posttypes.php:104
-msgctxt "Posttype definition"
-msgid "Items"
-msgstr "Items"
-
-#: config/posttypes.php:105
-msgctxt "post type general name"
-msgid "Items"
-msgstr "Items"
-
-#: config/posttypes.php:115 config/posttypes.php:116
-msgid "Add new theme"
-msgstr "Voeg nieuwe thema toe"
-
-#: config/posttypes.php:117
-msgid "Edit theme"
-msgstr "Bewerk thema"
-
-#: config/posttypes.php:118
-msgid "New theme"
-msgstr "Voeg nieuwe thema toe"
-
-#: config/posttypes.php:119
-msgid "View theme"
-msgstr "Bekijk thema"
-
-#: config/posttypes.php:120
-msgid "View themes"
-msgstr "Bekijk thema's"
-
-#: config/posttypes.php:121
-msgid "Search themes"
-msgstr "Zoek thema's"
-
-#: config/posttypes.php:122
-msgid "No themes found."
-msgstr "Geen thema's gevonden."
-
-#: config/posttypes.php:123
-msgid "No themes found in Trash."
-msgstr "Geen thema's gevonden in prullenbak."
-
-#: config/posttypes.php:124
-msgid "All themes"
-msgstr "Alle thema's"
-
-#: config/posttypes.php:125
-msgid "Themes archives"
-msgstr "Thema's archieven"
-
-#: config/posttypes.php:126
-msgid "Theme attributes"
-msgstr "Thema attributen"
-
-#: config/posttypes.php:127
-msgid "Insert into theme"
-msgstr "Voeg in thema"
-
-#: config/posttypes.php:128 config/posttypes.php:169
-msgid "Featured image"
-msgstr "Aanbevolen afbeelding"
-
-#: config/posttypes.php:129 config/posttypes.php:170
-msgid "Set featured image"
-msgstr "Stel aanbevolen afbeelding in"
-
-#: config/posttypes.php:130 config/posttypes.php:131
-msgid "Themes"
-msgstr "Thema's"
-
-#: config/posttypes.php:132
-msgid "Parent themes:"
-msgstr "Hoofd thema's:"
-
-#: config/posttypes.php:144
-msgctxt "Posttype definition"
-msgid "Theme"
-msgstr "Thema"
-
-#: config/posttypes.php:145
-msgctxt "Posttype definition"
-msgid "Themes"
-msgstr "Thema's"
-
-#: config/posttypes.php:156 config/posttypes.php:157
-msgid "Add new subtheme"
-msgstr "Voeg nieuwe subthema toe"
-
-#: config/posttypes.php:158
-msgid "Edit subtheme"
-msgstr "Bewerk subthema"
-
-#: config/posttypes.php:159
-msgid "New subtheme"
-msgstr "Voeg nieuwe subthema toe"
-
-#: config/posttypes.php:160
-msgid "View subtheme"
-msgstr "Bekijk subthema"
-
-#: config/posttypes.php:161
-msgid "View subthemes"
-msgstr "Bekijk subthema's"
-
-#: config/posttypes.php:162
-msgid "Search subthemes"
-msgstr "Zoek subthema's"
-
-#: config/posttypes.php:163
-msgid "No subthemes found."
-msgstr "Geen subthema's gevonden."
-
-#: config/posttypes.php:164
-msgid "No subthemes found in Trash."
-msgstr "Geen subthema's gevonden in prullenbak."
-
-#: config/posttypes.php:165
-msgid "All subthemes"
-msgstr "Alle subthema's"
-
-#: config/posttypes.php:166
-msgid "Subthemes archives"
-msgstr "Subthema's archieven"
-
-#: config/posttypes.php:167
-msgid "Subtheme attributes"
-msgstr "Subthema attributen"
-
-#: config/posttypes.php:168
-msgid "Insert into subtheme"
-msgstr "Voeg in subthema"
-
-#: config/posttypes.php:173
-msgid "Parent subthemes:"
-msgstr "Hoofd subthema's:"
-
-#: config/posttypes.php:188
-msgctxt "Posttype definition"
-msgid "Subtheme"
-msgstr "Subthema"
-
-#: config/posttypes.php:189
-msgctxt "Posttype definition"
-msgid "Subthemes"
-msgstr "Subthema's"
-
-#: config/posttypes.php:211
-msgctxt "Posttype definition"
-msgid "Location"
-msgstr "Locatie"
-
-#: config/posttypes.php:212
-msgctxt "Posttype definition"
-msgid "Locations"
-msgstr "Locaties"
-
 #: config/show_on_metabox.php:6
 msgid "External"
 msgstr "Extern"
@@ -513,6 +52,437 @@ msgstr "Extern"
 #: config/show_on_metabox.php:15
 msgid "Select websites where this item should be displayed on."
 msgstr "Selecteer websites waarop dit item getoond moet worden."
+
+#: config/metaboxes.php:6
+msgid "Data"
+msgstr "Gegevens"
+
+#: config/metaboxes.php:14
+msgid "Highlighted item"
+msgstr "Uitgelicht item"
+
+#: config/metaboxes.php:15
+msgid "Use this option to select current item to be a highlighted (featured) item"
+msgstr "Gebruik deze optie om het huidige item te selecteren als een uitgelicht (gekenmerkt) item"
+
+#: config/metaboxes.php:20
+msgid "Synonyms"
+msgstr "Synoniemen"
+
+#: config/metaboxes.php:21
+msgid "Use this option to add an comma separated list of synonyms or related terms"
+msgstr "Gebruik deze mogelijkheid om een komma gescheiden lijst van synoniemen of gerelateerde termen mee te geven"
+
+#: config/metaboxes.php:27
+msgid "Select end date"
+msgstr "Selecteer een einddatum"
+
+#: config/metaboxes.php:35
+msgid "Links"
+msgstr "Links"
+
+#: config/metaboxes.php:42
+msgid "Add new link"
+msgstr "Voeg nieuwe link toe"
+
+#: config/metaboxes.php:46
+msgid "Link title"
+msgstr "Link titel"
+
+#: config/metaboxes.php:47 config/metaboxes.php:74
+msgid "Use the title to replace the URL"
+msgstr "Wordt gebruikt om de link te tonen ipv de URL"
+
+#: config/metaboxes.php:52
+msgid "Link URL"
+msgstr "Link URL"
+
+#: config/metaboxes.php:53 config/metaboxes.php:80 config/settings.php:13
+msgid "URL including http(s)://"
+msgstr "URL inclusief http(s)://"
+
+#: config/metaboxes.php:62
+msgid "Downloads"
+msgstr "Downloads"
+
+#: config/metaboxes.php:69
+msgid "Add new download"
+msgstr "Voeg nieuwe download toe"
+
+#: config/metaboxes.php:73
+msgid "Download title"
+msgstr "Download titel"
+
+#: config/metaboxes.php:79
+msgid "Download URL"
+msgstr "Download URL"
+
+#: config/metaboxes.php:89
+msgid "Other"
+msgstr "Overig"
+
+#: config/metaboxes.php:92
+msgid "Notes"
+msgstr "Vrij notitieveld"
+
+#: config/metaboxes.php:93
+msgid "(the law, authority, local regulations, etc.)"
+msgstr "(wetgeving, bevoegd gezag, uitvoerder, lokale regelgeving)"
+
+#: config/p2p_connections.php:9
+msgid "Connected item(s)"
+msgstr "Gekoppelde item(s)"
+
+#: config/p2p_connections.php:14 config/posttypes.php:108
+#: config/posttypes.php:109
+msgid "Theme"
+msgstr "Thema"
+
+#: config/p2p_connections.php:19 config/posttypes.php:147
+#: config/posttypes.php:148 config/posttypes.php:164 config/posttypes.php:165
+msgid "Subtheme"
+msgstr "Subthema"
+
+#: config/p2p_connections.php:24
+msgid "Locations"
+msgstr "Locaties"
+
+#: config/posttypes.php:25 config/posttypes.php:65
+msgctxt "Admin Filter definition"
+msgid "Type"
+msgstr "Type"
+
+#: config/posttypes.php:29 config/posttypes.php:69
+msgctxt "Admin Filter definition"
+msgid "Audience"
+msgstr "Doelgroep"
+
+#: config/posttypes.php:33 config/posttypes.php:73
+msgctxt "Admin Filter definition"
+msgid "Usage"
+msgstr "Toepassing"
+
+#: config/posttypes.php:37 config/posttypes.php:45 config/settings.php:43
+msgid "Expired"
+msgstr "Verlopen"
+
+#: config/posttypes.php:24
+msgid "Author"
+msgstr "Auteur"
+
+#: config/posttypes.php:49
+msgid "No expire date"
+msgstr "Geen verloopdatum"
+
+#: config/posttypes.php:51
+msgid "Will expire on"
+msgstr "Verloopt op"
+
+#: config/posttypes.php:57
+msgid "Published"
+msgstr "Gepubliceerd"
+
+#: config/posttypes.php:77
+msgctxt "Admin Filter definition"
+msgid "Aspect"
+msgstr "Kenmerk"
+
+#: config/posttypes.php:82 config/posttypes.php:84
+msgid "OpenPub item"
+msgstr "OpenPub item"
+
+#: config/posttypes.php:83
+msgid "OpenPub items"
+msgstr "OpenPub items"
+
+#: config/posttypes.php:85 config/posttypes.php:86
+msgid "Add new OpenPub"
+msgstr "Nieuw OpenPub item"
+
+#: config/posttypes.php:87
+msgid "New OpenPub"
+msgstr "Nieuw OpenPub item"
+
+#: config/posttypes.php:88
+msgid "Edit OpenPub"
+msgstr "Bewerk OpenPub item"
+
+#: config/posttypes.php:89
+msgid "View OpenPub"
+msgstr "Bekijk OpenPub item"
+
+#: config/posttypes.php:90
+msgid "All OpenPub items"
+msgstr "Alle OpenPub items"
+
+#: config/posttypes.php:91
+msgid "Search OpenPub items"
+msgstr "Zoek OpenPub items"
+
+#: config/posttypes.php:92
+msgid "Parent OpenPub items:"
+msgstr "Hoofd OpenPub items:"
+
+#: config/posttypes.php:93
+msgid "No OpenPub items found."
+msgstr "Geen OpenPub items gevonden."
+
+#: config/posttypes.php:94
+msgid "No OpenPub items found in trash."
+msgstr "Geen OpenPub items gevonden in prullenbak."
+
+#: config/posttypes.php:100
+msgctxt "Posttype definition"
+msgid "Item"
+msgstr "Item"
+
+#: config/posttypes.php:101
+msgctxt "Posttype definition"
+msgid "Items"
+msgstr "Items"
+
+#: config/posttypes.php:102
+msgctxt "post type general name"
+msgid "Items"
+msgstr "Items"
+
+#: config/posttypes.php:110 config/posttypes.php:111
+msgid "Add new theme"
+msgstr "Voeg nieuwe thema toe"
+
+#: config/posttypes.php:112
+msgid "Edit theme"
+msgstr "Bewerk thema"
+
+#: config/posttypes.php:113
+msgid "New theme"
+msgstr "Voeg nieuwe thema toe"
+
+#: config/posttypes.php:114
+msgid "View theme"
+msgstr "Bekijk thema"
+
+#: config/posttypes.php:115
+msgid "View themes"
+msgstr "Bekijk thema's"
+
+#: config/posttypes.php:116
+msgid "Search themes"
+msgstr "Zoek thema's"
+
+#: config/posttypes.php:117
+msgid "No themes found."
+msgstr "Geen thema's gevonden."
+
+#: config/posttypes.php:118
+msgid "No themes found in Trash."
+msgstr "Geen thema's gevonden in prullenbak."
+
+#: config/posttypes.php:119
+msgid "All themes"
+msgstr "Alle thema's"
+
+#: config/posttypes.php:120
+msgid "Themes archives"
+msgstr "Thema's archieven"
+
+#: config/posttypes.php:121
+msgid "Theme attributes"
+msgstr "Thema attributen"
+
+#: config/posttypes.php:122
+msgid "Insert into theme"
+msgstr "Voeg in thema"
+
+#: config/posttypes.php:123 config/posttypes.php:162
+msgid "Featured image"
+msgstr "Aanbevolen afbeelding"
+
+#: config/posttypes.php:124 config/posttypes.php:163
+msgid "Set featured image"
+msgstr "Stel aanbevolen afbeelding in"
+
+#: config/posttypes.php:125 config/posttypes.php:126
+msgid "Themes"
+msgstr "Thema's"
+
+#: config/posttypes.php:127
+msgid "Parent themes:"
+msgstr "Hoofd thema's:"
+
+#: config/posttypes.php:139
+msgctxt "Posttype definition"
+msgid "Theme"
+msgstr "Thema"
+
+#: config/posttypes.php:140
+msgctxt "Posttype definition"
+msgid "Themes"
+msgstr "Thema's"
+
+#: config/posttypes.php:149 config/posttypes.php:150
+msgid "Add new subtheme"
+msgstr "Voeg nieuwe subthema toe"
+
+#: config/posttypes.php:151
+msgid "Edit subtheme"
+msgstr "Bewerk subthema"
+
+#: config/posttypes.php:152
+msgid "New subtheme"
+msgstr "Voeg nieuwe subthema toe"
+
+#: config/posttypes.php:153
+msgid "View subtheme"
+msgstr "Bekijk subthema"
+
+#: config/posttypes.php:154
+msgid "View subthemes"
+msgstr "Bekijk subthema's"
+
+#: config/posttypes.php:155
+msgid "Search subthemes"
+msgstr "Zoek subthema's"
+
+#: config/posttypes.php:156
+msgid "No subthemes found."
+msgstr "Geen subthema's gevonden."
+
+#: config/posttypes.php:157
+msgid "No subthemes found in Trash."
+msgstr "Geen subthema's gevonden in prullenbak."
+
+#: config/posttypes.php:158
+msgid "All subthemes"
+msgstr "Alle subthema's"
+
+#: config/posttypes.php:159
+msgid "Subthemes archives"
+msgstr "Subthema's archieven"
+
+#: config/posttypes.php:160
+msgid "Subtheme attributes"
+msgstr "Subthema attributen"
+
+#: config/posttypes.php:161
+msgid "Insert into subtheme"
+msgstr "Voeg in subthema"
+
+#: config/posttypes.php:166
+msgid "Parent subthemes:"
+msgstr "Hoofd subthema's:"
+
+#: config/posttypes.php:182
+msgctxt "Posttype definition"
+msgid "Subtheme"
+msgstr "Subthema"
+
+#: config/posttypes.php:183
+msgctxt "Posttype definition"
+msgid "Subthemes"
+msgstr "Subthema's"
+
+#: config/posttypes.php:205
+msgctxt "Posttype definition"
+msgid "Location"
+msgstr "Locatie"
+
+#: config/posttypes.php:206
+msgctxt "Posttype definition"
+msgid "Locations"
+msgstr "Locaties"
+
+#: config/settings.php:7
+msgctxt "OpenPub instellingen subpagina"
+msgid "Portal"
+msgstr "Portal"
+
+#: config/settings.php:12 config/settings.php:24
+msgid "Portal URL"
+msgstr "Portal URL"
+
+#: config/settings.php:18
+msgid "Portal OpenPub item slug"
+msgstr "Portal OpenPub item slug"
+
+#: config/settings.php:19
+msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
+msgstr "URL voor OpenPub items in de portal, bv \"onderwerp\""
+
+#: config/settings.php:25
+msgid "Use portal url in api."
+msgstr "Gebruik portal url in de api."
+
+#: config/settings.php:31
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
+msgstr "Gebruik een element waarmee de website verlaten kan worden zonder dat er terug genavigeerd kan worden via de 'Vorige' knop in de browser."
+
+#: config/settings.php:37
+msgid "Used for configuring on which websites an OpenPub item should be displayed on."
+msgstr "Wordt gebruikt voor het instellen van de websites waarop een OpenPub item weergegeven moet worden."
+
+#: config/settings.php:44
+msgid "OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days."
+msgstr "Items zonder een einddatum verlopen automatisch als het veld hieronder een waarde heeft die groter is dan 0. Bestaande OpenPub items zonder een einddatum krijgen een waarde toegewezen van de publicatie datum plus de waarde die is opgegeven in dagen. Nieuwe OpenPub items krijgen een waarde van de huidige datum plus de waarde die is opgegeven in dagen."
+
+#: config/settings.php:47
+msgid "Days to expire"
+msgstr "Dagen tot verlopen"
+
+#: config/settings.php:48
+msgid "After how many days should an item expire?"
+msgstr "Na hoeveel dagen moet een item verlopen?"
+
+#: config/settings.php:53
+msgid "Admin notices"
+msgstr "Administratieve mededelingen"
+
+#: config/settings.php:54
+msgid "Disable upgrade admin notices."
+msgstr "Schakel administratieve mededelingen over upgraden uit."
+
+#: config/settings.php:57
+msgid "Elasticsearch"
+msgstr "Elasticsearch"
+
+#: config/settings.php:64
+msgid "Instance url"
+msgstr "Instance url"
+
+#: config/settings.php:65 config/settings.php:71
+msgid "URL inclusief http(s)://"
+msgstr "URL inclusief http(s)://"
+
+#: config/settings.php:70
+msgid "Instance shield"
+msgstr "Instance user/wachtwoord"
+
+#: config/settings.php:76
+msgid "Instance prefix"
+msgstr "Instance prefix"
+
+#: config/settings.php:77
+msgid "Use this prefix to group multiple instances"
+msgstr "Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te groeperen"
+
+#: config/settings_pages.php:7
+msgid "OpenPub settings"
+msgstr "OpenPub instellingen"
+
+#: config/settings_pages.php:9
+msgctxt "OpenPub settings subpage"
+msgid "Base"
+msgstr "Basis"
+
+#: config/settings_pages.php:12
+msgctxt "OpenPub settings subpage"
+msgid "Submit"
+msgstr "Opslaan"
+
+#: config/settings_pages.php:14
+msgctxt "OpenPub settings tab"
+msgid "Elasticsearch"
+msgstr "Elasticsearch"
 
 #: config/taxonomies.php:16
 msgctxt "Taxonomy definition"
@@ -544,124 +514,26 @@ msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr "Toepassingen"
 
-#: config/taxonomies.php:73
-msgctxt "Taxonomy definition"
-msgid "District"
-msgstr "Kern"
-
-#: config/taxonomies.php:74
-msgctxt "Taxonomy definition"
-msgid "Districts"
-msgstr "Kernen"
-
-#: src/Base/Foundation/DependencyChecker.php:59
+#: src/Base/Foundation/DependencyChecker.php:62
 msgid "The following plugins are required to use the OpenPub:"
 msgstr "De volgende plugins zijn vereist om gebruik te maken van de OpenPub:"
 
-#: src/Base/Foundation/DependencyChecker.php:90
+#: src/Base/Foundation/DependencyChecker.php:98
 msgid "Class does not exist"
 msgstr "Class bestaat niet"
 
-#: src/Base/Foundation/DependencyChecker.php:106
+#: src/Base/Foundation/DependencyChecker.php:112
 msgid "Inactive"
 msgstr "Inactief"
 
-#: src/Base/Foundation/DependencyChecker.php:114
+#: src/Base/Foundation/DependencyChecker.php:120
 msgid "Minimal version:"
 msgstr "Minimale versie:"
 
-#: src/Base/Metabox/AdminNotice.php:19
-msgid ""
-"Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</"
-"strong> plugin two manual actions are required. You're <strong>urgently</"
-"strong> requested to read the README.md inside the plugin folder."
-msgstr ""
-"Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</"
-"strong> plugin zijn er twee handmatige acties vereist. Je wordt "
-"<strong>dringend</strong> verzocht om de README.md van de plugin te lezen."
-
-#: src/Base/Metabox/AdminNotice.php:26
-msgid ""
-"Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</"
-"strong> plugin there is still one manual action required. You're "
-"<strong>urgently</strong> requested to read the README.md inside the plugin "
-"folder and look for the part about 'convert:highlighted'."
-msgstr ""
-"Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</"
-"strong> plugin is er nog één handmatige actie vereist. Je wordt "
-"<strong>dringend</strong> verzocht om de README.md van de plugin te lezen en "
-"met name het deel over 'convert:highlighted'."
-
-#: src/Base/Metabox/AdminNotice.php:33
-msgid ""
-"Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</"
-"strong> plugin there is still one manual action required. You're "
-"<strong>urgently</strong> requested to read the README.md inside the plugin "
-"folder and look for the part about 'convert:expiration-date'."
-msgstr ""
-"Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</"
-"strong> plugin is er nog één handmatige actie vereist. Je wordt "
-"<strong>dringend</strong> verzocht om de README.md van de plugin te lezen en "
-"met name het deel over 'convert:expiration-date'."
-
-#: src/Base/Metabox/MetaboxServiceProvider.php:99
-msgid ""
-"Items with an expiration date will be excluded from the search results and "
-"on news overview page from this date forward."
-msgstr ""
-"Items met een einddatum worden uitgesloten van de zoekresultaten en op de "
-"nieuws pagina vanaf deze datum."
-
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:42
-#: src/Base/RestAPI/ItemFields/ConnectedThemeItemField.php:38
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
 #, php-format
 msgid "Connection type \"%s\" does not exist"
 msgstr "Verbindingstype \"%s\" bestaat niet"
-
-#: src/Base/Taxonomy/TaxonomyController.php:17
-msgid "Additional explanation"
-msgstr "Aanvullende uitleg"
-
-#: src/Base/Taxonomy/TaxonomyController.php:18
-msgid ""
-"The slug value must be the ID of the blog you want to add as term. The ID is "
-"used for displaying the correct openpub-items on every blog."
-msgstr ""
-"De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als "
-"term. Het ID wordt gebruikt om de juiste openpub-items weer te geven op alle "
-"blogs."
-
-#~ msgid "Elasticsearch"
-#~ msgstr "Elasticsearch"
-
-#~ msgid "Instance url"
-#~ msgstr "Instance url"
-
-#~ msgid "URL inclusief http(s)://"
-#~ msgstr "URL inclusief http(s)://"
-
-#~ msgid "Instance shield"
-#~ msgstr "Instance user/wachtwoord"
-
-#~ msgid "Instance prefix"
-#~ msgstr "Instance prefix"
-
-#~ msgid "Use this prefix to group multiple instances"
-#~ msgstr ""
-#~ "Dit voorvoegsel wordt gebruikt om meerdere bronnen in ElasticSearch te "
-#~ "groeperen"
-
-#~ msgctxt "OpenPub settings subpage"
-#~ msgid "Base"
-#~ msgstr "Basis"
-
-#~ msgctxt "OpenPub settings subpage"
-#~ msgid "Submit"
-#~ msgstr "Opslaan"
-
-#~ msgctxt "OpenPub settings tab"
-#~ msgid "Elasticsearch"
-#~ msgstr "Elasticsearch"
 
 #~ msgctxt "P2P titel"
 #~ msgid "Theme"
@@ -706,6 +578,10 @@ msgstr ""
 #~ msgctxt ""
 #~ msgid "Add new OpenPub"
 #~ msgstr "Add new OpenPub"
+
+#~ msgctxt "OpenPub settings tab"
+#~ msgid "General"
+#~ msgstr "Algemeen"
 
 #, fuzzy
 #~| msgid "OpenPub settings"
@@ -778,3 +654,27 @@ msgstr ""
 
 #~ msgid "This link does not work, go to our website: <a href=\"%s\">%s</a>"
 #~ msgstr "Deze link werkt niet, bekijk onze website: <a href=\"%s\">%s</a>"
+
+#: src/Base/Taxonomy/TaxonomyController.php:21
+msgid "Additional explanation"
+msgstr "Aanvullende uitleg"
+
+#: src/Base/Taxonomy/TaxonomyController.php:22
+msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
+msgstr "De waarde van de slug moet het ID zijn van de blog die je wilt toevoegen als term. Het ID wordt gebruikt om de juiste openpub-items weer te geven op alle blogs."
+
+#: src/Base/Metabox/MetaboxServiceProvider.php:50
+msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
+msgstr "Items met een einddatum worden uitgesloten van de zoekresultaten en op de nieuws pagina vanaf deze datum."
+
+#: src/Base/Metabox/AdminNotice.php:18
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin two manual actions are required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin zijn er twee handmatige acties vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen."
+
+#: src/Base/Metabox/AdminNotice.php:24
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:highlighted'."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin is er nog één handmatige actie vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen en met name het deel over 'convert:highlighted'."
+
+#: src/Base/Metabox/AdminNotice.php:30
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:expiration-date'."
+msgstr "Sinds de major release van v3.0.0 van de <strong>Yard | OpenPub Base</strong> plugin is er nog één handmatige actie vereist. Je wordt <strong>dringend</strong> verzocht om de README.md van de plugin te lezen en met name het deel over 'convert:expiration-date'."

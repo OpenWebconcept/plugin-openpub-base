@@ -4,7 +4,7 @@
  * Plugin Name:       Yard | OpenPub Base
  * Plugin URI:        https://www.openwebconcept.nl/
  * Description:       Acts as foundation for other OpenPub related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations.
- * Version:           3.3.3
+ * Version:           3.4.4
  * Author:            Yard | Digital Agency
  * Author URI:        https://www.yard.nl/
  * License:           GPL-3.0
@@ -16,7 +16,7 @@
 /**
  * If this file is called directly, abort.
  */
-if (!defined('WPINC')) {
+if (! defined('WPINC')) {
     die;
 }
 
