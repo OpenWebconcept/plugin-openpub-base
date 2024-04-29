@@ -128,4 +128,37 @@ return [
             ]
         ]
     ],
+	'district_zipcodes' => [
+		'id' => 'openpub_metadata_district_zipcodes',
+		'title' => __('Zipcodes', 'openpub-base'),
+		'object_types' => ['term'],
+		'taxonomies' => ['openpub-district'],
+		'context' => 'normal',
+		'priority' => 'high',
+		'autosave' => true,
+		'fields' => [
+			'zipcodes' => [
+				'heading' => [
+					'type' => 'heading',
+					'name' => __('Zipcodes', 'openpub-base'),
+				],
+				'zipcodes' => [
+					'id' => 'openpub_zipcodes_group',
+					'type' => 'group',
+					'options' => [
+						'add_button' => __('Add new zipcode', 'openpub-base'),
+						'remove_button' => __('Remove zipcode', 'openpub-base'),
+					],
+					'fields' => [
+						[
+							'id' => 'openpub_zipcode',
+							'name' => __('Zipcode', 'openpub-base'),
+							'desc' => __('A zipcode that is part of this district. (Only numbers, no letters)', 'openpub-base'),
+							'type' => 'number',
+						],
+					],
+				],
+			],
+		]
+	]
 ];
