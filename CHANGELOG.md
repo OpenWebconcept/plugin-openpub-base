@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.5
+
+- Chore: Updated elasticpress to v5
+
 ## v3.4.4
 
 - Refactor: CMB2 'show on' taxonomy field type from 'select_advanced' to 'taxonomy_multicheck'

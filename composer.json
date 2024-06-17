@@ -27,7 +27,7 @@
     "johnbillion/extended-cpts": "^4.0",
     "php": "^7.4|^8.0",
     "wpackagist-plugin/cmb2": "2.11.*",
-    "wpackagist-plugin/elasticpress": "^4.0",
+    "wpackagist-plugin/elasticpress": "^4.0 | ^5.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
