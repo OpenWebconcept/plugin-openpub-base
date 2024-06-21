@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.6
+
+- Refactor: enable openpub-show-on taxonomy in REST
+
 ## v3.4.5
 
 - Chore: Updated elasticpress to v5

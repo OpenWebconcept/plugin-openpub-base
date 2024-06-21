@@ -48,7 +48,7 @@ return [
     'openpub-show-on' => [
         'object_types' => ['openpub-item'],
         'args'         => [
-            'show_in_rest'      => false,
+            'show_in_rest'      => true,
             'show_admin_column' => true,
             'capabilities'      => [
                 'manage_terms' => 'manage_categories',
