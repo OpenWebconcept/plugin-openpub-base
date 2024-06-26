@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.7
+
+- Refactor: openpub-show-on taxonomy capabilities to 'manage_options'
+
 ## v3.4.6
 
 - Refactor: enable openpub-show-on taxonomy in REST

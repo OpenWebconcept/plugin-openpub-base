@@ -8,15 +8,10 @@ class TaxonomyServiceProvider extends ServiceProvider
 {
 
     /**
-     * the array of taxonomies definitions from the config
-     *
-     * @var array
+     * The array of taxonomies definitions from the config.
      */
-    protected $configTaxonomies = [];
+    protected array $configTaxonomies = [];
 
-    /**
-     * @return void
-     */
     public function register(): void
     {
         $this->plugin->loader->addAction('init', $this, 'registerTaxonomies');
@@ -28,8 +23,6 @@ class TaxonomyServiceProvider extends ServiceProvider
 
     /**
      * Add elements to the taxonomy form.
-     *
-     * @return void
      */
     protected function showOnFormFields()
     {
@@ -38,8 +31,6 @@ class TaxonomyServiceProvider extends ServiceProvider
 
     /**
      * Register custom taxonomies via extended_cpts.
-     *
-     * @return void
      */
     public function registerTaxonomies(): void
     {
@@ -57,8 +48,6 @@ class TaxonomyServiceProvider extends ServiceProvider
 
     /**
      * Filter taxonomies based on plugin settings.
-     *
-     * @return array
      */
     protected function filterConfigTaxonomies(): array
     {
