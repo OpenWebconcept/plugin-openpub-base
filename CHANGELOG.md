@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.4.8
+
+- Fix: Fix composer.lock on PHP 7.4 rather than PHP 8.1
+
 ## v3.4.7
 
 - Refactor: openpub-show-on taxonomy capabilities to 'manage_options'
