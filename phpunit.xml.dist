@@ -1,28 +1,16 @@
-<phpunit
-    bootstrap="tests/Unit/bootstrap.php"
-    backupGlobals="false"
-    backupStaticAttributes="false"
-    colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
-    processIsolation="false"
-    stopOnError="false"
-    stopOnFailure="false"
-    verbose="true"
-	testdox="true"
->
-    <testsuites>
-        <testsuite name="Unit Test Suite">
-            <directory suffix="Test.php">./tests/Unit</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src/Base/</directory>
-        </whitelist>
-    </filter>
-    <php>
-        <ini name="display_errors" value="true"/>
-    </php>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="tests/Unit/bootstrap.php" backupGlobals="false" backupStaticAttributes="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnError="false" stopOnFailure="false" verbose="true" testdox="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./src/Base/</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="Unit Test Suite">
+      <directory suffix="Test.php">./tests/Unit</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <ini name="display_errors" value="true"/>
+  </php>
 </phpunit>
