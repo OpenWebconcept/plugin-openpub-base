@@ -46,7 +46,7 @@ class PostTypeServiceProvider extends ServiceProvider
     public function registerPostTypes(): void
     {
         if (function_exists('register_extended_post_type')) {
-            $this->configPostTypes = $this->plugin->config->get('posttypes');
+            $this->configPostTypes = apply_filters('owc/openpub-base/before-register-posttypes', $this->plugin->config->get('posttypes'));
             foreach ($this->configPostTypes as $postTypeName => $postType) {
                 // Examples of registering post types: http://johnbillion.com/extended-cpts/
                 register_extended_post_type($postTypeName, $postType['args'], $postType['names']);
