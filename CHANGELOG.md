@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.5.0
+
+- Feat: add filter for altering the post types config
+
 ## v3.4.8
 
 - Fix: Fix composer.lock on PHP 7.4 rather than PHP 8.1
