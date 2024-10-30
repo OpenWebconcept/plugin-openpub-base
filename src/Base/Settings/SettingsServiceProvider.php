@@ -17,7 +17,7 @@ class SettingsServiceProvider extends ServiceProvider
 
     public function registerMissingNumberField($field, $escapedValue, $objectID, $objectType, $fieldTypeObject): void
     {
-        echo $fieldTypeObject->input(array( 'type' => 'number' ));
+        echo $fieldTypeObject->input([ 'type' => 'number' ]);
     }
 
     public function registerSettingsPages(): void
@@ -43,7 +43,7 @@ class SettingsServiceProvider extends ServiceProvider
         }
     }
 
-    protected function registerSettingsPage(array $page): void
+    public function registerSettingsPage(array $page): void
     {
         $fields = $page['fields'] ?? [];
         unset($page['fields']); // Fields will be added later on.
