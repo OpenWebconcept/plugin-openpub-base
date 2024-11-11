@@ -235,7 +235,9 @@ abstract class AbstractRepository
             'post_status' => $post->post_status
         ];
 
-        $data = $this->assignFields($data, $post);
+		$data = apply_filters( 'ok_geo_rest_add_geodata', $data, $post );
+
+		$data = $this->assignFields($data, $post);
 
         return $data;
     }
