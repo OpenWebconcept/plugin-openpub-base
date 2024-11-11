@@ -235,7 +235,7 @@ abstract class AbstractRepository
             'post_status' => $post->post_status
         ];
 
-		$data = apply_filters( 'ok_geo_rest_add_geodata', $data, $post );
+		$data = apply_filters( 'owc/openkaarten/geodata/rest-add-fields', $data, $post );
 
 		$data = $this->assignFields($data, $post);
 
