@@ -123,7 +123,7 @@ class DependencyChecker
     {
         try {
             $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
 
