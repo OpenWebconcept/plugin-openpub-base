@@ -42,6 +42,9 @@ class DependencyChecker
                 case 'plugin':
                     $this->checkPlugin($dependency);
                     break;
+                case 'function':
+                    $this->checkFunction($dependency);
+                    break;
             }
         }
 
@@ -117,13 +120,24 @@ class DependencyChecker
     }
 
     /**
+     * Checks if required function exists.
+     */
+    private function checkFunction(array $dependency): void
+    {
+        if (! function_exists($dependency['name'])) {
+            $this->markFailed($dependency, __('Function does not exist:', 'openpub-base') . ' <b>' . $dependency['name'] . '</b>');
+        }
+    }
+
+
+    /**
      * Checks the installed version of the plugin.
      */
     private function checkVersion(array $dependency): bool
     {
         try {
             $file = file_get_contents(WP_PLUGIN_DIR . '/' . $dependency['file']);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             return false;
         }
 
