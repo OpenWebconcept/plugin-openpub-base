@@ -17,7 +17,7 @@ class SettingsServiceProvider extends ServiceProvider
 
     public function registerMissingNumberField($field, $escapedValue, $objectID, $objectType, $fieldTypeObject): void
     {
-        echo $fieldTypeObject->input(array( 'type' => 'number' ));
+        echo $fieldTypeObject->input([ 'type' => 'number' ]);
     }
 
     public function registerSettingsPages(): void

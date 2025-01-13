@@ -17,7 +17,7 @@
  * If this file is called directly, abort.
  */
 if (! defined('WPINC')) {
-	die;
+    die;
 }
 
 /**
@@ -34,7 +34,7 @@ $autoloader = new OWC\OpenPub\Base\Autoloader();
 $composerAutoload = __DIR__ . '/vendor/autoload.php';
 
 if (file_exists($composerAutoload)) {
-	require_once $composerAutoload;
+    require_once $composerAutoload;
 }
 
 /**
@@ -45,6 +45,6 @@ if (file_exists($composerAutoload)) {
  * and wp_loaded action hooks.
  */
 \add_action('plugins_loaded', function () {
-	$plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__))->boot();
-	do_action('owc/openpub-base/plugin', $plugin);
+    $plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__))->boot();
+    do_action('owc/openpub-base/plugin', $plugin);
 }, 10);
