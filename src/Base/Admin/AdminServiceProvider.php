@@ -33,7 +33,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function filterPreviewLink(string $link, WP_Post $post): string
     {
-        if ($post->post_type !== 'openpub-item'  || ! $this->plugin->settings->isPortalSlugValid()) {
+        if ($post->post_type !== 'openpub-item' || ! $this->plugin->settings->isPortalSlugValid()) {
             return $link;
         }
 

@@ -7,7 +7,6 @@ use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
 use OWC\OpenPub\Base\RestAPI\Controllers\ItemController;
-use OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField;
 use OWC\OpenPub\Tests\TestCase;
 use WP_Mock;
 use WP_Post;
@@ -44,9 +43,9 @@ class ItemControllerTest extends TestCase
         $post->post_date = '01-01-2021';
         $post->post_name = 'test-test';
 
-		$itemController = m::mock(ItemController::class)->makePartial();
+        $itemController = m::mock(ItemController::class)->makePartial();
 
-		$itemController->shouldReceive('getImageUrl')->andReturn([]);
+        $itemController->shouldReceive('getImageUrl')->andReturn([]);
 
         WP_Mock::userFunction('get_the_post_thumbnail_url', [
             'args' => [
@@ -63,7 +62,7 @@ class ItemControllerTest extends TestCase
             'excerpt'       => 'Test excerpt',
             'date'          => '01-01-2021',
             'thumbnail_url' => 'url-to-image',
-			'image'			=> [],
+            'image'			=> [],
             'slug'          => 'test-test',
         ];
 
