@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.5.2
+
+- Feat: add settings API endpoint. @richardkorthuis (#31)
+
 ## v3.5.1
 
 - Refactor: Remove optional params from fillPostName called by 'wp_insert_post_data' hook
