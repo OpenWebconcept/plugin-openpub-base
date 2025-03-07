@@ -31,7 +31,7 @@ class ConvertExpirationDate extends AbstractConvert
 
         try {
             $object = new DateTime($date);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return null;
         }
 

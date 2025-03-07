@@ -31,7 +31,7 @@ abstract class AbstractConvert
         foreach ($this->flattenArray($holder) as $item) {
             try {
                 $this->convert($item);
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 WP_CLI::error(sprintf('Something went wrong with converting item [%s]. Error: %s', $item->post_title, $e->getMessage()));
             }
         }

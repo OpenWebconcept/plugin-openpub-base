@@ -67,6 +67,14 @@ class PostTypeServiceProviderTest extends TestCase
             'orderByPublishedDate',
         ])->once();
 
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'wp_insert_post_data',
+            $service,
+            'fillPostName',
+            10,
+            4,
+        ])->once();
+
         /**
          * Examples of registering post types: http://johnbillion.com/extended-cpts/
          */

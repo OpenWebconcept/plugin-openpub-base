@@ -32,7 +32,7 @@ class ExpiredField extends CreatesFields
         $timezone = \wp_timezone_string();
 
         $dateNow = new DateTime('now', new DateTimeZone($timezone));
-        $date = new DateTime(date('Y-m-d H:i:s', $date), new DateTimeZone($timezone)); // The date is saved in the timezone of the Wordpress installation.
+        $date = (new DateTime())->setTimestamp($date)->setTimezone(new DateTimeZone($timezone)); // The date is saved in the timezone of the Wordpress installation.
 
         return [
             'message' => ($date->getTimestamp() < $dateNow->getTimestamp()) ? 'Item is expired' : '',

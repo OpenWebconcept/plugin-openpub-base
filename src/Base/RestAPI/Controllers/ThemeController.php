@@ -2,10 +2,10 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
-use WP_Post;
-use WP_Error;
-use WP_REST_Request;
 use OWC\OpenPub\Base\Repositories\Theme;
+use WP_Error;
+use WP_Post;
+use WP_REST_Request;
 
 class ThemeController extends BaseController
 {
