@@ -44,7 +44,12 @@ if (file_exists($composerAutoload)) {
  * plugin overrides. The plugins_loaded action hook fires early, and precedes the setup_theme, after_setup_theme, init
  * and wp_loaded action hooks.
  */
-\add_action('plugins_loaded', function () {
-	$plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__))->boot();
-	do_action('owc/openpub-base/plugin', $plugin);
+add_action('plugins_loaded', function () {
+	$plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__));
+
+	add_action('after_setup_theme', function() use ($plugin) {
+		$plugin->boot();
+		do_action('owc/openpub-base/plugin', $plugin);
+	});
+
 }, 10);
