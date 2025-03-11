@@ -5,102 +5,54 @@ namespace OWC\OpenPub\Base\Foundation;
 use OWC\OpenPub\Base\Settings\SettingsPageOptions;
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-/**
- * BasePlugin which sets all the serviceproviders.
- */
 class Plugin
 {
-	/**
-	 * Name of the plugin.
-	 */
 	public const NAME = 'openpub-base';
-
-	/**
-	 * Version of the plugin.
-	 * Used for setting versions of enqueue scripts and styles.
-	 */
 	public const VERSION = '3.5.2';
 
-	/**
-	 * Path to the root of the plugin.
-	 */
 	protected string $rootPath;
-
-	/**
-	 * Instance of the configuration repository.
-	 */
 	public Config $config;
-
-	/**
-	 * Instance of the Hook loader.
-	 */
 	public Loader $loader;
-
-	/**
-	 * Instance of the Settings object.
-	 */
 	public SettingsPageOptions $settings;
 
-	/**
-	 * Constructor of the BasePlugin
-	 */
 	public function __construct(string $rootPath)
 	{
 		$this->rootPath = $rootPath;
-		\load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
-
 		$this->loader = new Loader();
-
 		$this->config = new Config($this->rootPath . '/config');
 		$this->config->setProtectedNodes(['core']);
-		$this->config->boot();
-
 		$this->settings = SettingsPageOptions::make();
 	}
 
-	/**
-	 * Boot the plugin.
-	 *
-	 * @hook plugins_loaded
-	 *
-	 * @return bool
-	 */
 	public function boot(): bool
 	{
+		$this->loadTextDomain();
+		$this->config->boot();
+
 		$dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
 		if ($dependencyChecker->failed()) {
 			$dependencyChecker->notify();
-			\deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
+			deactivate_plugins(\plugin_basename($this->rootPath . '/' . $this->getName() . '.php'));
 
 			return false;
 		}
 
 		$this->checkForUpdate();
+		$this->registerProviders();
 
-		// Set up service providers
-		$this->callServiceProviders('register');
-
-		if (\is_admin()) {
-			$this->callServiceProviders('register', 'admin');
-			$this->callServiceProviders('boot', 'admin');
-		}
-
-		if ('cli' === php_sapi_name()) {
-			$this->callServiceProviders('register', 'cli');
-			$this->callServiceProviders('boot', 'cli');
-		}
-
-		$this->callServiceProviders('boot');
-
-		// Register the Hook loader.
 		$this->loader->addAction('init', $this, 'filterPlugin', 4);
 		$this->loader->register();
 
 		return true;
 	}
 
-	protected function checkForUpdate()
+	public function loadTextDomain(): void
+	{
+		load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
+	}
+
+	protected function checkForUpdate(): void
 	{
 		if (! class_exists(PucFactory::class) || $this->isExtendedClass()) {
 			return;
@@ -119,6 +71,23 @@ class Plugin
 		}
 	}
 
+	protected function registerProviders(): void
+	{
+		$this->callServiceProviders('register');
+
+		if (\is_admin()) {
+			$this->callServiceProviders('register', 'admin');
+			$this->callServiceProviders('boot', 'admin');
+		}
+
+		if ('cli' === php_sapi_name()) {
+			$this->callServiceProviders('register', 'cli');
+			$this->callServiceProviders('boot', 'cli');
+		}
+
+		$this->callServiceProviders('boot');
+	}
+
 	/**
 	 * Check if current class extends parent class.
 	 *
@@ -135,7 +104,7 @@ class Plugin
 	 */
 	public function filterPlugin(): void
 	{
-		\do_action('owc/' . self::NAME . '/plugin', $this);
+		do_action('owc/' . self::NAME . '/plugin', $this);
 	}
 
 	/**
