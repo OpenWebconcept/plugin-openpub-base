@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.5.3
+
+- Fix: translations just in time error
+
 ## v3.5.2
 
 - Feat: add settings API endpoint. @richardkorthuis (#31)
