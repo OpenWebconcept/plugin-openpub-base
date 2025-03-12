@@ -225,6 +225,9 @@ abstract class AbstractRepository
      */
     public function transform(WP_Post $post)
     {
+		$GLOBALS['post'] = $post;
+		setup_postdata($post);
+
         $data = [
             'id'          => $post->ID,
             'title'       => $post->post_title,
