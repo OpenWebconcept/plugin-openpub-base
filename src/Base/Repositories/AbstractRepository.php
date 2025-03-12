@@ -240,6 +240,8 @@ abstract class AbstractRepository
 
         $data = $this->assignFields($data, $post);
 
+	    wp_reset_postdata();
+
         return $data;
     }
 
