@@ -22,6 +22,7 @@ class SettingsController extends BaseController
 		$settingsPageOptions = SettingsPageOptions::make();
 
 		$settings = [
+			'portal_url' => $settingsPageOptions->getPortalURL(),
 			'item_slug' => $settingsPageOptions->getPortalItemSlug(),
 		];
 
