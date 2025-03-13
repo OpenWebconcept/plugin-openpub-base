@@ -52,9 +52,9 @@ return [
             'file'    => 'cmb2/init.php',
         ],
         [
-            'type'  => 'class',
+            'type'  => 'function',
             'label' => '<a href="https://github.com/johnbillion/extended-cpts" target="_blank">Extended CPT library</a>',
-            'name'  => 'Extended_CPT',
+            'name'  => 'register_extended_post_type'
         ]
     ],
 
