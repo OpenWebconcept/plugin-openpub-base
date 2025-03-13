@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.6.0
+
+- Feat: added wp_reset_postdata() @eyal (#34)
+- Feat: setup global postdata for OpenPub item @eyal (#34)
+- Feat: update SettingsController.php @eyal (#35)
+
 ## v3.5.3
 
 - Fix: translations just in time error
