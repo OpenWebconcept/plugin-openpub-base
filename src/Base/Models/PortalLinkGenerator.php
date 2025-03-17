@@ -3,6 +3,7 @@
 namespace OWC\OpenPub\Base\Models;
 
 use OWC\OpenPub\Base\Settings\SettingsPageOptions;
+use WP_Term;
 
 class PortalLinkGenerator
 {
@@ -43,6 +44,11 @@ class PortalLinkGenerator
     private function createPortalSlug(): self
     {
         $portalURL = $this->pubSettings->getPortalURL();
+
+	    if ($this->pubSettings->useShowOn()) {
+		    $portalURL = $this->getShowOnPortalURL();
+	    }
+
         $portalSlug = $this->pubSettings->getPortalItemSlug();
 
         $this->updatePortalURL($portalURL);
@@ -50,6 +56,28 @@ class PortalLinkGenerator
 
         return $this;
     }
+
+	private function getShowOnPortalURL(): string
+	{
+		$terms = wp_get_object_terms($this->post->getID(), 'openpub-show-on');
+
+		if (! is_array($terms) || empty($terms)) {
+			return '';
+		}
+
+		$portalURL = reset($terms);
+		if (isset($_GET['source'])) {
+			foreach( $terms as $term ) {
+				if ($term->slug === $_GET['source']) {
+					$portalURL = $term;
+					break;
+				}
+			}
+		}
+		$portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
+
+		return wp_http_validate_url($portalURL) ? $portalURL : '/';
+	}
 
     private function appendPostSlug(): self
     {
