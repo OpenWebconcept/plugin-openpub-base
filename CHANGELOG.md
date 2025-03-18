@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.6.1
+
+- Feat: use the correct portal URL if the Show On functionality is used. (Partly copied from PDC Base) @richardkorthuis (#37)
+
 ## v3.6.0
 
 - Feat: added wp_reset_postdata() @eyal (#34)
