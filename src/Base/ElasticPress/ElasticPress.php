@@ -217,7 +217,9 @@ class ElasticPress
     }
 
     /**
-     * Alter the mappings.
+     * Alter the mappings of all OpenPub document fields. This needs to be
+	 * available in two different formats, which can be determined based on the
+	 * ElasticPress version.
      *
      * @param array $mapping
      *
@@ -225,23 +227,87 @@ class ElasticPress
      */
     public function addMappings(array $mapping): array
     {
-        $mapping['mappings']['properties'] = [
-            'expired' => [
-                'type'       => 'object',
-                'properties' => [
-                    'on' => [
-                        'type'    => 'object',
-                        'enabled' => 'false'
-                    ]
+        $mapping_version = $this->getElasticPressMappingVersion();
+
+        if ($mapping_version == 5) {
+            return $this->getMappingByVersion5($mapping);
+        } elseif ($mapping_version === 7) {
+            return $this->getMappingByVersion7($mapping);
+        } else {
+            // In case we're unable to determine the EP version, we abort to
+            // prevent errors in these edge case scenarios. This returns the
+            // original mappings that aren't changed.
+            return $mapping;
+        }
+
+        return $mapping;
+    }
+
+    /**
+     * Provides the extra mappings in the format expected by the ElasticPress
+     * version 5.x format. This includes the 'post' key under 'mappings' that
+     * is removed in the 7.x format. This needs to stay for legacy reasons, as
+     * ElasticPress still supports this legacy format.
+     */
+    private function getMappingByVersion5(array $mapping)
+    {
+        $mapping['mappings']['post']['properties']['expired'] = [
+            'type'       => 'object',
+            'properties' => [
+                'on' => [
+                    'type'    => 'object',
+                    'enabled' => 'false'
                 ]
-            ],
-            'post_date_gmt'         => [
-                'type'   => 'date',
-                'format' => 'yyyy-MM-dd HH:mm:ss',
             ],
         ];
 
+        $mapping['mappings']['post']['properties']['post_date_gmt'] = [
+            'type'   => 'date',
+            'format' => 'yyyy-MM-dd HH:mm:ss',
+        ];
+
         return $mapping;
+    }
+
+    /**
+     * Provides the extra mappings in the format expected by the ElasticPress
+     * version 7.x format. The main difference between these formats is the
+     * lack of the 'post' key under 'mappings', which is omitted in the new
+     * mapping format going forward.
+     */
+    private function getMappingByVersion7(array $mapping)
+    {
+        $mapping['mappings']['properties']['expired'] = [
+            'type'       => 'object',
+            'properties' => [
+                'on' => [
+                    'type'    => 'object',
+                    'enabled' => 'false'
+                ]
+            ],
+        ];
+
+        $mapping['mappings']['properties']['post_date_gmt'] = [
+            'type'   => 'date',
+            'format' => 'yyyy-MM-dd HH:mm:ss',
+        ];
+
+        return $mapping;
+    }
+
+    private function getElasticPressMappingVersion(): int
+    {
+        $es_version = \ElasticPress\Elasticsearch::factory()->get_elasticsearch_version();
+
+        if (empty($es_version)) {
+            return 0;
+        }
+
+        if (version_compare($es_version, '7.0', '>=')) {
+            return 7;
+        } else {
+			return 5;
+		}
     }
 
     /**
