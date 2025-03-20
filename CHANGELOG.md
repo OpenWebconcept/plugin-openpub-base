@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.0
+
+- Feat: update extended-cpts to v5
+
 ## v3.6.1
 
 - Feat: use the correct portal URL if the Show On functionality is used. (Partly copied from PDC Base) @richardkorthuis (#37)
