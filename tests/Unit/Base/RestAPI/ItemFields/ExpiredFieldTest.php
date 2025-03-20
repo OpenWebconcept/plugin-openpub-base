@@ -88,7 +88,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $futureDate->format(self::DATETIMEFORMAT)
+            'return' => $futureDate->getTimestamp()
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -97,7 +97,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => '',
                     'status'  => false,
-                    'on'      => $futureDate
+                    'on'      => $futureDate->format(self::DATETIMEFORMAT)
             ], $status);
     }
 
@@ -114,7 +114,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $futureDate->format(self::DATEFORMAT)
+            'return' => $futureDate->getTimestamp()
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -123,7 +123,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => '',
                     'status'  => false,
-                    'on'      => $futureDate
+                    'on'      => $futureDate->format(self::DATETIMEFORMAT)
             ], $status);
     }
 
@@ -140,7 +140,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $pastDate->format(self::DATETIMEFORMAT)
+            'return' => $pastDate->getTimestamp()
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -149,7 +149,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => 'Item is expired',
                     'status'  => true,
-                    'on'      => $pastDate
+                    'on'      => $pastDate->format(self::DATETIMEFORMAT)
             ], $status);
     }
 }
