@@ -6,26 +6,26 @@
 
 namespace OWC\OpenPub\Base\RestAPI\Controllers;
 
-use WP_REST_Request;
 use OWC\OpenPub\Base\Settings\SettingsPageOptions;
+use WP_REST_Request;
 
 /**
  * Controller which handles the settings.
  */
 class SettingsController extends BaseController
 {
-	/**
-	 * Get the settings.
-	 */
-	public function getSettings(WP_REST_Request $request): array
-	{
-		$settingsPageOptions = SettingsPageOptions::make();
+    /**
+     * Get the settings.
+     */
+    public function getSettings(WP_REST_Request $request): array
+    {
+        $settingsPageOptions = SettingsPageOptions::make();
 
-		$settings = [
-			'portal_url' => $settingsPageOptions->getPortalURL(),
-			'item_slug' => $settingsPageOptions->getPortalItemSlug(),
-		];
+        $settings = [
+            'portal_url' => $settingsPageOptions->getPortalURL(),
+            'item_slug' => $settingsPageOptions->getPortalItemSlug(),
+        ];
 
-		return $settings;
-	}
+        return $settings;
+    }
 }

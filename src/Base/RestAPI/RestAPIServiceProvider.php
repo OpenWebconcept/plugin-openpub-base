@@ -5,8 +5,8 @@ namespace OWC\OpenPub\Base\RestAPI;
 use OWC\OpenPub\Base\Foundation\ServiceProvider;
 use OWC\OpenPub\Base\RestAPI\Controllers\ItemController;
 use OWC\OpenPub\Base\RestAPI\Controllers\SearchController;
-use OWC\OpenPub\Base\RestAPI\Controllers\ThemeController;
 use OWC\OpenPub\Base\RestAPI\Controllers\SettingsController;
+use OWC\OpenPub\Base\RestAPI\Controllers\ThemeController;
 use WP_REST_Server;
 
 class RestAPIServiceProvider extends ServiceProvider
@@ -100,11 +100,11 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
-		register_rest_route($this->namespace, 'settings', [
-			'methods'             => WP_REST_Server::READABLE,
-			'callback'            => [new SettingsController($this->plugin), 'getSettings'],
-			'permission_callback' => '__return_true',
-		]);
+        register_rest_route($this->namespace, 'settings', [
+            'methods'             => WP_REST_Server::READABLE,
+            'callback'            => [new SettingsController($this->plugin), 'getSettings'],
+            'permission_callback' => '__return_true',
+        ]);
     }
 
     /**

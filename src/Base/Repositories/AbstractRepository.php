@@ -225,8 +225,8 @@ abstract class AbstractRepository
      */
     public function transform(WP_Post $post)
     {
-		$GLOBALS['post'] = $post;
-		setup_postdata($post);
+        $GLOBALS['post'] = $post;
+        setup_postdata($post);
 
         $data = [
             'id'          => $post->ID,
@@ -240,7 +240,7 @@ abstract class AbstractRepository
 
         $data = $this->assignFields($data, $post);
 
-	    wp_reset_postdata();
+        wp_reset_postdata();
 
         return $data;
     }

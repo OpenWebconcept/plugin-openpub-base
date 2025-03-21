@@ -45,9 +45,9 @@ class PortalLinkGenerator
     {
         $portalURL = $this->pubSettings->getPortalURL();
 
-	    if ($this->pubSettings->useShowOn()) {
-		    $portalURL = $this->getShowOnPortalURL();
-	    }
+        if ($this->pubSettings->useShowOn()) {
+            $portalURL = $this->getShowOnPortalURL();
+        }
 
         $portalSlug = $this->pubSettings->getPortalItemSlug();
 
@@ -57,29 +57,29 @@ class PortalLinkGenerator
         return $this;
     }
 
-	private function getShowOnPortalURL(): string
-	{
-		$terms = wp_get_object_terms($this->post->getID(), 'openpub-show-on');
+    private function getShowOnPortalURL(): string
+    {
+        $terms = wp_get_object_terms($this->post->getID(), 'openpub-show-on');
 
-		if (! is_array($terms) || empty($terms)) {
-			return '';
-		}
+        if (! is_array($terms) || empty($terms)) {
+            return '';
+        }
 
-		$portalURL = reset($terms);
+        $portalURL = reset($terms);
 
-		if (isset($_GET['source'])) {
-			foreach( $terms as $term ) {
-				if ($term->slug === $_GET['source']) {
-					$portalURL = $term;
+        if (isset($_GET['source'])) {
+            foreach ($terms as $term) {
+                if ($term->slug === $_GET['source']) {
+                    $portalURL = $term;
 
-					break;
-				}
-			}
-		}
-		$portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
+                    break;
+                }
+            }
+        }
+        $portalURL = $portalURL instanceof WP_Term ? $portalURL->name : '';
 
-		return wp_http_validate_url($portalURL) ? $portalURL : '/';
-	}
+        return wp_http_validate_url($portalURL) ? $portalURL : '/';
+    }
 
     private function appendPostSlug(): self
     {
