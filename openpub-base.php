@@ -45,9 +45,8 @@ if (file_exists($composerAutoload)) {
  * and wp_loaded action hooks.
  */
 add_action('plugins_loaded', function () {
-    $plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__));
-
-    add_action('after_setup_theme', function () use ($plugin) {
+    add_action('after_setup_theme', function () {
+        $plugin = (new OWC\OpenPub\Base\Foundation\Plugin(__DIR__));
         $plugin->boot();
         do_action('owc/openpub-base/plugin', $plugin);
     });
