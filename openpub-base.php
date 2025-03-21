@@ -21,20 +21,19 @@ if (! defined('WPINC')) {
 }
 
 /**
- * Manual loaded file: the autoloader.
- */
-require_once __DIR__ . '/autoloader.php';
-$autoloader = new OWC\OpenPub\Base\Autoloader();
-
-/**
  * Not all the members of the OpenWebconcept are using composer in the root of their project.
  * Therefore they are required to run a composer install inside this plugin directory.
  * In this case the composer autoload file needs to be required.
+ *
+ * If this plugin is not installed with composer a custom autoloader is used.
  */
-$composerAutoload = __DIR__ . '/vendor/autoload.php';
-
-if (file_exists($composerAutoload)) {
-    require_once $composerAutoload;
+if (!class_exists(\OWC\OpenPub\Base\Foundation\Plugin::class)) {
+    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+        require_once __DIR__ . '/vendor/autoload.php';
+    } else {
+        require_once __DIR__ . '/autoloader.php';
+        $autoloader = new \OWC\OpenPub\Base\Autoloader();
+    }
 }
 
 /**
