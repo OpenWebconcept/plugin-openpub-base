@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.1
+
+- Fix: autoloader
+
 ## v3.7.0
 
 - Feat: update extended-cpts to v5
