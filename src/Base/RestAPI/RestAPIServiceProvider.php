@@ -57,17 +57,17 @@ class RestAPIServiceProvider extends ServiceProvider
      */
     public function registerRoutes(): void
     {
-        register_rest_route($this->namespace, 'items/active', [
-            'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ItemController($this->plugin), 'getActiveItems'],
-            'permission_callback' => '__return_true',
-        ]);
-
         register_rest_route($this->namespace, 'items', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new ItemController($this->plugin), 'getItems'],
             'permission_callback' => '__return_true',
         ]);
+
+		register_rest_route($this->namespace, 'items/active', [
+			'methods'             => WP_REST_Server::READABLE,
+			'callback'            => [new ItemController($this->plugin), 'getActiveItems'],
+			'permission_callback' => '__return_true',
+		]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'             => WP_REST_Server::READABLE,
