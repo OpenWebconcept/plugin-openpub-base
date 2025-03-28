@@ -8,7 +8,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 class Plugin
 {
     public const NAME = 'openpub-base';
-    public const VERSION = '3.7.1';
+    public const VERSION = '3.7.2';
 
     protected string $rootPath;
     public Config $config;

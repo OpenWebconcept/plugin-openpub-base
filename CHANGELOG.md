@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.2
+
+- Refactor: register rest routes in correct order
+
 ## v3.7.1
 
 - Fix: autoloader
