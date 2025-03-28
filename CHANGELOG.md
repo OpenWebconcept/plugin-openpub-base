@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.3
+
+- Feat: getShowOnPortalURL(): add filter and sorting for portalUrls by numeric blogId with taxonomy 'openpub-show-on'
+
 ## v3.7.2
 
 - Refactor: register rest routes in correct order
