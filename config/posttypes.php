@@ -16,6 +16,7 @@ return [
             ],
             'public'       => true,
             'show_ui'      => true,
+			'capability_type' => 'openpub-item',
             'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments', 'author', 'custom-fields'],
             'menu_icon'    => 'dashicons-format-aside',
             'show_in_rest' => true,
