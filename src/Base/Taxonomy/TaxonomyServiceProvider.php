@@ -38,7 +38,7 @@ class TaxonomyServiceProvider extends ServiceProvider
             return;
         }
 
-        $this->configTaxonomies = $this->filterConfigTaxonomies();
+        $this->configTaxonomies = apply_filters('owc/openpub-base/before-register-extended-taxonomies', $this->filterConfigTaxonomies());
 
         foreach ($this->configTaxonomies as $taxonomyName => $taxonomy) {
             // Examples of registering taxonomies: http://johnbillion.com/extended-cpts/

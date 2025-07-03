@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.4
+
+- Feat: apply filter before registering extended taxonomies
+
 ## v3.7.3
 
 - Feat: getShowOnPortalURL(): add filter and sorting for portalUrls by numeric blogId with taxonomy 'openpub-show-on'
