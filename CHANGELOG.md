@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.5
+
+- Feat: add author id in API response of items endpoint
+
 ## v3.7.4
 
 - Feat: apply filter before registering extended taxonomies
