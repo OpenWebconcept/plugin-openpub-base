@@ -12,6 +12,7 @@ return [
          */
         'item'   => [
             'fields' => [
+				'author_id' 			=> OWC\OpenPub\Base\RestAPI\ItemFields\AuthorField::class,
                 'comments'          => OWC\OpenPub\Base\RestAPI\ItemFields\CommentField::class,
                 'connected'         => OWC\OpenPub\Base\RestAPI\ItemFields\ConnectedField::class,
                 'portal_url'        => OWC\OpenPub\Base\RestAPI\ItemFields\PortalURL::class,
