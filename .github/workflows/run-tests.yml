@@ -36,16 +36,21 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: xdebug
           tools: composer:v2
-          coverage: none
+          coverage: xdebug
 
       - name: Install dependencies
         run: composer update  --no-interaction --no-progress --prefer-dist --no-scripts
 
       - name: Execute tests
-        run: vendor/bin/phpunit --testsuite "Unit Test Suite"
+        run: vendor/bin/phpunit --testsuite "Unit Test Suite" --coverage-clover coverage.xml
 
-
+      - name: Coverage Report as Comment (Clover)
+        if: github.event_name == 'pull_request'
+        uses: lucassabreu/comment-coverage-clover@main
+        with:
+          file: coverage.xml
 
   # Job to check if certain files have changed
   what-has-changed:
