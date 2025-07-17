@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.7.6
+
+- Feat: add taxonomies to API added through apply_filter
+
 ## v3.7.5
 
 - Feat: add author id in API response of items endpoint
