@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.7.7
+- Feat: add query parameters for taxonomies added through apply_filter
+
 ## v3.7.6
 
 - Feat: add taxonomies to API added through apply_filter
