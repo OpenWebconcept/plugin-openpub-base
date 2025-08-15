@@ -55,7 +55,7 @@ class ItemController extends BaseController
             $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
         }
 
-        return $items;
+		return apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
     }
 
     /**
@@ -145,6 +145,8 @@ class ItemController extends BaseController
         if ($this->getAudienceParam($request)) {
             $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
         }
+
+		$items = apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
 
         $query = new WP_Query($items->getQueryArgs());
         return array_map([$this, 'transform'], $query->posts);
