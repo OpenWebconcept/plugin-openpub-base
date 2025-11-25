@@ -50,4 +50,12 @@ add_action('plugins_loaded', function () {
         do_action('owc/openpub-base/plugin', $plugin);
     });
 
+    add_action('rest_pre_serve_request', function ($served, $result, $request, $server) {
+        if (isset($_SERVER['HTTP_ORIGIN'])) {
+            header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+            header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+            header('Access-Control-Allow-Headers: Content-Type, Authorization');
+        }
+        return $served;
+    }, 10, 4);
 }, 10);
