@@ -18,6 +18,7 @@ class TaxonomyServiceProvider extends ServiceProvider
 
         if ($this->plugin->settings->useShowOn()) {
             $this->showOnFormFields();
+            $this->plugin->loader->addFilter('owc/openpub-base/before-register-posttypes', $this, 'addShowOnAdminFilter');
         }
     }
 
@@ -27,6 +28,27 @@ class TaxonomyServiceProvider extends ServiceProvider
     protected function showOnFormFields()
     {
         $this->plugin->loader->addAction('openpub-show-on_add_form_fields', TaxonomyController::class, 'addShowOnExplanation');
+    }
+
+    /**
+     * Add 'Show on' admin filter to openpub-item post type.
+     */
+    public function addShowOnAdminFilter(array $postTypes): array
+    {
+        if (!isset($postTypes['openpub-item'])) {
+            return $postTypes;
+        }
+
+        if (!isset($postTypes['openpub-item']['args']['admin_filters'])) {
+            $postTypes['openpub-item']['args']['admin_filters'] = [];
+        }
+
+        $postTypes['openpub-item']['args']['admin_filters']['show-on'] = [
+            'title'    => __('Show on', 'openpub-base'),
+            'taxonomy' => 'openpub-show-on',
+        ];
+
+        return $postTypes;
     }
 
     /**
