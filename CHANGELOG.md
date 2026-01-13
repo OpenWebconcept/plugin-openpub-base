@@ -1,6 +1,11 @@
 # Changelog
 
+## v3.8.0
+
+- Feat: add filter dropdown for easy filtering of target website @rmpel (#45)
+
 ## v3.7.7
+
 - Feat: add query parameters for taxonomies added through apply_filter
 
 ## v3.7.6
