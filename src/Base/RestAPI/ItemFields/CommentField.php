@@ -24,7 +24,7 @@ class CommentField extends \OWC\OpenPub\Base\Support\CreatesFields
         $result['status'] = $post->comment_status;
         $result['items'] = [];
 
-        if (!in_array($post->comment_status, ['open'])) {
+        if (! in_array($post->comment_status, ['open'])) {
             return $result;
         }
 

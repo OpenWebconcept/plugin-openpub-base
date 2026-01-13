@@ -45,7 +45,7 @@ class PostTypeServiceProvider extends ServiceProvider
      */
     public function registerPostTypes(): void
     {
-		if (!function_exists('register_extended_post_type')) {
+		if (! function_exists('register_extended_post_type')) {
 			return;
 		}
 

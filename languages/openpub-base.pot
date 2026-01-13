@@ -1,37 +1,206 @@
-# Loco Gettext template
-#, fuzzy
+# Copyright (C) 2026 Yard | Digital Agency
+# This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: OWC OpenPub\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-01 14:03+0100\n"
-"POT-Revision-Date: Fri Nov 27 2015 13:26:26 GMT+0100 (W. Europe Standard Time)\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: \n"
-"Language-Team: Yard Digital <inf@yard.nl>\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"Project-Id-Version: Yard | OpenPub Base 3.7.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/openpub-base\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;__:1;"
-"_e:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;_x:1,2c;"
-"_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;esc_attr__:1;"
-"esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;esc_html_x:1,2c\n"
-"X-Generator: Poedit 2.0.6\n"
-"X-Poedit-SearchPath-0: src\n"
-"X-Poedit-SearchPath-1: config\n"
-"X-Poedit-SearchPathExcluded-0: assets\n"
-"X-Poedit-SearchPathExcluded-1: node_modules\n"
-"X-Poedit-SearchPathExcluded-2: vendor\n"
+"POT-Creation-Date: 2026-01-13T12:53:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: openpub-base\n"
 
-#: config/escape_element_metabox.php:6 config/settings.php:30
+#. Plugin Name of the plugin
+#: openpub-base.php
+msgid "Yard | OpenPub Base"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: openpub-base.php
+msgid "https://www.openwebconcept.nl/"
+msgstr ""
+
+#. Description of the plugin
+#: openpub-base.php
+msgid "Acts as foundation for other OpenPub related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, en Posts 2 posts relations."
+msgstr ""
+
+#. Author of the plugin
+#: openpub-base.php
+msgid "Yard | Digital Agency"
+msgstr ""
+
+#. Author URI of the plugin
+#: openpub-base.php
+msgid "https://www.yard.nl/"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:6
+msgid "Data"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:14
+msgid "Highlighted item"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:15
+msgid "Use this option to select current item to be a highlighted (featured) item"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:20
+msgid "Synonyms"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:21
+msgid "Use this option to add an comma separated list of synonyms or related terms"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:27
+msgid "Select end date"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:37
+msgid "Links"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:48
+msgid "Add new link group"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:49
+msgid "Remove link group"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:54
+msgid "Link title"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:55
+#: config/cmb2_metaboxes.php:93
+msgid "Use the title to replace the URL"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:60
+msgid "Link URL"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:61
+#: config/cmb2_metaboxes.php:99
+#: config/cmb2_settings_pages.php:16
+msgid "URL including http(s)://"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:71
+#: config/cmb2_metaboxes.php:80
+msgid "Downloads"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:86
+msgid "Add new download group"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:87
+msgid "Remove download group"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:92
+msgid "Download title"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:98
+msgid "Download URL"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:109
+#: config/cmb2_metaboxes.php:118
+msgid "Other"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:121
+msgid "Notes"
+msgstr ""
+
+#: config/cmb2_metaboxes.php:122
+msgid "(the law, authority, local regulations, etc.)"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:6
+msgid "OpenPub settings"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:10
+msgid "General"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:15
+msgid "Portal URL"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:21
+msgid "Portal OpenPub item slug"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:22
+msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
+msgstr ""
+
+#: config/cmb2_settings_pages.php:27
+msgid "Portal url"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:28
+msgid "Use portal url in api."
+msgstr ""
+
+#: config/cmb2_settings_pages.php:33
+#: config/escape_element_metabox.php:6
 msgid "Escape element"
 msgstr ""
 
-#: config/settings.php:36 config/show_on_metabox.php:14 config/taxonomies.php:61 config/taxonomies.php:62
+#: config/cmb2_settings_pages.php:34
+msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
+msgstr ""
+
+#: config/cmb2_settings_pages.php:39
+#: config/show_on_metabox.php:14
+#: config/taxonomies.php:61
+#: config/taxonomies.php:62
+#: src/Base/Taxonomy/TaxonomyServiceProvider.php:47
 msgid "Show on"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:40
+msgid "Used for configuring on which websites an OpenPub item should be displayed on."
+msgstr ""
+
+#: config/cmb2_settings_pages.php:46
+#: config/posttypes.php:39
+#: config/posttypes.php:47
+msgid "Expired"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:47
+msgid "OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days."
+msgstr ""
+
+#: config/cmb2_settings_pages.php:50
+msgid "Days to expire"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:51
+msgid "After how many days should an item expire?"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:56
+msgid "Admin notices"
+msgstr ""
+
+#: config/cmb2_settings_pages.php:57
+msgid "Disable upgrade admin notices."
 msgstr ""
 
 #: config/escape_element_metabox.php:14
@@ -50,346 +219,285 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: config/show_on_metabox.php:6
-msgid "External"
-msgstr ""
-
-#: config/show_on_metabox.php:15
-msgid "Select websites where this item should be displayed on."
-msgstr ""
-
-#: config/metaboxes.php:6
-msgid "Data"
-msgstr ""
-
-#: config/metaboxes.php:14
-msgid "Highlighted item"
-msgstr ""
-
-#: config/metaboxes.php:15
-msgid "Use this option to select current item to be a highlighted (featured) item"
-msgstr ""
-
-#: config/metaboxes.php:20
-msgid "Synonyms"
-msgstr ""
-
-#: config/metaboxes.php:21
-msgid "Use this option to add an comma separated list of synonyms or related terms"
-msgstr ""
-
-#: config/metaboxes.php:27
-msgid "Select end date"
-msgstr "
-
-#: config/metaboxes.php:35
-msgid "Links"
-msgstr ""
-
-#: config/metaboxes.php:42
-msgid "Add new link"
-msgstr ""
-
-#: config/metaboxes.php:46
-msgid "Link title"
-msgstr ""
-
-#: config/metaboxes.php:47 config/metaboxes.php:74
-msgid "Use the title to replace the URL"
-msgstr ""
-
-#: config/metaboxes.php:52
-msgid "Link URL"
-msgstr ""
-
-#: config/metaboxes.php:53 config/metaboxes.php:80 config/settings.php:13
-msgid "URL including http(s)://"
-msgstr ""
-
-#: config/metaboxes.php:62
-msgid "Downloads"
-msgstr ""
-
-#: config/metaboxes.php:69
-msgid "Add new download"
-msgstr ""
-
-#: config/metaboxes.php:73
-msgid "Download title"
-msgstr ""
-
-#: config/metaboxes.php:79
-msgid "Download URL"
-msgstr ""
-
-#: config/metaboxes.php:89
-msgid "Other"
-msgstr ""
-
-#: config/metaboxes.php:92
-msgid "Notes"
-msgstr "
-
-#: config/metaboxes.php:93
-msgid "(the law, authority, local regulations, etc.)"
-msgstr ""
-
 #: config/p2p_connections.php:9
-msgctxt "P2P titel"
 msgid "Connected item(s)"
 msgstr ""
 
 #: config/p2p_connections.php:14
-msgctxt "P2P titel"
+#: config/posttypes.php:113
+#: config/posttypes.php:114
 msgid "Theme"
 msgstr ""
 
 #: config/p2p_connections.php:19
-msgctxt "P2P titel"
+#: config/posttypes.php:154
+#: config/posttypes.php:155
+#: config/posttypes.php:171
+#: config/posttypes.php:172
 msgid "Subtheme"
 msgstr ""
 
 #: config/p2p_connections.php:24
-msgctxt "P2P titel"
 msgid "Locations"
-msgstr ""
-
-#: config/posttypes.php:25 config/posttypes.php:65
-msgctxt "Admin Filter definition"
-msgid "Type"
-msgstr ""
-
-#: config/posttypes.php:29 config/posttypes.php:69
-msgctxt "Admin Filter definition"
-msgid "Audience"
-msgstr ""
-
-#: config/posttypes.php:33 config/posttypes.php:73
-msgctxt "Admin Filter definition"
-msgid "Usage"
-msgstr ""
-
-#: config/posttypes.php:37 config/posttypes.php:45 config/settings.php:43
-msgid "Expired"
 msgstr ""
 
 #: config/posttypes.php:24
 msgid "Author"
 msgstr ""
 
-#: config/posttypes.php:49
-msgid "No expire date"
+#: config/posttypes.php:27
+#: config/posttypes.php:68
+msgctxt "Admin Filter definition"
+msgid "Type"
+msgstr ""
+
+#: config/posttypes.php:31
+#: config/posttypes.php:72
+msgctxt "Admin Filter definition"
+msgid "Audience"
+msgstr ""
+
+#: config/posttypes.php:35
+#: config/posttypes.php:76
+msgctxt "Admin Filter definition"
+msgid "Usage"
 msgstr ""
 
 #: config/posttypes.php:51
+msgid "No expire date"
+msgstr ""
+
+#: config/posttypes.php:53
 msgid "Will expire on"
 msgstr ""
 
-#: config/posttypes.php:57
+#: config/posttypes.php:59
 msgid "Published"
 msgstr ""
 
-#: config/posttypes.php:77
+#: config/posttypes.php:80
 msgctxt "Admin Filter definition"
 msgid "Aspect"
 msgstr ""
 
-#: config/posttypes.php:82
-msgctxt "post type singular name"
-msgid "OpenPub item"
-msgstr ""
-
-#: config/posttypes.php:83
-msgctxt "admin menu"
-msgid "OpenPub items"
-msgstr ""
-
-#: config/posttypes.php:84
-msgctxt "add new on admin bar"
-msgid "OpenPub item"
-msgstr ""
-
 #: config/posttypes.php:85
-msgctxt ""
-msgid "Add new OpenPub"
+#: config/posttypes.php:87
+msgid "OpenPub item"
 msgstr ""
 
 #: config/posttypes.php:86
-msgid "Add new OpenPub"
-msgstr ""
-
-#: config/posttypes.php:87
-msgid "New OpenPub"
+msgid "OpenPub items"
 msgstr ""
 
 #: config/posttypes.php:88
-msgid "Edit OpenPub"
-msgstr ""
-
 #: config/posttypes.php:89
-msgid "View OpenPub"
+msgid "Add new OpenPub"
 msgstr ""
 
 #: config/posttypes.php:90
-msgid "All OpenPub items"
+msgid "New OpenPub"
 msgstr ""
 
 #: config/posttypes.php:91
-msgid "Search OpenPub items"
+msgid "Edit OpenPub"
 msgstr ""
 
 #: config/posttypes.php:92
-msgid "Parent OpenPub items:"
+msgid "View OpenPub"
 msgstr ""
 
 #: config/posttypes.php:93
-msgid "No OpenPub items found."
+msgid "All OpenPub items"
 msgstr ""
 
 #: config/posttypes.php:94
+msgid "Search OpenPub items"
+msgstr ""
+
+#: config/posttypes.php:95
+msgid "Parent OpenPub items:"
+msgstr ""
+
+#: config/posttypes.php:96
+msgid "No OpenPub items found."
+msgstr ""
+
+#: config/posttypes.php:97
 msgid "No OpenPub items found in trash."
 msgstr ""
 
-#: config/posttypes.php:100
+#: config/posttypes.php:103
 msgctxt "Posttype definition"
 msgid "Item"
 msgstr ""
 
-#: config/posttypes.php:101
+#: config/posttypes.php:104
 msgctxt "Posttype definition"
 msgid "Items"
 msgstr ""
 
-#: config/posttypes.php:102
+#: config/posttypes.php:105
 msgctxt "post type general name"
 msgid "Items"
 msgstr ""
 
+#: config/posttypes.php:115
+#: config/posttypes.php:116
+msgid "Add new theme"
+msgstr ""
+
+#: config/posttypes.php:117
+msgid "Edit theme"
+msgstr ""
+
+#: config/posttypes.php:118
+msgid "New theme"
+msgstr ""
+
+#: config/posttypes.php:119
+msgid "View theme"
+msgstr ""
+
+#: config/posttypes.php:120
+msgid "View themes"
+msgstr ""
+
+#: config/posttypes.php:121
+msgid "Search themes"
+msgstr ""
+
 #: config/posttypes.php:122
-msgctxt "Posttype definition"
-msgid "Theme"
+msgid "No themes found."
 msgstr ""
 
 #: config/posttypes.php:123
-msgctxt "Posttype definition"
+msgid "No themes found in Trash."
+msgstr ""
+
+#: config/posttypes.php:124
+msgid "All themes"
+msgstr ""
+
+#: config/posttypes.php:125
+msgid "Themes archives"
+msgstr ""
+
+#: config/posttypes.php:126
+msgid "Theme attributes"
+msgstr ""
+
+#: config/posttypes.php:127
+msgid "Insert into theme"
+msgstr ""
+
+#: config/posttypes.php:128
+#: config/posttypes.php:169
+msgid "Featured image"
+msgstr ""
+
+#: config/posttypes.php:129
+#: config/posttypes.php:170
+msgid "Set featured image"
+msgstr ""
+
+#: config/posttypes.php:130
+#: config/posttypes.php:131
 msgid "Themes"
+msgstr ""
+
+#: config/posttypes.php:132
+msgid "Parent themes:"
 msgstr ""
 
 #: config/posttypes.php:144
 msgctxt "Posttype definition"
-msgid "Subtheme"
+msgid "Theme"
 msgstr ""
 
 #: config/posttypes.php:145
 msgctxt "Posttype definition"
-msgid "Subthemes"
+msgid "Themes"
+msgstr ""
+
+#: config/posttypes.php:156
+#: config/posttypes.php:157
+msgid "Add new subtheme"
+msgstr ""
+
+#: config/posttypes.php:158
+msgid "Edit subtheme"
+msgstr ""
+
+#: config/posttypes.php:159
+msgid "New subtheme"
+msgstr ""
+
+#: config/posttypes.php:160
+msgid "View subtheme"
+msgstr ""
+
+#: config/posttypes.php:161
+msgid "View subthemes"
+msgstr ""
+
+#: config/posttypes.php:162
+msgid "Search subthemes"
+msgstr ""
+
+#: config/posttypes.php:163
+msgid "No subthemes found."
+msgstr ""
+
+#: config/posttypes.php:164
+msgid "No subthemes found in Trash."
+msgstr ""
+
+#: config/posttypes.php:165
+msgid "All subthemes"
+msgstr ""
+
+#: config/posttypes.php:166
+msgid "Subthemes archives"
 msgstr ""
 
 #: config/posttypes.php:167
+msgid "Subtheme attributes"
+msgstr ""
+
+#: config/posttypes.php:168
+msgid "Insert into subtheme"
+msgstr ""
+
+#: config/posttypes.php:173
+msgid "Parent subthemes:"
+msgstr ""
+
+#: config/posttypes.php:188
+msgctxt "Posttype definition"
+msgid "Subtheme"
+msgstr ""
+
+#: config/posttypes.php:189
+msgctxt "Posttype definition"
+msgid "Subthemes"
+msgstr ""
+
+#: config/posttypes.php:211
 msgctxt "Posttype definition"
 msgid "Location"
 msgstr ""
 
-#: config/posttypes.php:168
+#: config/posttypes.php:212
 msgctxt "Posttype definition"
 msgid "Locations"
 msgstr ""
 
-#: config/settings.php:7
-msgctxt "OpenPub instellingen subpagina"
-msgid "Portal"
+#: config/show_on_metabox.php:6
+msgid "External"
 msgstr ""
 
-#: config/settings.php:12 config/settings.php:24
-msgid "Portal URL"
-msgstr ""
-
-#: config/settings.php:18
-msgid "Portal OpenPub item slug"
-msgstr ""
-
-#: config/settings.php:19
-msgid "URL for OpenPub items in the portal, eg \"onderwerp\""
-msgstr ""
-
-#: config/settings.php:25
-msgid "Use portal url in api."
-msgstr ""
-
-#: config/settings.php:31
-msgid "Use an element to leave the website without being able to navigate back via the browser 'Back' button."
-msgstr ""
-
-#: config/settings.php:37
-msgid "Used for configuring on which websites an OpenPub item should be displayed on."
-msgstr ""
-
-#: config/settings.php:44
-msgid "OpenPub items without an expiration date expire automatically when the field below has a value bigger than 0. Existing OpenPub items without an expiration date will be assigned a value of the published date plus the value given in days. New OpenPub items will have a value of the current date plus the value given in days."
-msgstr ""
-
-#: config/settings.php:47
-msgid "Days to expire"
-msgstr ""
-
-#: config/settings.php:48
-msgid "After how many days should an item expire?"
-msgstr ""
-
-#: config/settings.php:53
-msgid "Admin notices"
-msgstr ""
-
-#: config/settings.php:54
-msgid "Disable upgrade admin notices."
-msgstr ""
-
-#: config/settings.php:57
-msgid "Elasticsearch"
-msgstr ""
-
-#: config/settings.php:64
-msgid "Instance url"
-msgstr ""
-
-#: config/settings.php:65 config/settings.php:71
-msgid "URL inclusief http(s)://"
-msgstr ""
-
-#: config/settings.php:70
-msgid "Instance shield"
-msgstr ""
-
-#: config/settings.php:76
-msgid "Instance prefix"
-msgstr ""
-
-#: config/settings.php:77
-msgid "Use this prefix to group multiple instances"
-msgstr ""
-
-#: config/settings_pages.php:7
-msgid "OpenPub settings"
-msgstr ""
-
-#: config/settings_pages.php:9
-msgctxt "OpenPub settings subpage"
-msgid "Base"
-msgstr ""
-
-#: config/settings_pages.php:12
-msgctxt "OpenPub settings subpage"
-msgid "Submit"
-msgstr ""
-
-#: config/settings_pages.php:14
-msgctxt "OpenPub settings tab"
-msgid "General"
-msgstr ""
-
-#: config/settings_pages.php:15
-msgctxt "OpenPub settings tab"
-msgid "Elasticsearch"
+#: config/show_on_metabox.php:15
+msgid "Select websites where this item should be displayed on."
 msgstr ""
 
 #: config/taxonomies.php:16
@@ -422,47 +530,52 @@ msgctxt "Taxonomy definition"
 msgid "Usages"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:62
+#: src/Base/Foundation/DependencyChecker.php:61
 msgid "The following plugins are required to use the OpenPub:"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:98
+#: src/Base/Foundation/DependencyChecker.php:93
 msgid "Class does not exist"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:112
+#: src/Base/Foundation/DependencyChecker.php:109
 msgid "Inactive"
 msgstr ""
 
-#: src/Base/Foundation/DependencyChecker.php:120
+#: src/Base/Foundation/DependencyChecker.php:117
 msgid "Minimal version:"
 msgstr ""
 
-#: src/Base/RestAPI/ItemFields/ConnectedField.php:48
+#: src/Base/Foundation/DependencyChecker.php:128
+msgid "Function does not exist:"
+msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:19
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin two manual actions are required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder."
+msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:26
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:highlighted'."
+msgstr ""
+
+#: src/Base/Metabox/AdminNotice.php:33
+msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:expiration-date'."
+msgstr ""
+
+#: src/Base/Metabox/MetaboxServiceProvider.php:98
+msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
+msgstr ""
+
+#: src/Base/RestAPI/ItemFields/ConnectedField.php:42
+#: src/Base/RestAPI/ItemFields/ConnectedThemeItemField.php:38
 #, php-format
 msgid "Connection type \"%s\" does not exist"
 msgstr ""
 
-#: src/Base/Taxonomy/TaxonomyController.php:21
+#: src/Base/Taxonomy/TaxonomyController.php:17
 msgid "Additional explanation"
 msgstr ""
 
-#: src/Base/Taxonomy/TaxonomyController.php:22
+#: src/Base/Taxonomy/TaxonomyController.php:18
 msgid "The slug value must be the ID of the blog you want to add as term. The ID is used for displaying the correct openpub-items on every blog."
-msgstr ""
-
-#: src/Base/Metabox/MetaboxServiceProvider.php:50
-msgid "Items with an expiration date will be excluded from the search results and on news overview page from this date forward."
-msgstr ""
-
-#: src/Base/Metabox/AdminNotice.php:18
-msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin two manual actions are required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder."
-msgstr ""
-
-#: src/Base/Metabox/AdminNotice.php:24
-msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:highlighted'."
-msgstr ""
-
-#: src/Base/Metabox/AdminNotice.php:30
-msgid "Since the major release of v3.0.0 of the <strong>Yard | OpenPub Base</strong> plugin there is still one manual action required. You're <strong>urgently</strong> requested to read the README.md inside the plugin folder and look for the part about 'convert:expiration-date'."
 msgstr ""

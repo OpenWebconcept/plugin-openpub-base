@@ -33,7 +33,7 @@ class ConnectedThemeItemField extends CreatesFields
     {
         $connection = p2p_type($type);
 
-        if (!$connection) {
+        if (! $connection) {
             return [
                 'error' => sprintf(__('Connection type "%s" does not exist', 'openpub-base'), $type),
             ];

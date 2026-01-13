@@ -6,7 +6,6 @@ use OWC\OpenPub\Base\Foundation\ServiceProvider;
 
 class TaxonomyServiceProvider extends ServiceProvider
 {
-
     /**
      * The array of taxonomies definitions from the config.
      */
@@ -18,6 +17,7 @@ class TaxonomyServiceProvider extends ServiceProvider
 
         if ($this->plugin->settings->useShowOn()) {
             $this->showOnFormFields();
+            $this->plugin->loader->addFilter('owc/openpub-base/before-register-posttypes', $this, 'addShowOnAdminFilter');
         }
     }
 
@@ -30,11 +30,32 @@ class TaxonomyServiceProvider extends ServiceProvider
     }
 
     /**
+     * Add 'Show on' admin filter to openpub-item post type.
+     */
+    public function addShowOnAdminFilter(array $postTypes): array
+    {
+        if (! isset($postTypes['openpub-item'])) {
+            return $postTypes;
+        }
+
+        if (! isset($postTypes['openpub-item']['args']['admin_filters'])) {
+            $postTypes['openpub-item']['args']['admin_filters'] = [];
+        }
+
+        $postTypes['openpub-item']['args']['admin_filters']['show-on'] = [
+            'title'    => __('Show on', 'openpub-base'),
+            'taxonomy' => 'openpub-show-on',
+        ];
+
+        return $postTypes;
+    }
+
+    /**
      * Register custom taxonomies via extended_cpts.
      */
     public function registerTaxonomies(): void
     {
-        if (!function_exists('register_extended_taxonomy')) {
+        if (! function_exists('register_extended_taxonomy')) {
             return;
         }
 
