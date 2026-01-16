@@ -43,7 +43,7 @@ class SettingsServiceProvider extends ServiceProvider
         }
     }
 
-    protected function registerSettingsPage(array $page): void
+    public function registerSettingsPage(array $page): void
     {
         $fields = $page['fields'] ?? [];
         unset($page['fields']); // Fields will be added later on.

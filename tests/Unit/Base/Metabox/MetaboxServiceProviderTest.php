@@ -6,6 +6,7 @@ use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
+use OWC\OpenPub\Base\Metabox\AdminNotice;
 use OWC\OpenPub\Base\Metabox\MetaboxServiceProvider;
 use OWC\OpenPub\Tests\TestCase;
 use WP_Mock;
@@ -55,12 +56,20 @@ class MetaboxServiceProviderTest extends TestCase
 
         $service = new MetaboxServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
-            'rwmb_meta_boxes',
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'cmb2_admin_init',
             $service,
             'registerMetaboxes',
             10,
-            1
+            0
+        ])->once();
+
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'admin_notices',
+            \Mockery::type(AdminNotice::class),
+            'upgradeAdminNotice',
+            10,
+            0
         ])->once();
 
         $service->register();
@@ -100,113 +109,20 @@ class MetaboxServiceProviderTest extends TestCase
             ]
         ];
 
-        $prefix = MetaboxServiceProvider::PREFIX;
+        $config->shouldReceive('get')->with('cmb2_metaboxes')->once()->andReturn($configMetaboxes['base']);
+        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes['escape_element']);
 
-        $expectedMetaboxes = [
-            0 => [
-                'id'     => 'metadata',
-                'fields' => [
-                    [
-                        'type' => 'heading'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
-                    ]
-                ]
-            ],
-            1 => [
-                'id'     => 'escape_element',
-                'fields' => [
-                    [
-                        'type' => 'heading'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
-                    ]
-                ]
-            ]
-        ];
+        $cmb2 = \Mockery::mock('CMB2');
+        $cmb2->shouldReceive('add_field')->with(['type' => 'heading']);
+        $cmb2->shouldReceive('add_field')->with(['id' => '_owc_metabox_id1']);
+        $cmb2->shouldReceive('add_field')->with(['id' => '_owc_metabox_id2']);
 
-        $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
+        \WP_Mock::userFunction('new_cmb2_box', [
+            'return' => $cmb2,
+        ]);
 
-        //test for filter being called
-        \WP_Mock::expectFilter('owc/openpub/base/before-register-metaboxes', $expectedMetaboxes);
+        $service->registerMetaboxes();
 
-        $this->assertEquals($expectedMetaboxes, $service->registerMetaboxes([]));
-
-        $existingMetaboxes = [
-            0 => [
-                'id'     => 'existing_metadata',
-                'fields' => [
-                    [
-                        'type' => 'existing_heading'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id2'
-                    ]
-                ]
-            ]
-        ];
-
-        $expectedMetaboxesAfterMerge = [
-
-            0 => [
-                'id'     => 'existing_metadata',
-                'fields' => [
-                    [
-                        'type' => 'existing_heading'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id2'
-                    ]
-                ]
-            ],
-            1 => [
-                'id'     => 'metadata',
-                'fields' => [
-                    [
-                        'type' => 'heading'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
-                    ]
-                ]
-            ],
-            2 => [
-                'id'     => 'escape_element',
-                'fields' => [
-                    [
-                        'type' => 'heading'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
-                    ]
-                ]
-            ]
-        ];
-
-        $config->shouldReceive('get')->with('metaboxes')->once()->andReturn($configMetaboxes);
-        $config->shouldReceive('get')->with('escape_element_metabox')->once()->andReturn($configMetaboxes);
-
-        $this->assertEquals($expectedMetaboxesAfterMerge, $service->registerMetaboxes($existingMetaboxes));
+        $this->expectNotToPerformAssertions();
     }
 }

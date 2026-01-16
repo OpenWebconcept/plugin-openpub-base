@@ -124,21 +124,21 @@ class ElasticPressTest extends TestCase
         $indexName = '';
         $siteID = 1;
 
-        putenv('environment=development');
+        $_ENV['environment'] = 'development';
 
         $expected = 'owc-openpub--1--development';
         $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
 
-        putenv('environment=test');
+        $_ENV['environment'] = 'test';
 
         $expected = 'owc-openpub--1--test';
         $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
 
         $this->assertEquals($expected, $actual);
 
-        putenv('environment=');
+        $_ENV['environment'] = '';
 
         $expected = 'owc-openpub--1';
         $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
@@ -146,7 +146,7 @@ class ElasticPressTest extends TestCase
         $this->assertEquals($expected, $actual);
 
         define('EP_INDEX_PREFIX', 'prefix');
-        putenv('environment=test');
+        $_ENV['environment'] = 'test';
 
         $expected = 'prefix--owc-openpub--1--test';
         $actual = $this->service->setIndexNameByEnvironment($indexName, $siteID);
