@@ -6,10 +6,10 @@ return [
         'title'        => __('OpenPub settings', 'openpub-base'),
         'object_types' => ['options-page'],
         'option_key'   => '_owc_openpub_base_settings',
+        'parent_slug'  => 'options-general.php',
+        'menu_title'   => __('OpenPub', 'openpub-base'),
         'tab_group'    => 'base',
         'tab_title'    => __('General', 'openpub-base'),
-        'position'     => 30,
-        'icon_url'    => 'dashicons-admin-settings',
         'fields'       => [
             'portal_url'        => [
                 'name' => __('Portal URL', 'openpub-base'),
