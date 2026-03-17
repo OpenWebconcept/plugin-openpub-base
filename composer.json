@@ -17,22 +17,12 @@
       "homepage": "https://www.yard.nl"
     }
   ],
-  "repositories": [
-    {
-      "name": "wp-composer",
-      "type": "composer",
-      "url": "https://repo.wp-composer.com",
-      "only": [
-        "wp-plugin/*",
-        "wp-theme/*"
-      ]
-    }
-  ],
+  "repositories": [],
   "require": {
     "php": "^7.4|^8.0",
     "johnbillion/extended-cpts": "^5.0",
     "cmb2/cmb2": "2.11.*",
-    "wp-plugin/elasticpress": "^4.0 | ^5.0",
+    "10up/elasticpress": "^4.0 | ^5.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
