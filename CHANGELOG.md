@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.1
+
+- Chore: Remove plugin repositories in favour of direct composer support
+
 ## v3.8.0
 
 - Feat: add filter dropdown for easy filtering of target website @rmpel (#45)
