@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.2
+
+- Fix: Add php version constraints
+
 ## v3.8.1
 
 - Chore: Remove plugin repositories in favour of direct composer support
