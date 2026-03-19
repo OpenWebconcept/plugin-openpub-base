@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.3
+
+- Chore: Revert to wp-packagist version of 10up/elasticpress due to psr/container conflicts
+
 ## v3.8.2
 
 - Fix: Add php version constraints

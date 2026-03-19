@@ -20,12 +20,22 @@
       "homepage": "https://www.yard.nl"
     }
   ],
-  "repositories": [],
+  "repositories": [
+    {
+      "name": "wpackagist",
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
   "require": {
     "php": ">=7.4",
     "johnbillion/extended-cpts": "^5.0",
     "cmb2/cmb2": "2.11.*",
-    "10up/elasticpress": "^5.0 | ^4.0",
+    "wpackagist-plugin/elasticpress": "^5.0 | ^4.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
