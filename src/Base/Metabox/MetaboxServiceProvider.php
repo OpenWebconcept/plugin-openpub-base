@@ -94,8 +94,13 @@ class MetaboxServiceProvider extends ServiceProvider
 
     protected function addExpirationDefaultValue(array $configMetaboxes): array
     {
-        $configMetaboxes['base']['fields']['general']['expiration']['std'] = (new \DateTime('now', new \DateTimeZone('Europe/Amsterdam')))->modify('+' . $this->plugin->settings->expireAfter() . ' days')->format('Y-m-d H:i');
-        $configMetaboxes['base']['fields']['general']['expiration']['desc'] = __('Items with an expiration date will be excluded from the search results and on news overview page from this date forward.', 'openpub-base');
+        $configMetaboxes['base']['fields']['general']['expiration']['default_cb'] = function( $field_args, $field ) {
+			$post = get_post( $field->object_id );
+			if ( ! $post || $post->post_status !== 'auto-draft' ) {
+				return '';
+			}
+			return strtotime( 'midnight', strtotime( '+' . $this->plugin->settings->expireAfter() . ' days' ) );
+		};
 
         return $configMetaboxes;
     }
