@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.4
+
+- Chore: update cmb2, move to wp-packages over wp-packagist
+
 ## v3.8.3
 
 - Chore: Revert to wp-packagist version of 10up/elasticpress due to psr/container conflicts

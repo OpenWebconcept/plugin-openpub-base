@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9e8d1a562395000c57c5cc5b8a4552cf",
+    "content-hash": "b0dba1e9711c55a95fcd1b8917e527e8",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -602,7 +602,7 @@
             "time": "2025-06-18T21:18:03+00:00"
         },
         {
-            "name": "wpackagist-plugin/elasticpress",
+            "name": "wp-plugin/elasticpress",
             "version": "5.3.3",
             "source": {
                 "type": "svn",
@@ -614,10 +614,23 @@
                 "url": "https://downloads.wordpress.org/plugin/elasticpress.5.3.3.zip"
             },
             "require": {
-                "composer/installers": "^1.0 || ^2.0"
+                "composer/installers": "~1.0|~2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/elasticpress/"
+            "notification-url": "https://wp-packages.org/downloads",
+            "authors": [
+                {
+                    "name": "10up"
+                }
+            ],
+            "description": "A fast and flexible search and query engine for WordPress.",
+            "homepage": "https://github.com/10up/ElasticPress",
+            "support": {
+                "changelog": "https://wordpress.org/plugins/elasticpress/#developers",
+                "issues": "https://wordpress.org/support/plugin/elasticpress",
+                "source": "https://plugins.svn.wordpress.org/elasticpress"
+            },
+            "time": "2026-05-07T18:21:34+00:00"
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
