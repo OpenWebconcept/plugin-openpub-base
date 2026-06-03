@@ -19,14 +19,15 @@
   ],
   "repositories": [
     {
+      "name": "wp-packages",
       "type": "composer",
-      "url": "https://wpackagist.org"
+      "url": "https://repo.wp-packages.org"
     }
   ],
   "require": {
     "johnbillion/extended-cpts": "^4.0",
     "php": "^7.4|^8.0",
-    "wpackagist-plugin/elasticpress": "^3.0|^4.0",
+    "wp-plugin/elasticpress": "^3.0|^4.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
