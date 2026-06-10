@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.5
+
+- Fix: Restore default expiration dates feature
+
 ## v3.8.4
 
 - Chore: update cmb2, move to wp-packages over wp-packagist
