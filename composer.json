@@ -36,6 +36,9 @@
     "symfony/var-dumper": "^5.0",
     "szepeviktor/phpstan-wordpress": "^1.1"
   },
+  "provide": {
+    "psr/container": "1.0.0"
+  },
   "autoload": {
     "psr-4": {
       "OWC\\OpenPub\\Base\\": "./src/Base"
