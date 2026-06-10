@@ -20,18 +20,11 @@
       "homepage": "https://www.yard.nl"
     }
   ],
-  "repositories": [
-    {
-      "name": "wp-packages",
-      "type": "composer",
-      "url": "https://repo.wp-packages.org"
-    }
-  ],
   "require": {
     "php": ">=7.4",
     "johnbillion/extended-cpts": "^5.0",
     "cmb2/cmb2": "^2.11",
-    "wp-plugin/elasticpress": "^5.0 | ^4.0",
+    "10up/elasticpress": "^5.0 | ^4.0",
     "yahnis-elsts/plugin-update-checker": "^5.0"
   },
   "require-dev": {
