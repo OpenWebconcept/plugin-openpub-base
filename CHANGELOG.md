@@ -1,8 +1,12 @@
 # Changelog
 
+## v3.8.7
+
+- Fix: add psr/container
+
 ## v3.8.6
 
-- Chore: use 10up/elasticpress 
+- Chore: use 10up/elasticpress
 
 ## v3.8.5
 
