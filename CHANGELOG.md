@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.8.6
+
+- Chore: use 10up/elasticpress 
+
 ## v3.8.5
 
 - Fix: Restore default expiration dates feature
