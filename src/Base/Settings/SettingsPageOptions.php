@@ -55,6 +55,16 @@ class SettingsPageOptions
         return filter_var($setting, FILTER_VALIDATE_BOOLEAN);
     }
 
+	/**
+	 * @since NEXT
+	 */
+    public function useRelatedItemsOwnType(): bool
+    {
+        $setting = $this->settings['_owc_setting_openpub_related_items_own_type'] ?? false;
+
+        return filter_var($setting, FILTER_VALIDATE_BOOLEAN);
+    }
+
     public function expireAfter(): int
     {
         return $this->settings['_owc_setting_openpub_expired_auto_after_days'] ?? 0;
@@ -75,6 +85,7 @@ class SettingsPageOptions
             '_owc_setting_use_portal_url' => 0,
             '_owc_setting_use_escape_element' => 0,
             '_owc_setting_openpub_enable_show_on' => 0,
+            '_owc_setting_openpub_related_items_own_type' => 0,
             '_owc_setting_openpub_expired_auto_after_days' => 0,
             '_owc_setting_openpub_disable_upgrade_admin_notice' => 0
         ];

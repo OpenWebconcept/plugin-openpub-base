@@ -131,11 +131,18 @@ class ItemController extends BaseController
                 'posts_per_page' => 10,
                 'post_status'    => 'publish',
                 'post_type'      => 'openpub-item',
+                'no_found_rows'  => true,
             ])
             ->query(Item::addExpirationParameters());
 
-        if ($this->getTypeParam($request)) {
-            $items->query(Item::addTypeParameter($this->getTypeParam($request)));
+        $type = $this->getTypeParam($request);
+
+        if (! $type && $this->plugin->settings->useRelatedItemsOwnType()) {
+			$type = $this->getItemTypeSlugs($item);
+        }
+
+        if ($type) {
+            $items->query(Item::addTypeParameter($type));
         }
 
         if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
@@ -192,6 +199,22 @@ class ItemController extends BaseController
         };
 
         return true;
+    }
+
+    /**
+     * Get the type slugs already attached to an item, comma-separated.
+	 *
+	 * @since NEXT
+     */
+    protected function getItemTypeSlugs(array $item): string
+    {
+        $types = $item['taxonomies']['openpub-type'] ?? [];
+
+        if (! is_array($types) || [] === $types) {
+            return '';
+        }
+
+        return implode(',', array_column($types, 'slug'));
     }
 
     protected function getTypeParam(WP_REST_Request $request): string

@@ -41,6 +41,12 @@ return [
                 'id'   => 'setting_openpub_enable_show_on',
                 'type' => 'checkbox'
             ],
+            'openpub_related_items_own_type' => [
+                'name' => __('Related items type', 'openpub-base'),
+                'desc' => __('Scope related items to the type(s) of the current item when no explicit type is requested.', 'openpub-base'),
+                'id'   => 'setting_openpub_related_items_own_type',
+                'type' => 'checkbox'
+            ],
             'openpub_expired_heading' => [
                 'type' => 'heading',
                 'name' => __('Expired', 'openpub-base'),
