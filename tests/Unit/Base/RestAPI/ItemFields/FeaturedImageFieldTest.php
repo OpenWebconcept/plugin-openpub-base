@@ -67,6 +67,10 @@ class FeaturedImageFieldTest extends TestCase
             'return' => 2
         ]);
 
+        WP_Mock::userFunction('get_transient', [
+            'return' => false
+        ]);
+
         $attachment = m::mock(WP_Post::class);
         $attachment->ID = 1;
         $attachment->post_title = 'title';
@@ -97,6 +101,10 @@ class FeaturedImageFieldTest extends TestCase
             'return' => 'large-size'
         ]);
 
+        WP_Mock::userFunction('set_transient', [
+            'return' => true
+        ]);
+
         $featuredImageField = new FeaturedImageField($this->plugin);
         $actual = $featuredImageField->create($this->post);
 
@@ -124,6 +132,10 @@ class FeaturedImageFieldTest extends TestCase
             'return' => 2
         ]);
 
+        WP_Mock::userFunction('get_transient', [
+            'return' => false
+        ]);
+
         $attachment = m::mock(WP_Post::class);
         $attachment->ID = 1;
         $attachment->post_title = 'title';
@@ -146,6 +158,10 @@ class FeaturedImageFieldTest extends TestCase
                 'width'  => 100,
                 'height' => 100,
             ]
+        ]);
+
+        WP_Mock::userFunction('set_transient', [
+            'return' => true
         ]);
 
         WP_Mock::userFunction('get_attached_file', [
