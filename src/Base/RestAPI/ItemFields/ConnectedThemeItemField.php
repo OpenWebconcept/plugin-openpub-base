@@ -28,9 +28,19 @@ class ConnectedThemeItemField extends CreatesFields
 
     /**
      * Get connected items of a post, for a specific connection type.
+     *
+     * Cached, since resolving p2p connections is a query per post, per connection
+     * type, and is repeated for every item on every list request.
      */
     protected function getConnectedItems(int $postID, string $type): array
     {
+        $cacheKey = sprintf('openpub_connected_%s_%d', $type, $postID);
+        $cached = get_transient($cacheKey);
+
+        if (is_array($cached)) {
+            return $cached;
+        }
+
         $connection = p2p_type($type);
 
         if (! $connection) {
@@ -39,7 +49,7 @@ class ConnectedThemeItemField extends CreatesFields
             ];
         }
 
-        return array_map(function (WP_Post $post) {
+        $result = array_map(function (WP_Post $post) {
             return [
                 'id'      => $post->ID,
                 'title'   => $post->post_title,
@@ -48,5 +58,9 @@ class ConnectedThemeItemField extends CreatesFields
                 'date'    => $post->post_date,
             ];
         }, $connection->get_connected($postID)->posts);
+
+        set_transient($cacheKey, $result, 15 * MINUTE_IN_SECONDS);
+
+        return $result;
     }
 }
