@@ -55,9 +55,9 @@ class SettingsPageOptions
         return filter_var($setting, FILTER_VALIDATE_BOOLEAN);
     }
 
-	/**
-	 * @since NEXT
-	 */
+    /**
+     * @since NEXT
+     */
     public function useRelatedItemsOwnType(): bool
     {
         $setting = $this->settings['_owc_setting_openpub_related_items_own_type'] ?? false;

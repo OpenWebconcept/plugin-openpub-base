@@ -94,13 +94,13 @@ class MetaboxServiceProvider extends ServiceProvider
 
     protected function addExpirationDefaultValue(array $configMetaboxes): array
     {
-        $configMetaboxes['base']['fields']['general']['expiration']['default_cb'] = function( $field_args, $field ) {
-			$post = get_post( $field->object_id );
-			if ( ! $post || $post->post_status !== 'auto-draft' ) {
-				return '';
-			}
-			return strtotime( 'midnight', strtotime( '+' . $this->plugin->settings->expireAfter() . ' days' ) );
-		};
+        $configMetaboxes['base']['fields']['general']['expiration']['default_cb'] = function ($field_args, $field) {
+            $post = get_post($field->object_id);
+            if (! $post || $post->post_status !== 'auto-draft') {
+                return '';
+            }
+            return strtotime('midnight', strtotime('+' . $this->plugin->settings->expireAfter() . ' days'));
+        };
 
         return $configMetaboxes;
     }

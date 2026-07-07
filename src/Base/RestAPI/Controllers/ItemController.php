@@ -55,7 +55,7 @@ class ItemController extends BaseController
             $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
         }
 
-		return apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
+        return apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
     }
 
     /**
@@ -138,7 +138,7 @@ class ItemController extends BaseController
         $type = $this->getTypeParam($request);
 
         if (! $type && $this->plugin->settings->useRelatedItemsOwnType()) {
-			$type = $this->getItemTypeSlugs($item);
+            $type = $this->getItemTypeSlugs($item);
         }
 
         if ($type) {
@@ -153,7 +153,7 @@ class ItemController extends BaseController
             $items->query(Item::addAudienceParameters($this->getAudienceParam($request)));
         }
 
-		$items = apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
+        $items = apply_filters('owc/openpub/rest-api/items/query/parameters', $items, $request);
 
         $query = new WP_Query($items->getQueryArgs());
         return array_map([$this, 'transform'], $query->posts);
@@ -203,8 +203,8 @@ class ItemController extends BaseController
 
     /**
      * Get the type slugs already attached to an item, comma-separated.
-	 *
-	 * @since NEXT
+     *
+     * @since NEXT
      */
     protected function getItemTypeSlugs(array $item): string
     {
