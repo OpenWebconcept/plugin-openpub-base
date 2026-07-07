@@ -2,6 +2,7 @@
 
 namespace OWC\OpenPub\Tests\Base\Settings;
 
+use CMB2;
 use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
@@ -42,6 +43,7 @@ class SettingsServiceProviderTest extends TestCase
     public function tearDown(): void
     {
         \WP_Mock::tearDown();
+        m::close();
     }
 
     /** @test */
@@ -55,157 +57,62 @@ class SettingsServiceProviderTest extends TestCase
 
         $service = new SettingsServiceProvider($plugin);
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
-            'mb_settings_pages',
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'cmb2_render_number',
             $service,
-            'registerSettingsPage',
+            'registerMissingNumberField',
             10,
-            1
+            5
         ])->once();
 
-        $plugin->loader->shouldReceive('addFilter')->withArgs([
-            'rwmb_meta_boxes',
+        $plugin->loader->shouldReceive('addAction')->withArgs([
+            'cmb2_admin_init',
             $service,
-            'registerSettings',
+            'registerSettingsPages',
             10,
-            1
+            0
         ])->once();
 
         $service->register();
 
-        $configSettingsPage = [
-            'base' => [
-                'id'          => '_owc_openpub_base_settings',
-                'option_name' => '_owc_openpub_base_settings'
-            ]
-        ];
-
-        $config->shouldReceive('get')->with('settings_pages')->once()->andReturn($configSettingsPage);
-
-        $this->assertEquals($configSettingsPage, $service->registerSettingsPage([]));
-
-        $existingSettingsPage = [
-            0 => [
-                'id'          => 'existing_settings_page',
-                'option_name' => 'existing_settings_page'
-            ]
-        ];
-
-        $existingSettingsPageAfterMerge = [
-
-            0      => [
-                'id'          => 'existing_settings_page',
-                'option_name' => 'existing_settings_page'
-            ],
-            'base' => [
-                'id'          => '_owc_openpub_base_settings',
-                'option_name' => '_owc_openpub_base_settings'
-            ]
-        ];
-
-        $config->shouldReceive('get')->with('settings_pages')->once()->andReturn($configSettingsPage);
-
-        $this->assertEquals($existingSettingsPageAfterMerge, $service->registerSettingsPage($existingSettingsPage));
-
-        $configMetaboxes = [
-            'base' => [
-                'id'             => 'metadata',
-                'settings_pages' => 'base_settings_page',
-                'fields'         => [
-                    'general' => [
-                        'testfield_noid' => [
-                            'type' => 'heading'
-                        ],
-                        'testfield1'     => [
-                            'id' => 'metabox_id1'
-                        ],
-                        'testfield2'     => [
-                            'id' => 'metabox_id2'
-                        ]
-                    ]
-                ]
-            ]
-        ];
-
         $prefix = SettingsServiceProvider::PREFIX;
 
-        $expectedMetaboxes = [
-            0 => [
-                'id'             => 'metadata',
-                'settings_pages' => 'base_settings_page',
-                'fields'         => [
-                    [
+        $configSettingsPages = [
+            'base' => [
+                'id'          => '_owc_openpub_base_settings',
+                'option_name' => '_owc_openpub_base_settings',
+                'fields'      => [
+                    'testfield_noid' => [
                         'type' => 'heading'
                     ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
+                    'testfield1'     => [
+                        'id' => 'metabox_id1'
                     ]
                 ]
             ]
         ];
 
-        $config->shouldReceive('get')->with('settings')->once()->andReturn($configMetaboxes);
+        $config->shouldReceive('get')->with('cmb2_settings_pages')->once()->andReturn($configSettingsPages);
 
-        //test for filter being called
-        \WP_Mock::expectFilter('owc/openpub/base/before-register-settings', $expectedMetaboxes);
+        $createdBoxes = [];
 
-        $this->assertEquals($expectedMetaboxes, $service->registerSettings([]));
+        \WP_Mock::userFunction('new_cmb2_box')->andReturnUsing(function (array $args) use (&$createdBoxes) {
+            $box = new CMB2($args);
+            $createdBoxes[] = $box;
 
-        $existingMetaboxes = [
-            0 => [
-                'id'     => 'existing_metadata',
-                'fields' => [
-                    [
-                        'type' => 'existing_heading'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id2'
-                    ]
-                ]
-            ]
-        ];
+            return $box;
+        });
 
-        $expectedMetaboxesAfterMerge = [
+        $service->registerSettingsPages();
 
-            0 => [
-                'id'     => 'existing_metadata',
-                'fields' => [
-                    [
-                        'type' => 'existing_heading'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'existing_metabox_id2'
-                    ]
-                ]
-            ],
-            1 => [
-                'id'             => 'metadata',
-                'settings_pages' => 'base_settings_page',
-                'fields'         => [
-                    [
-                        'type' => 'heading'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id1'
-                    ],
-                    [
-                        'id' => $prefix . 'metabox_id2'
-                    ]
-                ]
-            ]
-        ];
+        $this->assertCount(1, $createdBoxes);
 
-        $config->shouldReceive('get')->with('settings')->once()->andReturn($configMetaboxes);
-
-        $this->assertEquals($expectedMetaboxesAfterMerge, $service->registerSettings($existingMetaboxes));
+        $optionsPage = $createdBoxes[0];
+        $this->assertSame('_owc_openpub_base_settings', $optionsPage->args['id']);
+        $this->assertArrayNotHasKey('fields', $optionsPage->args);
+        $this->assertEquals([
+            ['type' => 'heading'],
+            ['id' => $prefix . 'metabox_id1']
+        ], $optionsPage->fields);
     }
 }

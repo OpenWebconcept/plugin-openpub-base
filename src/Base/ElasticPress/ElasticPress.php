@@ -305,7 +305,7 @@ class ElasticPress
 
     protected function getEnvironmentVariable(): string
     {
-        return $_ENV['environment'] ?? '';
+        return getenv('environment') ?: '';
     }
 
     /**

@@ -80,6 +80,7 @@ class ExpiredFieldTest extends TestCase
     {
         $futureDate = \DateTime::createFromFormat(self::DATETIMEFORMAT, $this->now, $this->dateTime);
         $futureDate->modify("+1 day");
+        $timestamp = $futureDate->getTimestamp();
 
         WP_Mock::userFunction('get_post_meta', [
             'args' => [
@@ -88,7 +89,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $futureDate->format(self::DATETIMEFORMAT)
+            'return' => $timestamp
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -97,7 +98,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => '',
                     'status'  => false,
-                    'on'      => $futureDate
+                    'on'      => date(self::DATETIMEFORMAT, $timestamp)
             ], $status);
     }
 
@@ -106,6 +107,7 @@ class ExpiredFieldTest extends TestCase
     {
         $futureDate = \DateTime::createFromFormat(self::DATETIMEFORMAT, $this->now, $this->dateTime);
         $futureDate->modify("midnight +1 day");
+        $timestamp = $futureDate->getTimestamp();
 
         WP_Mock::userFunction('get_post_meta', [
             'args' => [
@@ -114,7 +116,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $futureDate->format(self::DATEFORMAT)
+            'return' => $timestamp
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -123,7 +125,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => '',
                     'status'  => false,
-                    'on'      => $futureDate
+                    'on'      => date(self::DATETIMEFORMAT, $timestamp)
             ], $status);
     }
 
@@ -132,6 +134,7 @@ class ExpiredFieldTest extends TestCase
     {
         $pastDate = \DateTime::createFromFormat(self::DATETIMEFORMAT, $this->now, $this->dateTime);
         $pastDate->modify("-1 day");
+        $timestamp = $pastDate->getTimestamp();
 
         WP_Mock::userFunction('get_post_meta', [
             'args' => [
@@ -140,7 +143,7 @@ class ExpiredFieldTest extends TestCase
                 'true'
             ],
             'times'  => 1,
-            'return' => $pastDate->format(self::DATETIMEFORMAT)
+            'return' => $timestamp
         ]);
 
         $expiredField = new ExpiredField($this->plugin);
@@ -149,7 +152,7 @@ class ExpiredFieldTest extends TestCase
         $this->assertEquals([
                     'message' => 'Item is expired',
                     'status'  => true,
-                    'on'      => $pastDate
+                    'on'      => date(self::DATETIMEFORMAT, $timestamp)
             ], $status);
     }
 }
