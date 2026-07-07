@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.9.1] - 2026-07-07
+
+- Chore: cache connected item fields in API routes
+
 ## [v3.9.0] - 2026-07-07
 
 - Feat: add related items filtering on type tax when setting enabled
