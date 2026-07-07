@@ -204,7 +204,7 @@ class ItemController extends BaseController
     /**
      * Get the type slugs already attached to an item, comma-separated.
      *
-     * @since NEXT
+     * @since 3.9.0
      */
     protected function getItemTypeSlugs(array $item): string
     {
