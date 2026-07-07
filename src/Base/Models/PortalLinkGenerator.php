@@ -65,15 +65,15 @@ class PortalLinkGenerator
             return '';
         }
 
-		// Filter out terms where slug is not numeric
-		$terms = array_filter($terms, function($term) {
-			return is_numeric($term->slug);
-		});
+        // Filter out terms where slug is not numeric
+        $terms = array_filter($terms, function ($term) {
+            return is_numeric($term->slug);
+        });
 
-		// Sort terms by slug (blog ID)
-		usort($terms, function($a, $b) {
-			return intval($a->slug) <=> intval($b->slug);
-		});
+        // Sort terms by slug (blog ID)
+        usort($terms, function ($a, $b) {
+            return intval($a->slug) <=> intval($b->slug);
+        });
 
         $portalURL = reset($terms);
 

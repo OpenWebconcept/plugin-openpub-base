@@ -12,15 +12,15 @@ class TaxonomyField extends CreatesFields
      */
     public function create(WP_Post $post): array
     {
-    	$result = [];
+        $result = [];
 
-	    $taxonomies = apply_filters('owc/openpub-base/before-register-extended-taxonomies', $this->plugin->config->get('taxonomies'));
+        $taxonomies = apply_filters('owc/openpub-base/before-register-extended-taxonomies', $this->plugin->config->get('taxonomies'));
 
         if (! is_array($taxonomies) || 1 > count($taxonomies)) {
-          return $result;
-	    }
+            return $result;
+        }
 
-	    $taxonomiesKeys = array_unique(array_keys($taxonomies));
+        $taxonomiesKeys = array_unique(array_keys($taxonomies));
 
         foreach ($taxonomiesKeys as $taxonomy) {
             $result[$taxonomy] = $this->getTerms($post->ID, $taxonomy);
