@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.9.2] - 2026-07-10
+
+- Perf: replace expiration meta_query with LEFT JOIN to avoid forced GROUP BY
+
 ## [v3.9.1] - 2026-07-07
 
 - Chore: cache connected item fields in API routes
