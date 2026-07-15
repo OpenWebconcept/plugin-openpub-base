@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.9.3] - 2026-07-15
+
+- Fix: config validations
+
 ## [v3.9.2] - 2026-07-10
 
 - Perf: replace expiration meta_query with LEFT JOIN to avoid forced GROUP BY
