@@ -115,7 +115,7 @@ class Plugin
     public function callServiceProviders(string $method, string $key = ''): void
     {
         $offset = $key ? "core.providers.{$key}" : 'core.providers';
-        $services = $this->config->get($offset);
+		$services = (array) $this->config->get($offset, []);
 
         foreach ($services as $service) {
             if (is_array($service)) {
