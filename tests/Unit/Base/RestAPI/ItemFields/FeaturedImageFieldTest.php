@@ -224,4 +224,45 @@ class FeaturedImageFieldTest extends TestCase
         ];
         $this->assertEquals($expected, $actual);
     }
+
+    /** @test */
+    public function it_clears_the_cached_image_of_an_attachment()
+    {
+        WP_Mock::userFunction('delete_transient', [
+            'args'  => ['openpub_featured_image_2'],
+            'times' => 1,
+        ]);
+
+        (new FeaturedImageField($this->plugin))->clearCache(2);
+
+        $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function it_clears_the_cached_image_when_the_attachment_is_edited()
+    {
+        WP_Mock::userFunction('delete_transient', [
+            'args'  => ['openpub_featured_image_2'],
+            'times' => 3,
+        ]);
+
+        $featuredImageField = new FeaturedImageField($this->plugin);
+        $featuredImageField->clearCacheOnMetaChange(10, 2, '_wp_attachment_metadata');
+        $featuredImageField->clearCacheOnMetaChange(10, 2, '_wp_attached_file');
+        $featuredImageField->clearCacheOnMetaChange(10, 2, '_wp_attachment_image_alt');
+
+        $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function it_keeps_the_cached_image_on_unrelated_meta_changes()
+    {
+        WP_Mock::userFunction('delete_transient', [
+            'times' => 0,
+        ]);
+
+        (new FeaturedImageField($this->plugin))->clearCacheOnMetaChange(10, 2, '_edit_lock');
+
+        $this->assertTrue(true);
+    }
 }

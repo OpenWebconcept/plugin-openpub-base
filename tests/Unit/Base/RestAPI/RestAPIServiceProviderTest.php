@@ -6,6 +6,7 @@ use Mockery as m;
 use OWC\OpenPub\Base\Foundation\Config;
 use OWC\OpenPub\Base\Foundation\Loader;
 use OWC\OpenPub\Base\Foundation\Plugin;
+use OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField;
 use OWC\OpenPub\Base\RestAPI\RestAPIServiceProvider;
 use OWC\OpenPub\Tests\TestCase;
 use WP_Mock;
@@ -68,6 +69,26 @@ class RestAPIServiceProviderTest extends TestCase
             $service,
             'registerRoutes'
         ])->once();
+
+        foreach (['updated_post_meta', 'added_post_meta'] as $hook) {
+            $plugin->loader->shouldReceive('addAction')->withArgs([
+                $hook,
+                m::type(FeaturedImageField::class),
+                'clearCacheOnMetaChange',
+                5,
+                3
+            ])->once();
+        }
+
+        foreach (['edit_attachment', 'delete_attachment'] as $hook) {
+            $plugin->loader->shouldReceive('addAction')->withArgs([
+                $hook,
+                m::type(FeaturedImageField::class),
+                'clearCache',
+                5,
+                1
+            ])->once();
+        }
 
         $configRestAPIFields = [
             'posttype1' => [
