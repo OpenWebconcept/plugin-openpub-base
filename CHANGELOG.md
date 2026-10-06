@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.9.4] - 2026-10-06
+
+- Fix: clear cached featured image when its attachment changes
+
 ## [v3.9.3] - 2026-07-15
 
 - Fix: config validations
