@@ -7,6 +7,7 @@ use OWC\OpenPub\Base\RestAPI\Controllers\ItemController;
 use OWC\OpenPub\Base\RestAPI\Controllers\SearchController;
 use OWC\OpenPub\Base\RestAPI\Controllers\SettingsController;
 use OWC\OpenPub\Base\RestAPI\Controllers\ThemeController;
+use OWC\OpenPub\Base\RestAPI\ItemFields\FeaturedImageField;
 use WP_REST_Server;
 
 class RestAPIServiceProvider extends ServiceProvider
@@ -21,6 +22,13 @@ class RestAPIServiceProvider extends ServiceProvider
     {
         $this->plugin->loader->addFilter('rest_api_init', $this, 'registerRoutes');
         $this->plugin->loader->addFilter('owc/config-expander/rest-api/whitelist', $this, 'whitelist', 10, 1);
+
+        // Before cache purges on the default priority, so a portal refetch never rebuilds from the stale image.
+        $featuredImageField = new FeaturedImageField($this->plugin);
+        $this->plugin->loader->addAction('updated_post_meta', $featuredImageField, 'clearCacheOnMetaChange', 5, 3);
+        $this->plugin->loader->addAction('added_post_meta', $featuredImageField, 'clearCacheOnMetaChange', 5, 3);
+        $this->plugin->loader->addAction('edit_attachment', $featuredImageField, 'clearCache', 5, 1);
+        $this->plugin->loader->addAction('delete_attachment', $featuredImageField, 'clearCache', 5, 1);
 
         $this->registerModelFields();
     }

@@ -7,6 +7,13 @@ use WP_Post;
 
 class FeaturedImageField extends CreatesFields
 {
+    private const CACHE_KEY = 'openpub_featured_image_%d';
+
+    /**
+     * Attachment meta that ends up in the cached field.
+     */
+    private const CACHED_META_KEYS = ['_wp_attachment_metadata', '_wp_attached_file', '_wp_attachment_image_alt'];
+
     /**
      * Gets the featured image of a post.
      *
@@ -21,7 +28,7 @@ class FeaturedImageField extends CreatesFields
         }
 
         $id = \get_post_thumbnail_id($post->ID);
-        $cacheKey = sprintf('openpub_featured_image_%d', $id);
+        $cacheKey = sprintf(self::CACHE_KEY, $id);
         $cached = get_transient($cacheKey);
 
         if (is_array($cached)) {
@@ -48,6 +55,21 @@ class FeaturedImageField extends CreatesFields
         set_transient($cacheKey, $result, 12 * HOUR_IN_SECONDS);
 
         return $result;
+    }
+
+    public function clearCache(int $attachmentId): void
+    {
+        delete_transient(sprintf(self::CACHE_KEY, $attachmentId));
+    }
+
+    /**
+     * Image editor saves (crop, rotate, scale, restore) only touch attachment meta.
+     */
+    public function clearCacheOnMetaChange(int $metaId, int $objectId, string $metaKey): void
+    {
+        if (in_array($metaKey, self::CACHED_META_KEYS, true)) {
+            $this->clearCache($objectId);
+        }
     }
 
     /**
