@@ -1,0 +1,29 @@
+name: "plugin-openpub-base"
+
+applicationSuite:
+  name: "OpenWebconcept"
+
+publiccodeYmlVersion: 1.0
+url: "https://github.com/OpenWebconcept/plugin-openpub-base"
+
+platforms:
+  - "web"
+
+categories:
+  - "application-development"
+
+softwareType: "softwareAddon"
+
+description:
+  localisedName: "Plugin OpenPub Base"
+  shortDescription: "Dit is de pasis plugin die je nodig hebt om van een normale WP installatie een OpenPub kan maken."
+  longDescription: "Dit is de pasis plugin die je nodig hebt om van een normale WP installatie een OpenPub kan maken."
+
+nl:
+  commonground:
+    layerType: "service"
+
+dependsOn:
+  open:
+    - name: "WordPress"
+    - versionMin: 6.0.3
