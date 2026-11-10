@@ -8,7 +8,7 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 class Plugin
 {
     public const NAME = 'openpub-base';
-    public const VERSION = '3.9.5';
+    public const VERSION = '3.9.6';
 
     protected string $rootPath;
     public Config $config;
@@ -156,5 +156,13 @@ class Plugin
     public function getRootPath(): string
     {
         return $this->rootPath;
+    }
+
+    /**
+     * Return the url of the plugin.
+     */
+    public function getPluginUrl(): string
+    {
+        return \plugins_url($this->getName());
     }
 }

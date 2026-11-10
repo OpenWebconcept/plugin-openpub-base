@@ -1,5 +1,11 @@
 # Changelog
 
+## [v3.9.6] - 2026-11-10
+
+- Fix: keep the block editor's default styles for classic themes with editor styles (WP 7.0)
+- Fix: rebuild TinyMCE editors whose iframe reloads when the block editor moves the meta boxes (blank editors in Firefox)
+- Fix: skip the TinyMCE caret restore when the editor has no selection
+
 ## [v3.9.5] - 2026-10-30
 
 - Fix: don't propagate all query params to paginator params

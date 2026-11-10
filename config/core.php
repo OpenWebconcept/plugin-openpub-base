@@ -24,6 +24,7 @@ return [
         'admin' => [
             OWC\OpenPub\Base\Settings\SettingsServiceProvider::class,
             OWC\OpenPub\Base\Expired\ExpiredServiceProvider::class,
+            OWC\OpenPub\Base\TinyMce\TinyMceServiceProvider::class,
         ],
 
         'cli'   => [
