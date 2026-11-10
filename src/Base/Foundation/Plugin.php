@@ -157,4 +157,12 @@ class Plugin
     {
         return $this->rootPath;
     }
+
+    /**
+     * Return the url of the plugin.
+     */
+    public function getPluginUrl(): string
+    {
+        return \plugins_url($this->getName());
+    }
 }
