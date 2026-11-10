@@ -14,6 +14,32 @@ class AdminServiceProvider extends ServiceProvider
         $this->plugin->loader->addFilter('post_type_link', $this, 'filterPostLink', 10, 4);
         $this->plugin->loader->addFilter('preview_post_link', $this, 'filterPreviewLink', 10, 2);
         $this->plugin->loader->addAction('rest_prepare_openpub-item', $this, 'filterPreviewInNewTabLink', 10, 2);
+        $this->plugin->loader->addFilter('block_editor_settings_all', $this, 'filterEditorStyles', 20);
+    }
+
+    /**
+     * Keep the block editor's default styles for classic themes with editor styles (WP 7.0).
+     */
+    public function filterEditorStyles(array $settings): array
+    {
+        // Block themes manage their own editor styles.
+        if (function_exists('wp_theme_has_theme_json') && wp_theme_has_theme_json()) {
+            return $settings;
+        }
+
+        if (empty($settings['styles']) || ! is_array($settings['styles'])) {
+            return $settings;
+        }
+
+        // While any style is typed 'theme' (and "Use theme styles" is on), the editor drops its default and layout styles.
+        foreach ($settings['styles'] as &$style) {
+            if ('theme' === ($style['__unstableType'] ?? null)) {
+                $style['__unstableType'] = 'base-layout';
+            }
+        }
+        unset($style);
+
+        return $settings;
     }
 
     /**
