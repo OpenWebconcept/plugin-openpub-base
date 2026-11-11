@@ -83,7 +83,8 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
-        register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
+        // Not [\w-]+: slugs with non-ASCII characters (e.g. "m²") are stored percent-encoded.
+        register_rest_route($this->namespace, 'items/(?P<slug>[^/]+)', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new ItemController($this->plugin), 'getItemBySlug'],
             'permission_callback' => '__return_true',
@@ -95,7 +96,7 @@ class RestAPIServiceProvider extends ServiceProvider
             'permission_callback' => '__return_true',
         ]);
 
-        register_rest_route($this->namespace, 'themes/(?P<slug>[\w-]+)', [
+        register_rest_route($this->namespace, 'themes/(?P<slug>[^/]+)', [
             'methods'             => WP_REST_Server::READABLE,
             'callback'            => [new ThemeController($this->plugin), 'getThemeBySlug'],
             'permission_callback' => '__return_true',
