@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.9.6] - 2026-11-12
+
+- Fix: allow OpenPub taxonomy filter params in REST API queries
+
 ## [v3.9.5] - 2026-10-30
 
 - Fix: don't propagate all query params to paginator params
