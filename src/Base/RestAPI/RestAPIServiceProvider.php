@@ -65,46 +65,56 @@ class RestAPIServiceProvider extends ServiceProvider
      */
     public function registerRoutes(): void
     {
+        $itemController = new ItemController($this->plugin);
+        $themeController = new ThemeController($this->plugin);
+        $searchController = new SearchController($this->plugin);
+
         register_rest_route($this->namespace, 'items', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ItemController($this->plugin), 'getItems'],
+            'callback'            => [$itemController, 'getItems'],
+            'args'                => $itemController->collectionArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/active', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ItemController($this->plugin), 'getActiveItems'],
+            'callback'            => [$itemController, 'getActiveItems'],
+            'args'                => $itemController->collectionArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<id>\d+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ItemController($this->plugin), 'getItem'],
+            'callback'            => [$itemController, 'getItem'],
+            'args'                => $itemController->singleArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'items/(?P<slug>[\w-]+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ItemController($this->plugin), 'getItemBySlug'],
+            'callback'            => [$itemController, 'getItemBySlug'],
+            'args'                => $itemController->singleArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'themes', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ThemeController($this->plugin), 'getThemes'],
+            'callback'            => [$themeController, 'getThemes'],
+            'args'                => $themeController->paginatorArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'themes/(?P<slug>[\w-]+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new ThemeController($this->plugin), 'getThemeBySlug'],
+            'callback'            => [$themeController, 'getThemeBySlug'],
+            'args'                => $themeController->singleArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'search', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new SearchController($this->plugin), 'search'],
-            'args'                => [],
+            'callback'            => [$searchController, 'search'],
+            'args'                => $searchController->arguments(),
             'permission_callback' => '__return_true',
         ]);
 
