@@ -47,9 +47,19 @@ abstract class BaseController
      */
     protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
     {
-        return [
+        return array_merge($this->getTaxonomyParams($request), [
             'posts_per_page' => $request->get_param('limit') ?: $limit,
             'paged'          => $request->get_param('page') ?: 0
-        ];
+        ]);
+    }
+
+    /**
+     * Get the request params WP_Query turns into a tax_query for OpenPub taxonomies, e.g. ?openpub-type=slug.
+     */
+    protected function getTaxonomyParams(WP_REST_Request $request): array
+    {
+        $queryVars = array_filter(wp_list_pluck(get_object_taxonomies('openpub-item', 'objects'), 'query_var'));
+
+        return array_intersect_key($request->get_params(), array_flip($queryVars));
     }
 }
