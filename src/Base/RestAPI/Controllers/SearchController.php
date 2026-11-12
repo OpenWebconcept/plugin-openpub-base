@@ -20,4 +20,21 @@ class SearchController extends ItemController
 
         return $this->response($search);
     }
+
+    public function arguments(): array
+    {
+        return array_merge([
+            's' => [
+                'description' => __('The search term.', 'openpub-base'),
+                'type'        => 'string',
+            ],
+            'posts_per_page' => [
+                'description' => __('Number of results per page, at most 10.', 'openpub-base'),
+                'type'        => 'integer',
+                'minimum'     => 1,
+                'default'     => 10,
+            ],
+            'page' => $this->paginatorArguments()['page'],
+        ], $this->taxonomyArguments());
+    }
 }

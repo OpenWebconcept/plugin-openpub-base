@@ -34,21 +34,67 @@ class ItemController extends BaseController
         return $this->response($items);
     }
 
+    /**
+     * Route args for the items and items/active endpoints.
+     */
+    public function collectionArguments(): array
+    {
+        return array_merge($this->paginatorArguments(), $this->filterArguments(), [
+            'highlighted' => [
+                'description' => __('Only highlighted items (true) or only non-highlighted items (false).', 'openpub-base'),
+                'type'        => 'boolean',
+            ],
+        ], $this->taxonomyArguments());
+    }
+
+    /**
+     * Route args for the single item endpoints; the filters apply to the related items.
+     */
+    public function singleArguments(): array
+    {
+        return array_merge($this->filterArguments(), [
+            'draft-preview' => [
+                'description' => __('Include draft and scheduled items, for logged-in users.', 'openpub-base'),
+                'type'        => 'boolean',
+            ],
+        ]);
+    }
+
+    protected function filterArguments(): array
+    {
+        return [
+            'type' => [
+                'description' => __('Filter on openpub-type term slugs.', 'openpub-base'),
+                'type'        => 'array',
+                'items'       => ['type' => 'string'],
+            ],
+            'audience' => [
+                'description' => __('Filter on openpub-audience term slugs.', 'openpub-base'),
+                'type'        => 'array',
+                'items'       => ['type' => 'string'],
+            ],
+            'source' => [
+                'description' => __('Filter on the blog ID the items are shown on, when "show on" is enabled.', 'openpub-base'),
+                'type'        => 'integer',
+            ],
+        ];
+    }
+
     protected function itemQueryBuilder(WP_REST_Request $request = null): Item
     {
         $items = new Item();
         $items = $items->query(apply_filters('owc/openpub/rest-api/items/query', $this->getPaginatorParams($request)));
 
-        if ($this->hasHighlightedParam($request)) {
-            $items->query(Item::addHighlightedParameters($this->getHighlightedParam($request)));
+        if (null !== $request->get_param('highlighted')) {
+            $items->query(Item::addHighlightedParameters(rest_sanitize_boolean($request->get_param('highlighted'))));
         }
 
         if ($this->getTypeParam($request)) {
             $items->query(Item::addTypeParameter($this->getTypeParam($request)));
         }
 
-        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
-            $items->query(Item::addShowOnParameter($request->get_param('source')));
+        if ($request->get_param('source') && $this->plugin->settings->useShowOn()) {
+            $items->query(Item::addShowOnParameter((string) $request->get_param('source')));
         }
 
         if ($this->getAudienceParam($request)) {
@@ -145,8 +191,8 @@ class ItemController extends BaseController
             $items->query(Item::addTypeParameter($type));
         }
 
-        if ($this->showOnParamIsValid($request) && $this->plugin->settings->useShowOn()) {
-            $items->query(Item::addShowOnParameter($request->get_param('source')));
+        if ($request->get_param('source') && $this->plugin->settings->useShowOn()) {
+            $items->query(Item::addShowOnParameter((string) $request->get_param('source')));
         }
 
         if ($this->getAudienceParam($request)) {
@@ -181,24 +227,6 @@ class ItemController extends BaseController
     public function getImageUrl(WP_Post $post): array
     {
         return (new FeaturedImageField($this->plugin))->create($post);
-    }
-
-    protected function getHighlightedParam(WP_REST_Request $request): bool
-    {
-        return filter_var($request->get_param('highlighted'), FILTER_VALIDATE_BOOLEAN);
-    }
-
-    protected function hasHighlightedParam(WP_REST_Request $request): bool
-    {
-        if (empty($request->get_param('highlighted'))) {
-            return false;
-        }
-
-        if (! $this->validateBoolean($request->get_param('highlighted'))) {
-            return false;
-        };
-
-        return true;
     }
 
     /**
@@ -236,20 +264,11 @@ class ItemController extends BaseController
         return is_string($typeParam) ? $typeParam : '';
     }
 
-    protected function validateBoolean(string $value): bool
-    {
-        $value = filter_var($value, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-
-        if (null === $value) {
-            return false;
-        }
-
-        return true;
-    }
-
     /**
      * Validate if show on param is valid.
      * Param should be a numeric value.
+     *
+     * @deprecated 3.10.0 The source route arg is validated as an integer; kept for child plugins built against older versions.
      */
     protected function showOnParamIsValid(WP_REST_Request $request): bool
     {

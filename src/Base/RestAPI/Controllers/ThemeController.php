@@ -28,6 +28,16 @@ class ThemeController extends BaseController
         return $this->response($themes);
     }
 
+    public function singleArguments(): array
+    {
+        return [
+            'draft-preview' => [
+                'description' => __('Include draft and scheduled themes.', 'openpub-base'),
+                'type'        => 'boolean',
+            ],
+        ];
+    }
+
     /**
      * Get an individual post theme by slug.
      *
