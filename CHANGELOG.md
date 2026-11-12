@@ -1,5 +1,10 @@
 # Changelog
 
+## [v3.10.0] - 2026-11-12
+
+- Feat: declare REST API route args, so params are documented and validated by WordPress (malformed values now return a 400)
+- Fix: only show draft and scheduled themes through draft-preview to logged-in users
+
 ## [v3.9.6] - 2026-11-12
 
 - Fix: allow OpenPub taxonomy filter params in REST API queries

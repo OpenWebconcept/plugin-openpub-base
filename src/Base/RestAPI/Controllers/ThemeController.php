@@ -28,6 +28,16 @@ class ThemeController extends BaseController
         return $this->response($themes);
     }
 
+    public function singleArguments(): array
+    {
+        return [
+            'draft-preview' => [
+                'description' => __('Include draft and scheduled themes, for logged-in users.', 'openpub-base'),
+                'type'        => 'boolean',
+            ],
+        ];
+    }
+
     /**
      * Get an individual post theme by slug.
      *
@@ -58,7 +68,7 @@ class ThemeController extends BaseController
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
-        if (true === $preview) {
+        if (true === $preview && is_user_logged_in()) {
             $theme->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 

@@ -58,8 +58,47 @@ abstract class BaseController
      */
     protected function getTaxonomyParams(WP_REST_Request $request): array
     {
-        $queryVars = array_filter(wp_list_pluck(get_object_taxonomies('openpub-item', 'objects'), 'query_var'));
+        return array_intersect_key($request->get_params(), $this->taxonomyArguments());
+    }
 
-        return array_intersect_key($request->get_params(), array_flip($queryVars));
+    public function paginatorArguments(): array
+    {
+        return [
+            'limit' => [
+                'description' => __('Number of items per page, -1 for all items.', 'openpub-base'),
+                'type'        => 'integer',
+                'minimum'     => -1,
+                'default'     => 10,
+            ],
+            'page' => [
+                'description' => __('Page number.', 'openpub-base'),
+                'type'        => 'integer',
+                'minimum'     => 1,
+                'default'     => 1,
+            ],
+        ];
+    }
+
+    /**
+     * Route args for the taxonomy query vars getTaxonomyParams() passes to WP_Query.
+     */
+    public function taxonomyArguments(): array
+    {
+        $args = [];
+
+        foreach (get_object_taxonomies('openpub-item', 'objects') as $taxonomy) {
+            if (empty($taxonomy->query_var)) {
+                continue;
+            }
+
+            // String first, so values reach WP_Query unsplit and keep its "a+b" (AND) syntax.
+            $args[$taxonomy->query_var] = [
+                'description' => sprintf(__('Filter on %s term slugs.', 'openpub-base'), $taxonomy->name),
+                'type'        => ['string', 'array'],
+                'items'       => ['type' => 'string'],
+            ];
+        }
+
+        return $args;
     }
 }
