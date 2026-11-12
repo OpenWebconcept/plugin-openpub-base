@@ -32,7 +32,7 @@ class ThemeController extends BaseController
     {
         return [
             'draft-preview' => [
-                'description' => __('Include draft and scheduled themes.', 'openpub-base'),
+                'description' => __('Include draft and scheduled themes, for logged-in users.', 'openpub-base'),
                 'type'        => 'boolean',
             ],
         ];
@@ -68,7 +68,7 @@ class ThemeController extends BaseController
 
         $preview = filter_var($request->get_param('draft-preview'), FILTER_VALIDATE_BOOLEAN);
 
-        if (true === $preview) {
+        if (true === $preview && is_user_logged_in()) {
             $theme->query(['post_status' => ['publish', 'draft', 'future']]);
         }
 
