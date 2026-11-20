@@ -1,0 +1,47 @@
+publiccodeYmlVersion: "0.8.0"
+
+name: "plugin-openpub-base"
+applicationSuite: "OpenWebconcept"
+url: "https://github.com/OpenWebconcept/plugin-openpub-base"
+softwareVersion: "3.10.0"
+releaseDate: "2026-11-12"
+
+platforms:
+  - "web"
+
+categories:
+  - "application-development"
+
+developmentStatus: "stable"
+
+softwareType: "addon"
+
+description:
+  en:
+    shortDescription: "Adds OpenPub implementation"
+    longDescription: "Acts as foundation for other OpenPub related content plugins. This plugin implements actions to allow for other plugins to add and/or change Custom Posttypes, Metaboxes, Taxonomies, and Posts 2 Posts relations."
+    features:
+      - "OpenPub items, themes, subthemes and locations as custom post types"
+      - "Audience, type, usage and show-on taxonomies for OpenPub items"
+      - "REST API for items, themes, search and settings"
+      - "Extension points for other OpenPub plugins"
+      - "Dutch and English translations"
+
+legal:
+  license: "EUPL-1.2"
+  mainCopyrightOwner: "Yard | Digital Agency"
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - "nl"
+    - "en"
+
+maintenance:
+  type: "contract"
+  contractors:
+    - name: "Yard | Digital Agency"
+      website: "https://www.yard.nl"
+      email: "owc@yard.nl"
+      # TODO: confirm the end date of the OpenPub maintenance contract; copied from plugin-pdc-base.
+      until: "2029-12-31"
