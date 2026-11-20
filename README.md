@@ -101,3 +101,7 @@ Want to contribute but have no idea what to begin with? Take a look at the cover
 ## Questions
 
 You can ask technical questions at the [GitHub issues](https://github.com/OpenWebconcept/plugin-openpub-base/issues) page. For general questions about the Open Webconcept we ask you get in touch with us via the [Open Webconcept website](https://openwebconcept.nl/contact/).
+
+## License
+
+Licensed under the [EUPL-1.2](LICENSE). Third-party dependencies bundled in the release keep their own licences.

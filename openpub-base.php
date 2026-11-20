@@ -7,8 +7,8 @@
  * Version:           3.10.0
  * Author:            Yard | Digital Agency
  * Author URI:        https://www.yard.nl/
- * License:           GPL-3.0
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
+ * License:           EUPL-1.2
+ * License URI:       https://interoperable-europe.ec.europa.eu/collection/eupl/eupl-text-eupl-12
  * Text Domain:       openpub-base
  * Domain Path:       /languages
  */
