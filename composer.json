@@ -1,6 +1,7 @@
 {
   "name": "plugin/openpub-base",
   "description": "OpenPub base plugin",
+  "license": "EUPL-1.2",
   "type": "wordpress-plugin",
   "config": {
     "preferred-install": "dist",
