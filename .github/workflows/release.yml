@@ -22,3 +22,11 @@ jobs:
           GHR_COMPRESS: zip
           GHR_PATH: releases/
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Attach SBOM
+        run: |
+          composer global config --no-plugins allow-plugins.cyclonedx/cyclonedx-php-composer true
+          composer global require --no-interaction cyclonedx/cyclonedx-php-composer
+          composer CycloneDX:make-sbom --omit=dev --output-format=JSON --output-file=cyclonedx.json
+          gh release upload "$GITHUB_REF_NAME" cyclonedx.json --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
