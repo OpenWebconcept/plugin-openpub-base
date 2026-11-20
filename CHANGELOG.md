@@ -1,6 +1,6 @@
 # Changelog
 
-## Version [3.19.1] (2026-11-20)
+## Version [NEXT] (2026-11-23)
 
 - Chore: license changed from GPL-3.0 to EUPL-1.2
 - Chore: add publiccode.yml, contributing guide, code of conduct and security policy
