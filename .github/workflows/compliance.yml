@@ -1,0 +1,35 @@
+name: Compliance
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  publiccode:
+    name: publiccode.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: italia/publiccode-parser-action@v1
+        with:
+          publiccode: "publiccode.yml"
+      - name: Check softwareVersion matches the plugin version
+        run: |
+          plugin=$(sed -n 's/^ \* Version: *\([^ ]*\).*$/\1/p' openpub-base.php)
+          publiccode=$(sed -n 's/^softwareVersion: *"\{0,1\}\([^"]*\)"\{0,1\}$/\1/p' publiccode.yml)
+          if [ "$plugin" != "$publiccode" ]; then
+            echo "::error file=publiccode.yml::softwareVersion ($publiccode) does not match the plugin version ($plugin)"
+            exit 1
+          fi
+
+  reuse:
+    name: REUSE licensing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fsfe/reuse-action@v5

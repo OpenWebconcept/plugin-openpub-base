@@ -1,5 +1,11 @@
 # Changelog
 
+## Version [NEXT] (2026-11-23)
+
+- Chore: license changed from GPL-3.0 to EUPL-1.2
+- Chore: add publiccode.yml, contributing guide, code of conduct and security policy
+- Chore: attach a CycloneDX SBOM to each release
+
 ## [v3.10.0] - 2026-11-12
 
 - Feat: declare REST API route args, so params are documented and validated by WordPress (malformed values now return a 400)

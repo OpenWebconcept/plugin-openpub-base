@@ -1,0 +1,9 @@
+version = 1
+SPDX-PackageName = "plugin-openpub-base"
+SPDX-PackageSupplier = "Yard | Digital Agency <owc@yard.nl>"
+SPDX-PackageDownloadLocation = "https://github.com/OpenWebconcept/plugin-openpub-base"
+
+[[annotations]]
+path = "**"
+SPDX-FileCopyrightText = "Yard | Digital Agency"
+SPDX-License-Identifier = "EUPL-1.2"
