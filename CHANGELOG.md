@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.10.1] - 2026-11-24
+
+- Fix: keep the block editor's default styles for classic themes with editor styles (WP 7.0)
+
 ## [v3.10.0] - 2026-11-12
 
 - Feat: declare REST API route args, so params are documented and validated by WordPress (malformed values now return a 400)
